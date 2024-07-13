@@ -20,12 +20,12 @@ DQL语句的执行顺序:from-->where-->group by-->select-->order by-->limit-->h
 
 **条件查询(where)**
 1. select 字段列表 from 表名 where 条件列表; 
-![[Pasted image 20240302204531.png]]
+![[../../MySQL图解.assets/Pasted image 20240302204531.png]]
 
 **聚合函数**
 1. 介绍: 将一列数据作为一个整体,进行纵向计算
 2. 常见聚合函数
-![[Pasted image 20240302205910.png]]
+![[../../MySQL图解.assets/Pasted image 20240302205910.png]]
 3. 语法://所有的null值是不参加聚合函数运算的 
 	 select 聚合函数(字段列表) from 表名;
 
@@ -61,3 +61,6 @@ WHERE ename = 'SMITH'
 
 **多表查询**
 在表子查询中会过滤掉一些本该没有匹配的行,进而衍生表外链接
+
+**分页查询**
+![[../../MySQL图解.assets/Pasted image 20240711204152.png]]

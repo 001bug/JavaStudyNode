@@ -14,7 +14,7 @@ drop user '用户名'@'主机名';
 
 **DCL-权限控制**
 MySQL中常见的权限
-![[Pasted image 20240306130847.png]]
+![[../../MySQL图解.assets/Pasted image 20240306130847.png]]
 1. 查询权限
 show grantis for '用户名'@'主机名';
 2. 授予权限
