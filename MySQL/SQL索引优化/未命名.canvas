@@ -1,0 +1,10 @@
+{
+	"nodes":[
+		{"id":"bd6977c4cde28cf3","type":"file","file":"Pasted image 20240711205616.png","x":-260,"y":-320,"width":400,"height":112},
+		{"id":"a1c11fbb0ec64294","type":"text","text":"索引优化","x":-220,"y":-460,"width":250,"height":60},
+		{"id":"2602ff22ffaffa44","type":"file","file":"Pasted image 20240711205613.png","x":-260,"y":-180,"width":400,"height":146}
+	],
+	"edges":[
+		{"id":"564257b0e0fbddb6","fromNode":"a1c11fbb0ec64294","fromSide":"bottom","toNode":"bd6977c4cde28cf3","toSide":"top"}
+	]
+}
