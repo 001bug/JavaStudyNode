@@ -2,9 +2,9 @@
 
 ##### 逻辑架构剖析(运行流程)
 MySQL处理一个请求的过程
-![](Pasted%20image%2020240713203542.png)
+![](../MySQL图解.assets/Pasted%20image%2020240713203542.png)
 ==MySQL官方系统结构图==
-![](Pasted%20image%2020240713203609.png)
+![](../MySQL图解.assets/Pasted%20image%2020240713203609.png)
 1. 连接层
 Connection Pool:线程池,通过tcp连接,建立交互
 Management Services:基础服务组件,查询权限,类似于给请求附上token
@@ -36,12 +36,12 @@ Storage Engines:真正的负责了MySQL中数据的存储和提取，对物理�
     profile mysql> show profile;//详细
 指定查询 mysql> show profile for query id
 ```
-![](Pasted%20image%2020240713210332.png) 不详细
-![](Pasted%20image%2020240713210348.png) 详细
+![](../MySQL图解.assets/Pasted%20image%2020240713210332.png)不详细
+![](../MySQL图解.assets/Pasted%20image%2020240713210348.png) 详细
 
 ##### 数据库缓冲池
 数据库缓冲池（Database Buffer Pool）是数据库管理系统（DBMS）中用于==临时存储数据的内存区域==。它的主要目的是提高数据库系统的性能，通过减少直接从磁盘读取和写入数据的次数来加速数据访问。
-![](Pasted%20image%2020240713211027.png)
+![](../MySQL图解.assets/Pasted%20image%2020240713211027.png)
 MyISAM存储引擎在缓冲池只是存储索引     InnoDB缓冲池是存储具体数据的
 
 ## 2存储引擎
@@ -65,6 +65,6 @@ Archive有备份/时间点恢复（在服务器中实现，而不是在存储引
 5. CSV 引擎：存储数据时，以逗号分隔各个数据项
 
 **MyISAM和InnoDB对比**
-![](Pasted%20image%2020240713215417.png)
+![](../MySQL图解.assets/Pasted%20image%2020240713215417.png)
 
 ## 3索引的数据结构
