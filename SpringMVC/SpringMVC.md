@@ -107,3 +107,49 @@ public 结合实际 方法名(Exception ex,HttpServletRequest request){
 这个方法放在一个类中,所以是局部异常
 ==执行流程==,遇到异常,然后通过ExceptionHandlermethodResolver在本类中查找是否有ExceptionHandler注释的方法,然后看看里面的异常类是否符合,最后被Exception ex获取
 ==Debug流程==,ctrl+n搜ExceptionHandlermethodResolver---->找resolveMethodByException,然后下断点,然后通过get..方法拿到异常, 接着返回局部异常下断点放行
+
+**2.全局异常**
+样例模版
+```
+@ControllerAdvice
+public class GlobalException{
+	@ExceptionHandler({异常类,异常类..})
+    public ?localException(Exception ex,HttpServletRequest request){
+		//业务
+		return ?;
+	}
+}
+```
+样例模版的解释
+==执行流程==这个全局异常要在局部异常没有生效的情况下才会调用.如果全局异常还不能捕获,那就用tomcat自带的异常处理
+==Debug流程==,先在找到ExceptionHandlermethodResolver,然后再本类中查找有ExceptionHandler注释的方法.如果有,那就不执行全局异常,如果没有就执行全局异常.返回的时候是Null,然后调用resolveMehodByThrowable去找全局异常,最后追到for(Map.Entry< ControllerAdviceBean,ExceptionHandlerMethodResolver >)这里遍历找全局异常处理
+
+**3.自定义异常**
+样例模版
+```
+@ResponseStatus(reason="异常信息",value=HttpStatus.状态信息)
+public class xxException extends 异常类{
+	public xxException(){
+	}
+	public xxException(String message){
+		super(message);
+	}
+}
+```
+样例模版的解释
+==执行流程==:跟普通的异常一样,注意:如果想要在全局异常或者局部异常使用,那就需要在自定义异常增加构造方法,因为注释里面的报错信息是给tomcat使用的
+==Debug流程==:也是先找到ExceptionHandlermethodResolver中的resolveMethodByExceptionType(查method,查return)  , 然后调用resolveMehodByThrowable去找全局异常,到for , 在for中查找advice , 然后可放行
+如果没有放在全局异常处理,是不会走到样例模版中构造方法的
+
+**4.统一处理异常**
+样例模版
+1.配置xxx-servlet.xml
+![](assest/Pasted%20image%2020240715105104.png)
+==注意==:arrEx是和视图解析器的配置是一起作用的,那么arrEx的url受到视图解析器配置的影响
+
+样例模版解析:统一处理异常只有在全局异常和局部异常都不发生的作用下起作用
+< prop key >这个标签中的java.lang.ArrayIndexOutOfBoundsException 表示是可以接受的异常处理,在这个模版中只有数组越界异常才能返回自定义界面.  如果想要处理所有异常,改成java.lang.Exception
+
+**异常的处理优先级** 局部>全局>统一>tomcat
+### 源码执行流程分析
+
