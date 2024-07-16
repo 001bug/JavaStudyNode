@@ -1,61 +1,163 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="8a655897-e95f-4a00-9055-a215f1e9425d" name="Changes" comment="将笔记更新到github" />
+    <list default="true" id="a487447e-4149-4a4b-a519-a90026c9fe63" name="Changes" comment="新建Mybatis笔记">
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/MyBatis.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/MyBatis.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713203542.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713203609.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713210332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713210348.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713211027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240713215417.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240714100549.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240714101048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240714103433.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL图解.assets/Pasted image 20240714104048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/JavaNote/JavaStudyNode" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 5
-}]]></component>
-  <component name="ProjectId" id="2j6InYQzZdJeWOxZAqyih9Zb1pY" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2jBtzjJ2UG2CKx1oH2iSeuW1Igy" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8a655897-e95f-4a00-9055-a215f1e9425d" name="Changes" comment="" />
-      <created>1720701269509</created>
+      <changelist id="a487447e-4149-4a4b-a519-a90026c9fe63" name="Changes" comment="" />
+      <created>1720872563556</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1720701269509</updated>
-      <workItem from="1720701274099" duration="90000" />
+      <updated>1720872563556</updated>
+      <workItem from="1720872564933" duration="1616000" />
+      <workItem from="1720944558543" duration="601000" />
+      <workItem from="1720963496636" duration="130000" />
+      <workItem from="1721042962617" duration="759000" />
+      <workItem from="1721116781126" duration="5000" />
     </task>
-    <task id="LOCAL-00001" summary="将笔记更新到github">
+    <task id="LOCAL-00001" summary="更新图像">
       <option name="closed" value="true" />
-      <created>1720701309752</created>
+      <created>1720872622638</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1720701309752</updated>
+      <updated>1720872622638</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="yy">
+      <option name="closed" value="true" />
+      <created>1720872759458</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1720872759458</updated>
+    </task>
+    <task id="LOCAL-00003" summary="yy">
+      <option name="closed" value="true" />
+      <created>1720872802405</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1720872802405</updated>
+    </task>
+    <task id="LOCAL-00004" summary="yy">
+      <option name="closed" value="true" />
+      <created>1720872826334</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1720872826334</updated>
+    </task>
+    <task id="LOCAL-00005" summary="更新mysql的高级中的理论">
+      <option name="closed" value="true" />
+      <created>1720879991499</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1720879991499</updated>
+    </task>
+    <task id="LOCAL-00006" summary="图片错误">
+      <option name="closed" value="true" />
+      <created>1720880559868</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1720880559868</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更新索引优化">
+      <option name="closed" value="true" />
+      <created>1720963531174</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720963531174</updated>
+    </task>
+    <task id="LOCAL-00008" summary="上传springmvc笔记">
+      <option name="closed" value="true" />
+      <created>1720963570547</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720963570547</updated>
+    </task>
+    <task id="LOCAL-00009" summary="更新索引优化">
+      <option name="closed" value="true" />
+      <created>1721043005214</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1721043005214</updated>
+    </task>
+    <task id="LOCAL-00010" summary="新建Mybatis笔记">
+      <option name="closed" value="true" />
+      <created>1721043057388</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1721043057388</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="将笔记更新到github" />
-    <option name="LAST_COMMIT_MESSAGE" value="将笔记更新到github" />
+    <MESSAGE value="更新图像" />
+    <MESSAGE value="yy" />
+    <MESSAGE value="更新mysql的高级中的理论" />
+    <MESSAGE value="图片错误" />
+    <MESSAGE value="上传springmvc笔记" />
+    <MESSAGE value="更新索引优化" />
+    <MESSAGE value="新建Mybatis笔记" />
+    <option name="LAST_COMMIT_MESSAGE" value="新建Mybatis笔记" />
   </component>
 </project>

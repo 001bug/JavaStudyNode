@@ -1,0 +1,6 @@
+{
+  "useMarkdownLinks": true,
+  "attachmentFolderPath": "./assest",
+  "newFileLocation": "current",
+  "newLinkFormat": "relative"
+}

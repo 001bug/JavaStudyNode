@@ -2,9 +2,9 @@
 
 ##### 逻辑架构剖析(运行流程)
 MySQL处理一个请求的过程
-![](../MySQL图解.assets/Pasted%20image%2020240713203542.png)
+![](../assest/Pasted%20image%2020240713203542.png)
 ==MySQL官方系统结构图==
-![](../MySQL图解.assets/Pasted%20image%2020240713203609.png)
+![](../assest/Pasted%20image%2020240713203609.png)
 1. 连接层
 Connection Pool:线程池,通过tcp连接,建立交互
 Management Services:基础服务组件,查询权限,类似于给请求附上token
@@ -36,12 +36,12 @@ Storage Engines:真正的负责了MySQL中数据的存储和提取，对物理�
     profile mysql> show profile;//详细
 指定查询 mysql> show profile for query id
 ```
-![](../MySQL图解.assets/Pasted%20image%2020240713210332.png)不详细
-![](../MySQL图解.assets/Pasted%20image%2020240713210348.png) 详细
+![](../assest/Pasted%20image%2020240713210332.png)不详细
+![](../assest/Pasted%20image%2020240713210348.png) 详细
 
 ##### 数据库缓冲池
 数据库缓冲池（Database Buffer Pool）是数据库管理系统（DBMS）中用于==临时存储数据的内存区域==。它的主要目的是提高数据库系统的性能，通过减少直接从磁盘读取和写入数据的次数来加速数据访问。
-![](../MySQL图解.assets/Pasted%20image%2020240713211027.png)
+![](../assest/Pasted%20image%2020240713211027.png)
 MyISAM存储引擎在缓冲池只是存储索引     InnoDB缓冲池是存储具体数据的
 
 ## 2存储引擎
@@ -65,7 +65,7 @@ Archive有备份/时间点恢复（在服务器中实现，而不是在存储引
 5. CSV 引擎：存储数据时，以逗号分隔各个数据项
 
 **MyISAM和InnoDB对比**
-![](../MySQL图解.assets/Pasted%20image%2020240713215417.png)
+![](../assest/Pasted%20image%2020240713215417.png)
 
 ## 3索引的数据结构
 ##### 索引的概述以及优缺点
@@ -85,7 +85,7 @@ mysql> CREATE TABLE index_demo(
 -> ) ROW_FORMAT = Compact; c1列为主键
 ```
 内部行格式示意图
-![](../MySQL图解.assets/Pasted%20image%2020240714100549.png)
+![](../assest/Pasted%20image%2020240714100549.png)
 ==record_type== ：记录头信息的一项属性，表示记录的类型， 0 表示普通记录、2 表示最小记
 录、3 表示最大记录 , 1.目录项记录
 ==next_record== ：表明下一条记录是谁。
@@ -93,7 +93,7 @@ mysql> CREATE TABLE index_demo(
 ==其他信息==：除了上述3种信息以外的所有信息，包括其他隐藏列的值以及记录的额外信息。
 
 一些记录(不是表)放在页中是这样的
-![](../MySQL图解.assets/Pasted%20image%2020240714101048.png)
+![](../assest/Pasted%20image%2020240714101048.png)
 
 **InnoDB的数据的查找**
 ```
@@ -112,9 +112,9 @@ SELECT [列名列表] FROM 表名 WHERE 列名 = xxx;
 1. 建立目录项,目录项组合在一起,形成目录页
 1.目录页的各列的值记录一页中最小的主键值
 2.页号,page_no, 如下
-![](../MySQL图解.assets/Pasted%20image%2020240714103433.png)
+![](../assest/Pasted%20image%2020240714103433.png)
 随着数据不断的增多,最后会形成B+Tree的形式
-![](../MySQL图解.assets/Pasted%20image%2020240714104048.png)
+![](../assest/Pasted%20image%2020240714104048.png)
 假设所有存放用户记录的叶子节点代表的数据页可以存放100条用户记录，所有存放目录项记录的内节点代表的数据页可以存放1000条目录项记录，
 那么：如果B+树只有1层，也就是只有1个用于存放用户记录的节点，最多能存放100 条记录。
 	   如果B+树有2层，最多能存放1000×100=10,0000 条记录。
