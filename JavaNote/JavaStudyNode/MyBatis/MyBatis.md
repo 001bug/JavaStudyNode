@@ -61,7 +61,7 @@ MyBatis工作流程
 3.创建子项目,过程中就修改个项目名字,然后啥都不用点
 
 4.配置src/resources/mybatis-config.xml文件(必须放在resources(main目录下)文件中)
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
@@ -99,13 +99,17 @@ MyBatis工作流程
 
 6.创建一个名位mapper的包然后 , 在该包下写增删改查的接口
  接口样例模版 xxx是javabean的类名
-```
+```java
 public interface xxxMapper{
-	public void addxxx(xxx xxx)
+	public void addxxx(xxx xxx);
+	public void delxxx(Integer id);
+	public void updateMonster(Monster monster);
+	public Monster getMonsterById(Integer id);
+	public List<Monster> findAllMonster();
 }
 ```
  接着在mapper包下创建xxx.xml文件, 然后引入以下代码
-```
+```xml
  <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
@@ -132,9 +136,9 @@ public interface xxxMapper{
 对该文件的解释
 	该文件可以去实现对应的接口的方法
 	 namespace 指的是xml文件和接口对应,这个接口是在mapper包下的接口
-	 细节: 如果需要获得自增的key值,那么可以在标签中加seGeneratedKeys="true" keyProperty="id"
+	 细节: **如果需要获得自增的key值,那么可以在标签中加seGeneratedKeys="true" keyProperty="id"**
 	 如果需要简写javabean的全类名,需要在mybatis-config.xml配置
-```
+```xml
 <typeAliases>  
     <typeAlias type="javabean全类名" alias="要被替代的别名"/>  
 </typeAliases>
@@ -142,7 +146,7 @@ public interface xxxMapper{
 
 
 7.写MyBatisUtils 工具类 ^ede5a4
-```
+```java
 public class MyBatisUtils {
 	private static SqlSessionFactory sqlSessionFactory;
 	static{
@@ -164,7 +168,7 @@ public class MyBatisUtils {
 Resources一定要是来自mybatis的 , 涉及到io要看看收否加载到目标文件目录下
 
 8.使用MyBatis , 模版样例 ^95c0bd
-```
+```java
 public class 类名{
 	private SqlSession sqlSession;//这些都是必备的
 	private xxxMapper xxxMapper;//
@@ -192,12 +196,14 @@ public class 类名{
 配置文档:https://mybatis.org/mybatis-3/zh/configuration.html#settings
 
 在使用配置之前要在resource目录下的mybatis-config.xml加入配置设置
-```
+```xml
 <settings>
 	<setting name="logImpl" value="STDOUT_LOGGING"/>
 </settings>
 ```
 注意这个配置代码要放在前面.
+* 加入日志功能
+
 
 ### 实现MyBatis底层机制
 #### 1.底层组件的调用关系
@@ -222,7 +228,7 @@ Executor执行器是个接口,他被很多类实现了,其中重要是BaseExecut
 [此流程的对应模版](#^ede5a4) 这里打算在Session 中获取全局配置文件的信息, 源码是在SqlFactorySession中获取配置信息
 #### 3.代码实现(只显示重要代码片段)
 ##### 1.自定义xml配置文件
-```
+```xml
 <?xml version="1.0" encoding="UTF-8" ?>  
 <database>  
     <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>  
@@ -234,13 +240,13 @@ Executor执行器是个接口,他被很多类实现了,其中重要是BaseExecut
 要非常小心时区问题
 ##### 2.写读取xml配置文件的方法
 1.因为要读取文件,那么一定会用到io方面的,但因为xml文件的工作目录随随着用户不同会变化,所以要考虑通过类加载器动态的获取相应的xml的io(一般工作的时候,xml文件会放到类路径的相对路径下面)
-```
+```java
 InputStream stream = loader.getResourceAsStream(resource);
 ```
 [resource是类路径的相对路径](../Java/类路径和Java相对路径.md)\
 
 2.xml解析获取document根元素 ^e8bb23
-```
+```java
 //加载配置xxx.xml 获取到对应的InputStream  
 InputStream stream = loader.getResourceAsStream(resource);  
 //解析xxx.xml  => dom4j  
@@ -252,7 +258,7 @@ Element root = document.getRootElement();
 ```
 
 3.拿到根元素,然后去遍历,并且通过选择性的语句去获取xml中配置文件的信息(node就是root,)
-```
+```java
 for (Object item : node.elements("property")) {  
     Element i = (Element) item;//i 就是 对应property节点  
     String name = i.attributeValue("name");  
@@ -458,7 +464,7 @@ public MapperBean readMapper(String path){
 2. 循环遍历,封装[Function](#^edb9fc) 然后方进一个集合中,因为可能有多个接口,以及xxxmapper.xml,最后返回一个具有多个mapper.xml信息和多个mapper接口信息的信息体. 
 ##### 5.实现[动态代理](设计模式)MapperProxy类
 在一开始的Executor是直接通过JDBC调用MySQL , 这里进行改进,通过一个名为MapperProxy代理类,然后动态的生成代理对象,然后去调用**BaseExecutor中的方法**
-```
+```java
 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
     MapperBean mapperBean = hspConfiguration.readMapper(this.mapperFile);  
     //判断是否是xml对应的接口  
@@ -477,7 +483,8 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
                 //在这里,HspSqlsession只写了一个selectone,实际的源码有很多执行select的方法  
                 if("select".equalsIgnoreCase(function.getSqlType())){  
                     return hspSqlSession.selectOne(function.getSql(),String.valueOf(args[0]));  
-                }  
+                }
+                //源码这里写了很多不同的语句  
             }  
         }  
     }  
@@ -485,3 +492,56 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
 }
 ```
 首先,要实现动态代理, 目的是为了让接口的方法扩展功能(解析xml,实现mapper接口),用动态代理对象调用
+### 原生API的调用
+
+```java
+int insert = sqlSession.insert(一个方法的全类名,数据格式);
+int delete = sqlSession.insert(一个方法的全类名,参数);
+int update = slqSession.update(方法的全类名,参数);
+//selsect也差不多,但是它有太多的方法,返回值可能不太同,但参数是差不多的
+```
+如果是增删改,需要加下面的代码
+```java
+if(sqlSession!=null){
+	sqlSession.commit();
+	sqlSession.close();
+}
+```
+这些方法被用来执行定义在 SQL 映射 XML 文件中的 SELECT、INSERT、UPDATE 和 DELETE 语句。返回的都是影响行数,如果是增删改,那需要提交事务,括号里面的参数要不要写取决于接口是否有参数,总的来说,最终还是要到mapper读里面的配置语句
+
+### 注解的方式进行crud
+1.还是要创建一个xxxmpper包,然后省去了配置xml文件,也是需要xxxmapper接口
+xxx.interface
+```java Xxx.interface
+@Insert("INSERT INTO `表名` () VALUES (#{javabean的字段名})")
+public void addXxx(Xxx xxx);
+@Delete("sql")
+public void delXxx(参数);
+``` 
+2.需要在全局配置文件配置
+```xml
+<mappers>
+	<mapper class="xxx.interface的全类名"/>
+</mappers>
+```
+3.使用,还是要拿到SqlSession,本质要通过它拿到实例化接口(动态代理)
+```java
+public class 类名{
+	private SqlSession sqlSession;//这些都是必备的
+	private xxxMapper xxxMapper;//
+	@Before //Before注解能够让类进行实例化的时候先执行这个语句
+	public void init(){
+		sqlSession = MyBatisUtils.getSqlSession();
+		xxxMapper = sqlSession.getMapper(xxxMapper.class);
+	}
+	public void addxxx() {//添加实例,然后删除,更新操作都差不多  
+		...实例化对象  
+	    xxxMapper.addxxx(xxx xxx);
+	    //如果是增删改,则需要下面的代码进行确认
+	    if(sqlSession!=null){
+		    sqlSession.commit();
+		    sqlSession.close();
+	    }
+	}
+}
+```
