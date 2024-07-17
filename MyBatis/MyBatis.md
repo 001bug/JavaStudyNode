@@ -233,11 +233,11 @@ Executor执行器是个接口,他被很多类实现了,其中重要是BaseExecut
 ```
 要非常小心时区问题
 ##### 2.写读取xml配置文件的方法
-1.因为要读取文件,那么一定会用到io方面的,但因为xml文件的工作目录随随着用户不同会变化,所以要考虑通过类加载器动态的获取相应的xml的io(一般工作的时候,xml文件会放到工作目录的类路径下面)
+1.因为要读取文件,那么一定会用到io方面的,但因为xml文件的工作目录随随着用户不同会变化,所以要考虑通过类加载器动态的获取相应的xml的io(一般工作的时候,xml文件会放到类路径的相对路径下面)
 ```
 InputStream stream = loader.getResourceAsStream(resource);
 ```
-[resource是类路径的相对路径](类路径和Java相对路径)\
+[resource是类路径的相对路径](../Java/类路径和Java相对路径.md)\
 
 2.xml解析获取document根元素 ^e8bb23
 ```
@@ -314,7 +314,7 @@ public interface Executor {
 ```
 
 3.基于接口实现BaseExecutor
-* 查询操作,实现类没有采用反射机制
+* 查询操作,实现类没有采用反射机制(传入参数是 sql语句,和属性 parameter)
 ```
 try {  
     pre = connection.prepareStatement(sql);  
@@ -394,7 +394,9 @@ public interface MonsterMapper {
 2.开发MapperBean
 接下来是重中之重, 声明的接口怎么和xml相互连接映射起来
 ![](assest/Pasted%20image%2020240716204717.png)
-如图可知它是通过一个名为MapperBean来联系接口和xml的.
+
+**如图可知它是通过一个名为MapperBean来联系接口和xml的.JavaBean封装接口方法的信息,xxxmapper.xml的各种信息** ^edb9fc
+
 ?传统Java开发模式通过实现类来继承接口并实现方法.
 ?MyBatis通过MapperBean和XML文件配置实现接口与方法的映射和调用。MapperBean作为连接接口和XML配置的关键对象，**记录接口方法信息以支持运行时调用**。
 最终目的可以让1.MyBatis减少样板代码2. SQL 与 Java 代码分离
@@ -415,5 +417,71 @@ public class MapperBean {
     private List<Function> functions;//保存接口中的方法
 }
 ```
-* 在Configuration中解析MapperXML然后获取Mapper  [跟解析xml的过程相似](#^e8bb23)
-* 
+* 封装MapperBean
+```
+public MapperBean readMapper(String path){  
+    MapperBean mapperBean=new MapperBean();  
+    //获取到mapper.xml对应的流  
+    try {  
+        InputStream stream = loader.getResourceAsStream(path);  
+        SAXReader reader = new SAXReader();  
+        Document document = reader.read(stream);  
+        Element root = document.getRootElement();  
+        String namespace=root.attributeValue("namespace").trim();  
+        mapperBean.setInterfaceName(namespace);//设置interface接口全路径  
+        Iterator rootIterator=root.elementIterator();  
+        List<Function> list = new ArrayList<>();//保存接口下所有的function的方法信息  
+        while(rootIterator.hasNext()){  
+            Element e=(Element) rootIterator;  
+            Function function = new Function();  
+            String sqlType=e.getName().trim();  
+            String funcName=e.attributeValue("id").trim();  
+            String resultType=e.attributeValue("resultType").trim();  
+            String sql=e.getText().trim();  
+            //开始封装  
+            function.setSql(sql);  
+            function.setFuncName(funcName);  
+            function.setSqlType(sqlType);  
+            //resultType现在不知道他是什么类型,在运行的时候才能知道他是什么类型,所以这里可以死使用反射机制处理  
+            Object newInstance = Class.forName(resultType).newInstance();  
+            function.setResultType(newInstance);  
+            list.add(function);//将封装好的信息放入集合中  
+        }  
+        mapperBean.setFunctions(list);//要将所有的方法信息传入进去  
+    } catch (Exception e) {  
+        e.printStackTrace();  
+    }  
+    return mapperBean;  
+}
+```
+1. 这里先采用[xml解析获取mapper的配置信息](#^e8bb23) , 注意这里做了简化,我把xml配置信息默认放在类的类路径的[相对路径](../Java/类路径和Java相对路径.md)下,就不用像原生的MyBatis那样要通过解析全局配置文件,然后获得xxxmapper.xml的类路径的相对路径
+2. 循环遍历,封装[Function](#^edb9fc) 然后方进一个集合中,因为可能有多个接口,以及xxxmapper.xml,最后返回一个具有多个mapper.xml信息和多个mapper接口信息的信息体. 
+##### 5.实现[动态代理](设计模式)MapperProxy类
+在一开始的Executor是直接通过JDBC调用MySQL , 这里进行改进,通过一个名为MapperProxy代理类,然后动态的生成代理对象,然后去调用**BaseExecutor中的方法**
+```
+public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
+    MapperBean mapperBean = hspConfiguration.readMapper(this.mapperFile);  
+    //判断是否是xml对应的接口  
+    if(!method.getDeclaringClass().getName().equals(mapperBean.getInterfaceName())){  
+        return null;  
+    }  
+    //取出mapperBean的functions  
+    List<Function> functions=mapperBean.getFunctions();  
+    //判断mapperBean解析对应的接口中的方法是否有方法  
+    if(null!=functions&&0!=functions.size()){  
+        for(Function function: functions){  
+            if(method.getName().equals(function.getFuncName())){  
+                //如果我们当前的function 要执行的sqlType  
+                //我们就去执行selectOne  
+                //这里做了简化,如果要执行的select,就对应执行selectone  
+                //在这里,HspSqlsession只写了一个selectone,实际的源码有很多执行select的方法  
+                if("select".equalsIgnoreCase(function.getSqlType())){  
+                    return hspSqlSession.selectOne(function.getSql(),String.valueOf(args[0]));  
+                }  
+            }  
+        }  
+    }  
+    return null;  
+}
+```
+首先,要实现动态代理, 目的是为了让接口的方法扩展功能(解析xml,实现mapper接口),用动态代理对象调用

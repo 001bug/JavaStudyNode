@@ -3,7 +3,7 @@
 这里用maven项目举个例子,目录结构如下
 
 src下是源码，target下是编译后的class文件。我们把hello.txt放在current文件夹下
-![](assest/Pasted%20image%2020240716160453.png)
+![](Java/assest/Pasted%20image%2020240716160453.png)
 用java输出相对路径
 ```
 public class FilePathDemo {
@@ -18,10 +18,10 @@ public class FilePathDemo {
 }
 ```
 得到的结果是
-![](assest/Pasted%20image%2020240716160616.png)
+![](Java/assest/Pasted%20image%2020240716160616.png)
 可以得到的结果
 **工作目录**是current文件夹所在路径
-![](assest/Pasted%20image%2020240716161647.png)
+![](Java/assest/Pasted%20image%2020240716161647.png)
 这里D:\code\java\current就是所谓的**工作路径**了,所以说**相对路劲**相对的是工作目录，也就是你执行命令时所在的当前目录。
 
 ### 2.类路径
