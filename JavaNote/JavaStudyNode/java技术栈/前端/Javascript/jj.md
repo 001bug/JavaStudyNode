@@ -1,1 +1,0 @@
-javascript alert()弹窗 非强制性语言 console.log typeof

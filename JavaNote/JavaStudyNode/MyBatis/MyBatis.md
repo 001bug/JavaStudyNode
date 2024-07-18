@@ -288,7 +288,7 @@ for (Object item : node.elements("property")) {
 ```
 
 4.通过第三步获得的信息,然后用jdbc进行连接数据库,这里MyBatis有用数据库连接池.
-```
+```java
 Class.forName(driverClassName);  
 connection = DriverManager.getConnection(url,username,password);
 ```
@@ -297,7 +297,7 @@ connection = DriverManager.getConnection(url,username,password);
 
 1.在此之前,学习一个**快速开发javabean**的包
 相关pom依赖
-```
+```java
 <dependency>  
     <groupId>org.projectlombok</groupId>  
     <artifactId>lombok</artifactId>  
@@ -321,7 +321,7 @@ public interface Executor {
 
 3.基于接口实现BaseExecutor
 * 查询操作,实现类没有采用反射机制(传入参数是 sql语句,和属性 parameter)
-```
+```java
 try {  
     pre = connection.prepareStatement(sql);  
     //设置参数, 如果参数多, 可以使用数组处理.  
@@ -382,13 +382,13 @@ selectOne被覆盖了很多种,这里采用String , Obeject这一种
 在实现之间声明一下,这里的mapper.xml文件放在resources文件下,因为resource文件下的文件直接被加载到类的相对路径之下. 原本的MyBatis是在全局配置文件配置一下,然后解析,就能知道mapper.xml的相对类路径(省很多代码) 
 
 1.xxx接口方法
-```
+```java
 public interface MonsterMapper {  
     public Monster getMonsterById(Integer id);  
 }
 ```
 对应的xxxMapper.xml文件
-```
+```java
 <?xml version="1.0" encoding="UTF-8" ?>  
 <mapper namespace="com.hspedu.entity.Monster">  
     <select id="getMonsterById" resultType="com.hspedu.entity.Monster">  
@@ -407,7 +407,7 @@ public interface MonsterMapper {
 ?MyBatis通过MapperBean和XML文件配置实现接口与方法的映射和调用。MapperBean作为连接接口和XML配置的关键对象，**记录接口方法信息以支持运行时调用**。
 最终目的可以让1.MyBatis减少样板代码2. SQL 与 Java 代码分离
 * 写MapperBean中的Function(get和set方法省略了,要补全)
-```
+```java
 public class Function {  
     private String sqlType;  
     private String funcName;  
@@ -417,14 +417,14 @@ public class Function {
 }
 ```
 * 写MapperBean(封装Mapper信息) (get和set方法省略了,要补全)
-```
+```java
 public class MapperBean {  
     private String interfaceName;//接口全类名  
     private List<Function> functions;//保存接口中的方法
 }
 ```
 * 封装MapperBean
-```
+```java
 public MapperBean readMapper(String path){  
     MapperBean mapperBean=new MapperBean();  
     //获取到mapper.xml对应的流  
@@ -495,7 +495,7 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
 ### 原生API的调用
 
 ```java
-int insert = sqlSession.insert(一个方法的全类名,数据格式);
+int insert = sqlSession.insert(xxx.xxx.xx,数据格式);
 int delete = sqlSession.insert(一个方法的全类名,参数);
 int update = slqSession.update(方法的全类名,参数);
 //selsect也差不多,但是它有太多的方法,返回值可能不太同,但参数是差不多的
@@ -613,7 +613,7 @@ MyBatis 在设置预处理语句（PreparedStatement）中的参数或从结果�
 ```
 注意,无论是注释的方式还是xml的方式,都需要配置映射器,而且最常用的是包的形式
 ##### 映射器
-1.参数类型（parameterType）
+1.参数类型（parameterType）和 resultType
 * 传入简单类型
 * 传入POJO类型(多数据), 比如查询时有多个筛选条件
 * 传入String , 只能用`${}`来接受参数`#{}`(前提是模糊查询)
@@ -627,8 +627,18 @@ public List<Monster> FindMonsterByMap(Map<String,Object> map);
 ```
 2.然后在xml配置文件中参数类型(parameterTyep)改为map
 ```xml
-<select id="全类名" parameterType="map" resultType="返回结果">
+<select id="相应方法的全类名" parameterType="map" resultType="返回结果">
 	SELECT * FROM `表名` WHERE `id` = #{id}
 </select>
 ```
-解释,如果传入的是map,那么预处理语句中的参数`id`,在map中也要有对应的key值为`id`
+解释,如果传入的是map,那么预处理语句中的参数`id`,在map中也要有对应的key值为`id`, 还有可能遇到的**是返回的传入和返回的结果都是map**
+首先要改一下Mapper接口中的方法
+```java 
+public List<Map<String,Object>> FindPrameterMap_Returnmap(Map<String,Object> map);
+```
+配置xml(parameter是map和return也是map的情况)
+```xml
+<select id="(上面)方法的全类名" parameterType="map" resultType="map">
+	SELECT * FROM `表名` WHERE `id` = #{id}
+</select>
+```
