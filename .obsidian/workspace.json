@@ -1,0 +1,199 @@
+{
+  "main": {
+    "id": "eadc7cd637dfe40e",
+    "type": "split",
+    "children": [
+      {
+        "id": "fa54e0b6d1982df8",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "e8c189edcfef6b76",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4a95981bf7e49f1e",
+    "type": "split",
+    "children": [
+      {
+        "id": "96ad103bd76df80f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "4eed74c84ef71a4d",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "6587fde0629aea82",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "43239297929dac82",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "right": {
+    "id": "5f60fa07aec0b59e",
+    "type": "split",
+    "children": [
+      {
+        "id": "c382880b62346046",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "878f154d085aae79",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "4e8ae034f971fcb2",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "7bd0c8bc06c31eef",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "1a5607aed9fb7edc",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 202.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false
+    }
+  },
+  "active": "4eed74c84ef71a4d",
+  "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240718163733.png",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DDL",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/div标签",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/继承/final",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/抽象类",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/枚举类 enum类.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/enum实现接口.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/注解",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DML",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/hashCode.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/toString.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/finalize.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Pasted image 20240308161724.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/计算机网络图片/Pasted image 20240315134530.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/计算机网络图片/Pasted image 20240315130445.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/物理层.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/传输介质.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Pasted image 20240324190448.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Pasted image 20240324185745.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Pasted image 20240324185628.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Pasted image 20240323163211.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Pasted image 20240323155734.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/main/main.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/类变量和类方法.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/包装类.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/StringBuffer.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/StringBuilder.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/String.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/java图解/java图解新/Pasted image 20240320105112.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/java图解/java图解新/Pasted image 20240320101939.png",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/gid命令.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/默认约束.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/唯一约束.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/SQL通用语法以及分类.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/设计模式.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/模版设计模式.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/多线程/线程基础/线程的生命周期/线程的生命周期.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/多线程/线程基础/线程的生命周期/死锁.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/多线程/线程基础/多线程机制.md",
+    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/继承/super/super.md",
+    "未命名.canvas"
+  ]
+}

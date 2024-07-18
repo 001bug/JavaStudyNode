@@ -496,7 +496,7 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
 
 ```java
 int insert = sqlSession.insert(xxx.xxx.xx,数据格式);
-int delete = sqlSession.insert(一个方法的全类名,参数);
+int delete = sqlSession.delete(一个方法的全类名,参数);
 int update = slqSession.update(方法的全类名,参数);
 //selsect也差不多,但是它有太多的方法,返回值可能不太同,但参数是差不多的
 ```
@@ -507,7 +507,7 @@ if(sqlSession!=null){
 	sqlSession.close();
 }
 ```
-这些方法被用来执行定义在 SQL 映射 XML 文件中的 SELECT、INSERT、UPDATE 和 DELETE 语句。返回的都是影响行数,如果是增删改,那需要提交事务,括号里面的参数要不要写取决于接口是否有参数,总的来说,最终还是要到mapper读里面的配置语句
+这些方法被用来执行mapper接口中的方法。返回的都是影响行数,如果是增删改,需要提交事务,括号中的形参很接口中的形参保持一致,总的来说,最终还是要到mapper.xml读里面的配置sql语句
 
 ### 注解的方式进行crud
 1.还是要创建一个xxxmpper包,然后省去了配置xml文件,也是需要xxxmapper接口
@@ -551,7 +551,7 @@ public class 类名{
 1.useGeneratedKeys=true表示返回自增的值
 2.keyProperty="id" 自增值对应的对象属性是哪一个
 3.keyColum="id" 自增值对应表的字段 总的来说要看表的字段和javabean中的字段
-### 配置文件和映射器
+### 配置文件和XML映射器
 ##### 配置文件
 1.properties
 这些属性可以在外部进行配置，并可以进行动态替换。简单点说就是在点xml文件中使用`<properties>`标签可以获取外部.properties中的配置信息
@@ -642,3 +642,116 @@ public List<Map<String,Object>> FindPrameterMap_Returnmap(Map<String,Object> map
 	SELECT * FROM `表名` WHERE `id` = #{id}
 </select>
 ```
+
+2.resultMap(结果集映射)
+介绍:当**实体类**的属性和表的字段名不一致时, 通过resultMap进行映射, 从而解决实体类属性和表字段不一致的问题,实体类是上面提到过的javabean
+```xml
+<resutlMap id="随意" type="实体类(全类名)">
+	<result column="表的字段名" property="实体类的属性名"/>
+</resultMap>
+```
+然后再把xml中sql语句的配置的resultType属性改成resultMap , 并且select id改成resultMap的id
+```xml
+<select id="方法的全类名"  resutlMap="上面resultMap的id">
+	SELECT * FROM `表名`
+</select>
+```
+type="xxx"是返回的对象
+==可以使用MySQL的别名来处理实体类的属性名和表的字段名不一致的问题,但是复用性太差.不推荐使用==
+### 动态SQL
+介绍:动态SQL是MyBatis的强大特性,使用JDBC时,根据不同条件拼接SQL语句非常麻烦,例如不能忘记添加空格,动态SQL语句解决了这个问题,很多情景都是用于where查询
+##### if标签
+使用动态 SQL 最常见情景是根据条件包含 where 子句的一部分。比如：
+```xml
+<select id="方法的全类名" resultType="javabean的全类名">
+  SELECT * FROM BLOG
+  WHERE state = ‘ACTIVE’
+  <if test= "判断表达式"><!--如果真,下面的语句会执行-->
+    AND title like #{title}<!--这一节在sql语句后面接上去-->
+  </if>
+</select>
+```
+这里要新学一个方法,在判断表达式中取参数,`@Param`,在接口方法中使用
+![](assest/Pasted%20image%2020240718163733.png)
+##### where标签
+
+^1e356c
+
+**自动添加 `WHERE` 关键字**：当有一个或多个条件时，`<where>` 标签会自动添加 `WHERE` 关键字。如果没有条件，则不会添加 `WHERE`。
+```xml
+<select id="方法的全类名" resultType="javabean的全类名" parameterType>
+  SELECT * FROM BLOG
+  <where>
+	  <if test="判断表达式">
+		  AND sql     <!--这一节+上WHERE在sql语句后面接上去-->
+	  </if>
+	  <if test="判断表达式">
+		  AND sql <!--如果有多余的and会自动去掉-->
+	  </if>
+  </where>
+</select>
+```
+只要有一个if标签成立,where就会自动加上去
+##### choose标签
+不想使用所有的条件，而只是想从**多个条件中选择一个使用**。
+```xml
+<select id="方法的全类名" resultType="javabean的全类名" prarameterType="入参">
+  SELECT * FROM BLOG
+  <choose>
+	  <when test="where中的判断表达式"><!--如果真,则添加下面语句-->
+		  WHERE `name`=#{name}
+	  </when>
+	  <when test ="xxx">
+		  WHERE `id` = #{id}
+	  </when>
+	  <otherwise>
+		  WHERE `salary`>#{id}<!--默认条件-->
+	  </otherwise>
+  </choose>
+</select>
+```
+##### foreach
+动态 SQL 的另一个常见使用场景是对**集合进行遍历**（尤其在构建 IN 条件语句的时候）
+比如查看id 为12 ,13 ,14的语句,因为是查询语句,所以有入参(入参的map有ids的key值)
+```xml
+<select id="方法的全类名" resultType="javabean的全类名" parameterType="入参">
+  SELECT * FROM BLOG
+  <if test="ids !=null and ids!=''">
+	  <where>
+		  id IN 
+		  <foreach collection = "ids" item="id" open="(" separator=",", close=")">
+		  #{id}
+		  </foreach>
+	  </where>
+  </if>
+</select>
+```
+这个`#{id}`是什么?
+ids对应入参map的名ids的key,那个item就是在遍历ids集合时,每次取出的值,对应的变量id,所以`#{id}`就是变量id(跟items关系)
+##### trim(应用少)
+**trim概述**
+trim能够为词取别名,_where_ 元素只会在子元素返回任何内容的情况下才插入 “WHERE” 子句。而且，若子句的开头为 “AND” 或 “OR”，_where_ 元素也会将它们去除。如果 _where_ 元素与你期望的不太一样，你也可以通过自定义 trim 元素来定制 _where_ 元素的功能。
+就是说,在where多个标签下,如果有多个if 判断条件作为字句,那么关键字AND,[where标签能够自动去除多余的AND](#^1e356c). 假如有特殊的情况,那就是AND换成其他的关键字,那么就需要trim来解决
+```xml
+<select id="方法的全类名" resultType="javabean的全类名" parameterType>
+  SELECT * FROM BLOG
+  <trim prefix="WHERE" prefixOverrides="and|or|其它">
+	  <if test="判断表达式">
+		  AND sql     <!--这一节+上WHERE在sql语句后面接上去-->
+	  </if>
+	  <if test="判断表达式">
+		  AND sql <!--如果有多余的and会自动去掉-->
+	  </if>
+  </trim>
+</select>
+```
+`<trim prefix="WHERE" prefixOverrides="and|or|其它">`:如果发现字句开头有and|or|其它,那就去掉这些词
+##### set标签
+`<set>` 标签主要用于构建动态 SQL 语句，特别是在更新操作中。`<set>` 标签用来包裹一组 `SET` **子句**，以便动态地生成 SQL 语句中的 `SET` 部分。
+简单点说,就是如果要进行update操作,set组合就会有很多种,特别不方便进行update操作
+比如
+```sql
+update 'monster' set age=1, email='yy@sjs.com',name='狼人' where id=1
+```
+如果要修改指定的列,那么不改变的列的值就要先找出来,然后修改的时候保持让他们不变,太过于麻烦.`<set>`标签就能解决
+
