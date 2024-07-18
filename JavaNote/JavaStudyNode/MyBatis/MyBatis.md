@@ -537,6 +537,7 @@ public class 类名{
 	public void addxxx() {//添加实例,然后删除,更新操作都差不多  
 		...实例化对象  
 	    xxxMapper.addxxx(xxx xxx);
+	    ...实例化对象.getId();//需要在配置中设置或者注释中写
 	    //如果是增删改,则需要下面的代码进行确认
 	    if(sqlSession!=null){
 		    sqlSession.commit();
@@ -545,3 +546,89 @@ public class 类名{
 	}
 }
 ```
+在接口方法上写以下注释
+`@Options(useGeneratedKeys=true,keyProperty="id",keyColumn="id")`
+1.useGeneratedKeys=true表示返回自增的值
+2.keyProperty="id" 自增值对应的对象属性是哪一个
+3.keyColum="id" 自增值对应表的字段 总的来说要看表的字段和javabean中的字段
+### 配置文件和映射器
+##### 配置文件
+1.properties
+这些属性可以在外部进行配置，并可以进行动态替换。简单点说就是在点xml文件中使用`<properties>`标签可以获取外部.properties中的配置信息
+* 例如可以将红框里的properties的value值改成`"${driver}",${url}...`
+![](assest/屏幕截图%202024-07-18%20091634.png)
+* 然后在resource文件下写一个jdbc.properties文件
+```properties jdbc.properties
+jdbc.driver=com.mysql.cj.jdbc.Driver
+jdbc.url=jdbc:mysql://127.0.0.1:3306/数据库名?serverTimezone=Asia/Shanghai&amp;useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8
+jdbc.username=
+jdbc.password=
+```
+* 最后在`<configuration>`下直接引入`<properties resource="jdbc.properties"/>` resource表示放在类路径的相对路径根路径下
+
+2.setting(全局参数)
+这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。
+在`configuration`直属目录下添加![](assest/Pasted%20image%2020240718093838.png)
+
+3.类型别名（typeAliases）
+![](assest/Pasted%20image%2020240718094715.png)
+这样配置,那么在xxxmapper接口中要用到javabean的就不用写全类名了
+
+4.类型处理器（typeHandlers）
+MyBatis 在设置预处理语句（PreparedStatement）中的参数或从结果集中取出一个值时， 都会用类型处理器将获取到的值以合适的方式转换成 Java 类型。MyBatis已经有默认的类型处理器,符合大部分场景
+
+5.环境配置（environments）
+
+6映射器（mappers）
+告诉 MyBatis 到哪里去找到sql语句
+```xml
+<!-- 使用相对于类路径的资源引用 -->
+<mappers>
+  <mapper resource="org/mybatis/builder/AuthorMapper.xml"/>
+  <mapper resource="org/mybatis/builder/BlogMapper.xml"/>
+  <mapper resource="org/mybatis/builder/PostMapper.xml"/>
+</mappers>
+```
+```xml
+<!-- 使用完全限定资源定位符（URL） -->
+<mappers>
+  <mapper url="file:///var/mappers/AuthorMapper.xml"/>
+  <mapper url="file:///var/mappers/BlogMapper.xml"/>
+  <mapper url="file:///var/mappers/PostMapper.xml"/>
+</mappers>
+```
+```xml
+<!-- 使用映射器接口实现类的完全限定类名 -->
+<mappers>
+  <mapper class="org.mybatis.builder.AuthorMapper"/>
+  <mapper class="org.mybatis.builder.BlogMapper"/>
+  <mapper class="org.mybatis.builder.PostMapper"/>
+</mappers>
+```
+```xml
+<!-- 将包内的映射器接口实现全部注册为映射器 -->
+<mappers>
+  <package name="org.mybatis.builder"/>
+</mappers>
+```
+注意,无论是注释的方式还是xml的方式,都需要配置映射器,而且最常用的是包的形式
+##### 映射器
+1.参数类型（parameterType）
+* 传入简单类型
+* 传入POJO类型(多数据), 比如查询时有多个筛选条件
+* 传入String , 只能用`${}`来接受参数`#{}`(前提是模糊查询)
+POJO类型
+![](assest/Pasted%20image%2020240718104700.png)
+ Monster 类型的参数对象传递到了语句中，会自动查找 id、name 属性，然后将它们的值传入**预处理语句的参数**中
+ * 传入HashMap(重点)
+1.先在Mapper接口添加方法,参数改为map
+```java
+public List<Monster> FindMonsterByMap(Map<String,Object> map);
+```
+2.然后在xml配置文件中参数类型(parameterTyep)改为map
+```xml
+<select id="全类名" parameterType="map" resultType="返回结果">
+	SELECT * FROM `表名` WHERE `id` = #{id}
+</select>
+```
+解释,如果传入的是map,那么预处理语句中的参数`id`,在map中也要有对应的key值为`id`
