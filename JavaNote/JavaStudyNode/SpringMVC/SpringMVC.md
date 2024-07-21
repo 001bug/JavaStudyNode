@@ -29,7 +29,7 @@ public String fileUpload(@RequestParam(value = "file") MultipartFile file, HttpS
 拦截器:对请求会拦截
 过滤器由tomcat服务器接管,拦截器由spring接管
 1.写样例模版
-```
+```java
 @Component
 public class 类名 implements HandlerInterceptor{
 	@Override
@@ -55,13 +55,13 @@ HttpServletResponse arg1, Object arg2, Exception arg3) throws Exception{
 ```
 2.在xxxservlet.xml中配置(这里的类名和上面的类名是一样的)
 第一种,所有拦截
-```
+```xml
 <mvc:interceptors>
 	<ref bean="首字母小写类名"/>//所有方法都拦截
 </mvc:interceptors>
 ```
 第二种配置方法,指定拦截
-```
+```xml
 <mvc:interceptors>
 	<mvc:interceptor>
 	   <mvc:mapping path="/被拦截的请求"/>
@@ -70,7 +70,7 @@ HttpServletResponse arg1, Object arg2, Exception arg3) throws Exception{
 </mvc:interceptors>
 ```
 第三种,[范围拦截](web路径)
-```
+```xml
 <mvc:interceptors>
 	<mvc:interceptor>  
 	    <mvc:mapping path="/h*"/>  
@@ -97,7 +97,7 @@ ModelAndView 对象
 ### 异常处理
 **1.局部异常**
 样例模版
-```
+```java
 @ExceptionHandler({异常类,异常类..})
 public 结合实际 方法名(Exception ex,HttpServletRequest request){
 	//业务逻辑
@@ -110,7 +110,7 @@ public 结合实际 方法名(Exception ex,HttpServletRequest request){
 
 **2.全局异常**
 样例模版
-```
+```java
 @ControllerAdvice
 public class GlobalException{
 	@ExceptionHandler({异常类,异常类..})
@@ -126,7 +126,7 @@ public class GlobalException{
 
 **3.自定义异常**
 样例模版
-```
+```java
 @ResponseStatus(reason="异常信息",value=HttpStatus.状态信息)
 public class xxException extends 异常类{
 	public xxException(){

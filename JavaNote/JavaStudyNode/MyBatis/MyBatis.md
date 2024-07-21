@@ -97,7 +97,7 @@ MyBatis工作流程
 
 5.创建一个javabean,   该javabean的属性一定要和表的字段形成对应关系
 
-6.创建一个名位mapper的包然后 , 在该包下写增删改查的接口
+6.创建一个名位mapper的包然后 , 在该包下写增删改查的接口(Mapper接口)
  接口样例模版 xxx是javabean的类名
 ```java
 public interface xxxMapper{
@@ -215,7 +215,7 @@ xxxMapper.xml 配置SQL , 可以有多个
 3.SqlSession通过SqlSessionFactory得到, ==SqlSession的底层是Executor(执行器)==
 Executor(执行器源码)
 ![](assest/Pasted%20image%2020240716142118.png)
-Executor执行器是个接口,他被很多类实现了,其中重要是BaseExecutor,还有个带缓存的CachingExecutor执行器
+Executor执行器是个接口,他被很多类实现了,其中重要是BaseExecutor,还有个带**缓存**的CachingExecutor执行器
 查看Executor接口,发现有很多相应实现sql的接口
 ![](assest/屏幕截图%202024-07-16%20142447.png)
 然后再查看BaseExecutor
@@ -312,7 +312,7 @@ connection = DriverManager.getConnection(url,username,password);
 * ==@Data 注解==
 
 2.接口设计采用泛型编程 , 增强扩展性
-```
+```java
 public interface Executor {  
     //泛型方法  
     public <T> T query(String statement, Object parameter);  
@@ -362,9 +362,10 @@ try {
     }  
 }
 ```
+源码是有缓存机制的.这里跳过了
 
 4.在SqlSession方法中让Executor和Configuration连接
-```
+```java
 public <T> T selectOne (String statement,Object parameter){  
     return executor.query(statement, parameter);//A是executor  
 }
@@ -460,7 +461,7 @@ public MapperBean readMapper(String path){
     return mapperBean;  
 }
 ```
-1. 这里先采用[xml解析获取mapper的配置信息](#^e8bb23) , 注意这里做了简化,我把xml配置信息默认放在类的类路径的[相对路径](../Java/类路径和Java相对路径.md)下,就不用像原生的MyBatis那样要通过解析全局配置文件,然后获得xxxmapper.xml的类路径的相对路径
+1. 这里先采用[xml解析获取mapper的配置信息](#^e8bb23) , 注意这里做了简化,我把Mapper映射文件默认放在类路径的[相对路径](../Java/类路径和Java相对路径.md)下,就不用像原生的MyBatis那样要通过解析全局配置文件,然后获得xxxmapper.xml的类路径的相对路径
 2. 循环遍历,封装[Function](#^edb9fc) 然后方进一个集合中,因为可能有多个接口,以及xxxmapper.xml,最后返回一个具有多个mapper.xml信息和多个mapper接口信息的信息体. 
 ##### 5.实现[动态代理](设计模式)MapperProxy类
 在一开始的Executor是直接通过JDBC调用MySQL , 这里进行改进,通过一个名为MapperProxy代理类,然后动态的生成代理对象,然后去调用**BaseExecutor中的方法**
@@ -492,6 +493,12 @@ public Object invoke(Object proxy, Method method, Object[] args) throws Throwabl
 }
 ```
 首先,要实现动态代理, 目的是为了让接口的方法扩展功能(解析xml,实现mapper接口),用动态代理对象调用
+```java
+public <T> T getMapper(Class<T> clazz){  
+    return (T) Proxy.newProxyInstance(clazz.getClassLoader(),new Class[]{clazz},new HspMapperProxy(this, hspConfiguration,clazz));  
+}
+```
+动态代理的使用
 ### 原生API的调用
 
 ```java
@@ -606,17 +613,26 @@ MyBatis 在设置预处理语句（PreparedStatement）中的参数或从结果�
 </mappers>
 ```
 ```xml
-<!-- 将包内的映射器接口实现全部注册为映射器 -->
+<!-- 将包内的映射器接口实现全部注册为映射器sql语句中的id直接写类名,也可以在Mapper.xml的namespace中写接口的全类名-->
 <mappers>
   <package name="org.mybatis.builder"/>
 </mappers>
 ```
 注意,无论是注释的方式还是xml的方式,都需要配置映射器,而且最常用的是包的形式
-##### 映射器
-1.参数类型（parameterType）和 resultType
+##### Mapper映射文件
+1.参数类型（`parameterType`）和 `resultType`
 * 传入简单类型
 * 传入POJO类型(多数据), 比如查询时有多个筛选条件
-* 传入String , 只能用`${}`来接受参数`#{}`(前提是模糊查询)
+* 传入String , 只能用`${}`来接受参数`#{}`
+```sql
+SELECT * FROM `monster` WHERE `name` LIKE `%牛%`--模糊查询的sql
+```
+然后配置sql语句
+```xml
+<select id=`findMonsterByName` parameterType="String" resultType="Monster">
+	SELECT * FROM `monster` WHERE `name` LIKE `${name}`
+</select>
+```
 POJO类型
 ![](assest/Pasted%20image%2020240718104700.png)
  Monster 类型的参数对象传递到了语句中，会自动查找 id、name 属性，然后将它们的值传入**预处理语句的参数**中
@@ -644,10 +660,10 @@ public List<Map<String,Object>> FindPrameterMap_Returnmap(Map<String,Object> map
 ```
 
 2.resultMap(结果集映射)
-介绍:当**实体类**的属性和表的字段名不一致时, 通过resultMap进行映射, 从而解决实体类属性和表字段不一致的问题,实体类是上面提到过的javabean
+介绍:当**数据库列**和java属性不一致时, 通过resultMap进行映射, 从而解决实体类属性和表字段不一致的问题,实体类是上面提到过的javabean ^24d624
 ```xml
-<resutlMap id="随意" type="实体类(全类名)">
-	<result column="表的字段名" property="实体类的属性名"/>
+<resutlMap id="随意" type="结果映射类型">
+	<result property="实体类的属性名" column="表的字段名" />
 </resultMap>
 ```
 然后再把xml中sql语句的配置的resultType属性改成resultMap , 并且select id改成resultMap的id
@@ -656,8 +672,162 @@ public List<Map<String,Object>> FindPrameterMap_Returnmap(Map<String,Object> map
 	SELECT * FROM `表名`
 </select>
 ```
-type="xxx"是返回的对象
+`type="xxx"` 叫结果映射类型 `resultMap id`叫结果映射id `property`java对象的属性名
+`column`数据库表的字段名
+
+重要的标签`<association>`用于将查询结果中的字段映射到嵌套的对象属性。这通常用于[处理一对一或多对一关系的复杂映射。](#^f82f88)
+- `property`：指定 Java 对象中的属性名，这个属性是另一个对象。
+- `javaType`：指定嵌套对象的类类型（可选）。
+- `resultMap`：引用一个 `resultMap`，用于嵌套对象的字段映射。
+
 ==可以使用MySQL的别名来处理实体类的属性名和表的字段名不一致的问题,但是复用性太差.不推荐使用==
+##### 映射关系
+映射关系的定义:映射关系的定义指的是 Java 对象与数据库表之间的映射规则。下面所介绍的都是级联查询的背景下的映射关系 
+```sql 级联查询的表背景
+CREATE TABLE person(
+	`id` INT PRIMARY KEY AUTO_INCREMENT,
+	NAME VARCHAR(32) NOT NULL DEFAULT '',
+	card_id INT ,
+	FOREIGN KEY(card_id) REFENGES idencard(id)
+);
+CREATE TABLE idencard(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+	card_sn VARCHAR(32) NOT NULL DEFAULT ''
+)
+```
+IdenCard.java
+```java IdenCard.java
+public class IdenCard{
+	private Integer id;
+	private String card_sn;//
+	...
+}
+```
+Person.java
+```java
+public class Person{
+	private Integer id;
+	private String name;
+	private IdenCard card;//这里一定要写上
+	...
+}
+```
+IdenCardMapper.interface
+```java
+public interface IdenCardMapper{
+	//通过id查找身份,注意,id 和身份在同一个表
+	public IdenCard getIdenCardById(Integer id);
+}
+```
+IdenCardMapper.xml配置文件
+```xml
+<mapper namespace ="接口名"><!--加了这个Mapper方法ID就不用写方法全名-->
+	<select id="getIdenCardById" parameterType="Integer" resultType="IdenCard">
+	SELECT * FROM `idencard` WHERE `id` = #{id}
+	</select>
+</mapper>
+```
+创建PersonMapper接口
+```java
+public interface PersonMapper{
+	//通过Person的id获取到Person,包括这个Person关联的IdenCard对象[级联查询]
+	public Person getPersonById(Integer id);//不在一个表上
+}
+```
+创建PersonMapper.xml配置文件
+```xml
+<mapper namespace ="接口名"><!--加了这个Mapper方法ID就不用写方法全名-->
+	<select id="getPersonById" parameterType="Integer" resultType="Person">
+	SELECT * FROM `idencard` WHERE `id` = #{id}
+	</select>
+</mapper>
+```
+结果类型(resultType)很容易想到要填Person,但在调用Person getPersonById()返回的结果card是空的
+**映射关系一对一**(assonciation),级联映射
+实现一对一的关系的方法(举个例子,我们要在上面背景下,通过id查找身份证)
+创建mapper.xml和接口
+
+解决方案一 ^f82f88
+* sql语句上使用多表查询,自定义[resultMap](#^24d624),解决返回结果的封装
+```xml
+<resultMap id="PersonResultMap" type="Person">
+	<result property="id" column="id"/>
+	<result property="name" column="name"/>
+	<!--association,一个复杂类型的关联-->
+	<association property="card" javaType="IdenCard">
+		<result property="id" column="id"/>
+		<result property="card_sn" column = "card_sn"/>
+	</association>
+</resultMap>
+<select id="getPersonById" parameterType="Integer" resultMap="PersonResultMap">
+	SELECT * FROM `person`,`idencard` WHERE `person`.id=#{id} AND `person`.card_id=`idencard`.id	
+</select>
+```
+注意:结果映射类型(type)还是填Person,因为它是映射getPersonById方法的
+
+方案二(推荐,代码复用性好)
+```xml
+<resultMap id="PersonResultMap2" type="Person">
+	<id property="id" column="id"/>
+	<result property="name" column="name"/>
+	<association property="card" column="card_id" select="全类名.getPersonById"/>
+<!--select中sql返回的列作为入参-->
+</resultMap>
+<select id="getPersonById2" parameterType="Integer" resultMap="PersonResultMap2">
+	SELECT * FROM `person` WHERE `id` = #{id}
+</select>
+<select id="getPersonById" parameterType="Integer" resultType="IdenCard">
+	SELECT * FROM idencard where id=#{id}
+</select>
+```
+核心思想就是把多表查询转变为单表查询,先调用etPersonById2,然后进入,PersonResultMap2,封装第一调用得到的列,然后再调用getPersonById封装card对象
+**注解的方式太过于耦合,不适合使用**
+
+**映射关系一对多cllection**
+基本介绍
+![](assest/Pasted%20image%2020240719211013.png)
+1.应用实例场景创建
+![](assest/Pasted%20image%2020240719211431.png)
+2.查询结果(多对一的表)
+![](assest/Pasted%20image%2020240719211952.png)
+3.然后映射表的基本结构(就是写javabean)
+User
+```java
+private Integer id;
+private String name;
+private List<Pet> pets;//通过这种对象封装的形式来跟另一个类建立联系
+```
+Pet
+```java
+private Integer id;
+private String nickname;
+private User user;
+```
+4.创建Mapper接口
+![](assest/Pasted%20image%2020240719214551.png)
+5.创建Mapper映射文件(Mapper.xml)
+```xml
+<mapper namespace="Mapper接口的全类名">
+	<resultMap id="UserResultMap" type="User">
+		<id property="id" column="id"/>
+		<id property="name" column="name"/>
+		<collection property="pets" column="id" ofType  = "Pet(集合里面存什么就写什么)" select="xxx.getPetByUserId">
+	</resultMap>
+	<select id="getUserById" parameterType="Integer" resultMap="UserResultMap">
+		SELECT * FROM `mybatis_user` WHERE `id` = #{id}
+	</select>
+	<resultMap id="PetResultMap" type="Pet">
+		<id property="id" column="id"/>
+		<result property="nickname" column="nickname"/>
+		<association property="user" column="user_id" resultMap="xxx.getUserById"/>
+	</resultMap>
+	<select id="getPetByUserId" parameterType="Integer" resultMap="PetResultMap">
+		SELECT * FROM `mybatis_pet` WHERE `user_id` = #{userId}
+	</select>
+</mapper>
+```
+完整的思路分析
+1.先通过getUserById返回User对象,2.然后发现有个集合,需要查找Pet,那就调用getPetByUserId方法,然后配置getPetByUserId对应的Mapper映射配置
 ### 动态SQL
 介绍:动态SQL是MyBatis的强大特性,使用JDBC时,根据不同条件拼接SQL语句非常麻烦,例如不能忘记添加空格,动态SQL语句解决了这个问题,很多情景都是用于where查询
 ##### if标签
@@ -748,10 +918,64 @@ trim能够为词取别名,_where_ 元素只会在子元素返回任何内容的
 `<trim prefix="WHERE" prefixOverrides="and|or|其它">`:如果发现字句开头有and|or|其它,那就去掉这些词
 ##### set标签
 `<set>` 标签主要用于构建动态 SQL 语句，特别是在更新操作中。`<set>` 标签用来包裹一组 `SET` **子句**，以便动态地生成 SQL 语句中的 `SET` 部分。
-简单点说,就是如果要进行update操作,set组合就会有很多种,特别不方便进行update操作
+简单点说,就是如果要进行update操作,set组合就会有很多种,特别不方便进行`update`操作
 比如
 ```sql
 update 'monster' set age=1, email='yy@sjs.com',name='狼人' where id=1
 ```
 如果要修改指定的列,那么不改变的列的值就要先找出来,然后修改的时候保持让他们不变,太过于麻烦.`<set>`标签就能解决
+配置update的接口中的方法,加入方法中的形参是map
+```xml
+<update id = "方法全类名" parameterType="map">
+	UPDATE `表名` SET ....
+	<set>
+		<if test="age!=null and age!= ''">
+			`age`=#{age} ,
+		</if>
+		<if test="判断表达式">
+			要设定的值 ,
+		</if>
+	</set>
+	WHERE id = #{id}
+</update>
+```
+每个if 标签下多余的`,`会自动除去, 注意后面要加where,如果不加,回修改所有的值
+### 缓存
+![](assest/Pasted%20image%2020240720143831.png)
+在实际中的效果,两次查询相同的数据,只有第一次会发出sql语句,第二次不会,这就是本地缓存造成的结果
+##### 一级缓存
+一级缓存的概述:一级缓存（Local Cache）是 MyBatis 中的一种缓存机制，它在 **SQLSession 范围内**工作。一级缓存默认是启用的，且无法关闭。通过同一个SqlSession查询的数据会被缓存，下次查询相同的数据，就会从缓存中直接获取，不会从数据库重新访问
+1.一级缓存的debug过程
+![](assest/Pasted%20image%2020240720191247.png)
+然后一直set into 找到cache,然后会发现它并不会执行 Cache cache=ms.getCache();因为这个方法是二级缓存的,一直set into然后要注意到localCache.getObject(key)这是执行二级缓存的,查看有没有缓存..然后执行localCache.putObject(key,list);把查询到的结果放入缓存中
 
+2.一级缓存失效
+- 使一级缓存失效的四种情况：  
+	1. 不同的SqlSession对应不同的一级缓存简而言之就是被关闭过一次  
+	2. 同一个SqlSession但是查询条件不同
+	3. 同一个SqlSession两次查询期间执行了任何一次增删改操作
+	4. 同一个SqlSession两次查询期间手动清空了缓存(sqlSession.clearCache())
+##### 二级缓存
+![](assest/Pasted%20image%2020240720200755.png)
+二级缓存（Second-Level Cache）是全局性的缓存机制,通过同一个SqlSessionFactory创建的SqlSession查询的结果会被缓存；此后若再次执行相同的查询语句，结果就会从缓存中获取  
+- 二级缓存开启的条件
+	1. 在核心配置文件中，设置全局配置属性cacheEnabled="true"，默认为true，不需要设置
+```xml
+<settings>
+	<setting name="cacheEnabled" value="true"/>
+</settings>
+```
+	2. 在映射文件中设置标签<cache />
+```xml
+<cache
+	eviction="FIFO" 
+	flushInterval="60000"
+	size="512"
+	readOnly="false"/>
+```
+eviction;更新机制 , flushInterval更新时间  size可以存多少条, readOnly是否只能读一个默认是false 但是如果只是读的操作,建议改成true,可以提高效率
+具体看文档.
+	2. 二级缓存必须在SqlSession关闭或提交之后有效
+	3. 查询的数据所转换的实体类类型必须实现序列化的接口
+缓存失效的原因:两次查询之间执行了任意的增删改，会使一级和二级缓存同时失效
+二级缓存的debug过程差不多 , 但是在Cache cache=ms.getCache()这里会进入的,因为有二级缓存
