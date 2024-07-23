@@ -245,7 +245,7 @@ InputStream stream = loader.getResourceAsStream(resource);
 ```
 [resource是类路径的相对路径](../Java/类路径和Java相对路径.md)\
 
-2.xml解析获取document根元素 ^e8bb23
+2.xml解析获取document根元素(build) ^e8bb23
 ```java
 //加载配置xxx.xml 获取到对应的InputStream  
 InputStream stream = loader.getResourceAsStream(resource);  
@@ -257,7 +257,7 @@ Element root = document.getRootElement();
 //解析root元素，返回Connection => 单独的编写一个方法
 ```
 
-3.拿到根元素,然后去遍历,并且通过选择性的语句去获取xml中配置文件的信息(node就是root,)
+3.拿到根元素,然后去遍历,并且通过选择性的语句去获取xml中配置文件的信息(node就是root,)(evalDataSource)
 ```java
 for (Object item : node.elements("property")) {  
     Element i = (Element) item;//i 就是 对应property节点  
@@ -288,8 +288,7 @@ for (Object item : node.elements("property")) {
 ```
 
 4.通过第三步获得的信息,然后用jdbc进行连接数据库,这里MyBatis有用数据库连接池.
-```java
-Class.forName(driverClassName);  
+```java  
 connection = DriverManager.getConnection(url,username,password);
 ```
 ##### 3.写执行器Executor
@@ -364,7 +363,7 @@ try {
 ```
 源码是有缓存机制的.这里跳过了
 
-4.在SqlSession方法中让Executor和Configuration连接
+4.在SqlSession方法中让Executor跟参数建立联系
 ```java
 public <T> T selectOne (String statement,Object parameter){  
     return executor.query(statement, parameter);//A是executor  
@@ -449,7 +448,7 @@ public MapperBean readMapper(String path){
             function.setSql(sql);  
             function.setFuncName(funcName);  
             function.setSqlType(sqlType);  
-            //resultType现在不知道他是什么类型,在运行的时候才能知道他是什么类型,所以这里可以死使用反射机制处理  
+            //resultType现在不知道他是什么类型,在运行的时候才能知道他是什么类型,所以这里可以使用反射机制处理  
             Object newInstance = Class.forName(resultType).newInstance();  
             function.setResultType(newInstance);  
             list.add(function);//将封装好的信息放入集合中  
@@ -464,7 +463,7 @@ public MapperBean readMapper(String path){
 1. 这里先采用[xml解析获取mapper的配置信息](#^e8bb23) , 注意这里做了简化,我把Mapper映射文件默认放在类路径的[相对路径](../Java/类路径和Java相对路径.md)下,就不用像原生的MyBatis那样要通过解析全局配置文件,然后获得xxxmapper.xml的类路径的相对路径
 2. 循环遍历,封装[Function](#^edb9fc) 然后方进一个集合中,因为可能有多个接口,以及xxxmapper.xml,最后返回一个具有多个mapper.xml信息和多个mapper接口信息的信息体. 
 ##### 5.实现[动态代理](设计模式)MapperProxy类
-在一开始的Executor是直接通过JDBC调用MySQL , 这里进行改进,通过一个名为MapperProxy代理类,然后动态的生成代理对象,然后去调用**BaseExecutor中的方法**
+在一开始的Executor是直接通过JDBC调用MySQL , 这里进行改进,通过一个名为MapperProxy代理类,然后动态的生成代理对象,然后去调用**Executor中的方法**
 ```java
 public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {  
     MapperBean mapperBean = hspConfiguration.readMapper(this.mapperFile);  
@@ -979,3 +978,16 @@ eviction;更新机制 , flushInterval更新时间  size可以存多少条, readO
 	3. 查询的数据所转换的实体类类型必须实现序列化的接口
 缓存失效的原因:两次查询之间执行了任意的增删改，会使一级和二级缓存同时失效
 二级缓存的debug过程差不多 , 但是在Cache cache=ms.getCache()这里会进入的,因为有二级缓存
+```java
+public class MySqlSession {  
+    private Executor executor=new MyExecutor();  
+    private MyConfiguration myConfiguration= new MyConfiguration();  
+    //编写方法SelectOne 返回一条记录  
+    public <T> T selectOne (String statement,Object parameter){  
+        return executor.query(statement, parameter);  
+    }  
+    public <T> T getMapper(Class<T> clazz){  
+        return (T) Proxy.newProxyInstance(clazz.getClassLoader(),new Class[]{clazz},new MyMapperProxy(this, myConfiguration,clazz));  
+    }  
+}
+```

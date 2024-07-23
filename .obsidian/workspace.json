@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
+                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md"
               }
             }
           }
@@ -134,7 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 202.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -148,37 +148,40 @@
   },
   "active": "e8c189edcfef6b76",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720200755.png",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720191247.png",
-    "JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md",
+    "JavaNote/JavaStudyNode/Spring/Spring.md",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165727.png",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165715.png",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165559.png",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723153502.png",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723152901.png",
+    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723151919.png",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "JavaNote/JavaStudyNode/Spring/assest",
+    "JavaNote/JavaStudyNode/Spring",
+    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722190706.png",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722185133.png",
+    "JavaNote/JavaStudyNode/javaweb/未命名.md",
+    "JavaNote/JavaStudyNode/javaweb/assest",
+    "前端/HTML5/HTML5标签.md",
+    "JavaNote/JavaStudyNode/javaweb",
+    "前端/HTML5/assest/Pasted image 20240722155651.png",
+    "前端/HTML5/assest/Pasted image 20240722154610.png",
+    "前端/HTML5/assest",
+    "JavaNote/JavaStudyNode/Java/设计模式.md",
+    "前端/HTML5",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720163547.png",
+    "JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/Java面筋/assest",
     "JavaNote/JavaStudyNode/Java面筋/MyBatis",
-    "JavaNote/JavaStudyNode/Java/设计模式.md",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720143831.png",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719214551.png",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211952.png",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211431.png",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211013.png",
     "JavaNote/JavaStudyNode/MySQL/未命名",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
-    "JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240718163733.png",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DDL",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/div标签",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/继承/final",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/抽象类",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/枚举类 enum类.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/enum实现接口.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/注解",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/hashCode.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/toString.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/finalize.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Pasted image 20240308161724.png",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/计算机网络图片/Pasted image 20240315134530.png",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/物理层.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/传输介质.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/main/main.md",
@@ -190,10 +193,6 @@
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/gid命令.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/默认约束.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/唯一约束.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/SQL通用语法以及分类.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/设计模式.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/模版设计模式.md",
     "未命名.canvas"
   ]
 }
