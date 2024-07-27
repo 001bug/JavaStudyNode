@@ -7,6 +7,34 @@
 Integer[] arr = {5,4,7,9,2,12,54,21,1};
 Arrays.sort(arr);
 ```
+* 局部排序
+```java
+public static void sort(T[] a, int fromIndex, int toIndex)
+```
+2.自定义排序,包括对对象的排序和排序形式
+想要实现自定排序,需要传入一个实现了Comparator接口的实现类
+* 匿名内部类的形式
+```java
+Integer[] arr = {1,5,8,4,2,6,4};
+Arrays.sort(arr, new Comparator<Integer>()
+{
+	@Override
+	public int compare(Integer o1, Integer o2) {
+		return o2-o1;
+	}
+});
+```
+分析:如果o2大于o1(o1<o2)升序,那么o2-o1为正数,返回真,交换位置o2>o1
+	相反,如果o2小于o1(o1>o2)降序,那么o2-o1为负数,返回假,不交换位置
+* 实现接口类的形式
+```java
+class MyComparator implements Comparator<Integer>{  
+    @Override  
+    public int compare(Integer o1, Integer o2) {  
+       return o2-o1;  
+    }  
+}
+```
 ## 反射机制
 #### 反射机制的概述
 示意图

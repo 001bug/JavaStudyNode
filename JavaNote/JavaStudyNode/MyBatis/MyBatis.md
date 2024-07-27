@@ -991,3 +991,110 @@ public class MySqlSession {
     }  
 }
 ```
+### MyBatis逆向工程
+#### 快速入门以及使用方式
+**概述**
+MyBatis功能的实现需要实体类,自定义Mapper接口,写Mapper.xml.传统的开发中上诉的三个组件需要开发者手动创建，逆向工程可以帮助开发者来自动创建三个组件，减轻开发工作量，提高开发效率
+
+**快速入门**
+1. 修改mybatis-config.xml,增加typeAliases配置
+```xml
+<configuration>
+	<typeAliases>
+		<package name="指定的数据模型"/>
+	</typeAliases>
+</configuration>
+```
+如果一个包下有很多的类,可以直接引入包,这样包下所有的类名都可以直接使用
+2.引入依赖
+```xml
+<dependency>
+	<groupId>org.mybatis.generator</groupId>  
+	<artifactId>mybatis-generator-core</artifactId>  
+	<version>1.4.0</version>  
+</dependency>
+```
+3.创建mbg.xml配置文件,直接放在项目的根目录下,跟src同级目录
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE generatorConfiguration  
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"  
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">  
+<generatorConfiguration>  
+    <context id="mysqlTables" targetRuntime="MyBatis3">  
+        <!--jdbcConnection：指定连接的目标数据库-->  
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"  
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/home_furnishing?serverTimezone=Asia/Shanghai&amp;useSSL=true&amp;useUnicode=true&amp;characterEncoding=UTF-8"  
+                        userId="root"  
+                        password="zhouxinji.119">  
+        </jdbcConnection>  
+  
+        <javaTypeResolver>  
+            <property name="forceBigDecimals" value="false"/>  
+        </javaTypeResolver>  
+  
+        <!--javaModelGenerator：指定javaBean(实体类)的生成策略；targetPackage：目标包名(javabean生成的位置)；targetProject：目标工程一(般不用改)-->  
+        <javaModelGenerator targetPackage="ohmygod.furn.bean" targetProject="./src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+            <!-- 从数据库返回的值被清理前后的空格 -->  
+            <property name="trimStrings" value="true"/>  
+        </javaModelGenerator>  
+  
+        <!--sqlMapGenerator：sql映射生成策略(sql文件的生成位置)-->  
+        <sqlMapGenerator targetPackage="mappers" targetProject="./src/main/resources">  
+            <property name="enableSubPackages" value="true"/>  
+        </sqlMapGenerator>  
+  
+        <!--javaClientGenerator：指定mapper接口所在位置-->  
+        <javaClientGenerator type="XMLMAPPER" targetPackage="ohmygod.furn.dao" targetProject="./src/main/java">  
+            <property name="enableSubPackages" value="true"/>  
+        </javaClientGenerator>  
+  
+        <!--指定要逆向分析的表：根据表创建javaBean,需要使用的表名,然后生成的实体名-->  
+        <table tableName="member" domainObjectName="User"></table>  
+  
+    </context>  
+</generatorConfiguration>
+```
+
+**maven启动方式(需要启动类)**
+```java
+ public class Generator {
+     public static void main(String[] args) throws InterruptedException, SQLException, IOException, XMLParserException, InvalidConfigurationException {
+         List<String> warnings = new ArrayList<>();  // 执行过程中的警告信息
+         boolean overwrite = true;   // 生成的代码重复时，覆盖原代码
+         // 指定配置文件位置
+         String projectPath = System.getProperty("user.dir"); // 获取当前项目路径
+         String configFilePath = projectPath + "/mbg.xml"; //需修改
+         File configFile = new File(configFilePath);
+         ConfigurationParser cp = new ConfigurationParser(warnings);
+         Configuration config = cp.parseConfiguration(configFile);
+         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
+         // mybatis-generator-core依赖 1.3.6 后才有MyBatisGenerator类,需要jre1.8才能运行
+         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
+         myBatisGenerator.generate(null);        // 执行生成代码
+         warnings.forEach(System.out::println);  // 输出警告信息
+     }
+ }
+```
+/src/main/resources/generatorConfig.xml这个需要改成自己mbg的路径
+
+总体来说,要改的文件有mbg.xml配置文件,然后是启动类,大部分都是路径
+#### Mapper接口中的方法细节
+1.insertSelective和insert的区别
+insertSelect选择性保存数据
+比如User里面有三个字段:id,name,age,password,但是只设置了一个字段:
+```java
+User u= new user();
+u.setName("张三");
+insertSelective(u);
+```
+在底层,执行对应的sql语句时候,只插入对应的name字段(主键自动添加,默认插入空)即insert into tb_user (id,name) value (null,"张三");其中第一个null是主键,自动添加
+而insert则是无论设置多少个字段,都要添加一遍,比如
+```java
+User u = new user();
+u.setName("张三");
+insertSelective(u);
+```
+底层的sql语句是`insert into tb _user(id,name,age,password) value(null,"张三",null,null);`
+建议用第一种

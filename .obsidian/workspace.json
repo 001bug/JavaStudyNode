@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
+                "file": "前端/HTML5/HTML5标签.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
+                "file": "前端/HTML5/HTML5标签.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md",
+                "file": "前端/HTML5/HTML5标签.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/JavaSE.md"
+                "file": "前端/HTML5/HTML5标签.md"
               }
             }
           }
@@ -148,35 +148,44 @@
   },
   "active": "e8c189edcfef6b76",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165727.png",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165715.png",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165559.png",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723153502.png",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723152901.png",
-    "JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723151919.png",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "JavaNote/JavaStudyNode/Spring/assest",
-    "JavaNote/JavaStudyNode/Spring",
+    "前端/HTML5/assest/Pasted image 20240727212942.png",
+    "前端/HTML5/assest/Pasted image 20240727212728.png",
+    "前端/HTML5/assest/Pasted image 20240727212705.png",
+    "前端/HTML5/assest/Pasted image 20240727212645.png",
+    "前端/HTML5/assest/Pasted image 20240727212518.png",
+    "前端/HTML5/assest/Pasted image 20240727204816.png",
+    "前端/HTML5/assest/Pasted image 20240727204737.png",
+    "前端/HTML5/assest/Pasted image 20240727204655.png",
+    "前端/HTML5/assest/Pasted image 20240727192634.png",
+    "前端/HTML5/assest/Pasted image 20240727191658.png",
+    "前端/HTML5/assest/Pasted image 20240727160807.png",
+    "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722190706.png",
-    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722185133.png",
-    "JavaNote/JavaStudyNode/javaweb/未命名.md",
-    "JavaNote/JavaStudyNode/javaweb/assest",
     "前端/HTML5/HTML5标签.md",
-    "JavaNote/JavaStudyNode/javaweb",
-    "前端/HTML5/assest/Pasted image 20240722155651.png",
-    "前端/HTML5/assest/Pasted image 20240722154610.png",
-    "前端/HTML5/assest",
-    "JavaNote/JavaStudyNode/Java/设计模式.md",
-    "前端/HTML5",
+    "杂记/数据交换和异步请求.md",
+    "杂记/assest",
+    "杂记/axios.md",
+    "JavaNote/JavaStudyNode/Spring/Spring.md",
+    "黑马前端笔记/day01-HTML基础.md",
+    "黑马前端笔记/assets",
+    "前端/assets",
+    "黑马前端笔记",
+    "JavaNote/JavaStudyNode/ssm/ssm.md",
+    "杂记",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "算法/java在算法中常用的api.md",
+    "算法",
+    "JavaNote/JavaStudyNode/gid命令.md",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "JavaNote/JavaStudyNode/ssm/assest",
+    "JavaNote/JavaStudyNode/Java/asset",
+    "JavaNote/JavaStudyNode/ssm",
+    "JavaNote/JavaStudyNode/Java/JavaSE.md",
+    "JavaNote/JavaStudyNode/Spring/assest",
+    "JavaNote/JavaStudyNode/javaweb/未命名.md",
+    "JavaNote/JavaStudyNode/Java/设计模式.md",
     "JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/Java面筋/assest",
-    "JavaNote/JavaStudyNode/Java面筋/MyBatis",
-    "JavaNote/JavaStudyNode/MySQL/未命名",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DDL",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/枚举类 enum类.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/枚举和注解/枚举/enum实现接口.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/hashCode.md",
@@ -185,14 +194,6 @@
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/物理层.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/传输介质.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/main/main.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/类变量和类方法.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/包装类.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/StringBuffer.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/StringBuilder.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/常用类/String.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/gid命令.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/默认约束.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/唯一约束.md",
     "未命名.canvas"
   ]
 }
