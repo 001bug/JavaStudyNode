@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md",
+                "file": "前端/CSS/CSS.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md",
+                "file": "前端/CSS/CSS.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md",
+                "file": "前端/CSS/CSS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md"
+                "file": "前端/CSS/CSS.md"
               }
             }
           }
@@ -148,20 +148,22 @@
   },
   "active": "e8c189edcfef6b76",
   "lastOpenFiles": [
-    "前端/HTML5/assest/Pasted image 20240727212942.png",
-    "前端/HTML5/assest/Pasted image 20240727212728.png",
-    "前端/HTML5/assest/Pasted image 20240727212705.png",
-    "前端/HTML5/assest/Pasted image 20240727212645.png",
-    "前端/HTML5/assest/Pasted image 20240727212518.png",
-    "前端/HTML5/assest/Pasted image 20240727204816.png",
-    "前端/HTML5/assest/Pasted image 20240727204737.png",
-    "前端/HTML5/assest/Pasted image 20240727204655.png",
-    "前端/HTML5/assest/Pasted image 20240727192634.png",
-    "前端/HTML5/assest/Pasted image 20240727191658.png",
-    "前端/HTML5/assest/Pasted image 20240727160807.png",
+    "前端/HTML5/HTML5标签.md",
+    "前端/CSS/CSS.md",
+    "前端/CSS/assest/Pasted image 20240729102630.png",
+    "前端/CSS/assest/Pasted image 20240729102206.png",
+    "前端/CSS/assest/Pasted image 20240729100057.png",
+    "前端/CSS/assest/Pasted image 20240728210408.png",
+    "前端/CSS/assest/Pasted image 20240728194547.png",
+    "前端/CSS/assest",
+    "前端/CSS",
+    "前端/HTML5/assest/Pasted image 20240728153049.png",
+    "前端/HTML5/assest/Pasted image 20240728152521.png",
+    "前端/HTML5/assest/Pasted image 20240728145320.png",
+    "前端/HTML5/assest/Pasted image 20240728140401.png",
+    "前端/HTML5/assest/Pasted image 20240727221707.png",
     "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "前端/HTML5/HTML5标签.md",
     "杂记/数据交换和异步请求.md",
     "杂记/assest",
     "杂记/axios.md",
@@ -179,9 +181,7 @@
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/ssm/assest",
     "JavaNote/JavaStudyNode/Java/asset",
-    "JavaNote/JavaStudyNode/ssm",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
-    "JavaNote/JavaStudyNode/Spring/assest",
     "JavaNote/JavaStudyNode/javaweb/未命名.md",
     "JavaNote/JavaStudyNode/Java/设计模式.md",
     "JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md",
@@ -193,7 +193,6 @@
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/opp编程/超类,以及方法/finalize.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/物理层.md",
     "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/计算机网络/物理层/传输介质.md",
-    "JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/静态变量和静态方法/main/main.md",
     "未命名.canvas"
   ]
 }

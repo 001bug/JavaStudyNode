@@ -241,3 +241,52 @@ name的属性值是自己定的,可以用在css的协作上,有相同name就说�
 `上传文件:<input type="file" multiple>`
 
 **下拉菜单**
+![](assest/Pasted%20image%2020240727220344.png)
+标签：**select 嵌套 option**，select 是下拉菜单整体，option是下拉菜单的每一项。
+select是跟标签,option都是同级子标签, option有个selected的属性,这是默认选中的标志,比如最恶心的填写信息中,选省份不能通过定位,然后默认选定一个
+
+**文本域**
+作用：多行输入文本的表单控件。
+标签：textarea，双标签。
+```html
+<textarea>默认提示文字</textarea>
+```
+在实际应用中,使用css设置文本域的尺寸大小,还要禁用右下角的拖拽功能
+![](assest/Pasted%20image%2020240727221707.png)
+
+**label标签**
+网页中，某个标签的说明文本。![](assest/Pasted%20image%2020240728140401.png)
+比如这个中国大陆+86就是label标签造成的效果
+经验：用 label 标签绑定文字和表单控件的关系，==增大表单控件的点击范围==。
+label标签-增大点击范围
+* label标签只包裹内容,不包裹表单控件 , 设置**label标签的**for属性值和表单控件的id属性值相同(label标签和表单标签是同级关系)
+```html
+<input type="radio" id="man">
+<label for="man">男</label>
+```
+这里造成的效果是:我点击男这个文本 , 会有选择男的效果,注意两边都要有对应的id这个属性去链接属性
+* 使用label标签包裹文字和表单控件.
+```html
+<label><input type="radio"> 女</label>
+```
+label标签是父节点,表单标签是子节点
+支持 label 标签增大点击范围的**表单控件**：文本框、密码框、上传文件、单选框、多选框、下拉菜单、文本域等等。
+
+**button**
+`<button type="">按钮</button>`
+type属性值的描述
+![](assest/Pasted%20image%2020240728145320.png)
+对于type属性,要配合**form标签**才能实现对应的功能
+## 语义化
+语义化:是指使用具有明确含义的标签来标记文档结构和内容,帮助人理解代码,帮助搜索引擎更好的解析和理解页面的内容**div就是个盒子,是用来布局的**
+#### 无语义的布局标签
+作用：**布局网页**（划分网页区域，摆放内容）
+div: 独占一行  span: 不换行(span可以一行多个)
+#### 有语义的布局标签
+![](assest/Pasted%20image%2020240728152521.png)
+一般都是按这种模块进行开发的
+## 字符实体
+作用:在网页中显示预留字符
+![](assest/Pasted%20image%2020240728153049.png)
+It是less than的缩写
+gt 是greater than的缩写
