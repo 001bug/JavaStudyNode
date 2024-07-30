@@ -18,7 +18,7 @@ MyBatis工作流程
 ![](assest/Pasted%20image%2020240715150232.png)
 
 2.在父项目引入依赖
-```
+```xml
 <dependencies>
 	<dependency>
 		<groupId>mysql</groupId>
@@ -37,8 +37,8 @@ MyBatis工作流程
 	</dependency>
 </dependencies>
 ```
- 还要引入处理项目导到目标文件下的依赖
-```
+ 还要引入处理项目导到目标文件(target)下的依赖
+```xml
  <build>  
     <resources>  
         <resource>  
