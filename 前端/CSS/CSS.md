@@ -171,9 +171,35 @@ p.box{
 <div class="box">div 标签</div>
 ```
 上段代码的意思是,鼠标经过a 标签时 , 颜色变为红色
+
 **伪类-超链接(扩展)**
 超链接标签一般有四个状态
 ![](assest/Pasted%20image%2020240729190514.png)
+
+**结构伪类选择器**
+概念:是 CSS 中的一类伪类选择器，用于**选择特定结构**中的元素。它们根据元素在文档树中的位置和关系进行匹配
+![](assest/Pasted%20image%2020240731105149.png)
+```css
+<head>
+	<style>
+		li:first-child{
+			color:green;
+		}
+	</style>
+</head>
+<body>
+<ul>  
+    <li>我是第1个小li</li>  
+    <li>我是第2个小li</li>  
+    <li>我是第3个小li</li>  
+    <li>我是第4个小li</li>  
+</ul>
+</body>
+```
+
+:nth-child(公式)
+作用: 根据元素的结构关系查找多个元素,n的取值是从0开始的
+![](assest/Pasted%20image%2020240731111333.png)
 ## 文字控制属性
 
 ^7bb0f8
