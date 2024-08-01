@@ -200,6 +200,52 @@ p.box{
 :nth-child(公式)
 作用: 根据元素的结构关系查找多个元素,n的取值是从0开始的
 ![](assest/Pasted%20image%2020240731111333.png)
+```html
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 结构伪类选择器 */
+    /* 1.选择第一个li */
+    ul li:nth-child(-n+5){
+      color: aquamarine;
+    }
+  </style>
+</head>
+<body>
+  <!-- ul>li{第$个}*8 -->
+  <ul>
+    <li>我是第1个小li</li>
+    <li>我是第2个小li</li>
+    <li>我是第3个小li</li>
+    <li>我是第4个小li</li>
+    <li>我是第5个小li</li>
+    <li>我是第6个小li</li>
+    <li>我是第7个小li</li>
+    <li>我是第8个小li</li>
+  </ul>
+</body>
+```
+**伪元素选择器**
+作用: 创建虚拟元素(伪元素), 用来摆放装饰性的内容,伪元素也是个盒子
+![](assest/Pasted%20image%2020240801092906.png)
+伪元素的结构
+![](assest/Pasted%20image%2020240801094407.png)
+示例代码
+```css
+div::before {
+  content: "before 伪元素";
+} 
+div::after {
+  content: "after 伪元素";
+}
+```
+注意点:
+* 必须设置content:" "属性,设置伪元素的内容,如果没有内容,引号留空
+* 伪元素默认是**行内显示模式**
+* **权重**和**标签选择器**相同
 ## 文字控制属性
 
 ^7bb0f8
@@ -576,3 +622,47 @@ div{
 </html>
 ```
 这里链接本来是没有宽度和高度的,但是经过转换后出现了宽度和高度, 而块级元素div123本来是块级元素一行只能有一个的,但是经过转换,实现了一行多个
+## PxCook的使用
+PxCook的基本介绍
+PxCook（像素大厨） 是一款切图设计工具软件。支持PSD文件的文字、颜色、距    离自动智能识别。
+ •开发面板（自动智能识别）
+ •设计面板（手动测量尺寸和颜色）
+使用流程:
+创建项目->输入项目名称, 项目类型Web->点创建按钮->添加->导入设计稿
+![](assest/Pasted%20image%2020240801102341.png)
+## 盒子模型
+#### 组成
+作用:布局网页, 摆放盒子和内容
+盒子模型重要的组成部分:
+•内容区域 – width & height
+•内边距 – padding（出现在内容与盒子边缘之间）
+•边框线 – border
+•外边距 – margin（出现在盒子外面）
+![](assest/Pasted%20image%2020240801104638.png)
+#### 边框线
+属性名：border（bd）
+属性值：边框线粗细  线条样式  颜色（不区分顺序）
+常用线条样式
+![](assest/Pasted%20image%2020240801111213.png)
+```css
+div{
+	border: 5px solid brown;
+	width:200px;
+	height:200px;
+	background-color:pink;
+}
+```
+单方向边框线
+属性名:border-**方位名词**(bd+方位名词首字母, 比如,bdl)
+属性值:边框线粗细 线条样式 颜色(不用顺序)
+```css
+div{
+  border-top: 2px solid red;
+  border-right: 3px dashed green;
+  border-bottom: 4px dotted blue;
+  border-left: 5px solid orange;
+  width: 200px;
+  height: 200px;
+  background-color: pink;	
+}
+```

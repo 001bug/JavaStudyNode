@@ -163,7 +163,7 @@ public void setProByDependencyInjection() {
 }
 ```
 
-SpringBoot通过@Configuration标识为配置类用来注入组件,被Configuration标识的类等价于配置文件
+==现在==SpringBoot通过@Configuration标识为配置类用来注入组件,被Configuration标识的类等价于配置文件 ^abb332
 ```java
 @Configuration
 public class BeanConfig {
@@ -182,6 +182,7 @@ public static void main(String[] args) {
 }
 ```
 注意事项: 被@Configuration注解的配置类也是组件,也放在ioc容器中
+
 扩展:使用proxyBeanMethods代理bean方法
 示例代码
 ```java
@@ -204,4 +205,44 @@ public class MainApp{
 1.Full(proxyBeanMethods = true)、【保证每个@Bean 方法被调用多少次返回的组件都是单实例的, 是代理方式】
 2.Lite(proxyBeanMethods = false)【每个@Bean 方法被调用多少次返回的组件都是新创建的, 是非代理方式】
 3.如果组件有依赖必须使用Full模式(默认).  如果不需要组件依赖,则使用Lite模式(轻量级,需要的时候才加载)
-注意:proxyBeanMethods是在调用@Bean方法的,而被@Bean注解的方法在BeanConfig中,因此需要先获取BeanConfig组件 , 然后再调用方法
+注意:proxyBeanMethods是在调用@Bean方法的,而被@Bean注解的方法在BeanConfig中,因此需要先获取BeanConfig组件 , 然后再调用方法,不然Full方式每次都是新实例的效果是无效的
+
+2. @Import
+@Import也是来注入组件的一种
+示例
+1.先建立几个bean类
+```java
+public class Cat {  
+}
+public class Dog {  
+}
+```
+2.然后编写[配置类](#^abb332)
+```java
+@Import({Dog.class, Cat.class})  
+@Configuration(proxyBeanMethods=false)
+public class BeanConfig {
+	@Bean(name = "monster_nmw")
+	public Cat cat01() {  
+	    return new Cat();  
+	}
+}
+```
+Import可以传入一个数组，可以一次注入多个组件,源码如下
+```java
+public @interface Import {
+	 Class<?>[] value();
+}
+```
+3.MainApp.java(启用容器)
+```java
+public static void main(String[] args){
+	ConfigurableApplicationContext ioc = SpringApplication.run(MainApp.class, args);
+	Dog dog = ioc.getBean(Dog.class);
+	String[] beanNamesForType = ioc.getBeanNamesForType(Dog.class);
+	for (String s : beanNamesForType) {
+		System.out.println("s= " + s);
+	}
+	Cat cat = ioc.getBean(Cat.class);
+}
+```
