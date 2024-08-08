@@ -309,7 +309,9 @@ connection = DriverManager.getConnection(url,username,password);
 * @NoArgsConstructor 生成无参构造器  
 * @AllArgsConstructor 生成要给全参构造器  
 * ==@Data 注解==
-
+![](assest/Pasted%20image%2020240802155637.png)
+@RequiredArgsConstructor
+在写controller或者Service层时,需要注入很多mapper接口和service接口,这时会写很多@Autowired注解, 代码看起来乱, lombok提供的@RequiredArgsConstructor注解可以代替@Autowired注解
 2.接口设计采用泛型编程 , 增强扩展性
 ```java
 public interface Executor {  

@@ -131,7 +131,7 @@ public class XxxHandler{
 难度就是删除操作,注意,
 ### SpringMVC文件上传
 1.配置文件上传解析器,先配置xxxservlet.xml文件
-```
+```xml
 <bean
 	id="multipartBesolver"
 	class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -141,7 +141,7 @@ public class XxxHandler{
 在xxxservlet.xml文件中配置,要放在其它Servlet前
 ![](assest/Pasted%20image%2020240714182244.png)
 3.样例模版
-```
+```java
 @RequestMapping(value = "/url")
 public String fileUpload(@RequestParam(value = "file") MultipartFile file, HttpServletRequest request, String introduce) throws IOException{
 	String originalFilename = file.getOriginalFilename();
@@ -151,10 +151,9 @@ public String fileUpload(@RequestParam(value = "file") MultipartFile file, HttpS
     file.transferTo(saveToFile);
     return "ok";
 }
-
 ```
-对样例模版的解释\
 
+对样例模版的解释'
 ### 自定义拦截器
 ##### 自定义拦截器实例
 拦截器:对请求会拦截

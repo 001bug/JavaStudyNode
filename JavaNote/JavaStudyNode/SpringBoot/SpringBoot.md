@@ -37,7 +37,8 @@ web项目场景启动器,会自动导入web开发相关的依赖.
 打开maven关系图
 点击一个类或者快捷键`Ctrl+Alt+Shift+U`
 ![](assest/Pasted%20image%2020240730191326.png)
-2.创建SpringBoot应用主程序
+
+2.创建SpringBoot应用主程序 ^8e8b3e
 ```java
 @SpringBootApplication  
 public class MainApp {  
@@ -47,7 +48,8 @@ public class MainApp {
     }  
 }
 ```
-3.创建控制器
+
+3.创建控制类
 ```java
 @Controller  
 public class HelloController {  
@@ -65,7 +67,7 @@ public class HelloController {
 	1.技术背景:在快速入门中,原本ssm繁杂的jar包引入在springboot中只需要要引入**父项目**和web场景启动器就完成的所有相关包的引入. 这种功能的实现就靠的是**依赖管理**的实现
 	spring-boot-starter-parent 还有父项目(对着前面的id,按住ctrl点击parent), 声明了开发中常用的依赖的版本号
 	![](assest/Pasted%20image%2020240730200549.png)
-	2.能够进行自动版本仲裁,没有指定某个jar的版本,会以父项目指定的版本为主
+	2.==能够进行自动版本仲裁,没有指定某个jar的版本,会以父项目指定的版本为主==
 	![](assest/Pasted%20image%2020240730200844.png)
 	3.可以自己指定某个jar包的版本
 	可以是在pom.xml中指定
@@ -102,16 +104,16 @@ public class MainApp {
 第二种方式验证(debug)
 ![](assest/Pasted%20image%2020240731001004.png)
 3.修改自动配置
-	1.SpringBoot还会扫描特定的包 , 不需要像Spring那样要手动在web.xml中配置
-	https://docs.spring.io/spring-boot/docs/current/reference/html/using.html#using.structuring-your-code.using-the-default-package 这里可以查看SpringBoot到底扫描哪些包
+3.1 SpringBoot还会扫描特定的包 , 不需要像Spring那样要手动在web.xml中配置
+	 扫描的包 , ==SpringBoot会自动扫描启动类同一个包和子包==
 	自定义扫包 , 增加扫描的包比如(指定的业务类不在特定的包下)
 	![](assest/Pasted%20image%2020240731145444.png)
 	就是在MainApp类下填写注解@SpringBootApplication(scanBasePackages="com.xxx") 这个scanBasePackages指定的是字符串数组
-	---
-	2.修改配置文件来更改生产环境
+
+3.2 修改配置文件来更改生产环境
 	SpringBoot项目中最重要最核心的配置文件是application.properties,所有框架的配置都可以在这个[配置文件](application)中说明,最终会映射到对应的类中(光标对应属性,然后ctrl+b就能找到,或者通过ioc容器找到)
 	查看地址 https://blog.csdn.net/pbrlovejava/article/details/82659702
-	3.自定义配置: **application.properties**,增加在springboot中的key-value值,然后应用在bean中
+	3.自定义配置: **application.properties**,增加在springboot中的key-value值,然后应用在bean中 ^bdd5c6
 ```java
 @Controller  
 public class HiController {  
@@ -142,7 +144,7 @@ public class HiController {
 注意:Spring注入组件的注解 , 在SpringBoot中仍然有效
 `@Component @Controller @Service @Repository`
 
-**SpringBoot中的注解**
+##### 注解功能
 1. Configuration
 ==回顾==一下传统的Spring通过注解或者xml配置文件获取ioc
 ```xml
@@ -211,21 +213,17 @@ public class MainApp{
 @Import也是来注入组件的一种
 示例
 1.先建立几个bean类
-```java
+ ```java
 public class Cat {  
 }
 public class Dog {  
 }
-```
-2.然后编写[配置类](#^abb332)
+ ```
+2.然后编写[配置类](#^abb332) 配置类一般放在config包下
 ```java
 @Import({Dog.class, Cat.class})  
 @Configuration(proxyBeanMethods=false)
-public class BeanConfig {
-	@Bean(name = "monster_nmw")
-	public Cat cat01() {  
-	    return new Cat();  
-	}
+public class BeanConfig { 
 }
 ```
 Import可以传入一个数组，可以一次注入多个组件,源码如下
@@ -234,7 +232,7 @@ public @interface Import {
 	 Class<?>[] value();
 }
 ```
-3.MainApp.java(启用容器)
+3.MainApp.java(启用类)
 ```java
 public static void main(String[] args){
 	ConfigurableApplicationContext ioc = SpringApplication.run(MainApp.class, args);
@@ -244,5 +242,917 @@ public static void main(String[] args){
 		System.out.println("s= " + s);
 	}
 	Cat cat = ioc.getBean(Cat.class);
+	System.out.println("dog= " + dog + " cat= " + cat);
 }
 ```
+通过@import注入的组件,组件的名字就是全类名
+
+3. @Conditional
+`@Conditional` 注解用于根据某些条件来**有选择地启用或禁用配置类**或 Bean。@Conditional是一个跟注解,它有很多扩展性注解
+![](assest/Pasted%20image%2020240801145645.png)
+样例,需求,只有在容器中有name=monster_nmw组件时,才注入dog01
+1.编写配置类
+```java
+@Configuration(proxyBeanMethods=false)
+public class BeanConfig{
+	@Bean
+	public Monster monster01(){//等价于xml中的配置
+		return new Monster(100,"牛魔王",500,"芭蕉扇");
+	}
+	@ConditionalOnBean(name="monster_nmw")
+	@Bean
+	public Dog dog01(){
+		return new Dog();
+	}
+}
+```
+加上这个注解就说明如果ioc容器中有id为monster_nmw才可以注入Dogbean,对类型是不做约束的
+如果注解不是放在方法上,而是配置类上,说明这个类中的所有方法都要进行条件约束
+2.启动类省略
+
+4. @ImportResource
+在SpringBoot中bean的配置也可以使用xml来配置,就是用@ImportResource, SpringBoot是可以向下兼容Spring的
+1.编写beans.xml配置类(放在resource下)
+```xml
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans xmlns="http://www.springframework.org/schema/beans"  
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">  
+    <!--配置了Monster bean-->  
+    <bean id="monster03" class="com.hspedu.springboot.bean.Monster">  
+        <property name="name" value="牛魔王~"></property>  
+        <property name="age" value="5000"></property>  
+        <property name="skill" value="芭蕉扇~"></property>  
+        <property name="id" value="1000"></property>  
+    </bean>  
+</beans>
+```
+2.改写配置类
+```java
+@ImportResource("classpath:beans.xml")
+public class BeanConfig{
+}
+```
+3编写启动类
+```java
+public static void main(String[] args){
+	ConfigurableApplicationContext ioc=new SpringApplication.run(MainApp.class,args);
+	System.out.println(ioc.getBean("monster03"));
+}
+```
+##### 配置绑定
+配置绑定的概念:配置绑定是一种机制, 它允许将外部化配置（如 [`application.properties`](#^bdd5c6) 或 `application.yml` 文件中的属性）绑定到 Java 对象
+可以更加方便地管理和使用配置属性
+示例
+需求: 将application.properties 指定的k-v 和JavaBean 绑定
+1.改写application.properties
+```properties
+#默认server.port=8080
+server.port=8080
+spring.servlet.multipart.max-file-size=10MB
+#设置属性k-v
+furn01.id=100
+furn01.name=soft_chair!!
+```
+1.1或者这种方法,在配置类中注销@Component(在下面Furn类中),然后配置@EnableConfigurationProperties(Furn.class)在配置类中
+```java
+@EnableConfigurationProperties(Furn.class)
+public class BeanConfig{}
+```
+在application.properties中如果有中文会出现乱码,那么需要用unicode编码转换工具(网页)
+2.编写封装application.properties的类
+```java
+@Component
+@ConfigurationProperties(prefix="furn01")
+public class Furn {
+	private Integer id;
+	private String name;
+	.... set get 方法
+}
+```
+3.编写控制类
+```java
+@Controller
+public class HelloController {
+	@RequestMapping("/hello")
+	@ResponseBody
+	public String hello(){
+		return "hello,spring boot";
+	}
+	@Autowired
+	Furn furn;
+	@RequestMapping("/furn")
+	@ResponseBody
+	public Furn furn(){
+		return furn;
+	}
+}
+```
+5[启动启动类](#^8e8b3e)
+## SpringBoot的运行机制
+### tomcat的启动的机制
+问题:当run方法跑起来的时候,SpringBoot怎么就启动了tomcat,然后去实现这种机制
+问题环境
+```java
+public class Dog {  
+}
+```
+config
+```java
+@Configuration//使Config变成配置类,然后会被扫描  
+public class Config {  
+    @Bean  
+    public Dog dog(){  
+       return new Dog();  
+    }  
+}
+```
+启动类
+```java
+@SpringBootApplication  
+public class Main {  
+    public static void main(String[] args) {  
+        ConfigurableApplicationContext ioc = SpringApplication.run(Main.class);  
+        System.out.println("hello ioc");  
+    }  
+}
+```
+在ioc在那里下断点,然后呢beanFactory-->SinglenObejct-->会发现有dog.class和Config,那到底是怎么注入进入的
+仍然是实现Spring容器那一套IO/文件扫描+注解+反射+集合+映射
+
+问题:SpringBoot是怎么启动Tomcat,并可以支持访问@Controller的,以及ioc创建的过程?
+本质上Tomcat是一个程序,调用start()方法就可以启动了,这里我们要把他找出来
+源码分析(阅读源码的方式:紧抓一条线,就是看tomcat被启动的代码和容器创建,不要啥都看)
+追最核心的方法  run方法
+1.SpringApplicatoin.java , 断点打到context=createApplicationContext()进入方法然后有个类型选择-->跳出到SpringApplication,断点打到refreshContext(),此时容器还是空的-->断点this.refresh(context)-->断点super.refresh()-->onRefresh()-->断点this.createWebServer()-->this.webServer=factory.getWebServer(new ServletContextInitializer[]{this.getSelfInitializer()})-->断点return this.getTomcatWebServer(tomcat)-->this.initialize()-->this.tomcat.start()
+![](assest/Pasted%20image%2020240802094547.png)
+2中着重createApplicatonContext()容器创建, refreshContext(context)刷新上下文(举个实例,准备应用环境,启动tomcat),这里有个特点,当要去创建容器时,采用模板设计模式+动态绑定,体现在refresh方法中
+### 创建Tomcat,并启动
+1.修改pom.xml,把内嵌的tomcat去除掉,然后添加tomcat组件
+```xml
+<dependencies>  
+    <dependency>  
+        <groupId>org.springframework.boot</groupId>  
+        <artifactId>spring-boot-starter-web</artifactId>  
+        <exclusions>  
+        <!--    因为我们自己要创建tomcat对象,并启动  
+            因此要先排除内嵌的tomcat-->  
+            <exclusion>  
+                <groupId>org.springframework.boot</groupId>  
+                <artifactId>spring-boot-starter-tomcat</artifactId>  
+            </exclusion>  
+        </exclusions>  
+    </dependency>  
+   <!-- 要注意版本问题,高版本不行-->  
+    <dependency>  
+        <groupId>org.apache.tomcat.embed</groupId>  
+        <artifactId>tomcat-embed-core</artifactId>  
+        <version>8.5.75</version>  
+    </dependency>  
+    <dependency>  
+        <groupId>org.apache.tomcat</groupId>  
+        <artifactId>tomcat-jasper</artifactId>  
+        <version>8.5.75</version>  
+    </dependency>  
+</dependencies>
+```
+2.SpringApplication.java组件(创建端口,启动tomcat),测试写一个启动类,看tomcat是不是在监听
+mySpringApplication.java
+```java
+public static void run(){  
+    try {  
+        Tomcat tomcat = new Tomcat();  
+        //让tomcat可以将亲够转发到分发器  
+        tomcat.addWebapp("/myboot","E:\\MyCode\\SpringBootStudy");  
+        tomcat.setPort(9090);//设置9090端口  
+        tomcat.start();  
+        System.out.println("请求等待");  
+        tomcat.getServer().await();  
+    } catch (LifecycleException e) {  
+        throw new RuntimeException(e);  
+    }  
+}
+```
+### 容器和Tomcat的关联
+创建spring容器
+先处理生产环境,主要的类就是myWebApplicaitonInitialize.class
+1.创建bean
+2.创建config
+```java
+@Configuration  
+@ComponentScan("org.example.myspringboot")  
+public class myConfig {  
+    @Bean  
+    public Monster monster(){  
+        return new Monster();  
+    }  
+}
+```
+3.创建Controller包中的myWebApplicationInitialize
+```java
+public class myWebApplicationInitialize implements WebApplicationInitializer {//相当于一个容器  
+    @Override//servletContext是配置上下文  
+    public void onStartup(ServletContext servletContext) throws ServletException {  
+        System.out.println("starut up");  
+        AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();  
+        ac.register(myConfig.class);//命令Spring容器扫描哪些包  
+        ac.refresh();//完成bean的创建和配置  
+        //创建前端控制器  
+        //2.让dispatcherServlet注入容器  
+        //3.这样就可以进行映射分发  
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(ac);  
+        ServletRegistration.Dynamic registration = servletContext.addServlet("app", dispatcherServlet);  
+        registration.setLoadOnStartup(1);//当tomcat启动时,加载前端控制器  
+        registration.addMapping("/");//拦截所有请求,并进行分发处理  
+    }  
+}
+```
+这个onStartup方法是tomcat调用的,并把ServetContext对象传入,这个ServetContext是上下文配置对象,包含了很多信息
+创建ac等价于创建spring容器, ac.register(myconfig.class)指定ac容器扫描哪些包,
+然后ac.refresh()这个方法完成bean的创建和配置
+接着像SpringMVC那样,配置DispatcherServlet
+## 快速构建项目工具(Spring Initializr)
+自主选择需要的开发场景, 自动生成启动类和单元测试代码
+两种方式创建 IDEA创建  网站start.spring.io创建
+### IDEA创建
+![](assest/Pasted%20image%2020240802170852.png)
+## yml
+概念:yaml是一种标记性语言.以数据作为中心,而不是以标记语言为重点. 它和传统的标记性语言不一样, 是以数据为中心的标记语言, 它非常合适用来做以数据为中心的配置文件.   html是标记语言的一种
+官方文档: https://yaml.org/
+中文使用文档: https://www.cnblogs.com/strongmore/p/14219180.html
+#### yml基本语法
+1.形式为`key: value;` 注意:后面有空格 
+2.区分大小写
+3.使用缩进表示层级关系
+4.缩进不允许使用tab, 只允许空格`有些地方能识别tab,但还是推荐使用空格`
+5.缩进的空格数不重要, 只要相同层级的元素左对齐即可
+6.**字符串无需加引号**
+7.yaml注释使用#
+#### yaml数据类型
+**字面量**
+1.字面量: 单个的,不可再分的值. date,boolean,string,number,null
+2.保存形式为key:value 如图
+![](assest/Pasted%20image%2020240802191920.png)
+**对象**
+对象: 键值对的集合, 比如map, hash, set, object
+```yaml
+k:{k1:v1,k2:v2,k3:v3}
+#或
+k:
+ k1: v1
+ k2: v2
+ k3: v3
+```
+**数组**
+```yaml
+行内写法: k:[v1,v2,v3]
+hobby:[打篮球,打兵乒球,踢足球]
+#或者
+k:
+ - v1
+ - v2
+ - v3
+```
+这个数组可以描述array,list,queue
+
+**应用**
+1.要在pom.xml上配置一个jar包,将yml的信息映射到bean上
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-configuration-processor</artifactId>  
+   <!-- 这里老师配置optional为ture  
+    是为了防止将此依赖传递到其他模块-->  
+    <optional>true</optional>  
+</dependency>
+```
+这个jar包能够把yml文件中的信息和bean绑定
+2.写bean类,并且附上一些必要的注释
+```java
+@ConfigurationProperties(prefix = "monster")//内容填yml开头的名称  
+@Component//将它注入容器  
+@Data//一键生成set和get方法  
+public class Monster {  
+    private String name;  
+    private Integer age;  
+}
+```
+## SpringBoot静态资源访问
+#### 基本介绍:
+
+^6c0965
+
+1.只要静态资源放在类路径下: /static, /public, /resources, /META-INF/resource,可以被直接访问-对应文件WebProperties.java(源码层面指定要访问的路径)
+![](assest/Pasted%20image%2020240804095635.png)
+2.常见静态资源: JS,CSS,图片(.jpg .png .gif .bmp .svg), 字体文件(Fonts)
+3.访问的url:项目根路径/静态资源名 比如: `http://localhost:8080/hi.html`-设置WebMvcProperties.java
+为什么不像tomcat项目那样有很多的路径呢,原理是WebMvc.用了SpringMVC映射,如果要修改,可以看源码
+![](assest/Pasted%20image%2020240804100133.png)
+#### 快速入门
+1用maven生成新项目
+2.编写启动类
+Application.java
+```java
+@SpringBootApplication  
+public class Application {  
+    public static void main(String[] args){  
+        SpringApplication.run(Application.class,args);  
+    }  
+}
+```
+这个SpringBootAppliacation是让容器标识,以便与做处理
+3.![](assest/Pasted%20image%2020240804101637.png)
+在这些包下都可以写静态资源,然后便可直接访问
+**注意细节**
+1.静态资源访问原理:静态映射是`/**`,也就是对所有的请求进行请求拦截, 请求先进来, 然后看看Controller(动态资源)能不能处理(前提要没有配置视图解析器,不然是以视图解析器优先) , 不能处理的请求交给静态资源处理器, 如果静态资源找不到就响应404页面
+2.改变静态资源访问前缀, 比如我们希望`http://loclhost:8080/hspress/*`去请求静态资源. 应用静态资源访问前缀和控制器访问前缀有可能相同,造成路径冲突
+3.改变**静态**资源访问前缀(不包括动态)
+在resource根路径下添加application.yml文件
+```yml
+spring:  
+  mvc:  
+    static-path-pattern: /myweb/**
+```
+[访问其他包下](#^6c0965)的静态资源
+```yml
+spring
+ web:
+  resources:
+   static-location: [classpath:/myboot/]             #数组
+```
+如果配置了location路径, 那么原先的路径就失效了`static,resource` 如果需要保留,需要再指定一下
+```yml
+spring
+ web:
+  resources:
+   static-location: [classpath:/myboot/,....,...]             #数组
+```
+注意:访问的时候不用带上面指定的包名了
+#### SpringBoot中Rest请求风格
+[Rest风格](SpringMVC)支持(使用HTTP请求方式动词来表示对资源的操作)
+**示例代码**
+```java
+@RestController  
+public class MonsterController {  
+    @GetMapping("/monster")  
+    public String getMonster(){  
+        return "GET-查询妖怪";  
+    }  
+    @PostMapping("/monster")  
+    public String addMonster(String Monster){  
+        return "POST-保存妖怪";  
+    }  
+    @DeleteMapping("/monster")  
+    public String delMonster(){  
+        System.out.println("删除书籍");  
+        return "delete-删除妖怪";  
+    }  
+    @PutMapping("/monster")  
+    public String putMonster(){  
+        return "PUT-修改妖怪";  
+    }  
+}
+```
+**Rest风格请求的注意事项**
+1.客户端是PostMan 可以直接发送Put,delete等方式请求, 可不设置Filter
+2.如果要SpringBoot支持页面表单的Rest功能, 则需要注意如下细节
+1. Rest风格请求核心Filter: HiddenHttpMethodFilter, 表单请求会被拦截器拦截,获取到表单_method的值(隐藏域), 再判断是PUT/DELETE/PATCH(PATCH方法是新引入的,是对PUT方法的补充, 用来对已知资源进行局部更新)
+2. 如果要SpringBoot支持页面表单的Rest功能,需要在application.yml启用filter功能,否则无效(启用过滤器)
+```yml
+spring:  
+  mvc:  
+    static-path-pattern: /myweb/**  
+    hiddenmethod:  
+      filter:  
+        enabled: true
+```
+3. 修改appliacation.yml启用filter功能
+这里注意一下,在上段的代码中,为什么返回的不是像SpringMVC那样的结果,静态资源,而是字符串.原因是没有经过视图解析器
+@RestController是一个复合注解, 含有@ResponseBody,所以springboot底层(springmvc),在处理return "xxx"时,会以@ResponseBody注解进行解析处理,返回字符串"xxx",而不是使用视图解析器来处理.
+如果用@Controller,那么就会因为找不到xxx.html而报错,但是在application.yml文件上配置解析器就可以了
+```yml
+spring:
+ mvc:
+  view:
+   suffix: .html
+   prefix: /
+```
+如果是`/`的话那么在application.yml文件中`static-path-pattern`的值要为空,或者不被定义
+#### 接受客户端提交数据/参数的相关注解
+@PathVariable @RequestHeader @ModelAttribute @RequestParam @CookieValue @RequestBody
+**PathVariable**
+```java
+@RestController  
+public class ParameterController {  
+    @GetMapping("/monster/{id}/{name}")  
+    public String pathVariable(@PathVariable("id")Integer id,  
+                               @PathVariable("name") String name,  
+                               @PathVariable Map<String,String> map  
+                               ){  
+        System.out.println("id_"+id);  
+        System.out.println("name-"+name);  
+        System.out.println("map_"+map);  
+        return "success";  
+    }  
+}
+```
+PathVariable可以把url中的参数提取出来,然后兑入方法的请求参数中,类似于占位符的作用
+
+**RequestHeader**
+```java
+@GetMapping("/requestHeader")
+public String requestHeader(@RequestHeader("Host") String host,  
+                            @RequestHeader Map<String,String> header)  
+{  
+    return "success";  
+}
+```
+RequestHeader获取Http请求头的所有信息 上面方法参数中是获取Http请求中的请求头的信息,这个Map是获取请求头的所有信息
+
+**RequestParam**
+与[[SpringMVC]]的用法一样
+
+**CookieValue**
+```java
+@GetMapping("/cookie")  
+public String cookie(@CookieValue(value = "cookie_key",required=false) String cookie_value,  
+                    @CookieValue(value="username") Cookie cookie,required=false){  
+    return "success";  
+}
+```
+1.value="cookie_key" 表示接受名为cookie_key的cookie,拿到cookie后,如果参数是String那么则将cookie中的value注入进去
+2.如果后面的参数是cookie,那么后面的参数是Cookie, 则接受到的是封装好的对应的cookie
+3.测试的时候手动添加cookie
+![](assest/Pasted%20image%2020240804205825.png)
+
+**RequestBody**
+能够接受请求过来的json数据 , 从http请求体中获取数据,并将这些数据转换为java对象(获取Http中请求体的内容)
+```java
+@PostMapping("/save")  
+public String postMethod(@RequestBody String content){  
+    return "success";  
+}
+```
+
+**@RequestAttribute**
+RequestAttribute可以用来获取请求域中的信息
+```java
+@GetMapping("/login")
+@ResponseBody
+public String login(HttpServletRequest request){  
+    request.setAttribute("user","yyds");  
+    return "forward:/ok";//请求转发到 /ok上  
+}  
+@GetMapping("/ok")  
+@ResponseBody  
+public String ok(@RequestAttribute(value="user",required = false) String username){  
+    //获取到request域中的数据  
+    return "success";  
+}
+```
+通过注解,能够让方法获取在Http请求中的数据,并且参入在形参中
+
+**@SessionAttribute**
+```java
+@GetMapping("/ok")  
+@ResponseBody
+public String ok(@RequestAttribute(value="user",required = false) String username,  
+                 @SessionAttribute(value="ip",required = false)String website){  
+    //获取到request域中的数据  
+    System.out.println("username"+username);  
+    System.out.println("website"+website);  
+    return "success";  
+}
+```
+通过注解获取session的数据然后封装到参数中,或者用原生的api输出,ResponseBody能让原本的返回值要经过视图解析器的,改为纯纯字符串返回
+#### 接受复杂数据
+**基本介绍**
+1.在开发中,SpringBoot在响应客户端请求时,也支持复杂参数
+2.Map,Model,Errors/BindingResult,RedirectAttributes,ServletResponse,SessionStatus,UriComponentsBuilder,ServletUriComponentsBuilder,HttpSession
+3.Map,Model数据会被放在request域
+4.RedirectAttributes重定向携带数据
+```java
+@GetMapping("/register")  
+public String register(Map<String ,Object> map,  
+                       Model model,  
+                       HttpServletResponse response){  
+    //一个注册请求,会将注册数据封装到map或者model中  
+    //map中的数据和model的数据,会被放入到request中  
+    map.put("user","xiaoming");  
+    map.put("job","javabody");  
+    model.addAttribute("sal",119);  
+    //请求转发  
+    return"forward:/registerOk";  
+}  
+@GetMapping("/registerOk")  
+@ResponseBody  
+public String registerOk(HttpServletRequest request){  
+    System.out.println("user "+request.getAttribute("user"));  
+    System.out.println("job "+request.getAttribute("job"));  
+    System.out.println("sal "+request.getAttribute("sal"));  
+    return "success";  
+}
+```
+参数里面的数据会自动放入到请求域中
+
+创建cookie,并通过response添加到客户端/浏览器
+```java
+@GetMapping("/ok")  
+@ResponseBody  
+public String ok(@RequestAttribute(value="user",required = false) String username,  
+                 @SessionAttribute(value="ip",required = false)String website){  
+    //获取到request域中的数据  
+    System.out.println("username"+username);  
+    System.out.println("website"+website);  
+    return "success";  
+}  
+@GetMapping("/register")  
+public String register(Map<String ,Object> map,  
+                       Model model,  
+                       HttpServletResponse response){  
+    //一个注册请求,会将注册数据封装到map或者model中  
+    //map中的数据和model的数据,会被放入到request中  
+    map.put("user","xiaoming");  
+    map.put("job","javabody");  
+    model.addAttribute("sal",119);  
+    Cookie cookie = new Cookie("email", "qq.com");  
+    response.addCookie(cookie);  
+    //请求转发  
+    return"forward:/registerOk";  
+}  
+@GetMapping("/registerOk")  
+@ResponseBody  
+public String registerOk(HttpServletRequest request){  
+    System.out.println("user "+request.getAttribute("user"));  
+    System.out.println("job "+request.getAttribute("job"));  
+    System.out.println("sal "+request.getAttribute("sal"));  
+    return "success";  
+}
+```
+重点是`Cookie cookie=new Cookie()和response.addCookie(cookie)`这两句
+#### 对象参数-自动封装-转换器
+**基本介绍**
+1.在开发中,SpringBoot在响应客户端请求时,也支持自定义对象参数\
+2.完成自动类型转换和格式化
+3.支持级联封装
+级联的对象属性都是先前端表格中都是对象名.属性名
+Car.java
+```java
+@Data  
+public class Car {  
+    private String name;  
+    private Double price;  
+}
+```
+Monster.java
+```java
+@lombok.Data  
+public class Monster {  
+    private Integer id;  
+    private String name;  
+    private Integer age;  
+    private Boolean isMarried;  
+    private String birth;  
+    private Car car;  
+}
+```
+ParameterContorller
+```java
+@PostMapping("/savemonster")
+@ResponseBody
+public String saveMonster(Monster monster){  
+    System.out.println(monster);  
+    return "success";  
+}
+```
+前端
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+</head>  
+<body>  
+<form action="/savemonster" method="post">  
+    <input name="id" value="100"><br/>  
+    <input name="name" value="牛魔王"><br/>  
+    <input name="age" value="100"><br/>  
+    <input name="isMarried" value="true"><br/>  
+    <input name="birth" value="2000/11/11"><br/>  
+    <input name="car.name" value="法拉利"><br/>  
+    <input name="car.price" value="10021"><br/>  
+    <input type="submit" value="保存"/>  
+</form>  
+</body>  
+</html>
+```
+**转换器**
+1.SpringBoot在响应客户端请求时, 将提交的数据封装成对象时,使用了内置转换器
+转换器在GenericConverter类中的ConvertiblePair中
+2.SpirngBoot也支持自定义转换器.
+
+对于上面的级联数据请求,我们采用自定义转换器处理
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+</head>  
+<body>  
+<form action="/savemonster" method="post">  
+    <input name="id" value="100"><br/>  
+    <input name="name" value="牛魔王"><br/>  
+    <input name="age" value="100"><br/>  
+    <input name="isMarried" value="true"><br/>  
+    <input name="birth" value="2000/11/11"><br/>  
+	<input name="car" value="猪骑士,222"><br/>
+    <input type="submit" value="保存"/>  
+</form>  
+</body>  
+</html>
+```
+
+编写自定义转换器
+1首先启用proxyBeanMethods中的lite模式,用来提速. 然后重写addFormatters方法,
+2增加一个自定义的转换器String-->car
+3增加的自定义转换器会注册到converters容器中
+4converters底层结构是ConcurrentHashMap 内置有124个转换器 ^21355b
+```java
+@Configuration(proxyBeanMethods = false)//表示使用了Lite模式  
+public class webconfig {  
+    //这个注解表示这个类是配置类,可以处理bean对象  
+    @Bean  
+    public WebMvcConfigurer webMvcConfigurer(){  
+        return new WebMvcConfigurer() {  
+            @Override  
+            public void addFormatters(FormatterRegistry registry) {  
+                registry.addConverter(new Converter<String, Car>() {  
+                    @Override  
+                    public Car convert(String s) {//这个s是将来前端打过来的数据这里是猪骑士,222  
+                        //这里加入自己的转换逻辑  
+                        if(!ObjectUtils.isEmpty(s)){  
+                            Car car=new Car();  
+                            String[] split=s.split(",");  
+                            car.setName(split[0]);  
+                            car.setPrice(Double.parseDouble(split[1]));  
+                            return car;  
+                        }  
+                        return null;  
+                    }  
+                });  
+            }  
+        };  
+    }  
+}
+```
+这里涉及到  了内部类,然后重写特定的方法,接受参数后,把参数进行分割然后封装给对象
+重要的是参数到底怎么进入,使用bebug模式找出参数怎么获取
+在public Car convert(String s)这条代码下断点,
+![](assest/Pasted%20image%2020240805214849.png)
+选中蓝色的线程部分-->然后打开this-->converters-->converters-->table,然后就能发现自定义的converters
+**换一种方法写自定义转换器**
+```java
+Converter<String,Car> Converter=new Converter<String, Car>() {  
+    @Override  
+    public Car convert(String s) {  
+        if(!ObjectUtils.isEmpty(s)){  
+            Car car=new Car();  
+            String[] split=s.split(",");  
+            car.setName(split[0]);  
+            car.setPrice(Double.parseDouble(split[1]));  
+            return car;  
+        }  
+        return null;  
+    }  
+};
+registry.addConverter(Converter);
+```
+如果出现400的状态码,那么首先是客户端提交的数据出现了问题,大概率是提交的数据类型不匹配
+![](assest/Pasted%20image%2020240806093642.png)
+#### 处理json
+使用注解`@ResponseBody`会自动返回json数据
+```java
+@Controller  
+@ResponseBody  
+public class ResponseController {  
+    //返回monster数据-要求以json数据形式返回  
+    @GetMapping("/get/monster")  
+    public Monster getMonster(){  
+        Monster monster = new Monster();  
+        monster.setAge(100);  
+        monster.setName("sdjkfj");  
+        monster.setBirth("2024");  
+        monster.setId(100);  
+        monster.setIsMarried(true);  
+        Car car = new Car();  
+        car.setPrice(10000.0);  
+        car.setName("小秘密");  
+        monster.setCar(car);  
+        return monster;  
+    }  
+}
+```
+本质还是用到了类型转换器
+debug
+(先找到AbstractJackson2HttpMessageConverter.java)->
+找到writeInternal方法outputMessage.getHeaders().getContentType()下断点->
+在类的返回值下断点`return monster`
+![](assest/Pasted%20image%2020240806101251.png)
+这个contentType是要求程序要返回的类型是什么 , 这个要求返回的类型是`application/json`是通过[内容协商](#^a20e18)这种机制带到代码上的
+![](assest/Pasted%20image%2020240806102659.png)
+然后通过工厂模式,生成处理json的流式api
+![](assest/Pasted%20image%2020240806104402.png)
+这个Object就是monster,然后这个monster就会交给上面generator处理成json数据
+#### 内容协商
+
+^a20e18
+
+1.根据客户端接受能力不同,SpringBoot返回不同媒体类型的数据
+2.比如:客户端Http请求 Accept: application/xml则返回xml数据,客户端Http请求 Accept:application/json则返回json数据
+可以用postman进行测试
+注意:如果想要处理
+```xml
+<dependency>  
+    <groupId>com.fasterxml.jackson.dataformat</groupId>  
+    <artifactId>jackson-dataformat-xml</artifactId>  
+</dependency>
+```
+按上面处理debug
+**主要是看请求头中Accept有哪些要求,
+1.只有xml 
+2.是只有json 
+3.是xml和json都有只不过有权重权衡,意思就是如果可以json那就json,如果没有json那就xml**
+比如
+`### text/html,application/xhtml+[xml](https://so.csdn.net/so/search?q=xml&spm=1001.2101.3001.7020),application/xml;q=0.9,*/*;q=0.8`
+q是权重系数, `*/*`是所有类型. 优先xml,如果xml不行,那就返回json
+
+在上面的案例中,如果服务端两个都能解析,那么无论怎么样,都是返回xml,但是需求偏偏需要json.
+解决方案: 开启基于请求参数的内容协商功能
+1.修改application.yml, 开启基于请求参数的内容协商功能
+yml的关键字`contentnegotiation`  
+#### Thymeleaf
+Thymeleaf的简介
+1.Thymeleaf是一个跟Velocity,FreeMarker类似的模版引擎,可以完全替代JSP
+2.Thymeleaf是一个Java类库,他是一个xml/xhtml/html5的模版引擎,可以作为mvc的web应用的view层
+
+Thymeleaf的优点
+1.实现了JSTL,OGNL表达式效果, 语法相似, 上手快
+2.Thymeleaf模版页面无需服务器渲染,也可以被浏览器运行, 页面简洁
+3.SpringBoot支持FreeMarker,Thymeleaf,veocity
+
+Thymeleaf的缺点
+1.并不是一个高性能的引擎,使用单体应用
+## 拦截器
+基本介绍:
+1.在SpringBoot项目中,拦截器是开发中常用手段, 要做**登录验证,性能检查,日志记录**等
+2.基本实现步骤
+* 编写一个拦截器 , 实现HandlerInterceptor接口
+* 拦截器注册到配置类中(实现WebMvcConfigurer的addInterceptors)
+* 指定拦截规则(对哪些路径生效)
+
+**快速入门**
+1.编写拦截器 , 这里的模版跟[[SpringBoot]]一样,自定义拦截器
+2.拦截器的配置, 没配置会起不了作用
+* 可以用注册[转换器](#^21355b)的方法来注册拦截器
+* 第二种方法,直接去实现对应的接口,然后注册拦截器
+```java
+@Configuration  
+public class WebConfig01 implements WebMvcConfigurer {  
+    @Override  
+    public void addInterceptors(InterceptorRegistry registry) {  
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")  
+                .excludePathPatterns("/","/login","/images/**");//add表示拦截哪些请求,ex表示哪些请求能通过  
+    }  
+}
+```
+第二种实现方法
+```java
+@Configuration  
+public class WebConfig02 {  
+    @Bean  
+    public WebMvcConfigurer webMvcConfigurer(){  
+        return new WebMvcConfigurer() {  
+            @Override  
+            public void addInterceptors(InterceptorRegistry registry) {  
+                registry.addInterceptor (new LoginInterceptor())  
+                        .addPathPatterns("/**")  
+                        .excludePathPatterns("/","login","/images/**");  
+            }  
+        };  
+    }  
+}
+```
+注意细节
+1.URI和RUL的区别
+URI=Universal Resource Identifier(已经到了服务器内部,然后查看要查的资源路径)
+URL=Universal Resource Locator
+```java
+URI=/ohmygod/config
+URL=localhost:8080/hi.html
+```
+Identifier: 标识符, Locator: 定位符 从字面上来看, URI可以唯一标识一个资源, URL可以提供找到该资源的路径
+拦截器在请求转发的过程中,也能起到拦截作用 , 简单点说就是进入服务端,然后请求转发出去的时候也要经过拦截器
+## 文件上传
+前端代码
+```html
+<body>  
+<form action="/upload" method="post" enctype="multipart/form-data">  
+    图片:<input type="file" name="header"><br/>  
+    <input type="submit" value="注册">  
+</form>  
+</body>
+```
+multipart/form-data这个是不能少的,如果少了,那么提交了,就只剩表单的数据
+第一种写法(写死的,要先预定好文件路径)
+```java
+@Controller  
+@Slf4j  
+public class UploadController {  
+    @PostMapping("/upload")  
+    @ResponseBody  
+    public String uploadPage(@RequestParam("header")MultipartFile file) throws IOException {  
+        if(!file.isEmpty()){  
+            String originalFilename = file.getOriginalFilename();  
+            file.transferTo(new File("d:\\temp_upload\\"+originalFilename));  
+        }  
+        return "forward:/upload";  
+    }  
+}
+```
+第二种写法是动态的获取类路径然后把保存的文件放进去,这种需求是最常见的,因为正常来说服务器是会变化的 , 通过通过`ResourceUtils.getUR().getPath()`获取[类路径](类路径和Java相对路径) 
+```java
+public class UploadController {  
+    @PostMapping("/upload")  
+    @ResponseBody  
+    public String uploadPage(@RequestParam("header")MultipartFile file) throws IOException {  
+        String path = ResourceUtils.getURL("classpath:").getPath();  
+        File file1 = new File(path + "static/");  
+        if(!file1.exists()){  
+            file1.mkdirs();  
+        }  
+        if(!file.isEmpty()){  
+            String originalFilename = file.getOriginalFilename();  
+            file.transferTo(new File(file1.getAbsoluteFile()+"/"+originalFilename));  
+            //注意路径的`/`问题  
+        }  
+        return "forward:/upload";  
+    }  
+}
+```
+**修改上传文件大小的上限**
+ 修改application.yml文件即可
+```yml
+spring:  
+  servlet:  
+    multipart:  
+      max-file-size: 10MB  
+      max-request-size: 50MB
+```
+## SpringBoot异常处理
+**介绍**
+1.默认情况下,SpringBoot提供`/error`处理所有错误的映射,简单点说,当发生错误时,底层会**请求转发**到`/error`这个映射(处理要返回什么界面)
+2.比如,访问不存在的接口(路径映射), 响应一个`whitelabel`错误视图,以html格式呈现给用户
+![](assest/Pasted%20image%2020240807165314.png)
+3.SpringBoot底层默认由DefaoutErrorViewResolver处理错误
+在debug过程中,1.先去找自己定义的404的界面 , 如果找不到 ,就去找4xx的界面,如果找不到 2.就去找默认的404界面
+![](assest/Pasted%20image%2020240807184159.png)
+找是不是有自定义404界面的html,对resources进行估值运算,发现有保存需扫描的页面地址
+
+#### 自定义异常页面
+自定义页面的存放位置,如果只是单纯的html那么放在resources/static目录下,如果用了渲染技术比如themleaf或者jsp,那么要把页面放在resources/templates/error目录下 , debug跟上面差不多
+#### 全局异常
+1.@ControllerAdvice+@ExceptionHandler处理全局异常
+2.底层是ExceptionHandlerExceptionResolver支持的(debug过程支撑)
+**全局异常的应用实例**
+需求:当发生ArithmeticException , NullPointerException时, 不使用默认异常机制匹配的xxx.html , 而是通过全局异常机制指定的错误页面
+1.编写处理全局异常的处理器
+```java
+@ControllerAdvice//使用它可以标识一个全局异常处理器,会被注入到容器中  
+public class GlobalExceptionHandler {  
+    //1.Exception e:表示异常发生后,传递的异常对象,异常发生后有什么  
+    //2.Model model:可以将我们的异常信息,放入model,并传递给显示页面  
+    @ExceptionHandler({ArithmeticException.class,NullPointerException.class})  
+    public String handlerAritException(Exception e, Model model){  
+        System.out.println("算术异常");  
+        model.addAttribute("msg",e.getMessage());//把异常信息传递给页面  
+        return "/error/global";  
+    }  
+}
+```
+**注意细节**
+全局异常处理优先级>默认异常处理机制
+## web组件和SpringBoot
+#### 拦截器和过滤器的区别
+1.使用范围不同
+1. 过滤器实现的是javax.servlet.Filter接口, 而这个接口在Servlet规范中定义的,也就是说过滤器Filter的使用要依赖Tomcat容器, Filter只能在web程序中调用
+2. 拦截器(Intereptor)他是一个Spring组件, 并由Spring容器管理, 不依赖于tomcat等容器,是可以单独使用的. 不仅能应用于web,还能应用到其他环境
+2.过滤器和拦截器的触发时机也不同
+![](assest/Pasted%20image%2020240807185718.png)
+这里的Servlet可以理解为前端控制器就是接受前端请求的servlet层
+1. 过滤器Filter是在请求进入容器后,但在进入servlet之前进行预处理 , 请求结束是在servlet处理完以后
+2. 拦截器Interceptor是在请求进入servlet后, 在进入Controller之前进行预处理的, Controller中渲染对应的视图之后请求结束
+3.过滤器不会处理请求转发 拦截器会处理请求转发
+debug流程
+![](assest/Pasted%20image%2020240807202525.png)
