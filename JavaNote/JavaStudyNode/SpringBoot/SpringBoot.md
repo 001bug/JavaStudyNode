@@ -388,6 +388,9 @@ public class Main {
 ![](assest/Pasted%20image%2020240802094547.png)
 2中着重createApplicatonContext()容器创建, refreshContext(context)刷新上下文(举个实例,准备应用环境,启动tomcat),这里有个特点,当要去创建容器时,采用模板设计模式+动态绑定,体现在refresh方法中
 ### 创建Tomcat,并启动
+
+^60a438
+
 1.修改pom.xml,把内嵌的tomcat去除掉,然后添加tomcat组件
 ```xml
 <dependencies>  
@@ -1122,10 +1125,10 @@ spring:
 
 #### 自定义异常页面
 自定义页面的存放位置,如果只是单纯的html那么放在resources/static目录下,如果用了渲染技术比如themleaf或者jsp,那么要把页面放在resources/templates/error目录下 , debug跟上面差不多
-#### 全局异常
+#### 全局异常器
 1.@ControllerAdvice+@ExceptionHandler处理全局异常
-2.底层是ExceptionHandlerExceptionResolver支持的(debug过程支撑)
-**全局异常的应用实例**
+2.底层是ExceptionHandlerExceptionResolver支持的(debug12)
+**全局异常处理器的应用实例**
 需求:当发生ArithmeticException , NullPointerException时, 不使用默认异常机制匹配的xxx.html , 而是通过全局异常机制指定的错误页面
 1.编写处理全局异常的处理器
 ```java
@@ -1143,8 +1146,33 @@ public class GlobalExceptionHandler {
 ```
 **注意细节**
 全局异常处理优先级>默认异常处理机制
+#### 自定义异常
+1.如果SpringBoot提供的异常不能满足开发需求,程序员也可以自定义异常
+2.@ResponseStatus+自定义异常
+3.底层是ResponseStatusExceptionResolver , 底层调用response.sendError(statusCode,resolvedReason):
+4.当抛出自定义异常后,仍然会根据状态码, 去匹配使用xxx.html显示
+```java
+@ResponseStatus(value = HttpStatus.FORBIDDEN)  
+public class AccessException extends RuntimeException{  
+    public AccessException(String message){  
+        super(message);  
+    }  
+    public AccessException(){  
+  
+    }  
+}
+```
+模版解析(debug流程)
+1.他是跟java基础中异常处理是差不多的,都要继承Exception或者RuntimeException来实现功能
+2.着重的关键是注解@ResponseStatus(value=状态对象),也是返回状态信息的关键
+**注意细节**
+1.如果把自定义异常类型, 放在全局异常处理器, 那么仍然走全局异常处理机制
+2.看显示效果, 并Debug, 也可以自己设置异常信息 ,  总的来说,就是一旦发生异常,异常一定会先传到ExceptionHandlerException,在这个类中,会找是否有对应的异常处理器,如果有那就执行,如果没有执行默认的异常处理器
 ## web组件和SpringBoot
 #### 拦截器和过滤器的区别
+
+^c5fc8e
+
 1.使用范围不同
 1. 过滤器实现的是javax.servlet.Filter接口, 而这个接口在Servlet规范中定义的,也就是说过滤器Filter的使用要依赖Tomcat容器, Filter只能在web程序中调用
 2. 拦截器(Intereptor)他是一个Spring组件, 并由Spring容器管理, 不依赖于tomcat等容器,是可以单独使用的. 不仅能应用于web,还能应用到其他环境
@@ -1153,6 +1181,168 @@ public class GlobalExceptionHandler {
 这里的Servlet可以理解为前端控制器就是接受前端请求的servlet层
 1. 过滤器Filter是在请求进入容器后,但在进入servlet之前进行预处理 , 请求结束是在servlet处理完以后
 2. 拦截器Interceptor是在请求进入servlet后, 在进入Controller之前进行预处理的, Controller中渲染对应的视图之后请求结束
-3.过滤器不会处理请求转发 拦截器会处理请求转发
+3.==过滤器不会处理请求转发 拦截器会处理请求转发==
 debug流程
 ![](assest/Pasted%20image%2020240807202525.png)
+#### 注入Servlet,Filter,Listener
+基本介绍
+1.考虑到实际开发业务非常复杂和兼容, Spring-Boot支持将Servlet, Filter , Listener注入Spring容器 , 成为Spring bean
+2.也就是说明Spring-Boot开放了和原生web组件(Servlet , Filter , Listener)的兼容
+![](assest/Pasted%20image%2020240808172015.png)
+**WebServlet注入Servlet**
+1.在启动类添加扫描包的注解, 被扫描的类的包或者父包
+```java
+@ServletComponentScan(basePackages = "org.example")  
+@SpringBootApplication  
+public class Application {  
+    public static void main(String[] args){  
+  
+        ConfigurableApplicationContext ioc = SpringApplication.run(Application.class,args);  
+        System.out.println("hello");  
+    }  
+}
+```
+2.添加servlet
+```java
+@WebServlet(urlPatterns = {"/servlet01","/servlet02"})  
+public class Servlet_ extends HttpServlet {  
+    @Override  
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {  
+        resp.getWriter().write("hello,Servlet");  
+    }  
+  
+    @Override  
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {  
+        doGet(req, resp);  
+    }  
+}
+```
+对模版样例的解释
+@WebServlet表示提供对外的url , 并且也将servlet注入容器
+**注意细节**\
+[注入的原生的Servlet不会被springboot的拦截器拦截](#^c5fc8e)
+对于开发的原生的Servlet, 需要使用@ServletComponentScan指定要扫描的原生Servlet,才会注入到spring容器中
+
+**WebFilter注入Filter**
+```java filter
+@Slf4j  
+@WebFilter(urlPatterns = {"/tmp/*"})  
+public class Filter implements javax.servlet.Filter {  
+    @Override  
+    public void init(FilterConfig filterConfig) throws ServletException {  
+        log.info("--Filter_init--");  
+    }  
+  
+    @Override  
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {  
+        log.info("--Filter_ doFilter--");  
+        HttpServletRequest httpServletRequest=(HttpServletRequest)servletRequest;  
+        filterChain.doFilter(servletRequest, servletResponse);  
+    }  
+  
+    @Override  
+    public void destroy() {  
+        log.info("--Filter_ doFilter--");  
+    }  
+}
+```
+对模版样例的解释(已在启动类做了处理,加扫包)
+@WebServlet表示指定要拦截的url , 并且也将servlet注入容器
+**注意细节**
+过滤器配置的urlPatterns也会经过SpringBoot拦截器()
+在servlet匹配全不是/* , 在Spirngboot是/**
+
+**WebListener注入Listener**
+```java listener
+@Slf4j  
+@WebListener  
+public class Listener_ implements ServletContextListener {  
+    @Override  
+    public void contextInitialized(ServletContextEvent sce) {  
+        //业务代码  
+        log.info("Listener_初始化被调用");  
+    }  
+  
+    @Override  
+    public void contextDestroyed(ServletContextEvent sce) {  
+        //业务代码  
+        log.info("Listener_销毁被调用");  
+    }  
+}
+```
+监听器的作用比较小,
+#### RegistrationBean方式注入
+简介:就是不用注解的情况下把自己写的原生组件注入容器
+**注入servlet**
+模版解析
+```java
+@Configuration  
+public class RegisterConfig_ {  
+    @Bean  
+    public ServletRegistrationBean servlet_(){  
+        Servlet_ servlet = new Servlet_();  
+        return new ServletRegistrationBean(servlet,"/servlet01");  
+    }  
+}
+```
+1.RegisterConfig是一个配置类,应该被Configuration注解, 里面可以使用@Bean注入容器
+2.`return new ServletRegistrationBean(servlet,"/servlet01");` 这句话是把servlet对象关联到ServletRegistrationBean对象
+**注入filter**
+```java
+@Bean  
+public FilterRegistrationBean filter_(){  
+    Filter filter = new Filter();  
+    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();  
+    filterRegistrationBean.setUrlPatterns(Arrays.asList("tmp/*"));  
+    return filterRegistrationBean;  
+}
+```
+模板解析
+1.他和注入servlet有些不同, 这个filter要先new出新对象,然后再设置url属性
+**注入ListenerRegistrationBean**
+模版解析
+```java
+@Bean  
+public ServletListenerRegistrationBean listener_(){  
+    Listener_ listener = new Listener_();  
+    return new ServletListenerRegistrationBean(listener);  
+}
+```
+
+**请求Servlet时,为什么不会到达拦截器**
+1.请求Servlet时, 不会到达DispatherServlet, 因此也不会达到拦截器
+2.原因
+* 注入的Servlet会存在Spring容器
+* DispatherServlet也存在Spring容器
+![](assest/Pasted%20image%2020240809105227.png)
+* Tomcat中有Servlet url匹配的原则, 多个servlet都能处理到同一层路径 , 精确优先原则/最长前缀匹配原则.(debug28)
+## 内置Tomcat配置和切换
+**基本介绍**
+1.SpringBoot支持的webServer: Tomcat, Jetty , Undertow
+2.配置是在application.yml完成配置的 , 和ServerProperties.java关联 , 通过源码可以查看有哪些属性
+**通过yml配置Tomcat**
+```yml
+server:  
+  port: 9999  
+  tomcat:  
+    threads:  
+      max: 10  
+      min-spare: 5  
+    accept-count: 100  
+    max-connections: 200  
+    connection-timeout: 10000
+```
+max(最大工作线程) min-spare(最小工作线程) accept-count(tomcat接受的最大排队数) max-connections(最大连接数,并发数) connection-timeout(建立连接的超时时间)
+**通过类配置Tomcat**
+```java
+@Component  
+public class TomcatConfig implements WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> {  
+    @Override  
+    public void customize(ConfigurableServletWebServerFactory factory) {  
+        factory.setPort(10000);  
+        //.....  
+    }  
+}
+```
+**切换webServer**
+[排除tomcat](#^60a438)
