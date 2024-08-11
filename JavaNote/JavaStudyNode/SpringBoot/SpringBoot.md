@@ -1346,3 +1346,403 @@ public class TomcatConfig implements WebServerFactoryCustomizer<ConfigurableServ
 ```
 **切换webServer**
 [排除tomcat](#^60a438)
+引入Undertow
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-undertow</artifactId>  
+</dependency>
+```
+## SpringBoot数据库操作
+#### JDBC+HikariDataSource
+**应用实例**
+1.要进行数据库开发, 首先要引入`data-jdbc-starter`和数据库驱动`driver`
+```xml
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-starter-data-jdbc</artifactId>  
+</dependency>  
+<dependency>  
+    <groupId>mysql</groupId>  
+    <artifactId>mysql-connector-java</artifactId>  
+</dependency>
+```
+模版解析
+这里data-jdbc引入HikariDataSource相关的包
+mysql使用了版本仲裁,及使用springboot中默认的版本
+2.配置数据源的相关信息
+```xml
+spring:  
+  datasource:  
+    url: jdbc:mysql://localhost:3306/home_furnishing?useSSL=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai  
+    username: root  
+    password: zhouxinji.119  
+    driver-class-name: com.mysql.cj.jdbc.Driver
+```
+3.编写测试类
+```java
+@SpringBootTest(classes= Application.class)  
+public class ApplicationTests {  
+    @Resource  
+    private JdbcTemplate jdbcTemplate;  
+    @Test  
+    public void contextLoads(){  
+        BeanPropertyRowMapper<Furn> rowMapper = new BeanPropertyRowMapper<>(Furn.class);  
+        List<Furn> furns = jdbcTemplate.query("SELECT * FROM furn", rowMapper);  
+        for (Furn furn : furns) {  
+            System.out.println(furn);  
+        }  
+    }  
+}
+```
+注意细节:
+`classes=Application.class`是去指定启动类是哪个
+为什么springboot默认用hikarDataSource
+* HikariCP:目前市面上非常优秀的数据源, 是springboot2默认数据源
+* Druid: 性能优秀, Druid提供性能卓越的连接池功能外, 还集成了SQL监控, 黑名单拦截等功能 , 强大的监控特性  , 通过Druid提供的监控功能, 可以清楚的知道连接池和SQL的工作情况.
+#### 整合Druid到Spirng-Boot
+官方网站: https://github.com/alibaba/druid
+**自定义方式整合Druid**
+1.引入Druid依赖
+```xml pom
+<dependency>  
+    <groupId>com.alibaba</groupId>  
+    <artifactId>druid</artifactId>  
+    <version>1.2.6</version>  
+</dependency>
+```
+2.编写配置类
+```java
+@Configuration  
+public class DruidDataSourceConfig {  
+    @Bean  
+    @ConfigurationProperties("spring.datasource")  
+    public DataSource dataSource() throws SQLException {  
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setFilters("stat,wall");  
+        return druidDataSource;  
+    }  
+}
+```
+模版解析
+1.new出来的DataSource要和配置文件建立联系`@ConfigurationProperties("spring.datasource")`
+2.为什么配置了上段代码, 就能读取到配置文件中的信息(debug38)
+注入了DruidDataSource , 默认的HikariDataSource就失效了
+3.主要是在`DataSourceAutoConfiguration.class` 的`@ConditionalOnMissingBean({DataSource.class, XADataSource.class})`
+判断如果容器有DataSource Bean就不注入默认的DataSource
+4.`druidDataSource.setFilters("stat,wall");`加入监控功能,加入防火墙功能
+
+**Druid监控功能-SQL监控**
+配置Druid的监控功能, 包括SQL监控, SQL防火墙, Web应用, Session监控
+可以用web.xml配置,也可以用本笔记中的RegistrationBean方式注入
+1.编写配置类DruidDataSourceConfig.java
+配置druid的监控页功能(放在上面的那个类中)
+```java
+@Bean  
+public ServletRegistrationBean servletRegistrationBean(){  
+    StatViewServlet statViewServlet = new StatViewServlet();  
+    ServletRegistrationBean<StatViewServlet> registrationBean = new ServletRegistrationBean<>(statViewServlet, "/druid/*");  
+    registrationBean.addInitParameter("loginUsername","druid");  
+    registrationBean.addInitParameter("loginPassword","testadmid");  
+    return registrationBean;  
+}
+```
+模版解析
+* .`registrationBean`关联到对应的视图解析(返回Druid对应的界面)
+* .`registrationBean.addInitParameter("loginUsername","druid");`前一个参数要看官方文档, 后一个参数随便,这个方法都是类似的
+2.dataSource方法中(上上面)添加`druidDataSource.setFilters("stat")`
+3.创建DruidSqlController.java模拟DB操作
+```java
+@Controller  
+public class DruidSqlController {  
+    @Resource  
+    private JdbcTemplate jdbcTemplate;  
+    @ResponseBody  
+    @GetMapping("/sql")  
+    public List<Furn> crudDB(){  
+        BeanPropertyRowMapper<Furn> rowMapper = new BeanPropertyRowMapper<>(Furn.class);  
+        List<Furn> furns = jdbcTemplate.query("select * from furn", rowMapper);  
+        for (Furn furn : furns) {  
+            System.out.println(furn);  
+        }  
+        return furns;  
+    }  
+}
+```
+**SQL防火墙功能**
+在`DruidDataSourceConfig`这个类中的dataSource方法加入`druidDataSource.setFilters("stat,wall");`着重是wall方法
+
+**Druid监控-Web关联监控**
+写相应的配置方法
+```java
+@Bean  
+public FilterRegistrationBean webStatFilter(){  
+    WebStatFilter webStatFilter = new WebStatFilter();  
+    FilterRegistrationBean<WebStatFilter> registrationBean = new FilterRegistrationBean<>(webStatFilter);  
+    registrationBean.setUrlPatterns(Arrays.asList("/*"));  
+    registrationBean.addInitParameter("exclusions","*.js");  
+    return registrationBean;  
+}
+```
+对配置方法的解析
+`registrationBean.setUrlPatterns(Arrays.asList("/*"));`默认对所有的url请求进行监控
+`registrationBean.addInitParameter("exclusions","*.js");`对特定的url进行过滤
+这个方法是查看网站的url请求情况的
+
+**Session监控**
+不需要配置,能够直接使用, 使用教程(47)
+
+**引入start方式整合druid**
+不仅能够快速整合druid而且监控功能也能跟着被自动配置
+1.把先前做的工作撤销, 避免冲突(pom.xml的引入,DruidDataSource配置类)
+然后呢,引入pom.xml的依赖
+```xml
+<dependency>  
+    <groupId>com.alibaba</groupId>  
+    <artifactId>druid-spring-boot-starter</artifactId>  
+    <version>1.1.17</version>  
+</dependency>
+```
+2.在配置文件中写相应的配置信息
+```yml
+spring:  
+  datasource:  
+    url: jdbc:mysql://localhost:3306/home_furnishing?useSSL=true&rewriteBatchedStatements=true&serverTimezone=Asia/Shanghai  
+    username: root  
+    password: zhouxinji.119  
+    driver-class-name: com.mysql.cj.jdbc.Driver  
+    #配置druid和监控功能  
+    druid:  
+      stat-view-servlet:  
+        enabled: true  
+        login-username: admin  
+        login-password: 555  
+        reset-enable: false  
+      web-stat-filter:  
+        enabled: true  
+        url-pattern: /*  
+        exclusions: '*.js,*.gif'  
+      filter:  
+        stat:  
+          slow-sql-millis: 1000  
+          log-slow-sql: true  
+          enabled: true  
+        wall:  
+          enable: true  
+          config:  
+            drop-table-allow: false
+```
+解析
+1.`stat-view-servlet`配置的是开启druid的监控功能 
+2.`web-stat-filter:`配置web监控
+3.`filter:`配置sql监控 , `stat`慢查询功能, `wall`防火墙功能 看文档
+#### 整合MyBatis
+##### springboot的方式配置mybatis
+1.引入mybaits依赖(部分)
+```xml
+<dependency>  
+    <groupId>org.mybatis.spring.boot</groupId>  
+    <artifactId>mybatis-spring-boot-starter</artifactId>  
+    <version>2.2.2</version>  
+</dependency>
+<dependency>  
+    <groupId>org.springframework.boot</groupId>  
+    <artifactId>spring-boot-configuration-processor</artifactId>  
+</dependency>
+```
+模版解析
+`spring-boot-configuration-processor`可以在编写springboot配置文件时自动完成和提示信息, 这个配置文件特指application.yml
+2.编写bean类
+3.编写Mapper接口和Mapper映射文件
+```java
+@Mapper
+public interface FurnMapper {  
+    public Furn getFurnById(Integer id);  
+}
+```
+如果不行频繁写@Mapper,那么在启动类上使用`@MapperScan`(basePackages={" "})
+FurnMapper.xml(放在resource.mapper包下)
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper  
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="org.example.mapper.FurnMapper">  
+    <select id="getFurnById" resultType="org.example.bean.Furn">  
+        select * from furn where id=#{id}    </select>  
+</mapper>
+```
+解析
+* `<mapper namespace="org.example.mapper.FurnMapper">`映射的mapper接口的全类名
+* `resultType="org.example.bean.Furn"` 可简写但需要配置
+* 将Mapper接口后面代理实现的实例放入容器中使用@Mapper注解
+4.指定扫描Mapper.xml映射文件,在yml文件配置
+```yml
+mybatis:  
+  mapper-locations: classpath:mapper/*.xml
+```
+解析
+* `classpath:mapper/*.xml`表示类路径下
+5.使用 , 在使用前 , 要引入furnMapper
+```java
+@Resource  
+private FurnMapper furnMapper;
+@Test  
+public void getFurnById(){  
+    Furn furnById = furnMapper.getFurnById(1);  
+    System.out.println("yyyy");  
+}
+```
+##### 用传统的方式配置mybaits
+方式一spirngboot配置文件中说明一下mybatis-config.xml文件的位置
+```yml
+config-location:mybaits-config.xml
+```
+解析
+1.`config-location: mybaits-config.xml`说明配置文件的位置, 但是配置文件要放在类路径下
+
+方式二:直接在yml文件中配置mybatis,代替mybatis-config.xml
+举例,配置类型别名包
+```yml
+mybatis:  
+  mapper-locations: classpath:mapper/*.xml  
+  #config-location: mybaits-config.xml  
+  type-aliases-package: org.example.bean
+```
+注意事项
+1.如果配置简单,那建议使用方式一, 如果配置比较多 , 就使用方式二
+##### CRUD实例
+1.按照上面的步骤 , 先把mapper接口和mapper.xml文件配置写好
+2.然后根据ssm规范, 写一个Service包去写对应的crud服务api
+FurnService.interface
+```java
+public interface FurnService {  
+    public Furn getFurnById(Integer id);  
+}
+```
+这个接口有很大的特点, 那就是没有使用注解
+FurnServiceImpl.java
+```java
+@Service  
+public class FurnServiceImpl implements FurnService {  
+    @Resource  
+    private FurnMapper furnMapper;  
+    @Override  
+    public Furn getFurnById(Integer id) {  
+        return furnMapper.getFurnById(id);  
+    }  
+}
+```
+`private FurnMapper furnMapper;`引入能进行crud的直接操作的方法
+`@Service`确保FurnServiceImpl被注入到容器中
+3.引入,然后使用
+ApplicationTest.java
+```java
+@Resource  
+private FurnService furnService;
+
+@Test  
+public void getFurnById(){  
+    Furn furnById = furnService.getFurnById(3);  
+    System.out.println("furn"+furnById);  
+}
+```
+`Resource`这个不能少 , 是装配mapper接口实例的关键
+4.编写对外的服务组件
+```java
+@Controller  
+public class FurnController {  
+    @Resource  
+    private FurnService furnService;  
+    @ResponseBody  
+    @GetMapping("/furn")  
+    public Furn getFurnById(@RequestParam(value="id") Integer id){  
+        Furn furnById = furnService.getFurnById(id);  
+        return furnById;  
+    }  
+}
+```
+注意事项
+1.时区问题,在bean文件中, 时间属性加`@JsonFormat`注解
+```java
+@JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+private Data birthday;
+```
+`yyyy-MM-dd`这是年月日 , `HH:mm:ss`这是时分秒
+## MyBatis-Plus
+### 基本介绍
+官方文档: https://baomidou.com
+1.MyBatis-Plus(简称MP)是一个MyBatis的增强工具, 在MyBatis的基础上只做增强不做改变, 为简化开发, 提高效率而生
+2.强大的CRUD操作, 内置通用的Mapper, 通用的Service, 通过少量的配置即可实现单表大部分CRUD操作, 更有强大的条件构造器, 满足各种类使用需求
+### 快速使用
+1.引入相关依赖, 这个前提要引入数据源
+```xml
+<dependency>  
+    <groupId>com.baomidou</groupId>  
+    <artifactId>mybatis-plus-boot-starter</artifactId>  
+    <version>3.4.3</version>  
+</dependency>
+```
+2.编写mapper接口
+```java
+@Mapper  
+public interface MemberMapper extends BaseMapper<member> {  
+    //自定义方法  
+}
+```
+解析
+* `extends BaseMapper<member>` 这个接口声明了很多方法(crud相关)
+![](assest/Pasted%20image%2020240811161844.png)
+* 如果BaseMapper提供的方法不能满足业务需求, 我们可以再开发新的方法,并在MemberMapper.xml进行配置实现
+2.编写测试方法,测试MyBatis-plus的查询
+```java
+@SpringBootTest(classes= Application.class)  
+public class ApplicationTest {  
+    @Resource  
+    private MemberMapper memberMapper;  
+    @Test  
+    public void testMemberMapper(){  
+        member member = memberMapper.selectById(1);  
+        System.out.println(member);  
+    }  
+}
+```
+3.配置日志方面和以前的MyBatis是一样的
+
+4.编写Service接口
+MemberService.interface
+```java
+public interface MemberService extends IService<member> {  
+    //自定义方法``  
+}
+```
+解析
+* .传统方式 在接口中定义方法,然后会有一个实现类与之对应
+* .在mybaits-plus中,可以继承父接口IService
+* .这个IService接口声明了很多方法, 比如curd都有
+![](assest/Pasted%20image%2020240811170115.png)
+* .如果默认提供的方法不够,可以自定义
+5.编写实现类
+```java
+@Service
+public class MemberServiceImpl extends ServiceImpl<MemberMapper, member> implements MemberService {  
+    //实现自定义接口的方法  
+}
+```
+解析
+1.传统的mybatis是需要实现对应的接口的, 在mybatis-plus中 , 开发Service实现类,需要继承ServiceImpl
+2.ServiceImpl类实现了IService接口
+
+6.编写对外提供url的controller组件
+```java
+@Controller  
+public class MemberController {  
+    @Resource  
+    private MemberService memberService;  
+    @ResponseBody  
+    public member getMemberById(@RequestParam(value="id")Integer id){  
+        member byId = memberService.getById(id);  
+        return byId;  
+    }  
+}
+```
