@@ -1746,3 +1746,21 @@ public class MemberController {
     }  
 }
 ```
+### 注意事项
+1.@TableName作用
+```java
+@Data  
+@TableName("member")
+public class member {  
+    private Integer id;  
+    private String username;  
+    private String password;  
+    private String email;  
+}
+```
+解析
+如果这个类名member和表名member一致, 可以映射上, 则@TableName可以省略
+如果这个类名member和表名不一致 , 则可以通过@TableName指定
+底层的映射, 默认都是先转换成小写, 然后进行映射的, 所以在mysql建表的时候, 阿里开发规范指定,任何表的首字母不能是大写 , @TableName里面的内容要指定表名
+ 2.MyBatisX快速开发插件
+ 
