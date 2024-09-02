@@ -5,6 +5,101 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a487447e-4149-4a4b-a519-a90026c9fe63" name="Changes" comment="更新mybatis的使用方法">
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Java/assest/225404D9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Java/assest/225411BA.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Java/assest/22549273.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240726165117.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211013.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211431.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211952.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719214551.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720143831.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720163547.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720191247.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720200755.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240802155637.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713203542.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713203609.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713210332.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713210348.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713211027.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713215417.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714100549.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714101048.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714103433.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714104048.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812101730.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812104617.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812105228.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812105423.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812110229.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812154651.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812162536.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812164328.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812191410.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812191957.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192216.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812193709.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812194357.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812202209.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203337.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203403.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203412.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812205720.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/Spring.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723151919.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723152901.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723153502.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165559.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165715.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165727.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723212224.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724085323.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724090545.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724091918.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/application.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730191326.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730200549.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730200844.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201824.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201850.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201928.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730204437.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731001004.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731145444.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731161952.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731163024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731163148.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240801145645.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802094547.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802170852.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802191920.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804095635.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804100133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804101637.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804205825.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240805214309.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240805214849.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806093642.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806101251.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806102659.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806104402.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807165314.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807184159.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807185718.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807202525.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240808172015.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240809105227.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240811161844.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240811170115.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240724101607.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722185133.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722190706.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/javaweb/javaweb.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/JavaNote/JavaStudyNode/ssm/ssm.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.idea/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.idea/Javanode.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.idea/misc.xml" beforeDir="false" />
@@ -35,6 +130,8 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.obsidian/plugins/obsidian-image-toolkit/manifest.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.obsidian/plugins/obsidian-image-toolkit/styles.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.obsidian/workspace.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/.trash/类路径和Java相对路径.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/2024-08-02.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/.obsidian/app.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/.obsidian/appearance.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/.obsidian/community-plugins.json" beforeDir="false" />
@@ -58,6 +155,9 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/.obsidian/workspace.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/JavaSE.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/225404D9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/225411BA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/22549273.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240716160102.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240716160453.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240716160616.png" beforeDir="false" />
@@ -69,9 +169,10 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240717102859.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240717103023.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240717103226.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/assest/Pasted image 20240726165117.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java/设计模式.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/JavaNote/.obsidian/CodeBlock.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Java面筋/MySQL/1.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/LICENSE" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/MyBatis.md" beforeDir="false" />
@@ -91,6 +192,15 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240718104349.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240718104700.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240718163733.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211013.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211431.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719211952.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240719214551.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720143831.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720163547.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720191247.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240720200755.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/Pasted image 20240802155637.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/屏幕截图 2024-07-16 142447.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/屏幕截图 2024-07-16 142506.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/屏幕截图 2024-07-16 201117.png" beforeDir="false" />
@@ -98,6 +208,35 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MyBatis/assest/屏幕截图 2024-07-18 091634.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL数据模型/数据模型.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713203542.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713203609.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713210332.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713210348.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713211027.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240713215417.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714100549.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714101048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714103433.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240714104048.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812101730.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812104617.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812105228.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812105423.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812110229.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812154651.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812162536.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812164328.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812191410.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812191957.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192216.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812193709.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812194357.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812202209.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203337.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203403.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203412.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812205720.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DCL/DCL语句.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DDL/DDL语句.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/DML/DML语句.md" beforeDir="false" />
@@ -106,16 +245,6 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/SQL通用语法以及分类.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/SQl执行顺序.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/SQl/启动mysql.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713203542.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713203609.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713210332.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713210348.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713211027.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240713215417.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240714100549.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240714101048.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240714103433.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/assest/Pasted image 20240714104048.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/函数/字符串函数.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/函数/数值函数.md" beforeDir="false" />
@@ -130,12 +259,63 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/MySQL/约束/默认约束.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/README.en.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/Spring.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723151919.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723152901.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723153502.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165559.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165715.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723165727.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240723212224.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724085323.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724090545.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/Spring/assest/Pasted image 20240724091918.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/application.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730191326.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730200549.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730200844.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201824.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201850.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730201928.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240730204437.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731001004.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731145444.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731161952.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731163024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240731163148.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240801145645.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802094547.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802170852.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240802191920.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804095635.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804100133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804101637.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240804205825.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240805214309.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240805214849.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806093642.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806101251.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806102659.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240806104402.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807165314.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807184159.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807185718.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240807202525.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240808172015.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240809105227.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240811161844.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringBoot/assest/Pasted image 20240811170115.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240714182244.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240714190901.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240714202359.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240715105104.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/SpringMVC/assest/Pasted image 20240724101607.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/gid命令.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722185133.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240722190706.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/javaweb/javaweb.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/ArrayList/ArrayList底层结构和源码.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/.obsidian/app.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/Java/.obsidian/appearance.json" beforeDir="false" />
@@ -321,30 +501,67 @@
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/单例设计模式.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/模版设计模式.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java基础/设计模式/设计模式.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/IDE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Pasted image 20240307132816.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Pasted image 20240308161724.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Pasted image 20240308162427.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/Welcome.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/js基础.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/js数据类型.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/Javascript/javaSricpt快速入门以及开发事项.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/Javascript/jj.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/css/css简介.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/HTML介绍.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/div标签/div标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/html常用标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/html的标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/input标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/span标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/表单/form表单标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/表单/表单提交.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/表单/表单格式化.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/表单/表单综合案例.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/html标签/表格标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/前端/html/select option textarea标签.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/java技术栈/总体框架.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/ssm/ssm.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/JavaNote/JavaStudyNode/日常代码问题.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/CSS.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240728194547.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240728210408.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240729100057.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240729102206.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240729102630.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240729190514.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240729213915.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730085035.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730085214.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730090050.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730091249.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730091826.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240730161352.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240731105149.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240731111333.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240801092906.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240801094407.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240801102341.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240801104638.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/CSS/assest/Pasted image 20240801111213.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/HTML5标签.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722144801.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722145018.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722150716.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722152446.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722154610.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240722155651.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726162501.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726162850.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726163229.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726163336.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726170549.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240726170859.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727154307.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727160807.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727191658.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727192634.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727204655.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727204737.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727204816.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727212518.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727212645.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727212705.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727212728.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727212942.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727220344.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240727221707.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240728140401.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240728145320.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240728152521.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/前端/HTML5/assest/Pasted image 20240728153049.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/杂记/assest/Pasted image 20240726152636.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/杂记/assest/Pasted image 20240726154207.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/杂记/axios.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/杂记/数据交换和异步请求.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/算法/assest/Pasted image 20240731212044.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/算法/java在算法中常用的api.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaNote/JavaStudyNode/算法/数据结构.md" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,6 +615,7 @@
       <workItem from="1721206865315" duration="1320000" />
       <workItem from="1721225232268" duration="824000" />
       <workItem from="1721310249600" duration="339000" />
+      <workItem from="1723552135262" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="更新图像">
       <option name="closed" value="true" />
@@ -495,7 +713,15 @@
       <option name="project" value="LOCAL" />
       <updated>1721273031951</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="更新mybatis的使用方法">
+      <option name="closed" value="true" />
+      <created>1723552166700</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723552166700</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

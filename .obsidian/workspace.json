@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "55c95015e275a39f",
+        "id": "eafa91b8c4f75be5",
         "type": "tabs",
         "children": [
           {
-            "id": "a972b8d580cb4214",
+            "id": "93199e05a94b21c6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/gid命令.md",
+                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -85,7 +86,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/gid命令.md",
+                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +103,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/gid命令.md",
+                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +126,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/gid命令.md"
+                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md"
               }
             }
           }
@@ -146,19 +147,25 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a972b8d580cb4214",
+  "active": "93199e05a94b21c6",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812205720.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203412.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203403.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812203337.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812202209.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812194357.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812193709.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192216.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812192024.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240812191957.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/子查询.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240901171529.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/0AB4A99E.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831193203.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831191024.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831190728.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831185829.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831185649.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831184924.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831165325.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831163356.png",
+    "2024-08-02.md",
+    "JavaNote/JavaStudyNode/MySQL/数据库的基本介绍/数据库三层结构.md",
+    "JavaNote/JavaStudyNode/MySQL/数据库的基本介绍/数据库的基本介绍.md",
+    "JavaNote/JavaStudyNode/gid命令.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL数据模型/数据模型.md",
     "前端/CSS/CSS.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
@@ -178,18 +185,12 @@
     "前端/HTML5/HTML5标签.md",
     "JavaNote/JavaStudyNode/Spring/Spring.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "2024-08-02.md",
     "JavaNote/JavaStudyNode/SpringBoot/[](.md",
     "算法/数据结构.md",
     "算法/assest",
-    "JavaNote/JavaStudyNode/Java/JavaSE.md",
-    "算法/java在算法中常用的api.md",
     "JavaNote/JavaStudyNode/SpringBoot/assest",
     "JavaNote/JavaStudyNode/SpringBoot",
     "JavaNote/未命名",
-    "前端/CSS/1407d5.md",
-    "前端/CSS/^1407d5.md",
-    "前端/CSS/^组合选择器.md",
     "前端/CSS/assest",
     "前端/CSS",
     "杂记/assest",
