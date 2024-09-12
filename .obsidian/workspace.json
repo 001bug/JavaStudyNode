@@ -8,12 +8,12 @@
         "type": "tabs",
         "children": [
           {
-            "id": "93199e05a94b21c6",
+            "id": "d2b40bc342c59aba",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+                "file": "前端/ES6新特性/ES6新特性.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "路径",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+                "file": "前端/ES6新特性/ES6新特性.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+                "file": "前端/ES6新特性/ES6新特性.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -126,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md"
+                "file": "前端/ES6新特性/ES6新特性.md"
               }
             }
           }
@@ -135,7 +134,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -147,54 +147,91 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "93199e05a94b21c6",
+  "floating": {
+    "id": "79ffc0b346e3f092",
+    "type": "floating",
+    "children": [
+      {
+        "id": "ed486aedc381e312",
+        "type": "window",
+        "children": [
+          {
+            "id": "67076724b3d51e82",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "c9ff1b16126edcab",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "前端/ES6新特性/Ajax.md",
+                    "mode": "source",
+                    "source": false
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical",
+        "x": -1771,
+        "y": -314,
+        "width": 1231,
+        "height": 882,
+        "maximize": false,
+        "zoom": 0
+      }
+    ]
+  },
+  "active": "d2b40bc342c59aba",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/子查询.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240901171529.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/0AB4A99E.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831193203.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831191024.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831190728.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831185829.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831185649.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831184924.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831165325.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240831163356.png",
-    "2024-08-02.md",
-    "JavaNote/JavaStudyNode/MySQL/数据库的基本介绍/数据库三层结构.md",
-    "JavaNote/JavaStudyNode/MySQL/数据库的基本介绍/数据库的基本介绍.md",
+    "前端/ES6新特性/ES6新特性.md",
+    "前端/ES6新特性/Ajax.md",
+    "前端/ES6新特性/assest/Pasted image 20240910181525.png",
+    "前端/ES6新特性/assest/Pasted image 20240910175609.png",
+    "前端/ES6新特性/assest",
+    "算法/二叉树.md",
     "JavaNote/JavaStudyNode/gid命令.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL数据模型/数据模型.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
     "前端/CSS/CSS.md",
+    "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
+    "前端/HTML5/HTML5标签.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "未命名 1.canvas",
+    "未命名.canvas",
+    "算法/数据结构.md",
+    "算法/java在算法中常用的api.md",
+    "前端/前端技术栈和后端技术栈.md",
+    "前端/ES6新特性",
+    "前端/assest/Pasted image 20240904193524.png",
+    "前端/assest",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
-    "[类路径和Java相对路径](../Java/类路径和Java相对路径.md",
-    "JavaNote/JavaStudyNode/Java面筋/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/java技术栈/总体框架.md",
-    "JavaNote/JavaStudyNode/java技术栈/IDE.md",
-    "JavaNote/JavaStudyNode/java技术栈/js基础.md",
-    "JavaNote/JavaStudyNode/java技术栈/js数据类型.md",
-    "JavaNote/JavaStudyNode/java技术栈/前端/css/css简介.md",
+    "JavaNote/JavaStudyNode/ssm/未命名.md",
+    "JavaNote/JavaStudyNode/ssm/解释.md",
+    "JavaNote/JavaStudyNode/ssm/test.md",
+    "JavaNote/JavaStudyNode/Maven/Maven.md",
+    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903163946.png",
+    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903152144.png",
+    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903150039.png",
+    "JavaNote/JavaStudyNode/Maven/[jar].md",
+    "JavaNote/JavaStudyNode/Maven/assest",
+    "JavaNote/JavaStudyNode/Maven",
+    "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
+    "JavaNote/JavaStudyNode/SpringBoot+Vue/assest",
+    "JavaNote/JavaStudyNode/SpringBoot+Vue",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902175244.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/造成id相同的情景.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902164415.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902162712.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902131350.png",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/子查询.md",
     "[类路径和Java相对路径](../Java",
     "[类路径和Java相对路径](..",
-    "前端/HTML5/HTML5标签.md",
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "JavaNote/JavaStudyNode/SpringBoot/[](.md",
-    "算法/数据结构.md",
-    "算法/assest",
-    "JavaNote/JavaStudyNode/SpringBoot/assest",
-    "JavaNote/JavaStudyNode/SpringBoot",
-    "JavaNote/未命名",
-    "前端/CSS/assest",
-    "前端/CSS",
-    "杂记/assest",
-    "黑马前端笔记/assets",
-    "未命名.canvas"
+    "算法/assest"
   ]
 }

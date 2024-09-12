@@ -1068,7 +1068,7 @@ EXPLAIN SELECT * FROM s1 INNER JOIN s2;
 * 被驱动表是驱动表的副表
 * 用到多少个表 , 就有多少条记录
 ##### id
-id是执行计划中每个查询块的标识符. 通常'id'用来区分查询中不同子查询块 , 正常来说一个select 一个 id , 也有例外的可能 , 查询优化器做了优化, 有几个select就有几个id(不一定)
+id是执行计划中每个**查询块的标识符**. 通常'id'用来区分查询中不同子查询块 , 正常来说一个select 一个 id , 也有例外的可能 , 查询优化器做了优化, 有几个select就有几个id(不一定)
 ```sql
 explain select * from s1 where key1='a';
 ```
@@ -1085,6 +1085,7 @@ explain select * from s1 where key1 in(select key2 from s2 where common_field = 
 ```
 ![](assest/Pasted%20image%2020240830194339.png)
 * 在一个查询语句中，每一个 `SELECT` 关键字代表一个查询块。如果多个表出现在同一个 `SELECT` 关键字下，它们的 `id` 会是相同的，因为它们属于同一个查询块。`EXPLAIN` 中的 `id` 只区分查询块，而不是表本身。查询优化器进行了优化 , 所以只有一个id , 查询优化器可能对涉及子查询的查询语句进行重写,转变为多表查询的操作 ^9139e2
+* [[造成id相同的情景]]
 
 ```sql
 explain select * from s1 where key1 in(select key1 from s2) or key2 ='a';
@@ -1279,18 +1280,58 @@ explain select * from s1 where key1 > 'a' and key1 < 'b';
 ```
 
 11.index
-当我们可以使用索引覆盖 , 但需要扫描全部的索引记录时 , 该表的访问方法就是`index`
+当我们可以使用索引覆盖 , **但需要扫描全部的索引记录时** , 该表的访问方法就是`index`
+理解:当你执行一个查询时，如果查询所需的所有数据字段都能够从索引中获取（即，不需要回到数据表中查找额外的信息) , 并且查询需要扫描索引中的所有记录
 ```sql
 explain select key_part2 from s1 where key_part3 = 'a';
 ```
 索引覆盖 , `index idx_key_part(key+part1, key_part2, key_part3)`这三个构成一个复合索引
-key_part3在复合索引里面 , 查询的字段也在索引里面 , 干脆就直接遍历索引查出数据
-**possible_keys和key**
-**key_len**
-**ref**
-**rows**
-**filtered**
-**Extra**
+key_part3在复合索引里面 , 查询的字段也在索引里面 , 干脆就直接遍历索引查出数据. 好处, 索引存的数据少 , 数据页少  , 这样可以减少io次数
+总结特点: key_part2 和 key_part3都是联合索引的一部分
+##### possible_keys和key
+在explain语句输出的执行计划中 , possible_keys列表示在某个查询语句中 , 对某个表执行`单表查询时可能用`到的索引有哪些 . 一般查询涉及到的字段上若存在索引, 则该索引将被列出 , 但不一定被查询使用 . key列表示`实际用到`的索引有哪些 , 如果为null , 则没有使用索引
+```sql
+explain select * from s1 where key1 > 'z' and key3 = 'a'; 
+```
+![](assest/Pasted%20image%2020240902131350.png)
+即使possible_key再多 , 也只能用一个 , 因为索引只能用一个.  他要选出一个来用 , 要么采用索引合并
+##### key_len
+key_len : 实际使用到的索引长度, key_len越小 索引效果越好 , 单个也存储的索引越多 , 缓存放下的更多 , 更加减少了IO操作 , 这里的长度表示字节数
+**但是也有例外 , 在联合索引里面 , 命中一次key_len加一次长度 . 越长代表精度越高 , 效果越好**
+细节
+```sql
+explain select * from s1 where key2 = 10126;
+```
+结果key_len = 5; 本身key2是int 类型是4个字节 , 因为它收到了unique限制 , 所以它的索引大小应该是5个字节(遇到可Null也要把字节大小加1)
+```sql
+explain select * from s1 where key_part1 = 'a';
+```
+会发现. 它的key_len的结果是303 , key_part1的类型是varchar(100) 长度是100个字符 , 然后是变长的字符需要+2字符记录长度 , 再加上1 记录非空 , 还用采用utf-8 , 一个字符3个字节 所以是100`*`3+2+1
+##### rows
+预估需要读取的记录条数 , 值越小越好 , 通常与filtered一起使用
+##### filtered
+越大越好 , filtered的值指**返回结果**的行占**需要读到的行**(rows列的值)的百分比 , 通俗理解, 比如读了100rows , filtered是10%那么就说明还要对着100条进行过滤. 如果使用的是索引执行的单表扫描 , 那么计算时需要估计出满足除使用到对应索引的搜索 条件外的其他搜索条件的记录有多少条
+```sql
+explain select * from s1 where key1 > 'z' and common_field = 'a';
+```
+![](assest/Pasted%20image%2020240902164415.png)
+注意: 对于单表查询来说 , filtered列的值没什么意义 , 我们要关注在连接查询中驱动表对应的执行计划记录的filtered值 , 它决定了被驱动表要执行的次数(即: rows`*`filtered)
+```sql
+explain select * from s1 inner join s2 on s1.key1 = s2.key1 where s1.common_field='a';
+```
+![](assest/Pasted%20image%2020240902175244.png)
+##### Extra
+`Extra`列是用来说明一些额外信息的 , 包含不合适在其他列中显示但十分重要的额外信息. 我们可以通过这些额外信息来`更准确的理解MySQL到底将如何执行给定的查询语句`. MySQL提供的额外信息有好几个
+1.No tables used
+当查询语句没有from字句时将会提供该额外信息. 比如:
+```sql
+explain select 1;
+```
+2.Impossible where
+查询语句的where子句永远为`false`时将会提示该额外信息
+```sql
+explain select * from s1 where 1!=1;
+```
 ### EXPLAIN进一步使用
 #### 1.EXPLAIN四种输出格式
 ##### 传统格式

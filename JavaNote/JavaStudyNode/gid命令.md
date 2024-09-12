@@ -1,4 +1,4 @@
-**git基本配置**
+`**git基本配置**
 1. 安装Git 后, 首先要设置你的用户名称和e-mail 地址, 因为每次Git 提交都会使用该信息
 ```
 git config --global user.name ""

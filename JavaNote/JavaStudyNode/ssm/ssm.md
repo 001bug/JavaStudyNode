@@ -49,6 +49,7 @@
       <artifactId>spring-jdbc</artifactId>  
       <version>${spring.version}</version>  
     </dependency>  
+    <!--支持TypeScript-->
     <dependency>  
       <groupId>org.springframework</groupId>  
       <artifactId>spring-tx</artifactId>  
@@ -344,7 +345,7 @@ resources/mybatis-config.xml
 1.快速入门的增
 ```java
 public class XxxMapper{
-
+	
 }
 ```
 
