@@ -8,18 +8,34 @@
         "type": "tabs",
         "children": [
           {
-            "id": "d2b40bc342c59aba",
+            "id": "17dc40060e4af99c",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "未命名 1.canvas",
+                "viewState": {
+                  "x": 0,
+                  "y": 0,
+                  "zoom": 0
+                }
+              }
+            }
+          },
+          {
+            "id": "22b44e4f15fcee43",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md",
+                "file": "thinking.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +64,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "路径",
+                "query": "生命周期",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -85,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md",
+                "file": "thinking.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md",
+                "file": "thinking.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +141,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md"
+                "file": "thinking.md"
               }
             }
           }
@@ -147,91 +163,54 @@
       "command-palette:打开命令面板": false
     }
   },
-  "floating": {
-    "id": "79ffc0b346e3f092",
-    "type": "floating",
-    "children": [
-      {
-        "id": "ed486aedc381e312",
-        "type": "window",
-        "children": [
-          {
-            "id": "67076724b3d51e82",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "c9ff1b16126edcab",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "前端/ES6新特性/Ajax.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
-          }
-        ],
-        "direction": "vertical",
-        "x": -1771,
-        "y": -314,
-        "width": 1231,
-        "height": 882,
-        "maximize": false,
-        "zoom": 0
-      }
-    ]
-  },
-  "active": "d2b40bc342c59aba",
+  "active": "22b44e4f15fcee43",
   "lastOpenFiles": [
+    "未命名 1.canvas",
+    "thinking.md",
+    "未命名.canvas",
+    "前端/Vue/Vue.md",
+    "前端/Vue/assest/Pasted image 20240918203201.png",
+    "JavaNote/JavaStudyNode/Maven/Maven.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+    "前端/HTML5/HTML5标签.md",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "前端/CSS/CSS.md",
+    "前端/Vue/事件冒泡.md",
+    "前端/Vue/事件.md",
+    "前端/Vue/事件对象.md",
+    "前端/Vue/assest/Pasted image 20240914083129.png",
+    "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/[](字符流).md",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324190500.png",
+    "JavaNote/JavaStudyNode/java基础/Java高级",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324190448.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324185628.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324183919.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323165723.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324182621.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323163211.png",
+    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323163004.png",
+    "JavaNote/JavaStudyNode/java基础/Java高级/assest",
     "前端/ES6新特性/ES6新特性.md",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "前端/Vue/assest",
+    "前端/Vue",
     "前端/ES6新特性/Ajax.md",
-    "前端/ES6新特性/assest/Pasted image 20240910181525.png",
-    "前端/ES6新特性/assest/Pasted image 20240910175609.png",
     "前端/ES6新特性/assest",
     "算法/二叉树.md",
     "JavaNote/JavaStudyNode/gid命令.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
-    "前端/CSS/CSS.md",
-    "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
-    "前端/HTML5/HTML5标签.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "未命名 1.canvas",
-    "未命名.canvas",
     "算法/数据结构.md",
     "算法/java在算法中常用的api.md",
     "前端/前端技术栈和后端技术栈.md",
     "前端/ES6新特性",
-    "前端/assest/Pasted image 20240904193524.png",
     "前端/assest",
-    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/ssm/未命名.md",
-    "JavaNote/JavaStudyNode/ssm/解释.md",
-    "JavaNote/JavaStudyNode/ssm/test.md",
-    "JavaNote/JavaStudyNode/Maven/Maven.md",
-    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903163946.png",
-    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903152144.png",
-    "JavaNote/JavaStudyNode/Maven/assest/Pasted image 20240903150039.png",
-    "JavaNote/JavaStudyNode/Maven/[jar].md",
     "JavaNote/JavaStudyNode/Maven/assest",
     "JavaNote/JavaStudyNode/Maven",
-    "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
-    "JavaNote/JavaStudyNode/SpringBoot+Vue/assest",
-    "JavaNote/JavaStudyNode/SpringBoot+Vue",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902175244.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/造成id相同的情景.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902164415.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902162712.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/assest/Pasted image 20240902131350.png",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/子查询.md",
-    "[类路径和Java相对路径](../Java",
-    "[类路径和Java相对路径](..",
-    "算法/assest"
+    "JavaNote/JavaStudyNode/SpringBoot+Vue/assest"
   ]
 }
