@@ -1,3 +1,4 @@
+# Vue2
 ## Vue的概述以及思想
 **Vue的简介**
 Vue全名为Vue.js , 是一个用于构建用户界面的渐进式JavaScript框架 . 它的核心是让程序员专注于视图层, 适合用于开发单页面应用
@@ -496,31 +497,34 @@ Vue.js 提供了多种**事件修饰符**，可以简化事件处理逻辑。修
 </html>
 ```
 在这个例子中 , 只有id为app的`<div>`标签下的才能使用这个组件
+**注意事项**
+组件定义需要放置在new Vue()前 , 否则组件注册会失败
 ## 生命周期和监听函数
 **生命周期和钩子函数的概述**
 Vue的生命周期指的是一个Vue实例从创建到销毁的过程 , 整个过程分为多个阶段 , Vue为每个阶段提供了对应的钩子函数 , 让我们可以在特定的时间点执行代码. Vue的生命周期大概分为四个主要阶段:
+**1.创建 2.初始化数据 3.编译模版 4.挂载DOM 5.渲染-更新-渲染, 6.卸载等一系列过程.**
 ![](assest/Pasted%20image%2020240918203201.png)
-对上面内容的解释
+对上面内容的解释[[dom加载和渲染]]
 * `new Vue()` new了一个Vue的实例对象 , 此时就会进入组件的创建过程.
 
 * init Events & Lifecycle初始化组件的事件和声明周期
 
-* `beforeCreate` 组件创建之后遇到的第一个声明周期函数 , 这个阶段data和methods以及dom结构都末被初始化, 也就是获取不到data的值 , 不能调用methods中的函数
+* ==`beforeCreate`== 组件创建之后遇到的第一个声明周期函数 , 这个阶段data和methods以及dom结构都末被初始化, 也就是获取不到data的值 , 不能调用methods中的函数
 
 * `Init injections & reactivity` 这个阶段中 , 正在初始化data和methods中的方法
 
-* `created`这个阶段组件的data和methods中的方法已初始化结束 , 可以访问 , 但是dom结构末初始化, 页面末渲染(这个阶段通常会发起Ajax请求)
+* ==`created`==这个阶段组件的data和methods中的方法已初始化结束 , 可以访问 , 但是dom结构末初始化, 页面末渲染(这个阶段通常会发起Ajax请求)
 
 * 编译模版结构(在内存)
 
-* `beforeMount` 当模版在内存中编译完成 , 此时内存中的模版结构还末渲染至页面上 , 看不到真实的数据
+* ==`beforeMount`== 当模版在内存中编译完成 , 此时内存中的模版结构还末渲染至页面上 , 看不到真实的数据
 
 * `Create vm.$el and replace 'el' with it` 这一步,再在吧内存中渲染好的模版结构替换至真实的dom结构也就是页面上
 
-* `mounted`此时 , 页面渲染好 , 用户看到的是真实的页面数据 , 生命周期创建阶段完毕 , 进入运行中的阶段
+* ==`mounted`==此时 , 页面渲染好 , 用户看到的是真实的页面数据 , 生命周期创建阶段完毕 , 进入运行中的阶段
 
 2. 生命周期运行中
-* `beforeUpdate`当执行此函数 , 数据池的数据新的 , 但是页面是旧的
+* ==`beforeUpdate`==当执行此函数 , 数据池的数据新的 , 但是页面是旧的
 
 * `Virtual DOM re-render and patch` 根据最新的data数据 , 重新渲染内存中的模版结构 , 并把渲染好的模版结构 , 替换至页面上
 
@@ -528,3 +532,408 @@ Vue的生命周期指的是一个Vue实例从创建到销毁的过程 , 整个�
 
 * beforeDestroy 当执行此函数时,组件即将被摧毁 , 但是还没有真正开始销毁 , 此时组件的`data`,`methods`数据或方法还可被调用
 
+* `Teardown`注销组件和事件监听
+
+* `destroyed`组件已经完成了销毁 
+## Vue2脚手架模块开发
+### Vue脚手架开发的环境准备
+**1.搭建Vue脚手架工程 , 需要使用到NPM(node package manager), npm是随nodejs安装的一款包管理工具 , 类似Mave.**
+
+**npm的简介**
+`npm`（Node Package Manager）是 Node.js 的包管理器，它允许你管理 JavaScript 项目中的依赖库。通过 `npm`，你可以：
+- **安装包**：下载并安装 JavaScript 代码包，如库或框架（例如 Vue.js、React、Express 等）。
+- **管理依赖**：跟踪并管理项目中的外部依赖项。
+- **运行脚本**：通过 `npm scripts` 可以自动化运行各种任务，如测试、编译等。
+- **发布包**：如果你编写了一个可以复用的库，可以通过 `npm` 发布到 npm 注册表中，供其他开发者使用。
+
+**node.js的简介**
+Node.js 是一个基于 **Chrome V8 JavaScript 引擎** 构建的 **JavaScript 运行时环境**。它允许开发者在 **服务器端** 运行 JavaScript 代码，而不仅仅是像传统的 JavaScript 那样只在浏览器端执行。
+
+**webpack的简介**
+**Webpack** 是一个**模块打包工具**，广泛用于现代 JavaScript 应用程序的开发。它将项目中的各种资源（如 JavaScript 文件、CSS、图片等）作为模块进行管理，并打包成一个或多个优化后的文件，供浏览器使用。和jar包有一点点的类似
+
+**搭建Vue脚手架流程**
+1. 安装node.js 注意 , 安装后要用`node -v`检查一下是否安装成功
+2. 安装npm 注意 , 安装前要删除之前的cli版本`npm uninstall vue-cli -g`,然后`npm install cnpm@7.1.0 -g`
+3. 然后安装webpack , 先要设置淘宝镜像`npm config set registry https://registry.npm.taobao.org`接着安装webpack
+4. 安装Vue-Cli(Vue命令窗口) , 安装指令`npm install -g @vue/cli@4.0.3`
+5. 使用webpack创建vue脚手架项目
+![](assest/Pasted%20image%2020240920185502.png)
+![](assest/Pasted%20image%2020240920185509.png)
+最后要运行项目, 指令是`npm run dev`
+### Vue项目结构
+先把创建好的Vue项目拖到idea打开
+![](assest/Pasted%20image%2020240920190132.png)1.config
+这个文件里面 , `dev.env.js`是**开发环境的**配置 , `index.js`是主配置文件 , 包括webpack和开发服务器配置, `prod.env.js`**生产**环境的配置 , `test.env.js`测试环境的配置
+2.src
+`assets/`主要存放静态资源, 如图片 , 字体等 , 会经过Webpack处理
+`components/`:存放Vue组件的文件夹, 里面的组件是可以复用的模块化代码
+3.router
+这个目录下存放路由文件 , 路由器/表
+3.App.vue
+根组件, 所有的页面和组件都会挂载到这个组件上, 是项目的主体但也, 这里可以显示路由的视图
+4.main.js
+main.js是核心文件, 应用的入口文件, 通常用来初始化Vue实例, 挂载根组件 , 指定el,router,component,template
+5.static/文件夹
+用于存放不经过Webpack处理的静态资源 , 例如图标 , 外部库等. 因为这些资源是直接复制到构建输出目录, 不需要打包处理的文件(js的第三方库)
+6.package.json
+项目的核心配置文件 , 定义了项目的依赖, 版本等信息类似于java的maven
+7.index.html
+index.html是项目的首页, 这里定义了一个div id=app
+
+**Vue请求界面执行流程**
+![](assest/Pasted%20image%2020240922161134.png)
+![](assest/Pasted%20image%2020240922161139.png)
+
+**Vue项目结构的总结**
+因为VueCLI默认生成的项目代码使用了很多简写, 造成了理解的困难
+* 整个页面渲染过程中, main.js是中心 , 也是连接各个组件,路由器的关键
+main.js的完整写法
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router/index.js'
+
+Vue.config.productionTip=false
+
+new Vue({
+	el:'#app',//挂载到index.html的<div id="app"></div>
+	router:router,//第二个router是import router from './router'
+	components:{'App':App},//因为名字相同,可以省略
+	template:'<App/>'//<App/>中的App是上面components引入的组件的名字
+})
+```
+
+**常用操作, 路由切换**
+**1.在component目录下添加vue组件**
+```javascript
+<script setup>  
+  
+</script>  
+  
+<template>  
+<div>  
+  <h1>Hello ,{{name}}</h1>  
+</div>  
+</template>  
+<script>  
+export default{  
+  data(){  
+    return{  
+      name:"mary"  
+    };  
+  }  
+};  
+</script>  
+<style scoped>  
+  
+</style>
+```
+`<template>`标签是用来写html页面的. `<script>`标签是用来写数据池的. `<style scoped>`是用来写css样式的
+
+**2.添加路由 , 在router文件夹下的index.js**
+```javascript
+import Vue from 'vue'  
+import Router from 'vue-router'  
+import HelloWorld from '@/components/HelloWorld'  
+import hello from "../components/hello.vue";  
+  
+Vue.use(Router)  
+  
+export default new Router({  
+  routes: [  
+    {  
+      path: '/',  
+      name: 'HelloWorld',  
+      component: HelloWorld  
+    },  
+    {  
+      path:'/hello',  
+      name:'hello',  
+      component:hello  
+    }  
+  ]  
+})
+```
+注意包的引入
+## ElementUI
+ElementUI的官网:https://element.eleme.cn/#/zh-CN
+
+1.引入到项目的方法 , 打开项目文件的cmd然后键入`npm i element-ui@2.12.0`,如果是用`idea`更方便 , 在命令窗口键入上面的指令
+
+2.修改main.js
+```javascript
+// The Vue build version to load with the `import` command  
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.  
+import Vue from 'vue'  
+import App from './App'  
+import router from './router'  
+import ElementUI from 'element-ui'  
+import 'element-ui/lib/theme-chalk/index.css'  
+Vue.use(ElementUI)  
+Vue.config.productionTip = false  
+  
+/* eslint-disable no-new */  
+new Vue({  
+  el: '#app',  
+  router,  
+  components: { App },  
+  template: '<App/>'  
+})
+```
+
+3.在自己的vue组件中使用ElementUI组件
+```javascript
+<script setup>  
+  
+</script>  
+  
+<template>  
+<div>  
+  <h1>Hello ,{{name}}</h1>  
+  <el-row>  
+    <el-button>默认按钮</el-button>  
+    <el-button type="primary">主要按钮</el-button>  
+    <el-button type="success">成功按钮</el-button>  
+    <el-button type="info">信息按钮</el-button>  
+    <el-button type="warning">警告按钮</el-button>  
+    <el-button type="danger">危险按钮</el-button>  
+  </el-row>  
+</div>  
+</template>  
+<script>  
+export default{  
+  data(){  
+    return{  
+      name:"mary"  
+    };  
+  }  
+};  
+</script>  
+<style scoped>  
+  
+</style>
+```
+## Axios
+**Axios的概念**
+**Axios 是一个基于 Promise** 的 HTTP 客户端，用于浏览器和 Node.js 环境下发送 HTTP 请求。它能够帮助开发者与后端服务器进行交互，获取数据或提交数据。Axios 简单易用，广泛应用于 Vue、React 等前端框架中。
+官方文档:https://javasoho.com/axios/
+本质是对Promise的封装
+
+example
+```javascript
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>myhomework</title>  
+</head>  
+<body>  
+<div id="app">  
+    <h1>{{msg}}</h1>  
+    <table border="1" width="200">  
+        <tr>  
+            <td>名字</td>  
+            <td>年龄</td>  
+        </tr>  
+        <tr v-for="monster in monsterList">  
+            <td>{{monster.name}}</td>  
+            <td>{{monster.age}}</td>  
+        </tr>  
+    </table>  
+</div>  
+<script src="../vue.js"></script>  
+<script src="../axios.min.js"></script>  
+<script>  
+    new Vue({  
+        el:"#app",  
+        data:{  
+            msg:"妖怪列表",  
+            monsterList:[]  
+        },  
+        methods:{  
+            list(){  
+                axios.get("http://localhost:63342/axios/data/response.data.json")  
+                    .then(responseData=>{  
+                        this.monsterList=responseData.data.data.items;  
+                    })  
+                    .catch(err=>{  
+                        console.log("异常=",err)  
+                    })  
+            }  
+        },  
+        created(){  
+            this.list();  
+        }  
+    })  
+</script>  
+</body>  
+</html>
+```
+**注意点**:要引入vue.js包和axios.min.js这两个包
+
+**格式化输出JSON字符串**
+将JSON对象转换成`JSON.stringify(response)`
+```javascript
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>myhomework</title>  
+</head>  
+<body>  
+<div id="app">  
+    <h1>{{msg}}</h1>  
+    <table border="1" width="200">  
+        <tr>  
+            <td>名字</td>  
+            <td>年龄</td>  
+        </tr>  
+        <tr v-for="monster in monsterList">  
+            <td>{{monster.name}}</td>  
+            <td>{{monster.age}}</td>  
+        </tr>  
+    </table>  
+</div>  
+<script src="../vue.js"></script>  
+<script src="../axios.min.js"></script>  
+<script>  
+    new Vue({  
+        el:"#app",  
+        data:{  
+            msg:"妖怪列表",  
+            monsterList:[]  
+        },  
+        methods:{  
+            list(){  
+                axios.get("http://localhost:63342/axios/data/response.data.json")  
+                    .then(responseData=>{
+	                    console.log("responseData=",JSON.stringify(responseData));  
+                        this.monsterList=responseData.data.data.items;  
+                    })  
+                    .catch(err=>{  
+                        console.log("异常=",err)  
+                    })  
+            }  
+        },  
+        created(){  
+            this.list();  
+        }  
+    })  
+</script>  
+</body>  
+</html>
+```
+重要是那个`console.log("responseData=",JSON.stringify(responseData))`
+这里会经常用到一个网站`https://www.json.cn/` 这个网站可以非常清晰的看懂json字符串形式
+![](assest/Pasted%20image%2020240923171319.png)
+# Vue3
+## Vue3脚手架模块开发
+### Vue3脚手架开发的环境准备
+**1.安装nvm,以及nvm的介绍**
+介绍: 是一个管理Node.js版本的命令行工具,有maven类似的版本管理的功能, 可以让用户在同一台机器上轻松安装和切换不同版本的Node.js.
+
+主要的使用命令
+* 切换版本`nvm use <version>` 注意node.js的环境变量
+* 安装版本或者卸载版本`nvm install <version>` / `nvm uninstall <version>`
+* 查看已安装的版本`nvm ls`
+注意 , `<version>`是版本号的占位符
+
+**2.用对应版本的node.js中的npm安装vuecli脚手架**
+`npm install -g @vue/cli` 然后打开项目路径cmd指令创建项目`vue create xxx
+xxx是项目名的占位符
+然后选择创建模式: 选择Manually select features
+![](assest/Pasted%20image%2020240924085851.png)
+选择需要的插件
+![](assest/Pasted%20image%2020240924085913.png)
+空格表示选择 , i 表示反向选择 , enter表示下一步
+![](assest/Pasted%20image%2020240924085920.png)
+选择路由模式
+![](assest/Pasted%20image%2020240924090039.png)
+选择项目依赖包管理方式
+![](assest/Pasted%20image%2020240924090055.png)
+    一般是package.json模式 , 这也在vue2的项目结构体系中体现
+
+选择是否保存本次设置\
+![](assest/Pasted%20image%2020240924090207.png)
+
+接着在idea中配置npm , 打开项目模版设置
+![](assest/Pasted%20image%2020240924090301.png)
+### Vue3路由机制
+**index.html的解析**
+```html
+<!DOCTYPE html>  
+<html lang="">  
+  <head>  
+    <meta charset="utf-8">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">  
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">  
+    <title><%= htmlWebpackPlugin.options.title %></title>  
+  </head>  
+  <body>  
+    <noscript>  
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>  
+    </noscript>  
+    <div id="app"></div>  
+    <!-- built files will be auto injected -->  
+  </body>  
+</html>
+```
+解析代码模版
+`<div id="app"></div>`在body体中只有一个div标签 , 其id为app, 这个id将会连接到`src/main.js`内容 , 然后通过main.js将vue实例化 , 并引入所需要的插件 . 
+**main.js**
+```javascript
+import { createApp } from 'vue'  
+import App from './App.vue'  
+import router from './router'  
+import store from './store'  
+  
+createApp(App).use(store).use(router).mount('#app')
+```
+解析这个模版 . 重点是`createApp(App).use(store).use(ruter).mount('#app')`.
+* createApp(App)是Vue3中用于创建Vue实例的方法. App是定义的主组件, 通常是`App.vue`是整个vue应用的根组件, 是应用的起点
+* `.use(store)`:注册Vuex状态管理, 使其在应用中可用.\
+* `.use(router)`:注册Vue Router, 使其路由功能可用.
+* `.mount('#app')`:将应用挂载到`#app`Dom元素中 , 渲染`App`组件及其子组件
+**App.vue**
+```javascript
+<template>  
+  <nav>  
+    <router-link to="/">Home</router-link> |  
+    <router-link to="/about">About</router-link>  
+  </nav>  
+  <router-view/>  
+</template>  
+  
+<style>  
+#app {  
+  font-family: Avenir, Helvetica, Arial, sans-serif;  
+  -webkit-font-smoothing: antialiased;  
+  -moz-osx-font-smoothing: grayscale;  
+  text-align: center;  
+  color: #2c3e50;  
+}  
+  
+nav {  
+  padding: 30px;  
+}  
+  
+nav a {  
+  font-weight: bold;  
+  color: #2c3e50;  
+}  
+  
+nav a.router-link-exact-active {  
+  color: #42b983;  
+}  
+</style>
+```
+主组件, 所有的页面都是在App.vue下进行切换的. 这里定义了html的结构, 通常包括子组件的引用. 脚本, 包含组建的逻辑 , 样式. 
+作用: 
+1.路由视图: 在使用`Vue Router`时, 通常会在`App.vue`中定义`<router-view>`, 用于渲染当前激活的路由组件
+2.全局状态管理: 可以在这里引入和使用Vuex来管理全局状态
+3.定义了路由规则:定义一个数组 `routes`，其中包含两个路由配置：
+- 第一个路由：`/` 代表主页，使用 `HomeView` 组件。
+- 第二个路由：`/about` 代表关于页，使用懒加载方式引入 `AboutView` 组件
+项目加载的过程 index.html->main.js->app.vue->index.js->hellowrld.vue

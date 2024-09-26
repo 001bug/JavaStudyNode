@@ -5,7 +5,7 @@
 在线API: https://docs.spring.io/spring-boot/docs/current/api/
 
 **什么是SpringBoot**
-Spring Boot 可以轻松创建独立的、生产级的基于Spring 的应用程序 , pring Boot 直接嵌入Tomcat、Jetty 或Undertow ，可以"直接运行" SpringBoot 应用程序
+Spring Boot 可以轻松创建独立的、生产级的基于Spring 的应用程序 , spring Boot 直接嵌入了Tomcat、Jetty 或Undertow ，可以"直接运行" SpringBoot 应用程序
 
 **Spring SpringMVC SpringBoot的关系**
 大概关系是:Spring Boot > Spring > Spring MVC(组件关系)
@@ -33,7 +33,7 @@ Spring Boot 可以轻松创建独立的、生产级的基于Spring 的应用程�
   </dependency>  
 </dependencies>
 ```
-web项目场景启动器,会自动导入web开发相关的依赖.
+web项目场景启动器,会自动导入web开发相关的依赖.`spring-boot-starter-web`是SpringBoot起步依赖, 使用起步依赖不需要指定版本, Springboot版本会决定的
 打开maven关系图
 点击一个类或者快捷键`Ctrl+Alt+Shift+U`
 ![](assest/Pasted%20image%2020240730191326.png)
@@ -86,12 +86,17 @@ public class HelloController {
 #### 自动配置
 1.自动配置的基本介绍
 在ssm中,需要配置Tomcat,、配置SpringMVC、配置如何扫描包、配置字符过滤器、配置视图解析器、文件上传等. 非常的麻烦 , 在SpringBoot中 , 能够自动配置 
+SpringBoot自动配置需要考虑很多东西
+* Spring的`jdbcTemplate`是不是在Classpath中? 如果是 , 并且有DataSource的Bean , 则自动配置一个JdbcTemplate的Bean
+* Spring Security是不是在Classpath里? 如果是, 则进行一个非常基本的Web安全设置
+* 每当应用程序启动的时候, SpringBoot自动配置会做将近200个这样的决定, 涵盖安全, 集成, 持久化, Web开发等
 2.SpringBoot自动配置了Tomcat,SpringMVC,字符过滤器等.具体如下验证
 ```java
+@SpringBootApplication //开启组件扫描和自动配置
 public class MainApp {  
     public static void main(String[] args) {  
         ConfigurableApplicationContext ioc =  
-                SpringApplication.run(MainApp.class, args);  
+                SpringApplication.run(MainApp.class, args);//负责启动引导应用程序  
 //查看容器里面的组件  
         String[] beanDefinitionNames = ioc.getBeanDefinitionNames();  
         for (String beanDefinitionName : beanDefinitionNames) {  
@@ -100,7 +105,13 @@ public class MainApp {
     }  
 }
 ```
-然后仔细能发现到characterEncodingFilter这个字符过滤器
+解析这段启动类
+1.`@SpringBootApplication`开启了Spring的组件扫描和SpringBoot的自动配置功能 , 实际上`@SpringBootApplication`将三个注解组合在一起
+* Spring的`@Configuration`使用Spring基于java的配置
+* Spring的`@ComponentScan`启用组件扫描
+* Spring Boot 的`@EnableAutoConfiguration`： 这个不起眼的小注解也可以称为@Abracadabra，就是这一行配置开启了Spring Boot自动配置的魔力，让你不用再写成篇的配置了。
+这个启动类几乎在整个项目周期中是不用改的 , 如果需要`SpringBoot`自动配置以外的其他Spring配置.一般来说把他写到一个单独的`@Configuration`标注的类中
+
 第二种方式验证(debug)
 ![](assest/Pasted%20image%2020240731001004.png)
 3.修改自动配置
@@ -130,20 +141,54 @@ public class HiController {
 }
 ```
 在application.properties中添加my.website=https://ww.baidu.com
-
 4.SpringBoot在哪配置和自动配置遵守的加载原则
 	![](assest/Pasted%20image%2020240731161952.png)
 	根据源码可知,SpringBoot在类路径,类路径的config文件下,还有application等等
 	2. 自动配置遵守按需加载原则:引入了哪个场景starter 就会加载该场景关联的jar 包，没有引入的starter 则不会加载其关联jar
-	SpringBoot所有的自动配置功能都在spring-boot-autoconfigure包里面
+	SpringBoot所有的自动配置功能都在spring-boot-autoconfigure包里面:这个jar文件包含了很多配置类. 每个**配置类都在应用程序的Classpath**里, 都有机会为应用程序的配置舔砖加瓦
 	![](assest/Pasted%20image%2020240731163024.png)
 	有默认的约定,在SpringBoot 的自动配置包, 一般是XxxAutoConfiguration.java, 对应 XxxxProperties.java,
 	![](assest/Pasted%20image%2020240731163148.png)
 	**总的来说,就是bean的实例会对应一个相关的xxproperties.java  xxAutoConfiguration.java  applicaton.properties. Springboot帮我们实例的bean是有非常多的依赖组件,会去读取application.properties,然后xxproperties.java会关联到bean里面**
+#### 条件优化配置
+**自定义条件配置类**
+Spring4.0引入了条件优化配置这个新特性. 条件优化配置允许配置存在于应用程序中, 但在满足某些特定情况之前都忽略这个配置(根据特定的条件动态地加载或配置Bean)
+在Spring里可以很方便地编写你自己的条件，你所要做的就是实现`Condition`接口，覆盖它的`matches()`方法
+举例说明: 下面这个简单的条件类只有在Classpath里存在JdbcTemplate时才生效
+```java
+package org.example.config;  
+import org.springframework.context.annotation.Condition;  
+import org.springframework.context.annotation.ConditionContext;  
+import org.springframework.core.type.AnnotatedTypeMetadata;  
+public class JdbcTemplateCondition implements Condition{  
+    @Override  
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {  
+        try {  
+            conditionContext.getClassLoader().loadClass("org.springframework.jdbc.core.JdbcTemplate");  
+            return true;  
+        } catch (ClassNotFoundException e) {  
+            return false;  
+        }  
+    }  
+}
+```
+当用Java来声明Bean的时候 , 可以用这个条件类来决定是否生成
+```java
+@Conditional(JdbcTemplateCondition.class)
+public MyService myService(){
+	...
+}
+```
+这个例子里, 只有在Classpath里有JdbcTemplate时才生成这个MyService的实例
+**SpringBoot自带的条件配置类**
+![](assest/{036A6B26-6E63-4EB9-93BD-0AFF2DBC4FD4}.png)
+自动配置类在源码中起到的作用
+![](assest/{290AE88B-BABC-46E5-B66F-8AC9A162BEFC}.png)
+即可见,DataSourceAutoConfiguration添加了@Configuration注解，它从其他配
+置类里导入了一些额外配置，还自己定义了一些Bean。最重要的是DataSourceAutoConfiguration上添加了@ConditionalOnClass注解，要求Classpath里必须要有DataSource和EmbeddedDatabaseType。如果它们不存在，条件就不成立，DataSourceAutoConfiguration提供的配置都会被忽略掉。
 #### 容器功能
 注意:Spring注入组件的注解 , 在SpringBoot中仍然有效
 `@Component @Controller @Service @Repository`
-
 ##### 注解功能
 1. Configuration
 ==回顾==一下传统的Spring通过注解或者xml配置文件获取ioc
@@ -491,7 +536,7 @@ public class myWebApplicationInitialize implements WebApplicationInitializer {//
 5.缩进的空格数不重要, 只要相同层级的元素左对齐即可
 6.**字符串无需加引号**
 7.yaml注释使用#
-#### yaml数据类型
+#### yml数据类型
 **字面量**
 1.字面量: 单个的,不可再分的值. date,boolean,string,number,null
 2.保存形式为key:value 如图

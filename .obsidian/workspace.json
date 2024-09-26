@@ -4,38 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "eafa91b8c4f75be5",
+        "id": "344f2b8cfae8b21a",
         "type": "tabs",
         "children": [
           {
-            "id": "17dc40060e4af99c",
-            "type": "leaf",
-            "state": {
-              "type": "canvas",
-              "state": {
-                "file": "未命名 1.canvas",
-                "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
-                }
-              }
-            }
-          },
-          {
-            "id": "22b44e4f15fcee43",
+            "id": "05c22f3babc5dc5a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thinking.md",
+                "file": "JavaNote/JavaStudyNode/Java/并发.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -64,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "生命周期",
+                "query": "@Request",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -101,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "thinking.md",
+                "file": "JavaNote/JavaStudyNode/Java/并发.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "thinking.md",
+                "file": "JavaNote/JavaStudyNode/Java/并发.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -141,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "thinking.md"
+                "file": "JavaNote/JavaStudyNode/Java/并发.md"
               }
             }
           }
@@ -150,8 +134,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -163,52 +146,53 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "22b44e4f15fcee43",
+  "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
-    "未命名 1.canvas",
+    "JavaNote/JavaStudyNode/Java/assest/{2452B167-2D8D-43CA-9F12-4C0D213B3F95}.png",
+    "JavaNote/JavaStudyNode/Java/assest/Pasted image 20240926204318.png",
+    "JavaNote/JavaStudyNode/Java/assest/{42694F5C-77A1-4275-8054-BC1D12A4204F}.png",
+    "JavaNote/JavaStudyNode/Java/JavaSE.md",
+    "JavaNote/JavaStudyNode/Java/并发.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/SpringBoot/assest/{290AE88B-BABC-46E5-B66F-8AC9A162BEFC}.png",
+    "JavaNote/JavaStudyNode/SpringBoot/assest/{036A6B26-6E63-4EB9-93BD-0AFF2DBC4FD4}.png",
+    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
+    "JavaNote/JavaStudyNode/日常代码问题.md",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240925202205.png",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240925201730.png",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240925201656.png",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240925194910.png",
+    "JavaNote/JavaStudyNode/javaweb/assest/Pasted image 20240925193658.png",
+    "JavaNote/JavaStudyNode/README.md",
+    "JavaNote/JavaStudyNode/gid命令.md",
     "thinking.md",
-    "未命名.canvas",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "前端/Vue/Vue.md",
-    "前端/Vue/assest/Pasted image 20240918203201.png",
+    "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
+    "未命名 1.canvas",
+    "前端/Vue/assest/Pasted image 20240924090301.png",
+    "前端/前端技术栈和后端技术栈.md",
+    "前端/ES6新特性/ES6新特性.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "前端/Vue/dom加载和渲染.md",
+    "未命名.canvas",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
     "前端/HTML5/HTML5标签.md",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "前端/CSS/CSS.md",
     "前端/Vue/事件冒泡.md",
     "前端/Vue/事件.md",
     "前端/Vue/事件对象.md",
-    "前端/Vue/assest/Pasted image 20240914083129.png",
     "JavaNote/JavaStudyNode/Java/类路径和Java相对路径.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/[](字符流).md",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324190500.png",
     "JavaNote/JavaStudyNode/java基础/Java高级",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324190448.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324185628.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324183919.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323165723.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240324182621.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323163211.png",
-    "JavaNote/JavaStudyNode/java基础/Pasted image 20240323163004.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest",
-    "前端/ES6新特性/ES6新特性.md",
-    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "前端/Vue/assest",
     "前端/Vue",
-    "前端/ES6新特性/Ajax.md",
     "前端/ES6新特性/assest",
-    "算法/二叉树.md",
-    "JavaNote/JavaStudyNode/gid命令.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "算法/数据结构.md",
-    "算法/java在算法中常用的api.md",
-    "前端/前端技术栈和后端技术栈.md",
     "前端/ES6新特性",
     "前端/assest",
-    "JavaNote/JavaStudyNode/ssm/ssm.md",
-    "JavaNote/JavaStudyNode/ssm/未命名.md",
     "JavaNote/JavaStudyNode/Maven/assest",
     "JavaNote/JavaStudyNode/Maven",
     "JavaNote/JavaStudyNode/SpringBoot+Vue/assest"
