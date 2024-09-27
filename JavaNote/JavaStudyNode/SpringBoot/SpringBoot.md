@@ -345,7 +345,7 @@ public static void main(String[] args){
 	System.out.println(ioc.getBean("monster03"));
 }
 ```
-##### 配置绑定
+##### 应用程序Bean的配置外置
 配置绑定的概念:配置绑定是一种机制, 它允许将外部化配置（如 [`application.properties`](#^bdd5c6) 或 `application.yml` 文件中的属性）绑定到 Java 对象
 可以更加方便地管理和使用配置属性
 示例
@@ -364,8 +364,11 @@ furn01.name=soft_chair!!
 @EnableConfigurationProperties(Furn.class)
 public class BeanConfig{}
 ```
+从技术上将`@ConfigurationProperties`注解不会生效,除非向`Spring`配置类添加
+`@EnableConfigurationProperties`注解. 但是通常不需要这样做. SpringBoot自动配置机制会扫描和处理所有的配置类, 除非你想完全不适用自动配置
+
 在application.properties中如果有中文会出现乱码,那么需要用unicode编码转换工具(网页)
-2.编写封装application.properties的类
+2.编写封装application.properties的类(将配置文件的信息配置到java对象中)
 ```java
 @Component
 @ConfigurationProperties(prefix="furn01")
@@ -375,6 +378,7 @@ public class Furn {
 	.... set get 方法
 }
 ```
+一定要有set()方法 , 因为注入是靠`set()`方法注入的
 3.编写控制类
 ```java
 @Controller
@@ -394,6 +398,23 @@ public class HelloController {
 }
 ```
 5[启动启动类](#^8e8b3e)
+##### 使用Profile进行配置
+在 Spring Boot 中，**Profile（配置文件/环境配置）** 是一种机制，用于根据不同的运行环境（如开发、测试、生产等）加载不同的配置。这种机制允许开发者为不同的环境定义特定的配置文件，确保应用在各个环境中都能以最合适的方式运行。
+
+**Profile的定义**:Profile是一种逻辑分组, 用于区分应用程序在不同环境下的配置. 通过使用Profiles, 开发者可以:
+* 隔离环境配置: 为开发, 测试, 生产等不同环境提供不同的配置
+* 简化配置管理: 避免在同一个配置文件中混杂不同环境的配置, 提升可维护性.
+* 灵活切换环境: 通过简单的配置切换不同的环境配置, 无需修改代码
+
+**使用Profile配置**
+在 `src/main/resources` 目录下创建不同的配置文件，文件名遵循 `application-{profile}.properties` 或 `application-{profile}.yml` 的格式。例如：
+- `application-dev.properties`（开发环境配置）
+- `application-test.properties`（测试环境配置）
+- `application-prod.properties`（生产环境配置）
+
+最常用的方法是在application.yml这个文件中使用---分割符号来表示不同生产环境的配置. 比如
+![](assest/{49B4A16E-423C-4FA1-9754-A71A13C6509F}.png)
+这个application.yml文件分为三个部分.第二段属性定义为开发环境,第三段被定义为生产环境
 ## SpringBoot的运行机制
 ### tomcat的启动的机制
 问题:当run方法跑起来的时候,SpringBoot怎么就启动了tomcat,然后去实现这种机制
