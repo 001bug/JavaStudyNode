@@ -279,7 +279,7 @@ public class UserService {
     private UserRepository userRepository;
 }
 ```
-在上面的例子中，`UserService` 类依赖于 `UserRepository`，Spring 会自动将 `UserRepository` 的实例注入到 `UserService` 中。
+在上面的例子中，`UserService` 类依赖于 `UserRepository`，**Spring** 会自动将 `UserRepository` 的实例注入到 `UserService` 中。
 **2.在方法上使用**
 ```java
 @Service
@@ -292,4 +292,4 @@ public class UserService {
     }
 }
 ```
-使用构造方法注入时，`@Autowired` 可以省略，Spring 会自动注入构造方法的参数。构造方法注入的好处是可以让字段为 `final`，并且有助于单元测试中的依赖注入。
+使用构造方法注入时，`@Autowired` 可以省略，**Spring 会自动注入构造方法的参数**。构造方法注入的好处是可以让字段为 `final`，并且有助于单元测试中的依赖注入。

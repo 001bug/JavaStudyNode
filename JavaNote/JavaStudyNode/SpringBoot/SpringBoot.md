@@ -415,6 +415,7 @@ public class HelloController {
 最常用的方法是在application.yml这个文件中使用---分割符号来表示不同生产环境的配置. 比如
 ![](assest/{49B4A16E-423C-4FA1-9754-A71A13C6509F}.png)
 这个application.yml文件分为三个部分.第二段属性定义为开发环境,第三段被定义为生产环境
+#### 
 ## SpringBoot的运行机制
 ### tomcat的启动的机制
 问题:当run方法跑起来的时候,SpringBoot怎么就启动了tomcat,然后去实现这种机制
