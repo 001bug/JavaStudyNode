@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/并发.md",
+                "file": "linux/linux.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/并发.md",
+                "file": "linux/linux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/并发.md",
+                "file": "linux/linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Java/并发.md"
+                "file": "linux/linux.md"
               }
             }
           }
@@ -148,24 +148,27 @@
   },
   "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
+    "linux/assest/{725F8053-FC93-4297-A724-2A0F07EEB8FF}.png",
+    "linux/assest/{A71C4D4E-7ECD-4F8E-A1C6-ECCE6B156D9A}.png",
+    "2024-08-02.md",
+    "linux/挂载.md",
     "linux/linux.md",
+    "linux/assest/{30381B49-674B-4581-BFE6-624E267F003D}.png",
+    "linux/assest/{50B29C12-02E2-4101-953E-089FB8D61F26}.png",
+    "JavaNote/JavaStudyNode/Java/并发.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "算法/二叉树.md",
+    "JavaNote/JavaStudyNode/Java/assest/Pasted image 20240929093734.png",
+    "JavaNote/JavaStudyNode/Java/assest/Pasted image 20240929093725.png",
     "linux/assest/{FA66B24E-0EA4-4680-96FF-FBD48980E7C1}.png",
     "linux/assest/{565C9EC9-191F-4EE9-B186-27FA3227B3FF}.png",
     "linux/assest/{95BA63C4-8E63-41B2-95AF-45D0CED67AC2}.png",
     "linux/assest/{2C094590-635B-497F-8677-5AEC3D59B4BC}.png",
     "linux/assest/{1E8630FC-FC71-47DF-9756-98A0F875E31A}.png",
-    "linux/assest/{A9315A20-7113-41E0-824B-56E033D196E8}.png",
-    "linux/assest/{8B2526D4-04B8-4F72-9649-582B36BE3F6D}.png",
-    "linux/assest/{F9F60133-FACA-43C5-8AF6-907A43432CAA}.png",
-    "linux/assest/{178387E8-3C37-48AF-94B9-439438951718} 1.png",
-    "linux/assest/{178387E8-3C37-48AF-94B9-439438951718}.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "linux/assest",
     "linux",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
-    "算法/二叉树.md",
     "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
@@ -185,8 +188,6 @@
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
     "前端/HTML5/HTML5标签.md",
-    "前端/CSS/CSS.md",
-    "前端/Vue/事件冒泡.md",
     "JavaNote/JavaStudyNode/java基础/Java高级",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest",
     "前端/Vue/assest",
