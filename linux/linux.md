@@ -301,7 +301,7 @@ cp指令指拷贝文件到指定目录
 \
 **mv移动文件和重命名指令**
 基本语法:
-重命名:`mv oldNameFile newNameFile`
+重命名:`mv oldNameFile newNameFile` 前提条件要是在同目录的情况下
 移动文件: `mv/temp/movefile/targetFolder`
 
 **cat 查看文件内容指令**
@@ -312,3 +312,14 @@ cp指令指拷贝文件到指定目录
 使用细节
 cat 只能浏览文件 , 不能修改文件. **为了阅读方便 , 一般会带上管道命令**`|more`
 比如`cat -n/etc/profile|more[进行交互]`
+
+**more指令**
+more指令是一个基于VI编辑器的文本过滤器, 它以全屏幕的方式按页显示文本文件的内容 . more指令内置了若干快捷键 .
+基本语法
+`more` 要查看的文件
+![](assest/{3D363DDB-E5A9-4285-9BD9-2EF5342D2DFA}.png)
+
+**echo指令**
+echo输出内容到控制台
+基本语法
+`echo [选项] [内容]`
