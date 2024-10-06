@@ -297,3 +297,17 @@ cp指令指拷贝文件到指定目录
 常用选项
 `-r` : 递归删除整个文件夹
 `-f` : 强制删除不提示
+\
+**mv移动文件和重命名指令**
+基本语法:
+重命名:`mv oldNameFile newNameFile`
+移动文件: `mv/temp/movefile/targetFolder`
+
+**cat 查看文件内容指令**
+基本语法
+`cat [选项] 要查看的文件`
+常用选项
+`-n:显示行号`
+使用细节
+cat 只能浏览文件 , 不能修改文件. 为了阅读方便 , 一般会带上管道命令`|more`
+比如`cat -n/etc/profile|more[进行交互]`
