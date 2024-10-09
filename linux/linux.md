@@ -498,3 +498,23 @@ tar指令 是打包指令 , 最后打包后的文件是 .tar.gz的文件,又叫�
 * x代表可执行(execute): 可以进入该目录
 比如`-rwxrw-r-- l root root 1213 Feb 2 09:39 abc`
 第0组说明它
+
+**修改权限**
+通过`chmod`指令 , 可以修改文件或者目录的权限
+u:所有者  g:所有组  o:其他人  a:所有人
+第一种方式: `x`,`-`,`=`变更权限
+* `chmod u=rwx,g=rx,o=x 文件/目录名`
+* `chmod o+w 文件/目录名`  给其他人添加写
+* `chmod a-x 文件/目录名`  给所有人减去执行权限
+第二种方式: 通过数字变更权限
+r=4 , w=2 , x=1         rwx=4+2+1=7
+上面的`chmod u=rwx,g=rx,o=x 文件名/目录名` 可以改写为`chmod 751 文件名/目录名`
+
+**修改文件的所有者-chown**
+指令
+`chown newowner 文件/目录 改变所有者`
+`chown newowner:newgroup 文件/目录 改变所有者和所在组`
+
+**修改文件/目录所在组-chgrp**
+指令
+`chgrp newowner 文件/目录 改变所在组`
