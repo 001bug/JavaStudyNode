@@ -56,7 +56,7 @@ CentOS网络连接
 1.linux的文件系统是采用级层式的树状目录结构, 在此结构中的最上层是根目录`/`,然后在此目录下再创建其它目录
 ![](assest/{30381B49-674B-4581-BFE6-624E267F003D}.png)
 **常见的目录结构**
-1. `/bin`:**常用** (/usr/bin , /usr/local/bin)是binary的缩写 , 这个目录存放着嘴经常使用的命令
+1. `/bin`:**常用** (/usr/bin , /usr/local/bin)是binary的缩写 , 这个目录存放着最经常使用的命令
 2. `/sbin`(/usr/sbin , /usr/local/sbin)
 	s就是Super User 的意思 , 这里存放的是系统管理员使用的系统管理程序
 3. `/home`常用
