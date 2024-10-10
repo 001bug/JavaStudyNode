@@ -69,7 +69,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -134,7 +135,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -148,6 +150,8 @@
   },
   "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
+    "linux/assest/{6493FADC-2C51-4B65-B618-2BFD8C553A97}.png",
+    "linux/assest/{EEF056DB-8A34-405F-98F3-F804D013C3F0}.png",
     "linux/挂载.md",
     "linux/linux.md",
     "linux/assest/{9AFA5D46-C5EA-4739-AE34-5F55D36F7514}.png",
@@ -159,7 +163,6 @@
     "linux/assest/{DFECFC2D-A980-494E-B41B-CA73E3F1C127}.png",
     "linux/assest/{535AEC6A-677D-4712-97C8-80EDB2B1E3CD}.png",
     "linux/assest/Pasted image 20241004181250.png",
-    "linux/assest/{00327DB5-4091-4438-81B1-C8AE4D29D84D}.png",
     "2024-08-02.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
