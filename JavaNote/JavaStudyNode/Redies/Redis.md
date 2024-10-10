@@ -51,3 +51,34 @@ Redis  memcache  HBase MongoDB
 # Redis的下载和安装
 下载地址 :https://redis.io/download
 在实际工作中 , Redis都是在linux环境下工作
+
+**安装具体步骤**
+1.先让Linux网络环境为外网形式
+
+2.下载安装最新版的gcc编译器
+`yum install gcc` 前提可以尝试`ping www.baidu.com`测试一下网络情况
+`gcc --version` 测试gcc版本
+
+3.下载redis-6.2.6.tar.gz上传到/opt目录
+![](assest/Pasted%20image%2020241010202454.png)
+
+4.进入到/opt目录 , 执行解压命令: tar -zxvf redis-6.2.6.tar.gz
+5.解压完成后 , 进入目录: `cd redis-6.2.6`
+![](assest/{BC00EEAC-9C0C-4DA6-A9D1-A7AA37DBA04F}.png)
+6.在redis-6.2.6目录下 , 执行make命令(编译指令)
+7.执行: make install , 进行安装
+![](assest/Pasted%20image%2020241010203442.png)
+到此 , 安装目录在/usr/local/bin
+8.查看安装目录的文件
+![](assest/{99A5CE21-D231-467D-8C5C-A73DBDD9BD59}.png)
+redis-benchmark:性能测试工具，可以在自己机器运行，看看自己机器性能如何
+redis-check-aof：修复有问题的AOF 文件
+redis-check-dump：修复有问题的dump.rdb 文件
+redis-sentinel：Redis 集群使用
+redis-server：Redis 服务器启动命令
+redis-cli：客户端，操作入口
+
+**Redis后台启动&使用**
+1.拷贝一份redis.conf到其他目录 , 比如/etc目录 
+`cp redis.conf /etc/redis.conf`这个要在opt/redis-6.2.6目录下执行
+2.
