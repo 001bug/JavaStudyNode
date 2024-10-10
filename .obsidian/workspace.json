@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "linux/linux.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "linux/linux.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "linux/linux.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
+                "file": "linux/linux.md"
               }
             }
           }
@@ -148,8 +148,11 @@
   },
   "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
-    "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+    "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/assest",
     "JavaNote/JavaStudyNode/Redies",
     "JavaNote/JavaStudyNode/未命名.md",
@@ -186,10 +189,7 @@
     "前端/前端技术栈和后端技术栈.md",
     "前端/ES6新特性/ES6新特性.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "前端/Vue/dom加载和渲染.md",
     "未命名.canvas",
-    "JavaNote/JavaStudyNode/Maven/Maven.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
     "JavaNote/JavaStudyNode/java基础/Java高级",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest",
     "前端/Vue/assest",
