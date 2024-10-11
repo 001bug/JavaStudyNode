@@ -154,11 +154,27 @@ key是字符串, value是数据 , 数据支持多种类型/结构
 
 11.`msetnx key1 value1 key2 value2 ...` 同时设置一个或多个`key-value`对 , 当且仅当所有给定key都不存在 , 原子性 , 有一个失败则都失败
 
-12.`getrange key 起始位置 结束位置` 获得值的范围 , 类似java中的substring ?
+12.`getrange key 起始位置 结束位置` 获得值的范围 , 类似java中的substring 起始位置和终止位置是闭区间
 
 13.`setrange key 起始位置 value` 用`<value>`覆写`<key>`所存储的字符串值 , 从`<起始位置>`开始(索引从0开始)
 
 14.`setex key 过期时间 value` 设置键值的同时 , 设置过期时间 , 单位秒
 
+15.`getset key value` , 以新换旧 , 设置了新值同时获取了旧值
+## list
+**简介**: list类型 , 保存多个数据 , 底层使用双向链表存储结构实现
 
+**list存储结构示意图**
+双向链表示意图
+![](assest/Pasted%20image%2020241011195724.png)
+1.Redis列表式简单的字符串列表 , 按照插入顺序排序 . 可以添加一个元素到列表的头部(左边)或者尾部(右边)
+2.底层是一个双链表 , 对两端的操作性高 , 通过索引下标的操作中间的节点性能差
 
+**commend**
+`lpush/rpush key value value2 value3` 从左边/右边插入一个或者多个值
+
+`lpop/rpop key` 从左边/右边吐出一个值
+
+`rpoplpush key1key2` 从key1列表右边出队 , key2列表左边入队
+
+``
