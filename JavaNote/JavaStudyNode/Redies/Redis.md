@@ -81,4 +81,17 @@ redis-cli：客户端，操作入口
 **Redis后台启动&使用**
 1.拷贝一份redis.conf到其他目录 , 比如/etc目录 
 `cp redis.conf /etc/redis.conf`这个要在opt/redis-6.2.6目录下执行
-2.
+2.修改`/etc/redis.con`后台启动设置`daemonize no 改成 yes`,并保存退出(推荐使用vim打开,使用vim的搜索工具)
+![](assest/Pasted%20image%2020241010205653.png)
+3.Redis启动.(使用绝对路径,也可以使用相对路径)
+启动Redis的指令`/usr/local/bin/redis-server /etc/redis.conf`
+![](assest/{3E2E0CA7-B0F1-4BF1-8A4C-09514F894E5C}.png)查看是否启动成功
+![](assest/Pasted%20image%2020241010210619.png)
+5.用客户端访问: redis-cli
+6.修改端口
+`redis-cli -p 6379`
+7.redis的关闭
+* 单实例关闭: redis-cli shutdown
+![](assest/Pasted%20image%2020241010211205.png)
+* 多实例关闭 , 指定端口关闭 `redis-cli -p 6379 shutdown`
+* 进入redis再关闭
