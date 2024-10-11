@@ -104,3 +104,12 @@ redis-cli：客户端，操作入口
 3.`clear` 清屏
 4.`quit/exit` 退出客户端(redis服务并没有退出)
 5.`help 命令名称` 获取命令帮助文档
+
+**对key(键)操作**
+1.`keys *`: 查看当前库中所有的key
+2.`exists key`: 判断某个key是否存在
+3.`type key` : 查看key是什么类型
+4.del key : 删除指定的key数据(对应的值也会删掉),阻塞式(删掉才能进行下一步操作)
+5.unlink key :根据value选择非阻塞删除([[仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作]])
+6.expire key 10 : 10秒钟: 为给定的key设置过期时间(非常有用)
+7.ttl key 查看对应的key-value有多少秒过期(非常有用)
