@@ -133,8 +133,32 @@ key是字符串, value是数据 , 数据支持多种类型/结构
 5.sorted_set
 ## String常用指令
 1.`set <key><value>`  添加键值对
+
 2.`get <key>` 查询对应键值`
-3.`append <key><value>`将给定的`<value>` 追加到原值的末尾
-4.`strlen <key>` 获得值的长度
-5.`setnx <key><value>`  只有在key 不存在时设置key 的值
+
+3.`append key value`将给定的`<value>` 追加到原值的末尾
+
+4.`strlen key` 获得值的长度
+
+5.`setnx key value`  只有在key 不存在时设置key 的值 
+
+6.`incr key` 将key中存储的数字值(字符串)增1 , 只能对数字值操作 , 如果为空 , 新增值为1 
+
+7.`decr key` 将key中存储的数字值(字符串)减1 , 只能对数字值操作 , 如果为空 , 新增值为-1
+
+8.`incrby/decrby key 步长` 将key中存储的数字值增减. 自定义步长
+
+9.`mset key1 value1 key2 value2 ...` 同时设置一个或多个`key-value`对
+
+10.`mget key1 key2 key3...`同时获取一个或多个value
+
+11.`msetnx key1 value1 key2 value2 ...` 同时设置一个或多个`key-value`对 , 当且仅当所有给定key都不存在 , 原子性 , 有一个失败则都失败
+
+12.`getrange key 起始位置 结束位置` 获得值的范围 , 类似java中的substring ?
+
+13.`setrange key 起始位置 value` 用`<value>`覆写`<key>`所存储的字符串值 , 从`<起始位置>`开始(索引从0开始)
+
+14.`setex key 过期时间 value` 设置键值的同时 , 设置过期时间 , 单位秒
+
+
 
