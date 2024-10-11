@@ -120,4 +120,21 @@ redis-cli：客户端，操作入口
 3.`flushdb`: 清空当前库
 4.`flushall`:清空全部库
 # Redis五大数据类型
+## Redis五大数据类型的简介
+**引言**
+redis自身是一个Map , 其中所有的数据都是采用 key:value的形式存储的, 
+key是字符串, value是数据 , 数据支持多种类型/结构
+
+**redis五种常用的数据结构**
+1.string
+2.hash
+3.list
+4.set
+5.sorted_set
+## String常用指令
+1.`set <key><value>`  添加键值对
+2.`get <key>` 查询对应键值`
+3.`append <key><value>`将给定的`<value>` 追加到原值的末尾
+4.`strlen <key>` 获得值的长度
+5.`setnx <key><value>`  只有在key 不存在时设置key 的值
 
