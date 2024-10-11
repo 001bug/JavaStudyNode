@@ -85,9 +85,10 @@ redis-cli：客户端，操作入口
 ![](assest/Pasted%20image%2020241010205653.png)
 3.Redis启动.(使用绝对路径,也可以使用相对路径)
 启动Redis的指令`/usr/local/bin/redis-server /etc/redis.conf`
+当然直接`redis-server /etc/redis.conf`也是可以的 , 因为redis默认是配置了环境变量
 ![](assest/{3E2E0CA7-B0F1-4BF1-8A4C-09514F894E5C}.png)查看是否启动成功
 ![](assest/Pasted%20image%2020241010210619.png)
-5.用客户端访问: redis-cli
+5.用客户端访问: redis-cli(也是配置了环境变量,可以直接使用)
 6.修改端口
 `redis-cli -p 6379`
 7.redis的关闭
@@ -95,3 +96,11 @@ redis-cli：客户端，操作入口
 ![](assest/Pasted%20image%2020241010211205.png)
 * 多实例关闭 , 指定端口关闭 `redis-cli -p 6379 shutdown`
 * 进入redis再关闭
+# Redis指令
+指令文档: http://redis.cn/commands.html
+**基础操作**
+1.`set key value` 设置key-value值
+2.`get key` 查询key对应的value值
+3.`clear` 清屏
+4.`quit/exit` 退出客户端(redis服务并没有退出)
+5.`help 命令名称` 获取命令帮助文档
