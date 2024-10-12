@@ -257,7 +257,7 @@ Redis hash 是一个键值对集合 , hash适合用于村塾对象 , 类似java�
 
 `zrangebyscore set1 min max [withscores] [limit offset count]` 返回有序集set1中 , 所有score值介于min和max之间(包括等于min或max)的成员. 有序集成员按score值递增(==从小到大==)次序排列 -- min和max等于score
 
-`zrangebyscore set1 max min [withscores] [limit offset count]` 同上 , 不同之处是从大到小排列
+`zrevrangebyscore set1 max min [withscores] [limit offset count]` 同上 , 不同之处是从大到小排列 ?
 
 `zincrby set1 increment value` 为元素的score加上增量 increment是增量
 
