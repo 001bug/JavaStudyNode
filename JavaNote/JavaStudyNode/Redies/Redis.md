@@ -175,6 +175,24 @@ key是字符串, value是数据 , 数据支持多种类型/结构
 
 `lpop/rpop key` 从左边/右边吐出一个值
 
-`rpoplpush key1key2` 从key1列表右边出队 , key2列表左边入队
+`rpoplpush key1 key2` 从key1列表右边出队 , key2列表左边入队
+
+`lrange key start stop` 按照索引下标获取元素(从左到右) 可negative numbers indicating offsets sart
+
+`lindex key index`按照索引下标获得元素(从左到右)
+
+`llen key`获得列表长度
+
+`linsert key before value newvalue`在value的前面插入newvalue
+
+`lrem key n value`从左边删除n个value(从左到右)
+
+`lset key index value`将列表key下标为index的值替换成value
+## set
+set提供的功能和list类似是一个列表的功能 , 特殊之处在于set是可以自动去重 , 即值是不允许重复的.
+**set指令操作示意图**
+![](assest/Pasted%20image%2020241011211236.png)
+
+
 
 ``
