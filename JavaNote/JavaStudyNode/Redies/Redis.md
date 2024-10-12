@@ -229,3 +229,14 @@ Redis hash 是一个键值对集合 , hash适合用于村塾对象 , 类似java�
 
 `hmset hash1 field1 value1 field2 value2` 批量设置hash1的值
 
+`hmget hash1 field1 field2`批量取出hash1所对应的值
+
+`hexists hash1 field` 查看hash1中 , field键是否存在(1表示真,0表示假)
+
+`hkeys hash1` 列出该hash1集合的所有field(键值)
+
+`hvals hash1` 列出该hash1集合的所有value
+
+`hincrby hash1 field increment` 给hash1表中的field键对应的值加上1
+
+`hsetnx hash1 field value` 将哈希表hash1 中field对应的值设为value(field键不存在)
