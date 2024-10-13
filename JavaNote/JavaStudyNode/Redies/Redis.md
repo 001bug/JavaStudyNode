@@ -79,9 +79,8 @@ redis-server：Redis 服务器启动命令
 redis-cli：客户端，操作入口
 
 **Redis后台启动&使用**
-1.拷贝一份redis.conf到其他目录 , 比如/etc目录 
-`cp redis.conf /etc/redis.conf`这个要在opt/redis-6.2.6目录下执行
-2.修改`/etc/redis.con`后台启动设置`daemonize no 改成 yes`,并保存退出(推荐使用vim打开,使用vim的搜索工具)
+1.拷贝一份redis.conf到其他目录 , 比如/etc目录`cp redis.conf /etc/redis.conf`这个要在opt/redis-6.2.6目录下执行 , 因为**redis.conf一般放**在`/opt/redis-6.2.6/redis.conf`
+2.修改`/etc/redis.conf`后台启动设置`daemonize no 改成 yes`,并保存退出(推荐使用vim打开,使用vim的搜索工具)
 ![](assest/Pasted%20image%2020241010205653.png)
 3.Redis启动.(使用绝对路径,也可以使用相对路径)
 启动Redis的指令`/usr/local/bin/redis-server /etc/redis.conf`
@@ -96,7 +95,7 @@ redis-cli：客户端，操作入口
 ![](assest/Pasted%20image%2020241010211205.png)
 * 多实例关闭 , 指定端口关闭 `redis-cli -p 6379 shutdown`
 * 进入redis再关闭
-# Redis指令
+0a# Redis指令
 指令文档: http://redis.cn/commands.html
 **基础操作**
 1.`set key value` 设置key-value值
@@ -345,11 +344,30 @@ logfile "" 就是说，默认为控制台打印，并没有日志文件生成
 数据库数量
 ![](assest/Pasted%20image%2020241013093622.png)
 数据库数量默认16 , 可以通过`select dbid`切换数据库
+
 ## `#SECURITY#`
-**设置密码**
+### 修改配置文件设置密码
 ![](assest/Pasted%20image%2020241013094041.png)
-如果需要永久性的设置密码 , 需要在redis.conf文件中设置. 设置密码就是把上面的红色框框的配置注释掉
+如果需要永久性的设置密码 , 需要在redis.conf文件中设置. 设置密码就是把上面的红色框框的配置注释掉 , 密码是requirepass后面的内容
 最后重启Redis
 ![](assest/Pasted%20image%2020241013094218.png)
 
 **关闭密码**
+在Redis.conf文件中把`#requirepass foobared`注释掉
+![](assest/Pasted%20image%2020241013100059.png)
+### 通过指令设置密码
+这种方式设置的密码是暂时的. 并不具有永久性
+![](assest/Pasted%20image%2020241013103735.png)
+## LIMITS限制
+**maxclients**
+1.如图
+![](assest/Pasted%20image%2020241013104329.png)
+2.这个设置是可以让redis同时可以与多少个客户端进行连接.
+3.默认情况下是10000个客户端
+4.如果达到了此限制 , redis会拒绝新的连请求,并且发出"max number of clients reached"
+
+**maxmemory**
+如图
+![](assest/Pasted%20image%2020241013104630.png)
+了解:在默认情况下, 对32 位实例会限制在3 GB, 因为32 位的机器最大只支持4GB 的
+内存，而系统本身就需要一定的内存资源来支持运行，所以32 位机器限制最大3 GB 的可用内存是非常合理的，这样可以避免因为内存不足而导致Redis 实例崩溃

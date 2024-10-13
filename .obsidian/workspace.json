@@ -69,8 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -149,6 +148,12 @@
   },
   "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013104630.png",
+    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013104329.png",
+    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013103735.png",
+    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013100059.png",
+    "linux/linux.md",
+    "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013094218.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013094041.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013093622.png",
@@ -156,14 +161,8 @@
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013092635.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013091833.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013090927.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013090811.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013090721.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013090412.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241013090355.png",
     "JavaNote/JavaStudyNode/gid命令.md",
-    "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作.md",
-    "linux/linux.md",
     "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
     "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
