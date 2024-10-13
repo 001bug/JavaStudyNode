@@ -270,3 +270,16 @@ Redis hash 是一个键值对集合 , hash适合用于村塾对象 , 类似java�
 参考文档: https://www.cnblogs.com/nhdlb/p/14048083.html#_label0  重点阅读
 Redis配置非常的多 , 这里只是简述常用的配置
 ## 常规配置
+**设置密码**
+**daemonize** : 是否是守护进程
+**loglevel**: 日志级别
+**logfile** : 日志文件的设置
+**设定库的数量** 
+## Units单位
+**Units单位**是Redis中用于表示特定的计量单位 . 
+![](assest/Pasted%20image%2020241012155209.png)
+在Redis中 , 配置参数涉及到内存大小的度量时 , 使用的单位是bytes以及redis定义的衍生单位(k,m,g) , 而不支持bit作为度量单位
+bit在内存管理中的应用很少 , 绝大多数操作系统和应用程序都是以**字节(byte)**作为数据的存储**
+## `#INCLUDES#`
+includes 是配置文件中一种方式. 这种机制允许将多个配置文件组合使用. 可以把配置分开管理 , 保持配置文件清晰整洁 , 同时复用部分配置. 在 Redis 的主配置文件（如 `redis.conf`）中，可以使用 `include` 关键字来包含其他的配置文件，这些文件将会在 Redis 启动时被加载并合并。
+![](assest/Pasted%20image%2020241012161142.png)
