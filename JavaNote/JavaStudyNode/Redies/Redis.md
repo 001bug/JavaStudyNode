@@ -302,6 +302,12 @@ includes 是配置文件中一种方式. 这种机制允许将多个配置文件
 ![](assest/Pasted%20image%2020241013090811.png)
 Redis 服务默认端口6379
 
+**linux防火墙**
+在CentOS7使用命令查看防火墙状态: `firewall-cmd --state`
+关闭防火墙: `systemctl stop firewalled.service`
+开启禁止启动防火墙: `systemctl disable firewalld.service`
+开启防火墙: `systemctl start firewalld.service`
+
 **timeout**
 如图
 ![](assest/Pasted%20image%2020241013090927.png)
