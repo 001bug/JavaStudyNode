@@ -366,8 +366,35 @@ logfile "" 就是说，默认为控制台打印，并没有日志文件生成
 3.默认情况下是10000个客户端
 4.如果达到了此限制 , redis会拒绝新的连请求,并且发出"max number of clients reached"
 
-**maxmemory**
+**maxmemory**\
+这个可以用于设置Redis实例最大使用的内存大小. 当达到上限时,会根据淘汰策略来释放内存
 如图
 ![](assest/Pasted%20image%2020241013104630.png)
 了解:在默认情况下, 对32 位实例会限制在3 GB, 因为32 位的机器最大只支持4GB 的
 内存，而系统本身就需要一定的内存资源来支持运行，所以32 位机器限制最大3 GB 的可用内存是非常合理的，这样可以避免因为内存不足而导致Redis 实例崩溃
+3、在默认情况下, 对于64 位实例是没有限制
+4、当用户开启了redis.conf 配置文件的maxmemory 选项，那么Redis 将限制选项的值不能小于1 MB
+
+实际生产中的建议
+1, maxmemory 只能根据具体的生产环境来调试，不要预设一个定值，从小到大测试，基本标准是不干扰正常程序的运行。
+2、Redis 的最大使用内存跟搭配方式有关，如果只是用Redis 做纯缓存, 64-128M 对一般小型网站就足够了
+3, 如果使用Redis 做数据库的话，设置到物理内存的1/2 到3/4 左右都可以
+4, 如果使用了快照功能的话，最好用到50%以下，因为快照复制更新需要双倍内存空间，如果没有使用快照而设置redis 缓存数据库，可以用到内存的80%左右，只要能保证Java、NGINX 等其它程序可以正常运行就行了
+
+**maxmemory-policy**
+介绍:
+在 Redis 的配置文件 `redis.conf` 中，`maxmemory-policy` 配置项用于定义当 Redis 达到内存上限（`maxmemory`）时，应该如何处理新的写入请求。具体来说，`maxmemory-policy` 决定了 Redis 在内存使用超出限制时，采用哪种**淘汰策略**来释放内存空间。
+
+policy一览
+1, volatile-lru: 使用LRU 算法移除key，只对设置了过期时间的键；(最近最少使用)
+2, allkeys-lru：在所有集合key 中，使用LRU 算法移除key
+3, volatile-random：在过期集合中移除随机的key，只对设置了过期时间的键
+4, allkeys-random：在所有集合key 中，移除随机的key
+5, volatile-ttl：移除那些TTL 值最小的key，即那些最近要过期的key
+6, noeviction：不进行移除。针对写操作，只是返回错误信息
+
+**maxmemory-samples**
+介绍:
+在 Redis 的配置文件 `redis.conf` 中，`maxmemory-samples` 选项用于配置在使用某些内存淘汰策略（如 LRU 或 LFU）时，Redis 用于判断哪几个键应该被淘汰时所采样的键的数量。
+如图
+![](assest/Pasted%20image%2020241013112640.png)
