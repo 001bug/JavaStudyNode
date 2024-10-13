@@ -445,8 +445,27 @@ policy一览
 
 `SUBSCRIBE channel ...` 订阅频道, 可以同时订阅多个频道
 
-`UNSUBSCRIBE [channel] ...` 取消订阅频道(?谁取消订阅频道)
+`UNSUBSCRIBE [channel] ...` 取消订阅频道(客户端取消订阅频道)
 
 `PSUBSCRIBE pattern [pattern ...]` 订阅一个或者多个符合给定模式的频道 , 每个模式以* 作为匹配符，比如it* 匹配所有以it 开头的频道( it.news 、it.blog 、it.tweets 等等)， news.* 匹配所有以news. 开头的频道( news.it , news.global.today 等等)，诸如此类
 
 `PUNSUBSCRIBE [pattern [pattern...]]` 退订指定的规则 , 如果没有参数则会退订所有规则
+# Jedis
+Jedis类似于JDBC一样 , Jedis是一个用于java应用的Redis客户端库. 提供简单易用的javaAPI, 让开发者通过java程序于Redis进行交互. 跟JDBC一样 , Jedis封装了很多于Reids服务器通信的所有底层细节
+
+**API文档**: https://www.mklab.cn/onlineapi/jedis/
+
+**示意图**
+![](assest/Pasted%20image%2020241013193625.png)
+**快速入门流程**
+1.创建maven项目
+2.添加依赖
+```xml
+<dependencies>
+	<dependency>
+		<groupid>redis.clients</groupid>
+		<artifactid>jedis</artifactid>
+		<version>3.2.0</version>
+	</dependency>
+</dependencies>
+```
