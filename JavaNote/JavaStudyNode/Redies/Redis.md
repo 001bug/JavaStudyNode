@@ -439,3 +439,14 @@ policy一览
 * 可以向不同的Channel中发送消息 , 由不同的Subscriber接收.
 * 主要应用于群聊 , 聊天
 * 示意图: ![](assest/Pasted%20image%2020241013172617.png)
+## 命令行实现发布和订阅
+**发布订阅的指令操作**
+`PUBLISH channel msg` 将信息msg发送到指定的channel中
+
+`SUBSCRIBE channel ...` 订阅频道, 可以同时订阅多个频道
+
+`UNSUBSCRIBE [channel] ...` 取消订阅频道(?谁取消订阅频道)
+
+`PSUBSCRIBE pattern [pattern ...]` 订阅一个或者多个符合给定模式的频道 , 每个模式以* 作为匹配符，比如it* 匹配所有以it 开头的频道( it.news 、it.blog 、it.tweets 等等)， news.* 匹配所有以news. 开头的频道( news.it , news.global.today 等等)，诸如此类
+
+`PUNSUBSCRIBE [pattern [pattern...]]` 退订指定的规则 , 如果没有参数则会退订所有规则
