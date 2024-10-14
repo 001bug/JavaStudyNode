@@ -304,7 +304,7 @@ Redis 服务默认端口6379
 
 **linux防火墙**
 在CentOS7使用命令查看防火墙状态: `firewall-cmd --state`
-关闭防火墙: `systemctl stop firewalled.service`
+关闭防火墙: `systemctl stop firewalld`
 开启禁止启动防火墙: `systemctl disable firewalld.service`
 开启防火墙: `systemctl start firewalld.service`
 
@@ -475,3 +475,48 @@ Jedis类似于JDBC一样 , Jedis是一个用于java应用的Redis客户端库. �
 	</dependency>
 </dependencies>
 ```
+3.获取redis对象
+```java
+package ohmygod.project;  
+  
+import org.junit.Test;  
+import redis.clients.jedis.Jedis;  
+  
+public class jedisTest {  
+    @Test  
+    public void con(){  
+        Jedis jedis = new Jedis("192.168.52.130", 6379,10000);  
+        String ping = jedis.ping();  
+        System.out.println(ping);  
+        jedis.close();  
+    }  
+}
+```
+注意 , 要把防火墙给打开
+## Jedis常见API
+**1.创建jedis对象**
+`Jedis jedis = new Jedis(String ip , String port)`
+
+**2.对键的操作**
+![](assest/Pasted%20image%2020241014085253.png)
+
+**字符串操作**
+![](assest/Pasted%20image%2020241014085312.png)
+
+**整数和浮点数操作**
+![](assest/Pasted%20image%2020241014085334.png)
+
+**列表操作**
+![](assest/Pasted%20image%2020241014085350.png)
+
+**集合(set)操作**
+![](assest/Pasted%20image%2020241014085409.png)
+
+**哈希(Hash)操作**
+![](assest/Pasted%20image%2020241014085441.png)
+
+**有序集合(Zsort)操作**
+![](assest/Pasted%20image%2020241014085501.png)
+
+**排序操作**
+![](assest/Pasted%20image%2020241014085532.png)
