@@ -543,3 +543,8 @@ public class jedisTest {
 
 **排序操作**
 ![](assest/Pasted%20image%2020241014085532.png)
+## SpringBoot2整合Redis
+SpringBoot2整合Redis主要让java程序通过RedisTemplate完成对redis的操作, 包括设置数据/获取数据 , 添加和读取数据
+## 具体整合步骤
+使用idea的快速初始化Spring项目的功能
+![](assest/Pasted%20image%2020241014155801.png)
