@@ -457,6 +457,7 @@ policy一览
 
 `PUNSUBSCRIBE [pattern [pattern...]]` 退订指定的规则 , 如果没有参数则会退订所有规则
 # Jedis
+## 快速入门
 Jedis类似于JDBC一样 , Jedis是一个用于java应用的Redis客户端库. 提供简单易用的javaAPI, 让开发者通过java程序于Redis进行交互. 跟JDBC一样 , Jedis封装了很多于Reids服务器通信的所有底层细节
 
 **API文档**: https://www.mklab.cn/onlineapi/jedis/
@@ -482,6 +483,8 @@ package ohmygod.project;
 import org.junit.Test;  
 import redis.clients.jedis.Jedis;  
   
+import java.util.Set;  
+  
 public class jedisTest {  
     @Test  
     public void con(){  
@@ -490,9 +493,29 @@ public class jedisTest {
         System.out.println(ping);  
         jedis.close();  
     }  
+    @Test  
+    public void key(){  
+        Jedis jedis = new Jedis("192.168.52.130",6379);  
+        jedis.set("k1","v1");  
+        jedis.set("k2","v2");  
+        jedis.set("k3","v3");  
+        Set<String> keys= jedis.keys("*");  
+        System.out.println(keys.size());  
+        for (String key : keys) {  
+            System.out.println(key);  
+        }  
+    }  
 }
 ```
-注意 , 要把防火墙给打开
+注意 , 要把[防火墙给打开](#`%20NETWORK%20`)
+单独开放6379端口的防火墙
+1.设置开放的端口
+`firewall-cmd --add-port=6379/tcp --permanent`
+2.重启防火墙
+`firewall-cmd --reload`
+3.查看没有防火墙的端口
+`firewall-cmd --list-all`
+![](assest/Pasted%20image%2020241014091443.png)
 ## Jedis常见API
 **1.创建jedis对象**
 `Jedis jedis = new Jedis(String ip , String port)`
