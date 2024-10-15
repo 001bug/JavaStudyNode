@@ -690,14 +690,31 @@ RDB持久化流程图
 * 说明: save后给空值 , 表示禁用保存策略
 
 **RDB备份&恢复**
-**RDB备份的意义**
 1.Redis可以充当缓存 , 对项目进行优化 , 但重要/敏感的数据建议在MySQL保存一份.
 2.从设计层面来说 , Redis的内存数据 , 都是可以重新获取的(可能来自程序 , 也可能来自MySQL)
 3.因此我们这里说的备份&恢复主要是给大家说明一下Redis启动时 , 初始化数据是从dump.rdb来的 .
 备份
 * config get dir 查询rdb文件的目录
-* 将dump.rdb进行备份 , 如果有必要可以写shell脚本来定时备份(Linux定时备份功能)
+* 将dump.rdb进行备份 , 如果有必要可以写shell脚本来定时备份(Linux定时备份功能)备份指令`cp dump.rdb dump.rdb.bak`
 恢复
-* 将备份的文件恢复, 本质就是把备份的rdb文件覆盖掉原来的.`mv dump.rdb.bak dump.rdb`
+* 将备份的文件恢复, 本质就是把备份的rdb文件覆盖掉当前的.`rm dump.rdb`
 * 重启redis
 
+**RDB持久化小结**
+优势
+1.适合大规模的数据恢复
+2.对数据完整性和一致性要求不高更合适使用
+3.节省磁盘空间
+4.恢复速度快
+![](assest/Pasted%20image%2020241015200838.png)
+劣势
+1.虽然Redis 在fork 时使用了写时拷贝技术(Copy-On-Write), 但是如果数据庞大时还是比较消耗性能。
+2.在备份周期在一定间隔时间做一次备份，所以如果Redis 意外down 掉的话(如果正常关闭Redis, 仍然会进行RDB 备份, 不会丢失数据), 就会**丢失最后一次快照**后的所有修改
+# Redis持久化-AOF
+## AOF概念以及流程分析
+**AOF的官方文档** :https://redis.io/topics/persistence
+
+**AOF**: 以日志的形式来记录每个写的操作 , 该日志是文件,是可读的Redis命令的文本格式 , Redis在重启时 , 可以通过重新执行这些命令来恢复数据
+
+**AOF执行流程分析**
+![](assest/Pasted%20image%2020241015205930.png)
