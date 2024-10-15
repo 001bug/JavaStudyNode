@@ -612,6 +612,9 @@ RedisTemplate官方文档: https://docs.spring.io/spring-data/redis/reference/ap
 * RDB(Redis Database)
 * AOF(Append Of File)
 ## RDB概念以及流程分析
+
+^d5f01c
+
 RDB的定义
 在指定的时间间隔内将内存中的数据集[快照](linux)写入磁盘 , 也就是Snapshot快照 , 恢复时将快照文件读到内存中
 
@@ -640,6 +643,8 @@ RDB持久化流程图
 是Redis使用RDB持久化机制生成的二进制文件 , 此文件包含了Redis内存中的数据快照,用于在Redis服务器重启或者崩溃后恢复数据
 
 **如何配置**
+配置文件名: 在redis.conf中的dbfilename项
+配置文件保存路径: 在redis.conf中的dir 项 , 一般默认是`./` 这表示当前目录. 建议改为绝对路径 , `/root/`目录下
 
 **相关配置&参数&操作**
 默认配置,如图
@@ -647,5 +652,32 @@ RDB持久化流程图
 时间段概念的理解
 ![](assest/Pasted%20image%2020241015153147.png)
 相关细节
-如果我们没有开启save的注释 , 那么在退出Redis时 , 也会进行备份.
+如果我们没有开启save的注释 , 那么在退出Redis时 , 也会进行备份. 这是一种安全措施 
+* 在Redis启动时 , 如果发现一个旧的demp.rdb文件, 会去加载它 .
+* 某些操作系统(例如Redis关闭时 , 手动运行shutdown save/redis-cli命令等)也会触发数据持久化
+这种机制使得 Redis 即使在用户没有特别配置持久化选项的情况下，仍然能保存至少一次的快照，防止完全的数据丢失。
 
+**save VS bgsave**
+[save](#^d5f01c)
+格式: `save秒钟 操作数`
+![](assest/Pasted%20image%2020241015155857.png)
+
+**flushall(清理)**
+1.执行flushall命令 , **也会产生dump.rdb文件** , 数据为空
+2.Redis Flushall命令用于清空整个Redis服务器的数据(删除所有数据库的所有key)
+![](assest/Pasted%20image%2020241015155254.png)
+![](assest/Pasted%20image%2020241015155303.png)
+
+**stop-writes-on-bgsave-error(错误处理)**
+配置 , 用来控制当Redis在后台执行快照保存(bgsave)时出现错误时 , 是否停止处理写操作
+配置如图
+![](assest/Pasted%20image%2020241015160946.png)
+建议yes , 比如磁盘满了 , 直接关掉Redis的写操作是一种不错的做法
+
+**rdbcompression(存储策略)**
+![](assest/Pasted%20image%2020241015160731.png)
+1.对于存储到磁盘中的快照，可以设置是否进行压缩存储。如果是的话，redis 会采用LZF 算法进行压缩。但是会消耗CPU来进行压缩
+
+**动态停止 RDB**
+* 动态停止RDB: redis-cli config set save ""
+* 说明: save后给空值 , 表示禁用保存策略
