@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "算法/二叉树.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "算法/二叉树.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "算法/二叉树.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "算法/二叉树.md"
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
               }
             }
           }
@@ -148,6 +148,7 @@
   },
   "active": "05c22f3babc5dc5a",
   "lastOpenFiles": [
+    "算法/二叉树.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241015090841.png",
     "linux/linux.md",
@@ -179,7 +180,6 @@
     "linux/挂载.md",
     "2024-08-02.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
-    "算法/二叉树.md",
     "linux/assest",
     "linux",
     "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
