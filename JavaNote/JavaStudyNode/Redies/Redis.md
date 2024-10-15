@@ -606,3 +606,28 @@ public class RedisTestController {
 RedisTemplate官方文档: https://docs.spring.io/spring-data/redis/reference/api/java/org/springframework/data/redis/core/RedisTemplate.html
 常用API
 ![](assest/Pasted%20image%2020241014210343.png)
+# Redis持久化-RDB
+官方资料: https://redis.io/topics/persistence
+主要的持久化方案:
+* RDB(Redis Database)
+* AOF(Append Of File)
+## RDB概念以及流程分析
+RDB的定义
+在指定的时间间隔内将内存中的数据集[快照](linux)写入磁盘 , 也就是Snapshot快照 , 恢复时将快照文件读到内存中
+
+RDB持久化流程图
+![](assest/Pasted%20image%2020241015090841.png)
+1.redis客户端执行bgsave/save命令或者自动触发bgsave命令
+* save: 会阻塞当前Redis进程 , 进行同步保存 . 这种方式不建议在生产环境中使用 , 因为它会暂停所有的请求处理 , 直到持久化完成
+* bgsave: 异步保存 , 会在后台创建一个子进程 , 父进程继续处理请求 , 子进程负责将数据保存到磁盘
+2.主进程判断当前是否已经存在正在执行的子进程 , 如果存在 , 那么主进程直接返回
+3.如果不存在正在执行的子进程 , 那么就fork一个新的子进程进行持久化数据 , fork过程是阻塞的 , fork操作完成后主进程即可执行其他操作. 这个过程使用了 **操作系统的写时复制（Copy-On-Write, COW）** 机制，保证了在快照期间，内存中数据的修改不会影响到子进程正在持久化的数据。
+4.子进程先将数据写入到临时的rdb 文件中，待快照数据写入完成后再原子替换旧的rdb文件
+* 持久化过程完成后，子进程将临时文件重命名为最终的 RDB 文件。通过这种方式，Redis 可以避免在持久化过程中产生损坏的 RDB 文件。
+5.同时发送信号给主进程 , 通知主进程rdb持久化完成 , 主进程更新相关的统计信息
+
+**这种设计原理的优缺点**
+1.主进程没有进行IO操作 , 相比mysql提高了性能
+2.如果需要进行大规模数据的恢复, 且对于数据恢复的完整性不是非常敏感，那RDB 方式要比AOF 方式更加的高效
+3.RDB的缺点是最后一次持久化后的数据可能丢失. 正常关闭redis , 仍会进行持久化.如果是异常终止/宕机, 可能造成数据丢失
+## 操作系统写时复制
