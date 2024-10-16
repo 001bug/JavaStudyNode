@@ -725,9 +725,46 @@ RDB持久化流程图
 * `no`：完全依赖操作系统。
 3.AOF文件大小超过重写策略或者手动重写时, 会对AOF文件rewrite重写, 压缩AOF文件容量
 4.Redis 服务重启时，会重新load 加载AOF 文件中的写操作达到数据恢复的目的
-## AOF配置以及启用
+## AOF配置(上)
 **AOF开启**
 1.在redis.conf中配置项为`appendonly.aof`
 ![](assest/Pasted%20image%2020241016085325.png)
 2.AOF文件的保存路径 , 同RDB的路径一致
-3.AOF
+3.AOF和RDB同时开启 , 系统默认取AOF的数据
+4.AOF保存的文件名设置 , 在redis.conf中配置项为`appendonly.aof`
+
+**具体实例**
+![](assest/Pasted%20image%2020241016090029.png)
+![](assest/Pasted%20image%2020241016090040.png)
+![](assest/Pasted%20image%2020241016090048.png)
+然后再使用linux`ll`指令会发现`aof`文件变化了 , 去查看一下appendonly.aof文件会发现如下图规律
+![](assest/Pasted%20image%2020241016090248.png)
+## AOF配置(下)
+**AOF备份和恢复**
+1.备份
+AOF 的备份机制和性能虽然和RDB 不同, 但是备份和恢复的操作同RDB 一样, 都是拷贝备份文件, 需要恢复时再拷贝到Redis 工作目录下，启动系统即加载
+
+2.恢复
+正常恢复
+* 修改默认的`appendonly no`改为yes
+* 将有数据的aof文件定时备份 , 需要恢复时 , 复制一份保存到对应的目录(查看目录: config get dir)
+* 恢复: 重启redis , 然后重新加载
+异常恢复
+* 如果遇到AOF文件损坏 , 通过/usr/local/bin/redis-check-aof --fix appendonly.aof进行恢复
+* 建议先: 备份被写坏的AOF文件
+* 恢复: 重启redis , 然后重新加载
+* 示例
+![](assest/Pasted%20image%2020241016092803.png)
+使用`quit`退出redis , 然后`shutdown`退出文件
+1.`vim appendonly.aof`修改AOF文件 , 故意破坏备份文件
+2.进入redis-cli客户端
+3.使用`./redis-check-aof --fix appendonly.aof`修复文件
+4.重启`./redis-server /etc/redis.conf`
+![](assest/Pasted%20image%2020241016093308.png)
+**同步频率设置**
+1.`appendfsync always`: 始终同步 , 每次Redis的**写入**都会立即记入日志 : 性能较差但数据完整性比较好
+2.`appendfsync everysec`: 每秒同步 , 意外关机 , 本秒的数据会丢失
+3.`appendfsync no` :redis 不主动同步,把同步时机交给操作系统
+
+**Rewrite压缩**
+1.AOF文件越来越大 , 需要定期对AOF文件进行重写达到压缩
