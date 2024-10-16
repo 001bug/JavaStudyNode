@@ -718,3 +718,16 @@ RDB持久化流程图
 
 **AOF执行流程分析**
 ![](assest/Pasted%20image%2020241015205930.png)
+1.写操作会被记录到(append)AOF缓冲区
+2.AOF缓冲区根据AOF持久化策略(always , everysec , no)将操作sync同步到磁盘的AOF文件中
+* `always`: 每次写操作立即同步到磁盘
+* `everysec`：每秒同步一次。
+* `no`：完全依赖操作系统。
+3.AOF文件大小超过重写策略或者手动重写时, 会对AOF文件rewrite重写, 压缩AOF文件容量
+4.Redis 服务重启时，会重新load 加载AOF 文件中的写操作达到数据恢复的目的
+## AOF配置以及启用
+**AOF开启**
+1.在redis.conf中配置项为`appendonly.aof`
+![](assest/Pasted%20image%2020241016085325.png)
+2.AOF文件的保存路径 , 同RDB的路径一致
+3.AOF
