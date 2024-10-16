@@ -750,7 +750,7 @@ AOF 的备份机制和性能虽然和RDB 不同, 但是备份和恢复的操作�
 * 将有数据的aof文件定时备份 , 需要恢复时 , 复制一份保存到对应的目录(查看目录: config get dir)
 * 恢复: 重启redis , 然后重新加载
 异常恢复
-* 如果遇到AOF文件损坏 , 通过/usr/local/bin/redis-check-aof --fix appendonly.aof进行恢复
+* 如果遇到AOF文件损坏 , 通过/usr/local/bin/redis-check-aof --fix appendonly.aof进行修复
 * 建议先: 备份被写坏的AOF文件
 * 恢复: 重启redis , 然后重新加载
 * 示例
