@@ -44,4 +44,92 @@
 </html>
 ```
 **弱类型语言**
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+</head>  
+<body>  
+<script>  
+    num=1;  
+    console.log("num_type="+typeof(num));//num  
+    num="string";  
+    console.log("num_type="+typeof(num));//string
+    num=1;  
+    console.log("num_type="+typeof(num+"string"));//string  
+</script>  
+</body>  
+</html>
+```
+## js快速入门
+**使用script标签写js代码**
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+</head>  
+<body>  
+<script>  
+    num=1;  
+    console.log("num_type="+typeof(num));//num  
+    num="string";  
+    console.log("num_type="+typeof(num));//string
+    num=1;  
+    console.log("num_type="+typeof(num+"string"));//string  
+</script>  
+</body>  
+</html>
+```
+细节介绍: 
+可以在head和body嵌入script , 执行顺序是从上到下的, 建议放在head中
+
+**使用script标签引入JS文件**
+no2.html
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+</head>  
+<body>  
+<script type="text/javascript" src="../script/text.js"></script>  
+</body>  
+</html>
+```
+text.js
+```javascript
+num=1;  
+alert("num_type="+typeof(num));  
+num="string";  
+console.log("num_type="+typeof(num));  
+num=1;  
+console.log("num_type="+typeof(num+"string"));
+```
+注意细节; 目录 `./`表示当前目录 , `../`表示当前目录的上一级
+以上的两种方法是不能够混用的
+# JavaScript变量
+## 变量的基本介绍
+JavaScript变量表示存储数据的容器
+![](assest/Pasted%20image%2020241017210225.png)
+**与java变量的对比**
+* 声明类型
+js使用`var`,`let`和`const`关键字来定义变量 , 变量在定义后赋值 , 且不需要声明类型,动态语言 , 类型运行时可以随时改变; 
+java变量必须声明其类型 , 并使用相应的类型关键字.
+* 作用域
+js中`var`定义的变量有函数作用域 , `let`和`const`定义的变量具有块作用域.
+```javascript
+if (true) {
+    var x = 5; // 函数作用域
+    let y = 10; // 块作用域
+}
+console.log(x); // 输出 5
+console.log(y); // 报错：y is not defined
+```
+java变量的作用域通常基于类和方法的.
+## JS的数据类型
 
