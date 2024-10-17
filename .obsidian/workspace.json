@@ -13,13 +13,28 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "算法/二叉树.md",
                 "mode": "source",
                 "source": false
-              }
+              },
+              "icon": "lucide-file",
+              "title": "二叉树"
+            }
+          },
+          {
+            "id": "3c452e9e6b804575",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.4"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.4"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -39,7 +54,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
             }
           },
           {
@@ -54,7 +71,9 @@
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
-              }
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
             }
           },
           {
@@ -62,7 +81,9 @@
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {}
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
             }
           }
         ]
@@ -85,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "算法/二叉树.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -93,7 +114,9 @@
                 "searchQuery": "",
                 "backlinkCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-coming-in",
+              "title": "二叉树 的反向链接列表"
             }
           },
           {
@@ -102,10 +125,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "算法/二叉树.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
-              }
+              },
+              "icon": "links-going-out",
+              "title": "二叉树 的出链列表"
             }
           },
           {
@@ -116,7 +141,9 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
-              }
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
             }
           },
           {
@@ -125,8 +152,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
-              }
+                "file": "算法/二叉树.md"
+              },
+              "icon": "lucide-list",
+              "title": "二叉树 的大纲"
             }
           }
         ],
@@ -146,10 +175,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "05c22f3babc5dc5a",
+  "active": "3c452e9e6b804575",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
+    "算法/数据结构.md",
+    "算法/java在算法中常用的api.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016204356.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016203037.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016202644.png",
@@ -188,7 +219,6 @@
     "JavaNote/JavaStudyNode/Redies",
     "JavaNote/JavaStudyNode/未命名.md",
     "linux/挂载.md",
-    "2024-08-02.md",
     "linux/assest",
     "linux",
     "未命名.canvas",
