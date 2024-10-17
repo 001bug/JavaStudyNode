@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "前端/javascript/JavaScript.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Redis"
+              "title": "JavaScript"
             }
           }
         ],
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "前端/javascript/JavaScript.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Redis 的反向链接列表"
+              "title": "JavaScript 的反向链接列表"
             }
           },
           {
@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "前端/javascript/JavaScript.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Redis 的出链列表"
+              "title": "JavaScript 的出链列表"
             }
           },
           {
@@ -154,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
+                "file": "前端/javascript/JavaScript.md"
               },
               "icon": "lucide-list",
-              "title": "Redis 的大纲"
+              "title": "JavaScript 的大纲"
             }
           }
         ],
@@ -179,10 +179,13 @@
   },
   "active": "3c452e9e6b804575",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "前端/javascript/JavaScript.md",
+    "前端/javascript/assest",
+    "前端/javascript",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241017164904.png",
     "算法/数据结构.md",
     "算法/java在算法中常用的api.md",
-    "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016204356.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016203037.png",
@@ -195,7 +198,6 @@
     "JavaNote/JavaStudyNode/Redies/仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作.md",
     "JavaNote/JavaStudyNode/Redies/[[]].md",
     "JavaNote/JavaStudyNode/Redies/assest/{A086E726-37C5-462F-9447-2BA0F0FE9E02}.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016100609.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
@@ -224,8 +226,6 @@
     "linux/assest",
     "linux",
     "未命名.canvas",
-    "JavaNote/JavaStudyNode/java基础/Java高级",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest",
-    "前端/Vue/assest"
+    "JavaNote/JavaStudyNode/java基础/Java高级"
   ]
 }
