@@ -230,5 +230,34 @@ console.log(greet("jhon"));
 2.函数表达式(将函数赋给变量)
 将函数赋值给一个变量，称为函数表达式
 ```javascript
-
+const add = function(a,b){
+	return a+b;
+};
+console.log(add(5,3));
+```
+![](assest/Pasted%20image%2020241018092422.png)
+很明显它把函数变量化了
+3.JS函数注意事项和细节
+* JS中函数的重载会覆盖掉上一次的定义
+* 函数的arguments隐形参数(作用域在function函数内)
+* 隐形参数: **在function函数中不需要定义** , 可以直接用来获取所有参数的变量
+* arguments像java的可变参数一样. `public void fun(int..args)`
+```javascript
+function example(){
+	console.log(arguments);
+	console.log(arguments[0]);
+	console.log(arguments.length);
+}
+```
+## JS自定义对象
+**1.对象字面值**
+使用对象字面值语法 , 直接定义一个对象:
+```javascript
+const person = {
+	name: 'jhon',
+	age: 30,
+	greet: function(){
+		console.log("hello "+this.name);
+	}
+}
 ```
