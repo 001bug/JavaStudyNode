@@ -132,4 +132,103 @@ console.log(y); // 报错：y is not defined
 ```
 java变量的作用域通常基于类和方法的.
 ## JS的数据类型
+**数据类型介绍**
+数值类型: number
+字符串: string
+对象类型: object
+布尔类型: boolean
+函数类型: function
+undefined: 变量末赋值初始值时 , 默认undefined
+null: 空值
+NaN: Not a Number 非数值
 
+**数据类型注意事项**
+String字符串的界定符可以是`''`也可以是`""` 
+
+**运算符**
+javascript的算术运算符和赋值运算符和java都是一样的. 关系运算符有一点区别
+![](assest/Pasted%20image%2020241018081204.png)
+这个`===`全等运算符 . `==`是简单的做字面值比较 , 而全等于 , 除了做字面值比较之外 , 还会比较两个变量的数据类型
+
+细节:
+在javascript中 , 所有的变量 , 都可以作为一个boolean类型的变量去使用 , `0`,`undefined` , `""`(空串) 都认为是false
+
+**数组的定义**
+在javascript中 , 数组是一种特殊的对象 , 用于存储一组有序的数据 , 可以使用不同的方法来定义数组
+1.使用方括号`[]`来定义数组(常见):
+```javascript
+//方式1
+let fruits = ['apple','banana','orange'];
+console.log(fruits[1])//下标访问
+
+//方式2
+var cars = [];
+cars[0] = '奥迪';
+cars[1] = '宝马';
+```
+2.使用`Array`构造函数
+```javascript
+//方式1
+var cars = new Array("aa","bb",'cc');
+console.log(cars);
+
+//方式2
+var cars1 = new Array();
+cars1[0] = "kjk";
+cars1[1] = "jj";
+```
+和java明显的不同就是不需要定义数组长度, 而且没有指定类型
+
+**数组使用和遍历**
+遍历
+```javascript
+var cars = ["aa","bb",100];
+console.log(cars.length)
+for(i = 0;i<cars.length;i++){
+	console.log(cars[i]);
+}
+```
+## Javascript函数
+**Javascript函数快速入门**
+1.JS函数的定义
+函数是一段可以重复执行的代码 , 是由**事件驱动**的(Java的函数是靠类的实例或静态类的本身,控制流等驱动的)
+2.快速入门
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+    <script>  
+        function hi() {  
+            alert("hi");  
+        }
+        hi(); //主动调用  
+    </script>  
+</head>  
+<body>  
+<button onclick = "hi()">点击这里</button>  
+</body>  
+</html>
+```
+细节:
+* 如果不调用hi()函数 , 是不会触发的. js中如果想要执行函数 , 有两种方式1.主动调用2.通过事件去触发
+* 这里给button绑定了onclick事件 , 当用户点击button , 就会事件触发hi()函数
+
+**函数的定义方式以及细节**
+1.函数声明
+这是常见的函数定义方式 , 通过`function`关键字定义一个函数
+```javascript
+function greet(name){
+	return "hello "+name;
+}
+console.log(greet("jhon"));
+```
+![](assest/Pasted%20image%2020241018085529.png)
+与java巨大的区别 , 没有指定返回参数 , 形参不需要指定类型 , 返回类型取决于返回的是什么
+
+2.函数表达式(将函数赋给变量)
+将函数赋值给一个变量，称为函数表达式
+```javascript
+
+```
