@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/javascript/JavaScript.md",
+                "file": "算法/二叉树.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "JavaScript"
+              "title": "二叉树"
             }
           }
         ],
@@ -108,7 +108,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "前端/javascript/JavaScript.md",
+                "file": "算法/二叉树.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "JavaScript 的反向链接列表"
+              "title": "二叉树 的反向链接列表"
             }
           },
           {
@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "前端/javascript/JavaScript.md",
+                "file": "算法/二叉树.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "JavaScript 的出链列表"
+              "title": "二叉树 的出链列表"
             }
           },
           {
@@ -154,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/javascript/JavaScript.md"
+                "file": "算法/二叉树.md"
               },
               "icon": "lucide-list",
-              "title": "JavaScript 的大纲"
+              "title": "二叉树 的大纲"
             }
           }
         ],
@@ -179,12 +179,12 @@
   },
   "active": "3c452e9e6b804575",
   "lastOpenFiles": [
+    "前端/javascript/JavaScript.md",
     "前端/javascript/assest/Pasted image 20241018092422.png",
     "前端/javascript/assest/Pasted image 20241018085529.png",
     "前端/javascript/assest/Pasted image 20241018081204.png",
     "前端/javascript/assest/Pasted image 20241017210225.png",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
-    "前端/javascript/JavaScript.md",
     "前端/javascript/assest",
     "前端/javascript",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241017164904.png",
@@ -196,7 +196,6 @@
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016202644.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016195252.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016195141.png",
-    "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241016153411.png",
     "JavaNote/JavaStudyNode/Redies/仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作.md",
     "JavaNote/JavaStudyNode/Redies/[[]].md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
