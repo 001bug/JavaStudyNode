@@ -261,3 +261,18 @@ const person = {
 	}
 }
 ```
+细节: 这里的函数非常像函数表达式 , 而不是字面值定义函数
+
+2.构造函数的方法
+通过`new`关键字创造对象的方法叫构造函数. 构造函数是一种特殊的函数 , 用于初始化新创建的对象.
+```javascript
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.greet= function(){
+		console.log("Hello, my name is"+this.name);
+	};
+}
+const person1 = new Person("Alice", 30);
+```
+通用调用对象里面的属性以及方法`对象名.属性`
