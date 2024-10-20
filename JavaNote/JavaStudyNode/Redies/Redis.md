@@ -82,7 +82,7 @@ redis-cli：客户端，操作入口
 1.拷贝一份redis.conf到其他目录 , 比如/etc目录`cp redis.conf /etc/redis.conf`这个要在opt/redis-6.2.6目录下执行 , 因为**redis.conf一般放**在`/opt/redis-6.2.6/redis.conf`
 2.修改`/etc/redis.conf`后台启动设置`daemonize no 改成 yes`,并保存退出(推荐使用vim打开,使用vim的搜索工具)
 ![](assest/Pasted%20image%2020241010205653.png)
-3.Redis启动.(使用绝对路径,也可以使用相对路径)
+3.==Redis启动==.(使用绝对路径,也可以使用相对路径)
 启动Redis的指令`/usr/local/bin/redis-server /etc/redis.conf`
 当然直接`redis-server /etc/redis.conf`也是可以的 , 因为redis默认是配置了环境变量
 ![](assest/{3E2E0CA7-B0F1-4BF1-8A4C-09514F894E5C}.png)查看是否启动成功
@@ -862,3 +862,51 @@ redis实现乐观锁的机制
 1.基本语法: `unwatch`
 2.如果在`watch`之后决定不再执行事务 , 或想手动解除监视 , 调用`unwatch`可以恢复对所有键的正常操作; 当`exec`或`discard`被执行时, `watch`的效果也会自动解除
 ## 火车票-抢票
+### 思路分析
+1.一个user只能购买一张票 , 即不能复购 , 也不能出现超购
+2.不能出现火车票遗留问题 , 即火车票不能有库存
+![](assest/Pasted%20image%2020241020144328.png)
+### 版本1:完成基本购票流程 , 暂不考虑事务和并发
+**环境搭建**
+1.创建JavaWeb项目 , 参照以前讲过搭建JavaWeb项目流程即可
+2.引入相关包
+3.创建首页(index.jsp)
+```html
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>  
+<html>  
+<head>  
+    <title>Title</title>  
+    <base href="<%=request.getContextPath()+"/"%>">  
+</head>  
+<body>  
+<h1>中山-梅州 , 高铁票!秒杀</h1>  
+<form id = "secKillform" action = "secKillServlet" enctype="application/x-www-form-urlencoded">  
+    <input type="hidden" id="ticketNo" name="ticketNo" value="bj_cd">  
+    <input type="button" id = "seckillBtn" name="mybotton" value="秒杀高铁票[中山-梅州]"/>  
+</form>  
+<script type="text/javascript" src="script/jquery/jquery-3.1.0.js"></script>  
+<script>  
+    $(function () {  
+        $("#seckillBtn").click(function () {  
+            var url=$("#secKillform").attr("action");  
+            $.post(url,$("#secKillform").serialize,function (data) {  
+                if(data=="false"){  
+                    alert("高铁票抢完了");  
+                    $("#seckillBtn").attr("disabled",true);  
+                }  
+            })  
+        })  
+    })  
+</script>  
+</body>  
+</html>
+```
+细节: 
+1.注意`<base href = "<%=request.getContextPath()+"/"%>">` 这段代码是设定基本的URL路径 , 如果出现相对链接时, 浏览器会将这些链接与`<base>`标签定义中定义的URL组合起来解析
+2.`.attr("action")`是指获取该dom元素的指定属性 , 这里是获取表单的action属性的值
+3.`$.post(url,data,callback)`
+* `url`:要发送请求的目标地址
+* `data`:要发送的数据 , 这里使用`$("#secKillform").serialize()`这个方法会将表单数据序列化,然后发送给服务器
+* `callback`: 一个可选的回调函数 , 当请求完成时会执行该代码, 通常用于处理服务器的响应数据
+
+**编写后端**
