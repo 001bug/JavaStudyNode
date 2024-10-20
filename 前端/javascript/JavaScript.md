@@ -261,3 +261,38 @@ const person = {
 	}
 }
 ```
+细节: 这里的函数非常像函数表达式 , 而不是字面值定义函数
+
+2.构造函数的方法
+通过`new`关键字创造对象的方法叫构造函数. 构造函数是一种特殊的函数 , 用于初始化新创建的对象.
+```javascript
+function Person(name,age){
+	this.name=name;
+	this.age=age;
+	this.greet= function(){
+		console.log("Hello, my name is"+this.name);
+	};
+}
+const person1 = new Person("Alice", 30);
+```
+通用调用对象里面的属性以及方法`对象名.属性`
+# 事件
+## 事件介绍
+**基本概念**
+事件是指用户交互或系统状态变化 , 在浏览器发生的. 事件是javascript变成的核心部分 , 可以让开发者响应用户的操作 , 比如 , 点击 , 输入 , 滚动 , 加载等
+
+**事件表**
+![](assest/Pasted%20image%2020241020124321.png)![](assest/Pasted%20image%2020241020124327.png)
+## 事件分类和注册
+**常见的事件类型**
+* 鼠标类型 : (如`click`,`mouseover`,`mouseout`)
+* 键盘事件 : (如 `keydown`,`keyup`)
+* 表单事件 : (如 `submit`,`change`)
+* 其它事件 : (如 : `load`,`resize`,`scroll`)
+
+**事件的注册**
+事件注册是指在javascript中将事件监听器(事件处理函数)附加到特定DOM的过程. 当特定事件发生时 , 注册的监听器会被触发 , 从而执行相应的逻辑
+简而言之 , 当事件响应后要浏览器执行哪些操作代码 . 这就是事件注册或事件绑定
+
+1.静态注册事件
+通过html标签的事件属性直接赋于事件响应后的代码 , 这种方式叫静态注册
