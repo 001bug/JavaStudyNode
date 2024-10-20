@@ -296,3 +296,51 @@ const person1 = new Person("Alice", 30);
 
 1.静态注册事件
 通过html标签的事件属性直接赋于事件响应后的代码 , 这种方式叫静态注册
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>静态事件注册示例</title>  
+</head>  
+<body>  
+    <button id="myButton">点击我</button>  
+    <script>  
+        const button = document.getElementById("myButton");  
+        button.addEventListener('click',function () {  
+            alert("按钮被点击了");  
+        });  
+    </script>  
+</body>  
+</html>
+```
+注意细节 : dom元素加载后才要绑定事件. 着重`addEventListener`这个方法. 
+
+2.动态注册事件
+动态注册事件是指在运行时通过javascript代码添加事件监听器 , 而不是在页面加载时就预订先定义. 这样可以根据需要添加或移除事件处理函数, 增加了灵活性
+```html
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>动态注册</title>  
+</head>  
+<body>  
+    <button id = "addButton">添加按钮</button>  
+    <div id ="buttonContainer"></div>  
+    <script>  
+        const addButton = document.getElementById("addButton");  
+        const buttonContainer = document.getElementById("buttonContainer");  
+        addButton.addEventListener('click',function () {  
+            const newButton = document.createElement("button");  
+            newButton.textContent='点击我!';  
+            newButton.addEventListener('click',function () {  
+                alert("新按钮被点击了");  //动态注册
+            });  
+            buttonContainer.appendChild(newButton);  
+        })  
+    </script>  
+</body>  
+</html>
+```
+细节: 动态注册是指在监听函数里加上监听函数. js事件绑定总体说就是`获得事件对象-->绑定事件函数`
