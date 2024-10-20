@@ -910,3 +910,69 @@ redis实现乐观锁的机制
 * `callback`: 一个可选的回调函数 , 当请求完成时会执行该代码, 通常用于处理服务器的响应数据
 
 **编写后端**
+服务层 , 是给**前端控制器**(接收请求的部分)提供服务的
+```java
+public class SecKillRedis {  
+    public static void main(String [] args){  
+        Jedis jedis = new Jedis("192.168.52.130",6379);  
+        System.out.println(jedis.ping());  
+        jedis.close();  
+    }  
+    //秒杀过程  
+    public static boolean doSecKill(String uid , String ticketNo){  
+        if(uid==null||ticketNo==null){//没票了  
+            return false;  
+        }  
+        //有票,然后呢查询库,看是否有多少票  
+        Jedis jedis=new Jedis("192.168.52.130",6379);  
+        String stockKey="sk:"+ticketNo+":ticket";  
+        String userKey="sk:"+ticketNo+":user";  
+        //这里获取库存 , 看秒杀是否结束  
+        String stock=jedis.get(stockKey);  
+        if(stock==null){  
+            System.out.println("秒杀还没开始,请等待...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断用户是否重复秒杀操作  
+        if(jedis.sismember(userKey,uid)){  
+            System.out.println(uid+" 不能重复秒杀...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断如果火车票数量 , 剩余数量小于1 , 秒杀结束  
+        if(Integer.parseInt(stock)<=0){  
+            System.out.println("票已经卖光,秒杀已经结束了");  
+            jedis.close();  
+            return false;  
+        }  
+        jedis.decr(stockKey);  
+        jedis.sadd(userKey,uid);  
+        System.out.println("秒杀成功了");  
+        jedis.close();  
+        return true;  
+    }  
+}
+```
+细节: 先把所有不符合的判定给排除掉. 比如没票-->查票-->检查是否重购
+前端控制层
+```java
+public class SecKillServlet extends HttpServlet {  
+    @Override  
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {  
+        //请求时,模拟生成一个userid  
+        String userId=new Random().nextInt(10000)+ "";  
+        //获取用户要购买的票的编号  
+        String ticketNo=req.getParameter("ticketNo");  
+        //调用秒杀  
+        boolean isOK = SecKillRedis.doSecKill(userId,ticketNo);  
+        resp.getWriter().println(isOK);  
+    }  
+  
+    @Override  
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {  
+        this.doPost(req, resp);  
+    }  
+}
+```
+然后配置一下web.xml
