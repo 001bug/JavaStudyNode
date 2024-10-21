@@ -1025,5 +1025,25 @@ public class SecKillRedis {
 **安装工具ab模拟测试以及使用**
 1.工具ab可以模拟并发发出Http请求 , (模拟并发http请求工具还有jemeter,postman)
 2.安装指令: `yum install httpd-tools`(要保证linux是可联网的)
-3.如果
+3.如果不能联网只能使用rpm安装
 
+基本语法
+```
+ab -n [请求总数] -c [并发数] [URL]
+```
+`-n[请求总数]`: 要发送的总请求数
+`-c[并发数]`: 并发请求的数量 , 即同时发出的请求数
+`[URL]`: 要测试的目标URL.
+
+**ab工具模拟超卖**
+1.查看window环境 , 然后测试是否能ping上linux
+`ipconfig` 查看windows的网络环境
+![](assest/Pasted%20image%2020241021092137.png)
+
+2.查看linux环境 , 测试是否能连接成功
+`ping 192.168.198.1` 
+
+3.然后发送请求 `ab -n 1000 -p ~/postfile -T application/x-www-form-urlencoded http://192.168.198.1:8080/seckill/secKillServlet`
+
+-T application/x-www-form-urlencoded 就是发送数据的编码是基于表单的url 编
+码
