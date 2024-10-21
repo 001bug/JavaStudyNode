@@ -910,7 +910,7 @@ redis实现乐观锁的机制
 * `callback`: 一个可选的回调函数 , 当请求完成时会执行该代码, 通常用于处理服务器的响应数据
 
 **编写后端**
-服务层 , 是给**前端控制器**(接收请求的部分)提供服务的
+1.服务层 , 是给**前端控制器**(接收请求的部分)提供服务的
 ```java
 public class SecKillRedis {  
     public static void main(String [] args){  
@@ -976,7 +976,7 @@ public class SecKillServlet extends HttpServlet {
 }
 ```
 然后配置一下web.xml
-服务层
+2.服务层
 ```java
 public class SecKillRedis {  
     public static void main(String [] args){  
@@ -1021,6 +1021,7 @@ public class SecKillRedis {
 }
 ```
 注意细节: 这里有一个验证拼接, 中间的密钥来自前端(ticketNo), 点击一下抢票 , 点到一定次数就出现提示票已抢光
+3.设置Redis中的数据`set sk:bj_cd:ticket 6`
 ### 模拟并发,实现超卖
 **安装工具ab模拟测试以及使用**
 1.工具ab可以模拟并发发出Http请求 , (模拟并发http请求工具还有jemeter,postman)
@@ -1043,7 +1044,9 @@ ab -n [请求总数] -c [并发数] [URL]
 2.查看linux环境 , 测试是否能连接成功
 `ping 192.168.198.1` 
 
-3.然后发送请求 `ab -n 1000 -p ~/postfile -T application/x-www-form-urlencoded http://192.168.198.1:8080/seckill/secKillServlet`
+3.然后发送请求 `ab -n 1000 -c 100 -p ~/postfile -T application/x-www-form-urlencoded http://192.168.198.1:8080/seckill/secKillServlet`
 
--T application/x-www-form-urlencoded 就是发送数据的编码是基于表单的url 编
+4.-T application/x-www-form-urlencoded 就是发送数据的编码是基于表单的url 编
 码
+5.`-c`:表示的是100并发量
+``
