@@ -584,3 +584,4 @@ r=4 , w=2 , x=1         rwx=4+2+1=7
 4.在使用at命令的时候一定要确保守护进程atd在运行中. `ps -ef | grep atd` 这里`ps -ef`表示查找所有的进程 , `| grep atd`表示过滤查找所有进程中查找`grep atd`
 ![](assest/{8451EBDF-3C86-4321-A088-DE23F24C4235}.png)
 ## Linux磁盘分区,挂载
+## 网络配置

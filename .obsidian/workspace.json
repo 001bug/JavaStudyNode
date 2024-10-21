@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/linux.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "linux"
+              "title": "Redis"
             }
           }
         ],
@@ -102,8 +102,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -169,10 +168,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "linux/linux.md"
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
               },
               "icon": "lucide-list",
-              "title": "linux 的大纲"
+              "title": "Redis 的大纲"
             }
           }
         ],
@@ -194,6 +193,7 @@
   },
   "active": "c4fa05cc70ae0920",
   "lastOpenFiles": [
+    "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241021092137.png",
     "前端/HTML5/HTML5标签.md",
@@ -228,7 +228,6 @@
     "架构流程图/流程图.md",
     "架构流程图/assest",
     "架构流程图",
-    "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/[linux].md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
