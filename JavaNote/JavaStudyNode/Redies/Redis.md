@@ -889,7 +889,7 @@ redis实现乐观锁的机制
     $(function () {  
         $("#seckillBtn").click(function () {  
             var url=$("#secKillform").attr("action");  
-            $.post(url,$("#secKillform").serialize,function (data) {  
+            $.post(url,$("#secKillform").serialize(),function (data) {  
                 if(data=="false"){  
                     alert("高铁票抢完了");  
                     $("#seckillBtn").attr("disabled",true);  
@@ -976,3 +976,54 @@ public class SecKillServlet extends HttpServlet {
 }
 ```
 然后配置一下web.xml
+服务层
+```java
+public class SecKillRedis {  
+    public static void main(String [] args){  
+        Jedis jedis = new Jedis("192.168.52.130",6379);  
+        System.out.println(jedis.ping());  
+        jedis.close();  
+    }  
+    //秒杀过程  
+    public static boolean doSecKill(String uid , String ticketNo){  
+        if(uid==null||ticketNo==null){//没票了  
+            return false;  
+        }  
+        //有票,然后呢查询库,看是否有多少票  
+        Jedis jedis=new Jedis("192.168.52.130",6379);  
+        String stockKey="sk:"+ticketNo+":ticket";  
+        String userKey="sk:"+ticketNo+":user";  
+        //这里获取库存 , 看秒杀是否结束  
+        String stock=jedis.get(stockKey);  
+        if(stock==null){  
+            System.out.println("秒杀还没开始,请等待...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断用户是否重复秒杀操作  
+        if(jedis.sismember(userKey,uid)){  
+            System.out.println(uid+" 不能重复秒杀...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断如果火车票数量 , 剩余数量小于1 , 秒杀结束  
+        if(Integer.parseInt(stock)<=0){  
+            System.out.println("票已经卖光,秒杀已经结束了");  
+            jedis.close();  
+            return false;  
+        }  
+        jedis.decr(stockKey);  
+        jedis.sadd(userKey,uid);  
+        System.out.println("秒杀成功了");  
+        jedis.close();  
+        return true;  
+    }  
+}
+```
+注意细节: 这里有一个验证拼接, 中间的密钥来自前端(ticketNo), 点击一下抢票 , 点到一定次数就出现提示票已抢光
+### 模拟并发,实现超卖
+**安装工具ab模拟测试以及使用**
+1.工具ab可以模拟并发发出Http请求 , (模拟并发http请求工具还有jemeter,postman)
+2.安装指令: `yum install httpd-tools`(要保证linux是可联网的)
+3.如果
+
