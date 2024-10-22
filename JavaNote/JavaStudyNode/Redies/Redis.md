@@ -847,7 +847,31 @@ public class JedisPoolUtil {
     }  
 }
 ```
-通过这个类,传入地址 , 端口号 , 然后连接就能得到jedis连接
+细节描述
+1.通过这个类,传入地址 , 端口号 , 然后连接就能得到jedis连接
+2.`volatile`关键字在java中用于指示一个变量可能被多个线程同时访问 . 当一个线程修改了被标记为`volatile`的变量时,其它线程可以立马看到这个更新,确保对该变量的==写操作不会与后序的读写操作发生重排序==
+3.在高并发的条件下 , 保持JedisPool的单例性
+```java
+    public static JedisPool getJedisPoolInstance(){  
+        if(null==jedisPool){  
+            synchronized (JedisPoolUtil.class){  
+                if(null==jedisPool){  
+                    JedisPoolConfig poolConfig=new JedisPoolConfig();  
+                    poolConfig.setMaxTotal(200);  
+                    poolConfig.setMaxIdle(32);  
+                    poolConfig.setMaxWaitMillis(100*1000);  
+                    poolConfig.setBlockWhenExhausted(true);  
+                    poolConfig.setTestOnBorrow(true);  
+                    jedisPool=new JedisPool(poolConfig,"192.168.28",6379,60000);  
+                }  
+            }  
+        }  
+        return jedisPool;  
+    } 
+```
+这段代码使用了双重检查锁定模式来确保`JedisPool`的单例性.
+* 懒加载: `JedisPool`的实例在第一次调用时创建 , 而不是在类加载时创建. 能够节省资源
+* 同步块: `jedisPool`
 # Redis_事务_锁机制_秒杀
 ## Redis事务的概念和特性
 **Redis事务的概念**
