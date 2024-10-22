@@ -1287,5 +1287,53 @@ return 1;
 ```
 把这段`lua`脚本转义成String字符串,并加入处理秒杀的业务中
 ```java
-
+public class SecKillRedisByLua {  
+    static String secKillScript = "local userid=KEYS[1];\r\n" +  
+            "local ticketno=KEYS[2];\r\n" +  
+            "local stockKey='sk:'..'bj_cd'..\":ticket\";\r\n" +  
+            "local usersKey='sk:'..'bj_cd'..\":user\";\r\n" +  
+            "local userExists=redis.call(\"sismember\",usersKey,userid);\r\n" +  
+            "if tonumber(userExists)==1 then \r\n" +  
+            "   return 2;\r\n" +  
+            "end\r\n" +  
+            "local num= redis.call(\"get\" ,stockKey);\r\n" +  
+            "if tonumber(num)<=0 then \r\n" +  
+            "   return 0;\r\n" +  
+            "else \r\n" +  
+            "   redis.call(\"decr\",stockKey);\r\n" +  
+            "   redis.call(\"sadd\",usersKey,userid);\r\n" +  
+            "end\r\n" +  
+            "return 1";  
+    public static boolean doSecKill(String uid , String ticketNo){  
+        JedisPool jedisPoolInstance = JedisPoolUtil.getJedisPoolInstance();  
+        Jedis jedis = jedisPoolInstance.getResource();  
+        String s = jedis.scriptLoad(secKillScript);  
+        //evalsha是根据指定的sha1校验码 , 执行缓存在服务器的脚本  
+        Object result = jedis.evalsha(s, 2, uid, ticketNo);  
+        String resString = String.valueOf(result);  
+        if("0".equals(resString)){  
+            System.out.println("票已经卖光了");  
+            jedis.close();  
+            return false;  
+        }  
+        if("2".equals(resString)) {  
+            System.out.println("不能重复购买..");  
+            jedis.close();  
+            return false;  
+        }  
+        if("1".equals(resString)) {  
+            System.out.println("抢购成功");  
+            jedis.close();  
+            return true;  
+        } else {  
+            System.out.println("购票失败..");  
+            jedis.close();  
+            return false;  
+        }  
+    }  
+}
 ```
+# 主从复制
+## Redis主从复制的介绍
+**简单介绍**
+Redis主从复制(Replication)是Redis内置的功能之一 , 它允许将数据从一个Redis实例(主节点)复制到一个或多个Redis实例(从节点). 
