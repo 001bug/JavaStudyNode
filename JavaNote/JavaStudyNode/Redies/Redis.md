@@ -871,7 +871,9 @@ public class JedisPoolUtil {
 ```
 这段代码使用了双重检查锁定模式来确保`JedisPool`的单例性.
 * 懒加载: `JedisPool`的实例在第一次调用时创建 , 而不是在类加载时创建. 能够节省资源
-* 同步块: `jedisPool`
+* 同步块: `jedisPool`为`null`时 , 进入同步块 , 确保只有一个线程能够执行创建实例. 这个同步块只有在实例未创建时才会被调用 , 降低了锁的竞争
+* 双重检查: 在同步块内部再次检查`jedisPool`是否为`null`. 确保即使多个线程同时进入同步块 , 也只有第一个进入的线程会创建实例.
+4.如果获取的实例是从连接池获取的 , 那么`jedis.close`就是把获得的连接放回连接池 , 而不是直接删掉
 # Redis_事务_锁机制_秒杀
 ## Redis事务的概念和特性
 **Redis事务的概念**
@@ -1180,4 +1182,76 @@ public class SecKillRedis {
 }
 ```
 重点是:`jedis.watch(stockKey)`监控 , 着重在数据增减的时候进行一次事务处理 , 在减之前同一时间看看有没有被减过
+### Lua脚本
+**简介**
+1.Lua脚本是一种轻量级的 , 高效的编程语言 , 通常用于嵌入式和游戏开发 , 可以被C/C++调用 , 也可以调用C/C++的函数.不适合作为开发独立应用程序的语言
+2.大多程序或者游戏使用lua作为嵌入式脚本语言, 实现可配置性 , 可扩展性. 比如将复杂的或者多步的Redis操作 , 写成脚本 , 一次提交给redis执行 , 减少反复连接redis的次数. 提升性能
+3.
+
+**Lua脚本语法**
+1.变量声明
+```lua
+local x = 10
+y = 20
+```
+local表示局部变量 , `y = 20`表示全局变量 , 而且不用声明具体的变量类型
+2.数据类型
+* Nil: 表示无值
+* Boolean: `true`或`false`
+* Number: 浮点数
+* String: 字符串 , 单引号或双引号作为界限
+* Table: 类似数组和字典的结构
+```lua
+local name = 'jhon'
+local age = 25
+local isStudent = false
+local socres = {90,85,88} --数组
+local person = {name="Bod",age=30} --字典
+```
+3.控制结构
+* 条件控制
+```lua
+if age >= 18 then
+	print("yes")
+else
+	print("no")
+end
+```
+* 循环
+```lua
+for i = 1, 10 do
+    print(i)
+end
+
+while x > 0 do
+    x = x - 1
+end
+```
+跟python特别的像
+
+**函数**
+```lua
+function add(a, b)
+    return a + b
+end
+
+local sum = add(5, 3)  -- 调用函数
+```
+跟javascript特别的像 , 没有指定返回类型 , 形参也没有指定类型
+
+**表**
+Lua的主要数据结构 , 可以用来创建数组 , 字典
+```lua
+local fruits = {"apple", "banana", "cherry"}  -- 数组
+print(fruits[1])  -- 输出 "apple"
+
+local person = {name = "Alice", age = 25}  -- 字典
+print(person.name)  -- 输出 "Alice"
+```
+python也有表
+
+**模块**
+```lua
+local mymodule = require("mymodule")  -- 引入模块
+```
 ### 出现库存遗留问题
