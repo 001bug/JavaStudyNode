@@ -847,7 +847,7 @@ public class JedisPoolUtil {
     }  
 }
 ```
-
+通过这个类,传入地址 , 端口号 , 然后连接就能得到jedis连接
 # Redis_事务_锁机制_秒杀
 ## Redis事务的概念和特性
 **Redis事务的概念**
@@ -1095,3 +1095,65 @@ ab -n [请求总数] -c [并发数] [URL]
 码
 5.`-c`:表示的是100并发量
 
+6.在模拟的时候要把set集合清空 , 不然会对随机数进行占位``
+### 利用Redis事务机制,解决超卖
+**1.控制超卖Redis事务底层(乐观锁机制分析)**
+![](assest/Pasted%20image%2020241022081415.png)
+
+**2.利用redis事务机制进行改进**
+```java
+public class SecKillRedis {  
+    public static void main(String [] args){  
+        Jedis jedis = new Jedis("192.168.52.130",6379);  
+        System.out.println(jedis.ping());  
+        jedis.close();  
+    }  
+    //秒杀过程  
+    public static boolean doSecKill(String uid , String ticketNo){  
+        ticketNo="bj_cd";  
+  
+        if(uid==null||ticketNo==null){//没票了  
+            return false;  
+        }  
+        //有票,然后呢查询库,看是否有多少票  
+        JedisPool jedisPool = JedisPoolUtil.getJedisPoolInstance();  
+        Jedis jedis = jedisPool.getResource();  
+        String stockKey="sk:"+"bj_cd"+":ticket";  
+        String userKey="sk:"+"bj_cd"+":user";  
+        jedis.watch(stockKey);  
+        //这里获取库存 , 看秒杀是否结束  
+        String stock=jedis.get(stockKey);  
+        if(stock==null){  
+            System.out.println("秒杀还没开始,请等待...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断用户是否重复秒杀操作  
+        if(jedis.sismember(userKey,uid)){  
+            System.out.println(uid+" 不能重复秒杀...");  
+            jedis.close();  
+            return false;  
+        }  
+        //判断如果火车票数量 , 剩余数量小于1 , 秒杀结束  
+        if(Integer.parseInt(stock)<=0){  
+            System.out.println("票已经卖光,秒杀已经结束了");  
+            jedis.close();  
+            return false;  
+        }  
+        Transaction multi = jedis.multi();  
+        multi.decr(stockKey);  
+        multi.sadd(userKey,uid);  
+        System.out.println("秒杀成功了");  
+        List<Object> exec = multi.exec();  
+        if(exec==null||exec.size()==0){  
+            System.out.println("抢票失败");  
+            jedis.close();  
+            return false;  
+        }  
+        jedis.close();  
+        return true;  
+    }  
+}
+```
+重点是:`jedis.watch(stockKey)`监控 , 着重在数据增减的时候进行一次事务处理 , 在减之前同一时间看看有没有被减过
+### 出现库存遗留问题
