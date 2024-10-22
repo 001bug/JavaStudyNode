@@ -818,6 +818,35 @@ set a c1;
 3.`MaxWaitMillis`: 超时时间, 获取一个连接最久能等多久
 4.`testOnBorrow`: 获得一个jedis实例的时候是否检查连接可用性(底层用ping()); 如果为true , 则得到的jedis实例均可用
 ## 使用Redis连接池优化超时
+模版类 , 类似于数据库连接池
+JedisPoolUtil.java
+```java
+public class JedisPoolUtil {  
+    private static volatile JedisPool jedisPool = null;  
+    private JedisPoolUtil(){}  
+    public static JedisPool getJedisPoolInstance(){  
+        if(null==jedisPool){  
+            synchronized (JedisPoolUtil.class){  
+                if(null==jedisPool){  
+                    JedisPoolConfig poolConfig=new JedisPoolConfig();  
+                    poolConfig.setMaxTotal(200);  
+                    poolConfig.setMaxIdle(32);  
+                    poolConfig.setMaxWaitMillis(100*1000);  
+                    poolConfig.setBlockWhenExhausted(true);  
+                    poolConfig.setTestOnBorrow(true);  
+                    jedisPool=new JedisPool(poolConfig,"192.168.28",6379,60000);  
+                }  
+            }  
+        }  
+        return jedisPool;  
+    }  
+    public static void release(Jedis jedis){  
+        if(null!=jedis){  
+            jedis.close();  
+        }  
+    }  
+}
+```
 
 # Redis_事务_锁机制_秒杀
 ## Redis事务的概念和特性
