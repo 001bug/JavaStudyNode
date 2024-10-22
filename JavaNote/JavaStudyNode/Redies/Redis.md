@@ -1337,3 +1337,14 @@ public class SecKillRedisByLua {
 ## Redis主从复制的介绍
 **简单介绍**
 Redis主从复制(Replication)是Redis内置的功能之一 , 它允许将数据从一个Redis实例(主节点)复制到一个或多个Redis实例(从节点). 
+
+**Redis主从复制的示意图**
+![](assest/Pasted%20image%2020241022194543.png)
+对图的解释
+1.主机数据更新后 , 自动同步到备机的master/slaver机制
+2.Master以写为主 , Slaver以读为主
+3.利:读写分离 , 提升效率(读和写操作分布到不同的redis , 减少单个Redis的压力 , 提升效率)
+4.高可用性(容灾快速恢复 , 如果一个slaver不能正常工作 , 可以切换到另一个slaver)
+5.主从复制 , 要求1主多从.(如果有多个master , 那么slaver不能确定和哪个Master进行同步 , 出现数据混乱)
+6.支持集群
+## 搭建一主多从
