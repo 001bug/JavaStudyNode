@@ -1255,3 +1255,33 @@ python也有表
 local mymodule = require("mymodule")  -- 引入模块
 ```
 ### 出现库存遗留问题
+![](assest/Pasted%20image%2020241022153121.png)
+在进行判断版本是否被改动时 , n个用户在判断是否发生版本变化 , 发现版本发生了变化 , 造成多个用户购买失败
+在并发量大的情景下非常容易造成这个问题
+
+**使用lua解决库存遗留问题**
+解决分析
+![](assest/Pasted%20image%2020241022153623.png)
+分析
+1.`Lua`脚本是类似redis事务 , 有==一定的原子性 , 不会被其他命令插队== , 能完成Redis事务性的操作
+2.通过`Lua`脚本解决争抢问题 , Redis利用其单线程的特性 , 将请求**形成任务队**列 , 从而解决多任务并发问题
+
+**编写lua脚本文件**
+```lua
+local userid = KEYS[1];  
+local ticketno = KEYS[2];  
+local stockKey="sk:"+"bj_cd"+":ticket";  
+local userKey="sk:"+"bj_cd"+":user";  
+local userExists = redis.call(sismember,userKey,userid);   
+if tonumber(userExists)==1 then  
+    return 2;  
+end  
+local num =redis.call("get",stockKey);  
+if tonumber(num)<=0 then  
+    return 0;  
+else  
+    redis.call("decr",stockKey);  
+    redis.call("sadd",userKey,userid);  
+end  
+return 1;
+```
