@@ -1285,3 +1285,7 @@ else
 end  
 return 1;
 ```
+把这段`lua`脚本转义成String字符串,并加入处理秒杀的业务中
+```java
+
+```
