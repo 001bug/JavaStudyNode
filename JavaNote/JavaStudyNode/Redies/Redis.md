@@ -1349,4 +1349,36 @@ Redis主从复制(Replication)是Redis内置的功能之一 , 它允许将数据
 6.支持集群
 ## 搭建一主多从
 **搭建主从复制的入门**
-1.创建目录 , 并拷贝etc/redis.conf到
+1.创建目录 , 并拷贝etc/redis.conf到`/etc/myredis.conf` , 如果没有`/myredis.conf`这个目录 , 就创建这个目录
+2.对`/myredis.conf`这个目录下的redis.conf进行设置 , `daemonize yes` , `appendonly no` 
+3.创建不同端口的redis.conf文件 , `redis6379.conf` , `redis6380.conf` , `redis6381.conf` 
+用vim编辑器 , 编辑redis6379.conf文件 .其它的大差不差
+```
+include /myredis/redis.conf
+pidfile /var/run/redis_6379.pid
+port 6379
+dbfilename dump6379.rdb
+```
+4.启动三台redis服务器
+![](assest/Pasted%20image%2020241023105426.png)
+5.设置master服务器和slaver服务器
+先进入对应服务器的客户端 , 然后`slaveof 127.0.0.1 6379`
+到此 , 一个基本的主从复制结构就OK了 .
+![](assest/Pasted%20image%2020241023110828.png)
+![](assest/Pasted%20image%2020241023110844.png)
+## 主从复制-原理
+**原理示意图**
+![](assest/Pasted%20image%2020241023111006.png)
+* `Slave`启动成功连接到master后会发送一个`sync`命令
+* `master`接到命令启动后台的存盘进程 , 同时收集所有接受到的用于修改数据集命令 , 在后台进程执行完毕之后 , master将传送整个数据文件到slave , 以完成一次完全同步.
+* `slave`服务在接受到数据库文件数据后 , 将其存盘并加载到内存中 , 即==全量复制==
+* `master`数据变化了 , 会将新的收集到的修改命令依次传给`slave`,完成同步 , 即`增量复制`
+* 但是只要是重新连接master,一次完全同步(全量复制)将被自动执行
+
+**一主二仆**
+1.如果从服务器down了 , 重新启动 , 仍然可以获取master的最新数据
+![](assest/Pasted%20image%2020241023112616.png)
+![](assest/Pasted%20image%2020241023112627.png)
+然后重启redis-6381 这时 , 默认仍然是master. 这个时候要把该6381再次设置为从服务器. `执行slaveof 127.0.0.1 6379` 
+进入`redis-cli -p 6381` , 查找所有key仍然是有所有的key
+
