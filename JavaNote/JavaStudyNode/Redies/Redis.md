@@ -85,6 +85,7 @@ redis-cli：客户端，操作入口
 3.==Redis启动==.(使用绝对路径,也可以使用相对路径)
 启动Redis的指令`/usr/local/bin/redis-server /etc/redis.conf`
 当然直接`redis-server /etc/redis.conf`也是可以的 , 因为redis默认是配置了环境变量
+`ps -aux | grep redis`
 ![](assest/{3E2E0CA7-B0F1-4BF1-8A4C-09514F894E5C}.png)查看是否启动成功
 ![](assest/Pasted%20image%2020241010210619.png)
 5.用客户端访问: redis-cli(也是配置了环境变量,可以直接使用)
@@ -372,7 +373,7 @@ logfile "" 就是说，默认为控制台打印，并没有日志文件生成
 3.默认情况下是10000个客户端
 4.如果达到了此限制 , redis会拒绝新的连请求,并且发出"max number of clients reached"
 
-**maxmemory**\
+**maxmemory**
 这个可以用于设置Redis实例最大使用的内存大小. 当达到上限时,会根据淘汰策略来释放内存
 如图
 ![](assest/Pasted%20image%2020241013104630.png)
@@ -1413,3 +1414,16 @@ dbfilename dump6379.rdb
 `sentinel monitor redis_master 127.0.0.1 6379 1` 这段指令最后的1表示只要有一个哨兵同意迁移就可以切换. 这句是填到sentinel.conf文件中的
 3.启动哨兵 , 注意看哨兵的端口是26379
 ![](assest/Pasted%20image%2020241023160017.png)
+当主机挂掉后 , 哨兵模式会从选举中产生新的主机
+![](assest/Pasted%20image%2020241023193402.png)
+结果如下
+![](assest/Pasted%20image%2020241023193417.png)
+如果原来的主机重启就会自动成为从机
+注意细节
+1.在哨兵模式下 , 主机down后的执行流程分析
+![](assest/Pasted%20image%2020241023194242.png)
+选举标准
+1.优先级在redis.conf中默认: replica-priority 100 , 值越小优先级越高
+2.偏移量是指获得==原主机数据的量 , 数据量全的优先级高==
+3.每个redis实例启动后都会随机生成一个40位的runid , 值越小优先级越高
+# 集群
