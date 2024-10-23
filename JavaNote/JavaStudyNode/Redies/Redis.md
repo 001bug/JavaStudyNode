@@ -1348,6 +1348,7 @@ Redis主从复制(Replication)是Redis内置的功能之一 , 它允许将数据
 5.主从复制 , 要求1主多从.(如果有多个master , 那么slaver不能确定和哪个Master进行同步 , 出现数据混乱)
 6.支持集群
 ## 搭建一主多从
+主要用到的是`slave`指令
 **搭建主从复制的入门**
 1.创建目录 , 并拷贝etc/redis.conf到`/etc/myredis.conf` , 如果没有`/myredis.conf`这个目录 , 就创建这个目录
 2.对`/myredis.conf`这个目录下的redis.conf进行设置 , `daemonize yes` , `appendonly no` 
@@ -1382,3 +1383,31 @@ dbfilename dump6379.rdb
 然后重启redis-6381 这时 , 默认仍然是master. 这个时候要把该6381再次设置为从服务器. `执行slaveof 127.0.0.1 6379` 
 进入`redis-cli -p 6381` , 查找所有key仍然是有所有的key
 
+2.如果主服务器down了 , 从服务器并不会抢占为主服务器 , 当服务器恢复后 , 从服务器仍然指向原来的主服务器
+
+**薪火相传**
+示意图
+![](assest/Pasted%20image%2020241023143341.png)
+分析
+1.上一个Slave可以是下一个slave的master , slave同样可以接受其他slaves的连接和同步请求 , 那么该slave作为了链条中下一个的master, 可以有效减轻master的写压力, 去中心化降低风险
+2.==用`slaveof master_ip master_port`==
+3.风险是一但某个`slave`宕机 , 后面的`slave`都没法同步
+4.主机挂了 , 从机还是从机 , 无法写数据了
+实践
+将上面6381端口的redis指向6380,执行`slaveof 127.0.0.1 6380`
+
+**反客为主**
+1.在薪火相传的结构下 , 当一个master宕机后 , 指向Master的slave可以升为master, 其后面的slave不用做任何处理
+2.用`slaveof no one`将从机变为主机(后面可以使用哨兵模式,自动完成切换)
+实践
+关闭redis-cli 6379
+![](assest/Pasted%20image%2020241023145517.png)
+
+**哨兵模式**
+示意图
+![](assest/Pasted%20image%2020241023145625.png)
+哨兵模式: 反客为主的自动版 , 能够后台监控主机是否故障 , 如果故障了根据投票数自动将库转换为主库
+实验
+1.调整为一主二仆模式 , 6379带着6380 , 6381
+2.创建`/myredis/sentinel.conf` , 名字不能乱写 .
+`sentinel monitor redis_master 127.0.0.1 6379 1`
