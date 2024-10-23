@@ -1410,4 +1410,6 @@ dbfilename dump6379.rdb
 实验
 1.调整为一主二仆模式 , 6379带着6380 , 6381
 2.创建`/myredis/sentinel.conf` , 名字不能乱写 .
-`sentinel monitor redis_master 127.0.0.1 6379 1`
+`sentinel monitor redis_master 127.0.0.1 6379 1` 这段指令最后的1表示只要有一个哨兵同意迁移就可以切换. 这句是填到sentinel.conf文件中的
+3.启动哨兵 , 注意看哨兵的端口是26379
+![](assest/Pasted%20image%2020241023160017.png)
