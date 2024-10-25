@@ -1357,10 +1357,10 @@ Redis主从复制(Replication)是Redis内置的功能之一 , 它允许将数据
 3.创建不同端口的redis.conf文件 , `redis6379.conf` , `redis6380.conf` , `redis6381.conf` 
 用vim编辑器 , 编辑redis6379.conf文件 .其它的大差不差
 ```
-include /myredis/redis.conf
-pidfile /var/run/redis_6379.pid
-port 6379
-dbfilename dump6379.rdb
+include /myredis/redis.conf #将其他的配置文件加载进来
+pidfile /var/run/redis_6379.pid #指定Redis服务器的PID文件路径和名称.这个文件保存了Redis的进程ID
+port 6379 #监听的端口号
+dbfilename dump6379.rdb #持久化文件的rdb文件名
 ```
 4.启动三台redis服务器
 ![](assest/Pasted%20image%2020241023105426.png)
@@ -1498,3 +1498,21 @@ cluster-node-timeout 15000
 4.不在一个`slot`下的键值 , 是不能使用`mget,mset`等多键操作
 ![](assest/Pasted%20image%2020241025172007.png)
 5.可以通过`{}`来定义组的概念 , 从而使`key`中`{}`内相同内容的键值对放到一个`slot`中去
+![](assest/Pasted%20image%2020241025184252.png)
+
+**查询集群中的值**
+1.指令`CLUSTER KEYSLOT <key>`返回key对应的slot值
+2.指令`CLUSTER COUNTKEYSINSLOT <slot>`返回slot有多少个key
+3.指令`CLUSTER GETKEYSINSLOT <slot><count>` 返回count个slot槽中的键
+![](assest/Pasted%20image%2020241025184614.png)
+**Redis集群故障恢复**
+1.如果主节点下线, 从节点会自动升为主节点
+![](assest/Pasted%20image%2020241025184906.png)
+![](assest/Pasted%20image%2020241025184914.png)
+2.主节点恢复后 , 主节点回来变成从机
+![](assest/Pasted%20image%2020241025185303.png)![](assest/Pasted%20image%2020241025185310.png)
+3.如果所有某一段插槽的主从节点都宕掉 , Redis服务是否还能继续, 要根据不同的配置而言
+* 如果某个一段插槽的主从都挂掉 , 而`cluster-require-full-conerage`为yes,那么,整个集群都挂掉
+* 如果某一段插槽的主从都挂掉，而cluster-require-full-coverage 为no , 那么, 只是该插槽数据不能使用，也无法存储
+* redis.conf中的参数`cluster-require-full-coverage`
+![](assest/Pasted%20image%2020241025185721.png)
