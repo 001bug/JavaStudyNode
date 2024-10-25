@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Redis"
+              "title": "SpringCloud"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "Redis 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -174,8 +174,12 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "linux/linux.md",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241025210303.png",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/assest",
+    "JavaNote/JavaStudyNode/SpringCloud",
+    "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241025185721.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241025185310.png",
     "JavaNote/JavaStudyNode/Redies/assest/Pasted image 20241025185303.png",
@@ -214,12 +218,9 @@
     "JavaNote/JavaStudyNode/Redies/[linux].md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
     "JavaNote/JavaStudyNode/Redies/assest",
     "JavaNote/JavaStudyNode/Redies",
     "linux/assest",
-    "linux",
-    "未命名.canvas",
-    "JavaNote/JavaStudyNode/java基础/Java高级"
+    "未命名.canvas"
   ]
 }
