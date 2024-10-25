@@ -1453,3 +1453,19 @@ dbfilename dump6379.rdb
 使用到的服务器比较少. 减少成本
 这种集群配置会根据key值 , 计算slot , 把数据分散到不同的主机, 从而减缓单个主机的存取压力.
 在实际生成环境各个redis服务器,应当要部署到不同的服务器中,防止服务器宕机导致主从复制失效
+无中心化集群搭建
+1.将rdb,aof文件都删掉
+![](assest/Pasted%20image%2020241025081713.png)
+2.创建redis6379.conf文件 , 并加上redis cluster配置修改
+```
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout 15000
+```
+![](assest/Pasted%20image%2020241025081911.png)
+3.使用查找替换指令修改另外的文件
+`%s/6379/6380`
+4.启动6个redis服务
+6.切换指令目录 , 然后通过指令将6个节点合成一个集群
+`redis-cli --cluster create --cluster-replicas 1 192.168.128.28:6379 192.168.28.128:6380 192.168.128.28:6381 192.168.128.28:6382 192.168.128.28:6383 192.168.128.28:6384`
+要确保`nodes-xxx.conf`文件正常生成
