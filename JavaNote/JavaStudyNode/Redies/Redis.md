@@ -1466,7 +1466,7 @@ cluster-node-timeout 15000
 3.使用查找替换指令修改另外的文件
 `%s/6379/6380`
 4.启动6个redis服务
-6.切换指令目录 , 然后通过指令将6个节点合成一个集群
+6.切换指令目录`cd /opt/redis-6.2.6/src/` , 然后通过指令将6个节点合成一个集群
 `redis-cli --cluster create --cluster-replicas 1 192.168.128.28:6379 192.168.28.128:6380 192.168.128.28:6381 192.168.128.28:6382 192.168.128.28:6383 192.168.128.28:6384`
 要确保`nodes-xxx.conf`文件正常生成
 ## 集群的使用
@@ -1475,7 +1475,7 @@ cluster-node-timeout 15000
 **集群登录**
 `redis-cli -c -p 6379` 登录
 `cluster nodes`查看集群信息 , 主从的对应关系 
-![](assest/Pasted%20image%2020241025092412.png)1.一个集群至少有三个主节点
+![](assest/Pasted%20image%2020241025092412.png)1.一个==集群至少有三个主节点==
 2.`cluster-replicas 1`表示每一个主节点创建一个从节点
 3.分配原则 , 尽量保证主服务器和从服务器各自运行在不同的ip地址(服务器), 防止机器故障导致主从失效 , 高可用性得不到保障
 
@@ -1490,13 +1490,15 @@ cluster-node-timeout 15000
 * 节点B负责处理5461号至10922号插槽
 * 节点C 负责处理10923 号至16383 号插槽
 
-**在集群中录入值**
-1.在redis 每次录入、查询键值，redis 都会计算出该key 应该送往的插槽，如果不是该客户端对应服务器的插槽，redis 会告知应前往的redis 实例地址和端口。
+**在集群中录入数据**
+1.在redis 每次录入、查询键值，redis 都会计算出该key 应该送往的[[插槽]]，如果不是该客户端对应服务器的插槽，redis 会告知应前往的redis 实例地址和端口。
 2.redis-cli客户端提供了`-c`参数实现自动重定向
 3.如`redis-cli -c -p 6379`登入后 , 再录入,查询键值对可以自动重定向
 ![](assest/Pasted%20image%2020241025171749.png)
 4.不在一个`slot`下的键值 , 是不能使用`mget,mset`等多键操作
 ![](assest/Pasted%20image%2020241025172007.png)
+避免重复的跨域 , 造成性能损失
+
 5.可以通过`{}`来定义组的概念 , 从而使`key`中`{}`内相同内容的键值对放到一个`slot`中去
 ![](assest/Pasted%20image%2020241025184252.png)
 
@@ -1505,7 +1507,7 @@ cluster-node-timeout 15000
 2.指令`CLUSTER COUNTKEYSINSLOT <slot>`返回slot有多少个key
 3.指令`CLUSTER GETKEYSINSLOT <slot><count>` 返回count个slot槽中的键
 ![](assest/Pasted%20image%2020241025184614.png)
-**Redis集群故障恢复**
+## Redis集群故障恢复
 1.如果主节点下线, 从节点会自动升为主节点
 ![](assest/Pasted%20image%2020241025184906.png)
 ![](assest/Pasted%20image%2020241025184914.png)
@@ -1516,3 +1518,37 @@ cluster-node-timeout 15000
 * 如果某一段插槽的主从都挂掉，而cluster-require-full-coverage 为no , 那么, 只是该插槽数据不能使用，也无法存储
 * redis.conf中的参数`cluster-require-full-coverage`
 ![](assest/Pasted%20image%2020241025185721.png)
+## 集群的jedis的使用
+**使用前的设置**
+因为即使连接的不是主机, 集群也会自动切换主机存储. 主机写 , 从机读. 使用的是无中心化主从集群 , 无论从哪台主机写的数据, 其它主机上都能读到数据. 所以在防火墙的设置上要把相关的redis的服务器的端口都要打开
+1.创建集群连接
+```java
+public class RedisClusterWithPoolConfig {
+    public static void main(String[] args) {
+        Set<HostAndPort> clusterNodes = new HashSet<>();
+        clusterNodes.add(new HostAndPort("192.168.128.28", 6379));
+        clusterNodes.add(new HostAndPort("192.168.128.28", 6380));
+
+        // 配置连接池
+        JedisPoolConfig poolConfig = new JedisPoolConfig();
+        poolConfig.setMaxTotal(100);
+        poolConfig.setMaxIdle(10);
+        poolConfig.setMinIdle(5);
+        poolConfig.setTestOnBorrow(true);
+        poolConfig.setTestOnReturn(true);
+
+        try (JedisCluster jedisCluster = new JedisCluster(clusterNodes, poolConfig)) {
+            jedisCluster.set("poolKey", "Hello with Pool!");
+            String value = jedisCluster.get("poolKey");
+            System.out.println("Value of 'poolKey': " + value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
+## 集群的优缺点
+1.优点
+实现扩容 , 分摊压力 , 无中心配置相对简单
+2.缺点
+多建操作是不被支持的 , 多建的Redis事务是不被支持的. lua脚本不被支持. 由于集群方案出现的比较晚, 很多公司已经采用了其他的集群方案 , 而其他方案想要迁移至redis cluster , 需要整体迁移而不是逐步过渡 , 复杂度大
