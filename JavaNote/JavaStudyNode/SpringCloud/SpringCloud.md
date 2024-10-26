@@ -70,12 +70,18 @@ Nacos借用了很多Eureka的设计理念
 1.创建父项目 , --选择灵活配置方式
 ![](assest/Pasted%20image%2020241026181931.png)
 ![](assest/Pasted%20image%2020241026181942.png)
-项目的编码设置
+2.项目的编码设置
 ![](assest/Pasted%20image%2020241026182055.png)
-设置编译器
+3.设置编译器
 ![](assest/Pasted%20image%2020241026182115.png)
 这个`Target bytecode version` , 选择的版本会影响编译器生成的字节码版本 . 例如选择java8 , 编译器会生成与java8兼容的字节码. 确保这些`.class`文件可以在java8或者更高版本的JVM上运行.
 一般用来匹配项目的需求 , 性能优化 , 向后兼容
-
-然后删除`src`保留一个纯净的环境
+4.然后删除`src`保留一个纯净的环境
 父项目一般只用来管理子模块 , 并不需要编写源码 , 所以把src文件删掉是最为合适的
+
+5.然后编写对应的pom.xml文件
+这里使用到了maven的聚合工程的功能
+`<packaging>pom</packaging>`: 表名这是一个父工程 .
+`<dependencyManagement>` :
+* 一种管理依赖版本号的方式 , 通常在项目`packaging`为POM的xml中使用.
+* 使用`pom.xml`中的`dependencyManagement`元素能让所有的子项目中引用一个依赖 , Maven会沿着父子层次向上走 , 直到找到拥有`dependencyManagement`元素的项目, 然后会使用该配置文件指定的版本号
