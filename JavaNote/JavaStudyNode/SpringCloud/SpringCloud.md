@@ -65,3 +65,17 @@ Nacos借用了很多Eureka的设计理念
 所以: 这里以Spring Cloud Alibaba组件为主 , Spring Cloud为辅.
 # 微服务基础环境搭建
 ## 创建父工程, 聚合子微服务模块
+创建一个父项目 , 然父项目区管理多个微服务模块
+![](assest/Pasted%20image%2020241026181842.png)
+1.创建父项目 , --选择灵活配置方式
+![](assest/Pasted%20image%2020241026181931.png)
+![](assest/Pasted%20image%2020241026181942.png)
+项目的编码设置
+![](assest/Pasted%20image%2020241026182055.png)
+设置编译器
+![](assest/Pasted%20image%2020241026182115.png)
+这个`Target bytecode version` , 选择的版本会影响编译器生成的字节码版本 . 例如选择java8 , 编译器会生成与java8兼容的字节码. 确保这些`.class`文件可以在java8或者更高版本的JVM上运行.
+一般用来匹配项目的需求 , 性能优化 , 向后兼容
+
+然后删除`src`保留一个纯净的环境
+父项目一般只用来管理子模块 , 并不需要编写源码 , 所以把src文件删掉是最为合适的
