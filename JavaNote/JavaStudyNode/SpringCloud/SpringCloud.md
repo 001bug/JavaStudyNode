@@ -30,3 +30,12 @@ SpringCloud是一个基于SpringBoot的微服务架构工具集, 帮助开发者
 springcloud Alibaba文档地址:https://github.com/alibaba/spring-cloud-alibaba
 spring cloud Netflix 文档地址:https://github.com/Netflix
 ![](assest/Pasted%20image%2020241026100317.png)
+Nacos借用了很多Eureka的设计理念
+## SpringCloud分布式示意图
+**文档**: https://spring.io/microservices
+示意图
+![](assest/Pasted%20image%2020241026105759.png)
+这是一个非常简洁的分布式微服务架构示意图. 但包含了大多主要的功能.
+1.SpringCloud是微服务的落地
+2.SpringCloud体现了微服务的弹性设计
+3.微服务的工作方式一般是基于
