@@ -57,3 +57,11 @@ Nacos借用了很多Eureka的设计理念
 ![](assest/Pasted%20image%2020241026113603.png)
 **SpringCloud Alibaba核心组件**
 ![](assest/Pasted%20image%2020241026113922.png)
+**选择SpringCloud Alibaba组件的原因**
+1.SpringCloud部分组件停止维护和更新 , 给开发带来不便
+2.SpringCloud部分环境搭建复杂 , 没有可视化界面 , 需要大量的二次开发和定制
+3.SpringCloud配置复杂.
+
+所以: 这里以Spring Cloud Alibaba组件为主 , Spring Cloud为辅.
+# 微服务基础环境搭建
+## 创建父工程, 聚合子微服务模块
