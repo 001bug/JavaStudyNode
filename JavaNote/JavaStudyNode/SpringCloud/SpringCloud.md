@@ -38,4 +38,22 @@ Nacos借用了很多Eureka的设计理念
 这是一个非常简洁的分布式微服务架构示意图. 但包含了大多主要的功能.
 1.SpringCloud是微服务的落地
 2.SpringCloud体现了微服务的弹性设计
-3.微服务的工作方式一般是基于
+3.微服务的工作方式一般是基于分布式的. SpringCloud仍然是Spring家族一员 , 可以解决微服务的分布式工作带来的各种问题
+4.SpringCloud提供很多组件 , 如服务发现 , 负载均衡 , 链路中断 , 分布式追踪和监控. API gateway功能
+
+**SpringCloud和SpringBoot的版本对应关系**
+地址: https://spring.io/projects/spring-cloud
+![](assest/Pasted%20image%2020241026111128.png)
+## Spring Cloud组件选型
+![](assest/Pasted%20image%2020241026111931.png)带`√`表示目前流行的 , 且功能强大的 , 时常更新的
+带`×`表示目前不流行的 , 更新缓慢或者停止更新的
+# Spring Cloud Alibaba基本介绍
+**官方文档以及基本介绍**
+官方文档; https://github.com/alibaba/spring-cloud-alibaba
+中文文档: https://github.com/alibaba/spring-cloud-alibaba/blob/master/README-zh.md
+
+![](assest/Pasted%20image%2020241026113521.png)
+**主要功能**
+![](assest/Pasted%20image%2020241026113603.png)
+**SpringCloud Alibaba核心组件**
+![](assest/Pasted%20image%2020241026113922.png)
