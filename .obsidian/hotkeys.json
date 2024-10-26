@@ -14,5 +14,13 @@
       ],
       "key": "R"
     }
+  ],
+  "editor:toggle-italics": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Q"
+    }
   ]
 }
