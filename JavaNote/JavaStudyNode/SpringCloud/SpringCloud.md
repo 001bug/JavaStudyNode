@@ -85,3 +85,9 @@ Nacos借用了很多Eureka的设计理念
 `<dependencyManagement>` :
 * 一种管理依赖版本号的方式 , 通常在项目`packaging`为POM的xml中使用.
 * 使用`pom.xml`中的`dependencyManagement`元素能让所有的子项目中引用一个依赖 , Maven会沿着父子层次向上走 , 直到找到拥有`dependencyManagement`元素的项目, 然后会使用该配置文件指定的版本号
+* 好处: 如果有多个子项目都引用同一样依赖 , 则避免了子项目还要声明版本号 , 当升级或者切换到另一个版本时 , 只需要在带有`<packaging>pom</packaging>`的容器里更新.
+* 这个和`<dependency>`不一样 , 它不会直接引入依赖. 只负责管理依赖版本
+* 只有子项目声明了对应的依赖并且没有指定具体版本 , 才会从父项目中继承下来.![](assest/Pasted%20image%2020241026205808.png) 这个体现在pom.xml文件中`<scope>`标签中
+## 会员中心微服务模块
+模块名: `member-server-provider-10000`
+名字的含义: member-server表示人员服务 . `provider`表示生产者 , `10000`表示端口
