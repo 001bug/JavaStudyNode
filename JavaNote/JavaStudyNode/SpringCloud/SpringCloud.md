@@ -91,3 +91,17 @@ Nacos借用了很多Eureka的设计理念
 ## 会员中心微服务模块
 模块名: `member-server-provider-10000`
 名字的含义: member-server表示人员服务 . `provider`表示生产者 , `10000`表示端口
+
+**具体操作步骤**
+1.创建子模块
+![](assest/Pasted%20image%2020241027081238.png)
+注意看父工程是否正确
+
+2.查看父工程的pom.xml文件,看他掌管的子模块是否是刚刚创建的
+![](assest/Pasted%20image%2020241027081431.png)
+3.编写子模块的pom.xml文件
+* `<parent>`标签 , 指明该子模块对应的父工程
+* `<groupId>` 在子工程继承父工程的前提下,`groupId`不用写
+* 发现,子模块springboot元素并没有指定版本 , 而且父模块也没有指定版本. 这个原因是 , 父模块指定了`spring-boot-dependencies`的版本 , 这个元素里面又指定了boot的版本
+* [[`spring-boot-starter-actuator`]]: springboot程序的监控系统 , 可以实现系统的健康检测
+* `spring cloud sleuth`:分布式系统中,链路追踪工具
