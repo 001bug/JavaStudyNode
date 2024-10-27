@@ -106,3 +106,15 @@ Nacos借用了很多Eureka的设计理念
 * [[`spring-boot-starter-actuator`]]: springboot程序的监控系统 , 可以实现系统的健康检测
 * `spring cloud sleuth`:分布式系统中,生成和传递链路追踪信息的工具
 * `spring cloud zipkin`:分布式链路追踪系统 , 用于收集,存储,==可视化==来自Sleuth的追踪信息
+
+4.启动springboot程序
+注意端口是否被占用 , 可以通过cmd指令只看端口情况`netstat -ano | findstr :8080` net是network , stat是statistics
+`-a`: 显示所有活动的连接和监听端口
+`-n`: 以数字的形式显示地址和端口号
+`-o`:显示每个连接的进程号ID(PID)
+```php
+TCP    0.0.0.0:8080    0.0.0.0:0    LISTENING    <PID>
+```
+然后通过pid(进程号)在任务管理系统进行操作
+
+5.

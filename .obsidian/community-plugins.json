@@ -1,5 +1,6 @@
 [
   "obsidian-image-toolkit",
-  "obsidian-editor-shortcuts",
-  "obsidian-git"
+  "obsidian-git",
+  "vscode-editor",
+  "obsidian-editor-shortcuts"
 ]
