@@ -104,4 +104,5 @@ Nacos借用了很多Eureka的设计理念
 * `<groupId>` 在子工程继承父工程的前提下,`groupId`不用写
 * 发现,子模块springboot元素并没有指定版本 , 而且父模块也没有指定版本. 这个原因是 , 父模块指定了`spring-boot-dependencies`的版本 , 这个元素里面又指定了boot的版本
 * [[`spring-boot-starter-actuator`]]: springboot程序的监控系统 , 可以实现系统的健康检测
-* `spring cloud sleuth`:分布式系统中,链路追踪工具
+* `spring cloud sleuth`:分布式系统中,生成和传递链路追踪信息的工具
+* `spring cloud zipkin`:分布式链路追踪系统 , 用于收集,存储,==可视化==来自Sleuth的追踪信息
