@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/javaweb/javaweb.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "javaweb"
+              "title": "SpringCloud"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "content-type",
+                "query": "lombok",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,8 +73,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -140,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/javaweb/javaweb.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "javaweb 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -176,15 +175,22 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "杂记/未命名.md",
-    "JavaNote/JavaStudyNode/Redies/Redis.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/MyBaits.md",
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
+    "JavaNote/JavaStudyNode/SpringCloud/[杂记](杂记.md).md",
+    "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
+    "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
+    "JavaNote/JavaStudyNode/SpringCloud/coding",
+    "JavaNote/JavaStudyNode/SpringBoot/coding",
+    "未命名.canvas",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "杂记/未命名.md",
+    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081431.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081238.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026205808.png",
@@ -216,13 +222,6 @@
     "算法/数据结构.md",
     "算法/java在算法中常用的api.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
-    "JavaNote/JavaStudyNode/Redies/仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作.md",
-    "JavaNote/JavaStudyNode/Redies/[[]].md",
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
-    "assest",
-    "架构流程图/assest",
-    "架构流程图",
-    "JavaNote/JavaStudyNode/Redies/assest",
-    "未命名.canvas"
+    "JavaNote/JavaStudyNode/Redies/仅将keys从keysapce元数据中删除,实际的删除会在后续异步操作.md"
   ]
 }

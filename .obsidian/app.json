@@ -3,5 +3,6 @@
   "attachmentFolderPath": "./assest",
   "newFileLocation": "current",
   "newLinkFormat": "relative",
-  "alwaysUpdateLinks": true
+  "alwaysUpdateLinks": true,
+  "showUnsupportedFiles": true
 }

@@ -117,4 +117,21 @@ TCP    0.0.0.0:8080    0.0.0.0:0    LISTENING    <PID>
 ```
 然后通过pid(进程号)在任务管理系统进行操作
 
-5.
+**编写dao数据层**
+定义: 全名Data Access Object, 主要用于处理数据访问逻辑. 主要是一组与数据库或其他数据源交互的类或接口 
+这里采用`MyBatis`: 在resources/mapper下编写对应的xml配置文件
+
+**编写entiy类**
+这里多个个工具类[Result](杂记). entity主要是用于编写数据单元的. 一般使用到[`lombok`](MyBatis)快速编写javabean 
+
+**编写service层**
+service层和dao层是完全不一样的 , 不可替代. service层面向业务逻辑. 是业务的核心, 负责将多个dao操作组合在一起, 并为上层的控制层(Controller)提供服务接口.service层中的方法往往会调用多个dao方法.
+
+**编写controller层**
+定义: 该层是应用程序中负责接受并处理客户端请求的层. 
+细节: 注意常用的注解
+1.类级别
+* `@Controller`: 要配合视图解析器
+* `@RestController`: 返回数据(json/xml)
+* `@RequestMapping`: 用于类,指定URL映射 等等......
+
