@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringBoot"
+              "title": "杂记"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Resou",
+                "query": "ContextConfig",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md"
               },
               "icon": "lucide-list",
-              "title": "SpringBoot 的大纲"
+              "title": "杂记 的大纲"
             }
           },
           {
@@ -173,10 +173,12 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "4eed74c84ef71a4d",
+  "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "杂记/未命名.md",
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
@@ -217,8 +219,6 @@
     "JavaNote/JavaStudyNode/Spring/Spring.md",
     "技术栈.md",
     "assest",
-    "计数.md",
-    "架构流程图/流程图.md",
     "架构流程图/assest",
     "架构流程图",
     "JavaNote/JavaStudyNode/Redies/assest",
