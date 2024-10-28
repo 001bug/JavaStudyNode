@@ -698,7 +698,7 @@ spring:
 ```
 3. 修改appliacation.yml启用filter功能
 这里注意一下,在上段的代码中,为什么返回的不是像SpringMVC那样的结果,静态资源,而是字符串.原因是没有经过视图解析器
-@RestController是一个复合注解, 含有@ResponseBody,所以springboot底层(springmvc),在处理return "xxx"时,会以@ResponseBody注解进行解析处理,返回字符串"xxx",而不是使用视图解析器来处理.
+@RestController是一个复合注解, 含有@ResponseBody,所以springboot底层(springmvc),在处理return "xxx"时,会以@ResponseBody注解进行解析处理,==返回字符串=="xxx",而不是使用视图解析器来处理.
 如果用@Controller,那么就会因为找不到xxx.html而报错,但是在application.yml文件上配置解析器就可以了
 ```yml
 spring:
