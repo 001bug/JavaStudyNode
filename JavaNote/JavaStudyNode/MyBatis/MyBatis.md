@@ -294,7 +294,7 @@ connection = DriverManager.getConnection(url,username,password);
 ##### 3.写执行器Executor
 源码是基于接口实现了很多类去实现sql的 .  这里直接开发一个简单的基于Executor实现的BaseExecutor
 
-1.在此之前,学习一个**快速开发javabean**的包
+1.在此之前,学习一个**快速开发javabean**的包(lombok)
 相关pom依赖
 ```java
 <dependency>  

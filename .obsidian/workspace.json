@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MyBatis"
+              "title": "SpringCloud"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "useSS",
+                "query": "lom",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -139,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "MyBatis 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -175,9 +176,9 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081431.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081238.png",
