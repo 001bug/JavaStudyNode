@@ -242,7 +242,8 @@ restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务�
 1.创建子模块命名为`E_commerce_center-common-api`
 
 2.引入maven依赖
-这里目前只需要引入`lombok` , 细节:`<optional>true</optional>`表明不允许该依赖传递到其他模块, 也体现了微服务共用模块的独立性
+这里目前只需要引入`lombok` , 细节:`<optional>true</optional>`表明不允许该依赖传递到其他模块, 也体现了微服务共用模块的独立性. 
+注意是否出现了自己引入自己的Maven导出的包奇怪引入方式 , 导致依赖关系混乱
 
 3.使用maven打包成jar
 ![](assest/Pasted%20image%2020241029174246.png)
@@ -259,3 +260,4 @@ restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务�
 ```
 
 5.完成测试
+# Eureka服务注册与发现

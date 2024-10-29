@@ -73,8 +73,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -176,15 +175,15 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Maven/Maven.md",
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029174246.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029171634.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029165208.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029164903.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029163900.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029154125.png",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028211806.png",
