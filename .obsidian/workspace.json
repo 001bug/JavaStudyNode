@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Path",
+                "query": "@Bean",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,8 +73,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -176,14 +175,16 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028211806.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028210928.png",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/SpringCloud/MyBaits.md",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/[杂记](杂记.md).md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
@@ -191,7 +192,6 @@
     "JavaNote/JavaStudyNode/SpringBoot/coding",
     "未命名.canvas",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "杂记/未命名.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
@@ -203,7 +203,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026181942.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026181931.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026181842.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026113922.png",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/动静态分离.md",
     "前端/Nginx/Nginx.md",

@@ -146,5 +146,28 @@ service层和dao层是完全不一样的 , 不可替代. service层面向业务�
 2.`微服务消费者模块`也叫`网关`或`聚合服务`
 这种转变的原因:降低客户端复杂性,增强安全性和集中管理
 ![](assest/Pasted%20image%2020241028211806.png)
+这里服务消费模块在接受到请求后,怎么把请求打给服务提供微服务模块,这里使用RestTemplate
 
-**配置pom.xml**
+**配置pom.xml和application.yml**
+
+**创建启动类**
+[`@SpringApplication`](SpringBoot)
+
+**实现entity层**
+Member.java+Result.java(上面有详细解释)
+
+**配置层config**
+定义: config包通常用于放置项目的配置信息和配置类. 里面常见的内容有`@Configuration`注解的配置类. Bean初始化. AOP配置. 属性读取,如读取`application.properties`. 安全配置: 
+
+这里的话是注入RestTemplate
+* 定义: RestTemplate是spring提供用于访问Rest服务的模版类,可以说是简易的客户端
+* 调用外部RESfulAPI, 在微服务架构中, 服务间往往相互调用
+* 第三方API集成,调用外部服务的API,如获取天气信息,调用支付接口
+常用方法
+```java
+getForObject(url,responseType,uriVariables)//发送get请求,返回java对象
+postForObject(url, request, responseType, uriVariables)//发送 POST 请求，返回响应数据。
+put(url, request, uriVariables)//发送 PUT 请求，更新资源。
+delete(url, uriVariables)//发送 DELETE 请求，删除资源。
+```
+
