@@ -243,3 +243,19 @@ restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务�
 
 2.引入maven依赖
 这里目前只需要引入`lombok` , 细节:`<optional>true</optional>`表明不允许该依赖传递到其他模块, 也体现了微服务共用模块的独立性
+
+3.使用maven打包成jar
+![](assest/Pasted%20image%2020241029174246.png)
+
+4.工程重构
+* 在**各个**模块引入刚刚制造的jar包
+* 删除原来的entity包, 修改pom.xml
+```xml
+<dependency>
+	<groupId>com.hspedu.springcloud</groupId>
+	<artifactId>e_commerce_center-common-api</artifactId>
+	<version>${project.version}</version>
+</dependency>
+```
+
+5.完成测试
