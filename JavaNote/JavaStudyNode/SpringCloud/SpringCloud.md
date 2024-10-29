@@ -120,6 +120,8 @@ TCP    0.0.0.0:8080    0.0.0.0:0    LISTENING    <PID>
 **编写dao数据层**
 定义: 全名Data Access Object, 主要用于处理数据访问逻辑. 主要是一组与数据库或其他数据源交互的类或接口 
 这里采用`MyBatis`: 在resources/mapper下编写对应的xml配置文件
+确定要保证mapper文件在target目录下有
+![](assest/Pasted%20image%2020241028210928.png)
 
 **编写entiy类**
 这里多个个工具类[Result](杂记). entity主要是用于编写数据单元的. 一般使用到[`lombok`](MyBatis)快速编写javabean 
@@ -134,4 +136,15 @@ service层和dao层是完全不一样的 , 不可替代. service层面向业务�
 * `@Controller`: 要配合视图解析器
 * `@RestController`: 返回数据(json/xml)
 * `@RequestMapping`: 用于类,指定URL映射 等等......
+## 微服务消费模块
+英文名为 `service consumer`
+**微服务消费模块说明**
+以前是浏览器直接调用`服务提供微服务模块` 
+现在一般采用通过`微服务消费模块`去调用`服务提供者微服务模块`
+定义:
+1.服务提供者微服务模块是处理业务逻辑的核心微服务
+2.`微服务消费者模块`也叫`网关`或`聚合服务`
+这种转变的原因:降低客户端复杂性,增强安全性和集中管理
+![](assest/Pasted%20image%2020241028211806.png)
 
+**配置pom.xml**
