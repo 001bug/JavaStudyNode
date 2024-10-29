@@ -205,3 +205,9 @@ public class MemberConsumerController {
 }
 ```
 跟之前的controller大体不差 , 但是这里要注意RestTemplate的使用
+重要细节
+restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务微服务模块在controller层接收参数需要以json格式,使用`@RequestBody`. 而且整个过程member都是以序列化的形式进行传播的, 所以member要实现`Serializable` 
+
+**整个开发过程的细节**
+启动报错: springBoot 启动If you want an embedded database (H2, HSQL or Derby), please put it on the classpath. 这个原因是在pom.xml引入了Mybatis但是没有配置数据库相关的
+2.数据库添加为Null. 

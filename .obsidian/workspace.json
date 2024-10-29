@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Bean",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -175,10 +175,11 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029154125.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028211806.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028210928.png",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
@@ -221,7 +222,6 @@
     "conflict-files-obsidian-git.md",
     "前端/javascript/assest",
     "前端/javascript",
-    "算法/数据结构.md",
-    "算法/java在算法中常用的api.md"
+    "算法/数据结构.md"
   ]
 }
