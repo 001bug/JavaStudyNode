@@ -149,6 +149,7 @@ service层和dao层是完全不一样的 , 不可替代. service层面向业务�
 这里服务消费模块在接受到请求后,怎么把请求打给服务提供微服务模块,这里使用RestTemplate
 
 **配置pom.xml和application.yml**
+注意 , 在配置xml中时, 这个子模块没有涉及到对数据库层的操作 , 所以不需要引入Mybatis或者 , jdbc之类的
 
 **创建启动类**
 [`@SpringApplication`](SpringBoot)
@@ -160,6 +161,8 @@ Member.java+Result.java(上面有详细解释)
 定义: config包通常用于放置项目的配置信息和配置类. 里面常见的内容有`@Configuration`注解的配置类. Bean初始化. AOP配置. 属性读取,如读取`application.properties`. 安全配置: 
 
 这里的话是注入RestTemplate
+* 官网: https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframe
+work/web/client/RestTemplate.html
 * 定义: RestTemplate是spring提供用于访问Rest服务的模版类,可以说是简易的客户端
 * 调用外部RESfulAPI, 在微服务架构中, 服务间往往相互调用
 * 第三方API集成,调用外部服务的API,如获取天气信息,调用支付接口
@@ -170,4 +173,35 @@ postForObject(url, request, responseType, uriVariables)//发送 POST 请求，�
 put(url, request, uriVariables)//发送 PUT 请求，更新资源。
 delete(url, uriVariables)//发送 DELETE 请求，删除资源。
 ```
+方法解释
+1.在`RestTemplate`中,`uriVariables`是一个用来填充URI模版变量的参数. 可以在URI中定义占位符. 并在请求时通过`uriVariables`来替代这些占位符
+比如
 
+2.URI 模板是一种 URL 格式，其中包含带有花括号的变量名称, 例如`String url = "https://example.com/users/{userId}";` 
+`{userId}` 就是一个占位符。使用 `RestTemplate` 时，你可以传入 `uriVariables` 参数来替换占位符
+
+3.`String response = restTemplate.getForObject(url, String.class, uriVariables);`
+
+4.他可以支持的数据结构有Map, Object..(可变参数)
+
+**控制层Controller**
+```java
+@RestController  
+@Slf4j  
+public class MemberConsumerController {  
+    public static final String  
+            MEMBER_SERVICE_PROVIDER_URL = "http://localhost:10001";//?  
+    @Resource  
+    private RestTemplate restTemplate;  
+    @PostMapping("/member/consumer/save")  
+    public Result<Member> save(Member member){  
+        return restTemplate.postForObject(MEMBER_SERVICE_PROVIDER_URL+"/member/save",member,Result.class);  
+    }  
+    @GetMapping("/member/consumer/get/{id}")  
+    public Result<Member> getMemberById(@PathVariable("id") Long id){  
+        return restTemplate.getForObject(MEMBER_SERVICE_PROVIDER_URL  
+                + "/member/get/" + id, Result.class);  
+    }  
+}
+```
+跟之前的controller大体不差 , 但是这里要注意RestTemplate的使用
