@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "dependen",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -175,6 +176,8 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/Maven/Maven.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029174246.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029171634.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029165208.png",
@@ -182,7 +185,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029163900.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029154125.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028211806.png",
@@ -203,7 +205,6 @@
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081431.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241027081238.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241026205808.png",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/动静态分离.md",
     "前端/Nginx/Nginx.md",
