@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "Redis"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "Redis 的大纲"
             }
           },
           {
@@ -175,9 +175,9 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030161126.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030153516.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030082203.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030081325.png",
@@ -190,7 +190,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029154125.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241028211806.png",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
