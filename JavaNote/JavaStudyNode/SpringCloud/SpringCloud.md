@@ -163,7 +163,7 @@ Member.java+Result.java(上面有详细解释)
 这里的话是注入RestTemplate
 * 官网: https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframe
 work/web/client/RestTemplate.html
-* 定义: RestTemplate是spring提供用于访问Rest服务的模版类,可以说是简易的客户端
+* 定义: RestTemplate是spring提供用于访问Rest服务的模版类,可以说是简易的客户端 ^e5b65d
 * 调用外部RESfulAPI, 在微服务架构中, 服务间往往相互调用
 * 第三方API集成,调用外部服务的API,如获取天气信息,调用支付接口
 常用方法
@@ -288,8 +288,14 @@ Eureka是一个老的组件 , 后面出的服务注册技术和组件都参考�
 2.Eureka Server 提供注册服务, 各个微服务节点通过配置启动后，会在Eureka Server 中进行注册，这样EurekaServer 中的服务注册表中将会存储所有可用服务节点的信息，服务节点的信息可以在界面中直观看到。
 3.EurekaClient 向注册中心进行访问, 是一个Java 客户端，用于简化Eureka Server 的交互，客户端同时也具备一个内置的、使用==轮询(round-robin) 负载算法==的负载均衡器。在应用启动后，将会向Eureka Server 发送心跳(默认周期为30 秒)。如果Eureka Server 在多个心跳周期内没有接收到某个节点的心跳，EurekaServer 将会从服务注册表中把这个服务节点移除(默认90 秒)
 
+**服务治理介绍**
+在传统的rpc远程调用框架中 , 管理每个服务于服务之间依赖关系比较复杂 , 管理困难 , 所以需要治理服务之间依赖关系
+服务治理是一个抽象的概念 , 是一个在分布式微服务实现服务注册, 发现和管理. 保证各个服务在微服务框架下的稳定通信.
+详细介绍: https://jingyan.baidu.com/article/46650658def479f549e5f83e.html
+
 **总结**
 * Eureka采用了CS`[client-server-java一个多人聊天项目]`的设计架构，Eureka Server 作为服务注册功能的服务器，它是服务注册中心。
 * 系统中的其他微服务，使用Eureka的客户端连接到Eureka Server并维持心跳连接，通过Eureka Server 来监控系统中各个微服务是否正常运行。
 * 当服务器启动的时候，会把当前自己服务器的信息比如服务地址通讯地址等以别名方式注册到注册中心上。
-* 服务消费者或者服务提供者，以服务别名的方式去注册中心上获取到实际的服务提供者通讯地址，然后通过==RPC==调用服务
+* 服务消费者或者服务提供者，以服务别名的方式去注册中心上获取到实际的服务提供者通讯地址，然后通过[==RPC==](#^e5b65d)调用服务(RestTemplate中的方法就是rpc)
+## 创建单机Eureka Server
