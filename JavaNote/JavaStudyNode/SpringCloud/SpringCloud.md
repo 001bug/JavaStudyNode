@@ -358,6 +358,8 @@ eureka:
 ```
 当前Eureka客户端会定期从服务端拉取服务注册表信息.用于集群模块相互监视对方
 3.在启动类加上`@EnableEurekaClient` , 将该服务标识为Eureka Client
+结果如图
+![](assest/Pasted%20image%2020241030201123.png)
 
 **Service Consumer,Service Provider,EurekaServer的维护机制**
 ![](assest/Pasted%20image%2020241030161126.png)
