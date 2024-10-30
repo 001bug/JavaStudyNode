@@ -299,3 +299,69 @@ Eureka是一个老的组件 , 后面出的服务注册技术和组件都参考�
 * 当服务器启动的时候，会把当前自己服务器的信息比如服务地址通讯地址等以别名方式注册到注册中心上。
 * 服务消费者或者服务提供者，以服务别名的方式去注册中心上获取到实际的服务提供者通讯地址，然后通过[==RPC==](#^e5b65d)调用服务(RestTemplate中的方法就是rpc)
 ## 创建单机Eureka Server
+**创建e-commerce-eureka-server-9001微服务模块**
+
+**编写pom.xml文件和application.yml**
+1.pom.xml文件
+```xml
+<dependency>  
+    <groupId>ohmygod.project</groupId>  
+    <artifactId>E_commerce_center-common-api</artifactId>  
+    <version>1.0-SNAPSHOT</version>  
+</dependency>  
+<dependency>  
+    <groupId>org.springframework.cloud</groupId>  
+    <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>  
+</dependency>
+```
+第一个依赖是通用模块微服,基本每个依赖都会引用
+2.application.yml
+```yml
+eureka:  
+  instance:  
+    hostname: localhost #eureka服务端实例的名字  
+  client:  
+    register-with-eureka: false #不向注册中心注册自己  
+    #表示自己就是注册中心，职责是维护服务实例，并不需要去检索服务  
+    fetch-registry: false  
+    service-url:  
+      #设置与eureka server 交互的模块,查询服务和注册服务都需要依赖这个地址  
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+```
+`register-with-eureka: false`就是说不是本身的微服务不注册到服务注册中心
+那个网址就是访问地址
+3.创建启动类
+该类要被`@EnableEurekaServer`注释 , 表示该程序作为Eureka Server
+
+**将member-service-provider-10001作为EurekaClient注册到e-commerce-eureka-server-9001成为服务提供者**
+![](assest/Pasted%20image%2020241030153516.png)
+1.引入client依赖
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+</dependency>
+```
+注意 , 这里是client而不是上面的server
+2.修改application.yml文件
+```yml
+eureka:  
+  client:  
+    register-with-eureka: true #将自己注册到EurekaServer  
+    #是否从从EurekaServer 抓取注册信息，默认为true, 单节点无所谓  
+    #集群必须设置为true 才能配合ribbon 使用负载均衡  
+    fetchRegistry: true  
+    service-url:  
+      defaultZone: http://localhost:9001/eureka
+```
+3.在启动类加上`@EnableEurekaClient` , 将该服务标识为Eureka Client
+
+**Service Consumer,Service Provider,EurekaServer的维护机制**
+![](assest/Pasted%20image%2020241030161126.png)
+
+**Eureka自我保护模式**
+* 默认情况下EurekaClient定时向EurekaServer端发送心跳包, 并且在一定时间内(90)没收收到EurekaClent的心跳包,便会直接从服务注册列表中删除服务
+* 如果开启了自我保护模式,在短时间（90秒中）内丢失了大量的服务实例心跳,不会剔除该服务(该现象可能出现在网络不通或阻塞),保护机制是为了解决此问题而产生的
+* [自我保护是属于CAP 里面的AP 分支， 保证高可用和分区容错性](杂记)
+参考博客:因此，自我保护模式实现了 **AP**，即在分区故障的情况下尽可能保证服务的可用性，而不严格保证一致性。这是为了让分布式系统在不稳定网络环境中依然可用和具有容错能力，即便会在一定程度上牺牲一致性。
+
