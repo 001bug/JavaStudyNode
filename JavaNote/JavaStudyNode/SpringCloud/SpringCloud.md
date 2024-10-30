@@ -329,7 +329,8 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ```
 `register-with-eureka: false`就是说不是本身的微服务不注册到服务注册中心
-那个网址就是访问地址
+避免它或其他的`EurekaServer`被`EurekaServr`注册
+
 3.创建启动类
 该类要被`@EnableEurekaServer`注释 , 表示该程序作为Eureka Server
 
@@ -349,11 +350,13 @@ eureka:
   client:  
     register-with-eureka: true #将自己注册到EurekaServer  
     #是否从从EurekaServer 抓取注册信息，默认为true, 单节点无所谓  
+    
     #集群必须设置为true 才能配合ribbon 使用负载均衡  
     fetchRegistry: true  
     service-url:  
       defaultZone: http://localhost:9001/eureka
 ```
+当前Eureka客户端会定期从服务端拉取服务注册表信息.用于集群模块相互监视对方
 3.在启动类加上`@EnableEurekaClient` , 将该服务标识为Eureka Client
 
 **Service Consumer,Service Provider,EurekaServer的维护机制**
@@ -363,5 +366,12 @@ eureka:
 * 默认情况下EurekaClient定时向EurekaServer端发送心跳包, 并且在一定时间内(90)没收收到EurekaClent的心跳包,便会直接从服务注册列表中删除服务
 * 如果开启了自我保护模式,在短时间（90秒中）内丢失了大量的服务实例心跳,不会剔除该服务(该现象可能出现在网络不通或阻塞),保护机制是为了解决此问题而产生的
 * [自我保护是属于CAP 里面的AP 分支， 保证高可用和分区容错性](杂记)
-参考博客:因此，自我保护模式实现了 **AP**，即在分区故障的情况下尽可能保证服务的可用性，而不严格保证一致性。这是为了让分布式系统在不稳定网络环境中依然可用和具有容错能力，即便会在一定程度上牺牲一致性。
+参考博客:https://blog.csdn.net/wangliangluang/article/details/120626014
+
+Eureka自我保护模式的启动
+```yml
+server:
+	enable-self-preservation: false #禁用自我保护
+	eviction-interval-timer-in-ms: 2000 #间隔时间2秒,2秒收不到心跳就认为超时
+```
 
