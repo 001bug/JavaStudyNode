@@ -379,4 +379,44 @@ server:
 ## 搭建EurekaServer集群
 微服务PRC远程服务调用最核心的是实现高可用, 如果注册中心只有1个 , 它出现故障, 会导致整个服务环境不可用. 解决办法就是搭建Eureka注册中心集群, 实现负载均衡+故障容错
 ![](assest/Pasted%20image%2020241031101921.png)
+**搭建EurekaServer集群**
+1.创建子模块`e-commerce-eureka-server-9002`加入对应依赖
+2.创建application.yml
+```yml
+server:  
+  port: 9002  
+  
+eureka:  
+  instance:  
+    hostname: eureka9002.com #eureka服务端实例的名字  
+  client:  
+    register-with-eureka: false #不向注册中心注册自己  
+    #表示自己就是注册中心，职责是维护服务实例，并不需要去检索服务  
+    fetch-registry: false  
+    service-url:  
+      #设置与eureka server 交互的模块,查询服务和注册服务都需要依赖这个地址  
+      defaultZone: http://eureka9001.com:9001/eureka/
+```
+这里defaultZone的地址要对应另一个eureka-server-9001(各个eureka-server相互注册)
+3.创建启动类EurekaApplication9002.java
+4.修改另一个`e-commerce-eureka-server-9001`中的`application.yml`中的`defaultZone`
+5.将`127.0.0.1 eureka9001.com`和`127.0.0.1 eureka9002.com`加入`C:\Windows\System32\drivers\etc\host`中
+设置文件权限: 属性->安全->高级->所有者->把文件加入`Administrator`, 然后点击属性->权限编辑 . 然后刷新dns`ipconfig /flushdns`
+6.启动`e-commerce-eureka-server-9001`和`9002`模块
 
+**将client-eurekaclient加入EurekaServer加入集群中**
+比如:将member-service-provider-10001和member-service-consumer-801加入EurekaServer集群中
+只要修改`application.yml`
+```yml
+defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
+```
+`defaultZone`表示将自己注入到哪个`eurekaServer`中 , 如需注册到多个eurekaServer, 使用`,`隔开
+![](assest/Pasted%20image%2020241031155030.png)
+
+**搭建会员中心微服务模块**
+![](assest/Pasted%20image%2020241031155258.png)
+1.参考member-service-provider-10001来创建member-service-provider-10002
+2.源码和配置替换member-service-provider-10002生成的代码
+3.不要到磁盘整体拷贝, 不然会出现问题. 一般创建好新项目的包, 然后再拷贝对应包下的文件.
+4.不要忘记拷贝xxx.xml文件
+5.修改启动类类名和yml文件中的端口
