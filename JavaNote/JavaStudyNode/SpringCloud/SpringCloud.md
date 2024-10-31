@@ -376,4 +376,7 @@ server:
 	enable-self-preservation: false #禁用自我保护
 	eviction-interval-timer-in-ms: 2000 #间隔时间2秒,2秒收不到心跳就认为超时
 ```
+## 搭建EurekaServer集群
+微服务PRC远程服务调用最核心的是实现高可用, 如果注册中心只有1个 , 它出现故障, 会导致整个服务环境不可用. 解决办法就是搭建Eureka注册中心集群, 实现负载均衡+故障容错
+![](assest/Pasted%20image%2020241031101921.png)
 
