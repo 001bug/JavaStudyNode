@@ -402,7 +402,7 @@ eureka:
 4.修改另一个`e-commerce-eureka-server-9001`中的`application.yml`中的`defaultZone`
 5.将`127.0.0.1 eureka9001.com`和`127.0.0.1 eureka9002.com`加入`C:\Windows\System32\drivers\etc\host`中
 设置文件权限: 属性->安全->高级->所有者->把文件加入`Administrator`, 然后点击属性->权限编辑 . 然后刷新dns`ipconfig /flushdns`
-6.启动`e-commerce-eureka-server-9001`和`9002`模块
+6.启动`e-commerce-eureka-server-9001`和`9002`模块, 这块知识在web有详细讲解
 
 **将client-eurekaclient加入EurekaServer加入集群中**
 比如:将member-service-provider-10001和member-service-consumer-801加入EurekaServer集群中
