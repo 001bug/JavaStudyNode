@@ -424,4 +424,10 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 **配置服务消费端,让其使用服务集群**
 1.修改MemberConsumerController.java. 修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字不能是一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有相同名字, 注册中心会分不清,导致负载均衡混乱==
 2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
-3.测试
+3.测试`/member/comsumer/save`和`/member/consumer/get/id` , 这里id直接添数字
+通过观察msg发现, 是交替访问服务的. 注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后`consumer`直接调用服务而不再关心地址和端口号, 而且该服务有负载功能.
+
+**获取EurekaServer服务注册信息**
+如图
+![](assest/Pasted%20image%2020241101091537.png)
+1.服务消费方获取Eureka Server的服务注册信息
