@@ -431,3 +431,10 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 如图
 ![](assest/Pasted%20image%2020241101091537.png)
 1.服务消费方获取Eureka Server的服务注册信息
+修改`member-service-consumer-801`,
+```java
+@Resource
+private DiscoveryClient discoveryClient;
+```
+`DiscoveryClient` 是 Spring Cloud 框架提供的一个接口，用于==服务注册==和==发现==。它主要是用来与服务注册中心（如 Eureka、Consul、Zookeeper 等）交互的组件。
+* 
