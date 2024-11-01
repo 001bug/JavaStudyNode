@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "dependen",
+                "query": "application",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -175,13 +176,15 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031155258.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031155030.png",
     "技术栈.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031101921.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030201123.png",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030161126.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030153516.png",
@@ -190,9 +193,7 @@
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029174246.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029171634.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029165208.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
@@ -203,7 +204,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/coding",
     "JavaNote/JavaStudyNode/SpringBoot/coding",
     "未命名.canvas",
-    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "杂记/未命名.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",

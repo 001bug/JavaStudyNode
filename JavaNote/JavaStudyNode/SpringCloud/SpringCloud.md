@@ -420,3 +420,8 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 3.不要到磁盘整体拷贝, 不然会出现问题. 一般创建好新项目的包, 然后再拷贝对应包下的文件.
 4.不要忘记拷贝xxx.xml文件
 5.修改启动类类名和yml文件中的端口
+
+**配置服务消费端,让其使用服务集群**
+1.修改MemberConsumerController.java. 修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字不能是一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有相同名字, 注册中心会分不清,导致负载均衡混乱==
+2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
+3.测试
