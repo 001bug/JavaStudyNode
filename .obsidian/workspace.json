@@ -73,8 +73,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -176,10 +175,11 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241101091537.png",
-    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241101091537.png",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031155258.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031155030.png",
     "技术栈.md",
@@ -193,9 +193,7 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030081325.png",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029174246.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241029171634.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/SpringCloud/MyBaits.md",
