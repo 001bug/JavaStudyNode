@@ -426,7 +426,7 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 * 这个时候的`MEMBER_SERVICE_PROVIDER_URL+"/member/save"`等价于`http://localhost:10000/member/save`
 ![](assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png)
 2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
-*  注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后,`consumer`直接调用服务而不再关心地址和端口号(就是在RestTemplate中不用写明端口和地址了), 而且该服务有负载功能.
+*  注解`@LoadBalanced`底层是`Ribbon`支持算法. `Ribbon`和`Eureka`整合后,`consumer`直接调用服务而不再关心地址和端口号(就是在RestTemplate中不用写明端口和地址了), 而且该服务有负载功能.
 * 负载均衡的方式默认是轮询算法,也可以自己配置均衡算法
 3.测试`/member/comsumer/save`和`/member/consumer/get/id` , 这里id直接添数字
 通过观察msg发现, 是交替访问服务的.
@@ -469,12 +469,12 @@ public Object discovery(){
 在引入DisconveryClient时, 不要引入错误的包
 正确: import org.springframework.cloud.client.discovery.DiscoveryClient;
 错误: import com.netflix.discovery.DiscoveryClient;
-# Riddon
-## Riddon的基本介绍
-**Riddon是什么**
+# Ribbon
+## Ribbon的基本介绍
+**Ribbon是什么**
 Ribbon 是一个 Netflix 开源的客户端负载均衡器
 官网: https://github.com/Netflix/ribbon
-目前Riddon进入维护模式 , 未来替换方案是SpringCloud LoadBalancer
+目前Ribbon进入维护模式 , 未来替换方案是SpringCloud LoadBalancer
 
 简单了解`LoadBalancer`策略
 1.集中式LB
@@ -485,17 +485,35 @@ Ribbon 是一个 Netflix 开源的客户端负载均衡器
 * 将LB逻辑集成到消费方, 消费方从服务注册中心获知有哪些服务地址可用,然后再从这些地址中选择出一个合适的服务地址。
 * Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，消费方通过它来获取到服务提供方的地址
 
-**Riddon的主要功能**
+**Ribbon的主要功能**
 * 提供客户端负载均衡算法和服务调用, 例如轮询,随机,权重,来均匀分配请求负载
 * 提供一系列完善的配置项如连接超时,重试等.
 * 大部分应用场景是: 负载均衡+RestTemplate调用
-## Riddon的原理以及应用
-**Riddon架构图**
+## Ribbon的原理以及应用
+**Ribbon架构图**
 ![](assest/Pasted%20image%2020241102100809.png)
-Riddon的运行机制
+Ribbon的运行机制
 * 先选择EurekaServer,它优先选择在同一个区域内负载较少的server
 * 再根据用户指定的策略, 在从server取到的服务注册列表中选择一个地址
-* riddon在客户端拦截到请求,会直接通过策略后转发到服务地址,不需要借助额外的负载均衡设备,比如(Nginx)
+* ribbon在客户端拦截到请求,会直接通过策略后转发到服务地址,不需要借助额外的负载均衡设备,比如(Nginx)
 
-**Riddon常用的算法**
+**Ribbon常用的算法**
 ![](assest/Pasted%20image%2020241102101510.png)
+
+**Ribbon的应用**
+1.在消费者模块`member-service-consumer-80`的`config`目录下创建RibbonRule.java
+```java
+@Configuration  
+public class RibbonRule {  
+    @Bean  
+    public IRule myRibbonRule(){  
+        return new RandomRule();  
+    }  
+}
+```
+2.然后修改对应模块的启动类
+添加对应的注解`@RibbonClient(name="MEMBER_SERVICE_PROVIDER_URL",configuration=RibbonRule.class)`
+3.测试.
+浏览器输入`http://localhost/member/consumer/get/1`
+然后观察到访问的10001/10002端口的服务是随机的
+
