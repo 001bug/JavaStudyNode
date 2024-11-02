@@ -496,6 +496,7 @@ Ribbon的运行机制
 * 先选择EurekaServer,它优先选择在同一个区域内负载较少的server
 * 再根据用户指定的策略, 在从server取到的服务注册列表中选择一个地址
 * ribbon在客户端拦截到请求,会直接通过策略后转发到服务地址,不需要借助额外的负载均衡设备,比如(Nginx)
+* 在从Eureka中拉取服务列表时存在缓存, 并不是每次查询都会拉取,一般是每隔30秒
 
 **Ribbon常用的算法**
 ![](assest/Pasted%20image%2020241102101510.png)
@@ -511,9 +512,12 @@ public class RibbonRule {
     }  
 }
 ```
+这个RandomRule()这个方法就是选择的算法方式
 2.然后修改对应模块的启动类
-添加对应的注解`@RibbonClient(name="MEMBER_SERVICE_PROVIDER_URL",configuration=RibbonRule.class)`
+添加对应的注解`@RibbonClient(name="MEMBER_SERVICE_PROVIDER_URL",configuration=RibbonRule.class)` 用于为指定的微服务自定义Ribbon的负载均衡配置, 使用它可以指定自定义的负载均衡策略.这个name是服务注册ID.
 3.测试.
 浏览器输入`http://localhost/member/consumer/get/1`
 然后观察到访问的10001/10002端口的服务是随机的
+# SpringCloud OpenFeign
+
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "前端/Vue/Vue.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "Vue"
             }
           }
         ]
@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "application",
+                "query": "声明式",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -139,10 +140,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "前端/Vue/Vue.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "Vue 的大纲"
             }
           },
           {
@@ -175,12 +176,14 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/ssm/ssm.md",
+    "前端/Vue/Vue.md",
+    "JavaNote/JavaStudyNode/Spring/Spring.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102101510.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102100809.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102092229.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png",
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
@@ -194,7 +197,6 @@
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030161126.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030153516.png",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
@@ -220,7 +222,6 @@
     "前端/javascript/JavaScript.md",
     "未命名 1.canvas",
     "english.md",
-    "thinking.md",
     "前端/javascript/assest",
     "前端/javascript"
   ]
