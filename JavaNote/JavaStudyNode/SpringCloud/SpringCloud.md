@@ -579,7 +579,18 @@ eureka:
 ```
 fetchRegistry: 用于配置Eureka客户端是否需要拉取Eureka服务器的注册列表
 4.编写启动类
+```java
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class) 
+@EnableEurekaClient  
+@EnableFeignClients  
+public class MemberConsumerOpenfeignApplication801 {  
+    public static void main(String[] args) {  
+        SpringApplication.run(MemberConsumerOpenfeignApplication801.class,args);  
+    }  
+}
+```
 其它不变, 多了`@EnableFeignClients`这个注解, 用于启用`SpringCloud`的OpenFeign客户端功能. 加上这个注解后, SpringBoot应用可以自动扫描并识别使用`@FeignClient`注解的接口, 并生成代理对象.
+`@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)`排除自动配置
 5.编写Feign客户端接口.
 ```java
 @Component  
@@ -592,17 +603,17 @@ public interface MemberFeignService {
 `@FeignClient(value="MEMBER-SERVICE-PROVIDER")`声明一个Feign客户端, 用于调用名为`"MEMBER-SERVICE-PROVIDER"`的服务
 6.编写controller层
 ```java
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class) 
-@EnableEurekaClient  
-@EnableFeignClients  
-public class MemberConsumerOpenfeignApplication801 {  
-    public static void main(String[] args) {  
-        SpringApplication.run(MemberConsumerOpenfeignApplication801.class,args);  
+@RestController  
+public class MemberConsumerFeignController {  
+    @Resource  
+    private MemberFeignService memberFeignService;  
+    @GetMapping(value = "/member/consumer/openfeign/get/{id}")  
+    public Result<Member> getMemberById(@PathVariable("id") Long id){  
+        return memberFeignService.getMemberById(id);  
     }  
 }
 ```
-`@EnableEurekaClient`和`@EnableFeignClients`表明这是一个eureka客户端也是Feign客户端
-`@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)`排除自动配置
 注意事项和细节
 * Openfeign的使用特点是微服务调用接口+@FeignClient , 使用接口进行解耦
-* 
+* 接口方法上： value是不能乱写, 远程调用的url 为
+`http://MEMBER-SERVICE-PROVIDER/member/get/{id}`
