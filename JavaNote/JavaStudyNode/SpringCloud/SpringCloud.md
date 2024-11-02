@@ -422,11 +422,12 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 5.修改启动类类名和yml文件中的端口
 
 **配置服务消费端,让其使用服务集群**
-1.修改MemberConsumerController.java. 修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
+1.修改MemberConsumerController.java. ==修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名==, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
 * 这个时候的`MEMBER_SERVICE_PROVIDER_URL+"/member/save"`等价于`http://localhost:10000/member/save`
 ![](assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png)
 2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
-*  注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后,`consumer`直接调用服务而不再关心地址和端口号, 而且该服务有负载功能.
+*  注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后,`consumer`直接调用服务而不再关心地址和端口号(就是在RestTemplate中不用写明端口和地址了), 而且该服务有负载功能.
+* 负载均衡的方式默认是轮询算法,也可以自己配置均衡算法
 3.测试`/member/comsumer/save`和`/member/consumer/get/id` , 这里id直接添数字
 通过观察msg发现, 是交替访问服务的.
 
@@ -461,5 +462,31 @@ public Object discovery(){
 
 修改启动类
 加上`@EnableDiscoveryClient`这个注解. 
-
+![](assest/Pasted%20image%2020241102092229.png)
 2.在服务提供方也是类似上面这样处理
+
+细节:
+在引入DisconveryClient时, 不要引入错误的包
+正确: import org.springframework.cloud.client.discovery.DiscoveryClient;
+错误: import com.netflix.discovery.DiscoveryClient;
+# Riddon
+## Riddon的基本介绍
+**Riddon是什么**
+Ribbon 是一个 Netflix 开源的客户端负载均衡器
+官网: https://github.com/Netflix/ribbon
+目前Riddon进入维护模式 , 未来替换方案是SpringCloud LoadBalancer
+
+简单了解`LoadBalancer`策略
+1.集中式LB
+* 即在服务的消费方和提供方之间使用独立的LB设施(可以是硬件, 如F5(负载均衡设备),也可以是软件,如Nginx), 由该设施负责把访问请求通过某种策略转发至服务的提供方
+* 当客户端发送请求时，先发送到负载均衡器,负载均衡器根据定义好的策略,把请求转发给服务端的某个实例. 特点就是客户端不需要知道有多少个可用服务
+* 这种方式更适合大型企业和跨平台服务
+2.进程内LB
+* 将LB逻辑集成到消费方, 消费方从服务注册中心获知有哪些服务地址可用,然后再从这些地址中选择出一个合适的服务地址。
+* Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，消费方通过它来获取到服务提供方的地址
+
+**Riddon的主要功能**
+* 提供客户端负载均衡算法和服务调用, 例如轮询,随机,权重,来均匀分配请求负载
+* 提供一系列完善的配置项如连接超时,重试等.
+* 大部分应用场景是: 负载均衡+RestTemplate调用
+## Riddon的原理以及应用
