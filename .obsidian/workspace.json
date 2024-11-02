@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "杂记"
+              "title": "SpringCloud"
             }
           }
         ]
@@ -73,8 +73,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -140,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "杂记 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -174,11 +173,11 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "6587fde0629aea82",
+  "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102192250.png",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/Spring/Spring.md",
     "前端/Vue/Vue.md",

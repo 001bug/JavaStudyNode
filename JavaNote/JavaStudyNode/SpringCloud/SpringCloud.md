@@ -554,3 +554,13 @@ OpenFeign是个声明式WebService客户端 , 用于简化HTTP客户端调用的
 ## OpenFeign的应用
 **示意图**
 ![](assest/Pasted%20image%2020241102192250.png)
+**创建服务消费模块**
+1.参考`member-service-consumer-801`创建`member-service-consumer-openfeign-80`
+2.将之前的消费模块的pom.xml文件copy到新的消费模块, 然后添加openfeign依赖
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+```
+3.编写application.yml
