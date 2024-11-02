@@ -422,19 +422,44 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 5.修改启动类类名和yml文件中的端口
 
 **配置服务消费端,让其使用服务集群**
-1.修改MemberConsumerController.java. 修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字不能是一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有相同名字, 注册中心会分不清,导致负载均衡混乱==
+1.修改MemberConsumerController.java. 修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
+* 这个时候的`MEMBER_SERVICE_PROVIDER_URL+"/member/save"`等价于`http://localhost:10000/member/save`
+![](assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png)
 2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
+*  注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后,`consumer`直接调用服务而不再关心地址和端口号, 而且该服务有负载功能.
 3.测试`/member/comsumer/save`和`/member/consumer/get/id` , 这里id直接添数字
-通过观察msg发现, 是交替访问服务的. 注解`@LoadBalanced`底层是`Ribbon`支持算法. `Riddon`和`Eureka`整合后`consumer`直接调用服务而不再关心地址和端口号, 而且该服务有负载功能.
+通过观察msg发现, 是交替访问服务的.
 
 **获取EurekaServer服务注册信息**
 如图
 ![](assest/Pasted%20image%2020241101091537.png)
-1.服务消费方获取Eureka Server的服务注册信息
+1.服务消费方获取Eureka Server的==服务注册==信息
 修改`member-service-consumer-801`,
 ```java
 @Resource
 private DiscoveryClient discoveryClient;
 ```
 `DiscoveryClient` 是 Spring Cloud 框架提供的一个接口，用于==服务注册==和==发现==。它主要是用来与服务注册中心（如 Eureka、Consul、Zookeeper 等）交互的组件。
-* 
+* 服务注册: 将服务实例注册到服务注册中心, 使其他服务可以发现
+* 服务发现: 可以获取注册中心中所有服务实例的信息(如实例地址,端口), 方便进行负载均衡 , 调用等操作
+在`member-service-consumer-80`添加`DiscoveryClient`的使用
+```java
+@Resource
+private DiscoveryClient discoveryClient;
+public Object discovery(){  
+    List<String> services=discoveryClient.getServices();  
+    for (String element : services) {  
+        System.out.println("====服务名"+element+"====");  
+        List<ServiceInstance> instances=discoveryClient.getInstances(element);  
+        for (ServiceInstance instance : instances) {  
+            System.out.println(instance.getServiceId()+"\t"+instance.getHost()+"\t"+instance.getPort()+"\t"+instance.getUri());  
+        }  
+    }  
+    return this.discoveryClient;  
+}
+```
+
+修改启动类
+加上`@EnableDiscoveryClient`这个注解. 
+
+2.在服务提供方也是类似上面这样处理
