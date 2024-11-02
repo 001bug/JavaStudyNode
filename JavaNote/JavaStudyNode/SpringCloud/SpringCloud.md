@@ -490,3 +490,12 @@ Ribbon 是一个 Netflix 开源的客户端负载均衡器
 * 提供一系列完善的配置项如连接超时,重试等.
 * 大部分应用场景是: 负载均衡+RestTemplate调用
 ## Riddon的原理以及应用
+**Riddon架构图**
+![](assest/Pasted%20image%2020241102100809.png)
+Riddon的运行机制
+* 先选择EurekaServer,它优先选择在同一个区域内负载较少的server
+* 再根据用户指定的策略, 在从server取到的服务注册列表中选择一个地址
+* riddon在客户端拦截到请求,会直接通过策略后转发到服务地址,不需要借助额外的负载均衡设备,比如(Nginx)
+
+**Riddon常用的算法**
+![](assest/Pasted%20image%2020241102101510.png)
