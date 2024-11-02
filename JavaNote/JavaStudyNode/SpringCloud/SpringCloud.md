@@ -164,7 +164,7 @@ Member.java+Result.java(上面有详细解释)
 * 官网: https://docs.spring.io/spring-framework/docs/5.2.2.RELEASE/javadoc-api/org/springframe
 work/web/client/RestTemplate.html
 * 定义: RestTemplate是spring提供用于访问Rest服务的模版类,可以说是简易的客户端 ^e5b65d
-* 调用外部RESfulAPI, 在微服务架构中, 服务间往往相互调用
+* 调用外部RESTfulAPI, 在微服务架构中, 服务间往往相互调用
 * 第三方API集成,调用外部服务的API,如获取天气信息,调用支付接口
 常用方法
 ```java
@@ -519,5 +519,38 @@ public class RibbonRule {
 浏览器输入`http://localhost/member/consumer/get/1`
 然后观察到访问的10001/10002端口的服务是随机的
 # SpringCloud OpenFeign
+## OpenFeign基本介绍
+**OpenFeign定义**
+OpenFeign是个声明式WebService客户端 , 用于简化HTTP客户端调用的声明式REST客户端工具库.
+官网:https://github.com/spring-cloud/spring-cloud-openfeign
 
+**OpenFeign的基本功能**
+* 声明式调用, 不需要编写复杂的HTTP请求代码, 只需定义接口并用注解声明远程服务的URL
+* 支持可插拔式的编码器和解码器
+* 与SpringCloud集成,支持SpirngMVC注解和HttpMessageConverters
+* OpenFeign 可以与Eureka 和Ribbon 组合使用以支持负载均衡,支持与Eureka集成进行服务发现
 
+**Feign和OpenFeign区别**
+1.Feign
+* Feign是Spring Cloud组件中的一个轻量级RESTful的HTTP服务客户端
+* Feign内置了Ribbon，用来做客户端负载均衡，去调用服务注册中心的服务。
+* Feign的使用方式是：使用Feign的注解定义接口，调用服务注册中心的服务,不支持SpringMVC的注解
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-feign</artifactId>
+</dependency>
+```
+2.OpenFeign
+* OpenFeign是Spring Cloud 在Feign的基础上支持了Spring MVC的注解
+* OpenFeign的@FeignClient可以解析SpringMVC的@RequestMapping注解下的接口(简而言之,可以使用springmvc)
+* OpenFeign通过动态代理的方式产生实现类, 实现类中做负载均衡并调用其他服务
+```xml
+<dependency>
+	<grouId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-openfeign</artifactId>
+</dependency>
+```
+## OpenFeign的应用
+**示意图**
+![](assest/Pasted%20image%2020241102192250.png)
