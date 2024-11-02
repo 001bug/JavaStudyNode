@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "dba",
+                "query": "@Component",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -175,11 +176,15 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102192250.png",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/Spring/Spring.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
+    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
+    "JavaNote/JavaStudyNode/Redies/Redis.md",
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102192250.png",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102101510.png",
@@ -187,8 +192,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102092229.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241101091537.png",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031155258.png",
@@ -196,9 +199,7 @@
     "技术栈.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241031101921.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241030201123.png",
-    "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/SpringCloud/MyBaits.md",
     "JavaNote/JavaStudyNode/SpringCloud/[杂记](杂记.md).md",

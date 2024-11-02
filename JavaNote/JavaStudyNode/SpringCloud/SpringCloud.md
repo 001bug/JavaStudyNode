@@ -329,7 +329,7 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ```
 `register-with-eureka: false`就是说不是本身的微服务不注册到服务注册中心
-避免它或其他的`EurekaServer`被`EurekaServr`注册
+避免它或其他的`EurekaServer`被`EurekaServr`注册,true就是要把自己注册到注册列表
 
 3.创建启动类
 该类要被`@EnableEurekaServer`注释 , 表示该程序作为Eureka Server
@@ -564,3 +564,45 @@ OpenFeign是个声明式WebService客户端 , 用于简化HTTP客户端调用的
 </dependency>
 ```
 3.编写application.yml
+```yml
+server:  
+  port: 801  
+spring:  
+  application:  
+    name: member-service-consumer-openfeign  
+eureka:  
+  client:  
+    register-with-eureka: true  
+    fetchRegistry: true  
+    service-url:  
+      defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
+```
+fetchRegistry: 用于配置Eureka客户端是否需要拉取Eureka服务器的注册列表
+4.编写启动类
+其它不变, 多了`@EnableFeignClients`这个注解, 用于启用`SpringCloud`的OpenFeign客户端功能. 加上这个注解后, SpringBoot应用可以自动扫描并识别使用`@FeignClient`注解的接口, 并生成代理对象.
+5.编写Feign客户端接口.
+```java
+@Component  
+@FeignClient(value="MEMBER-SERVICE-PROVIDER")  
+public interface MemberFeignService {  
+    @GetMapping(value="/member/get/{id}")  
+    public Result<Member> getMemberById(@PathVariable("id") Long id);  
+}
+```
+`@FeignClient(value="MEMBER-SERVICE-PROVIDER")`声明一个Feign客户端, 用于调用名为`"MEMBER-SERVICE-PROVIDER"`的服务
+6.编写controller层
+```java
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class) 
+@EnableEurekaClient  
+@EnableFeignClients  
+public class MemberConsumerOpenfeignApplication801 {  
+    public static void main(String[] args) {  
+        SpringApplication.run(MemberConsumerOpenfeignApplication801.class,args);  
+    }  
+}
+```
+`@EnableEurekaClient`和`@EnableFeignClients`表明这是一个eureka客户端也是Feign客户端
+`@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)`排除自动配置
+注意事项和细节
+* Openfeign的使用特点是微服务调用接口+@FeignClient , 使用接口进行解耦
+* 
