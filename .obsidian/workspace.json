@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Component",
+                "query": "快捷键",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -176,10 +176,10 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/Spring/Spring.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",

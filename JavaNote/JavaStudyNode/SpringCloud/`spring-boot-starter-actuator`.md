@@ -23,3 +23,4 @@
 7. **环境配置** (`/actuator/env`)：
     
     - 提供当前应用的环境配置信息，包括系统环境变量、配置文件参数等。
+输入网址http://localhost:端口/actuator --> 然后点击http://localhost:端口/actuator/health , 如果状态是up那么就是健康的

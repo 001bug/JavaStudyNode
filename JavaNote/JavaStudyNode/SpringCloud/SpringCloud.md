@@ -526,7 +526,7 @@ OpenFeign是个声明式WebService客户端 , 用于简化HTTP客户端调用的
 
 **OpenFeign的基本功能**
 * 声明式调用, 不需要编写复杂的HTTP请求代码, 只需定义接口并用注解声明远程服务的URL
-* 支持可插拔式的编码器和解码器
+* 支持可插拔式的编码器和解码器(可切换不同的编译器和解析器去适应不同的数据格式和协议要求)
 * 与SpringCloud集成,支持SpirngMVC注解和HttpMessageConverters
 * OpenFeign 可以与Eureka 和Ribbon 组合使用以支持负载均衡,支持与Eureka集成进行服务发现
 
@@ -617,3 +617,13 @@ public class MemberConsumerFeignController {
 * Openfeign的使用特点是微服务调用接口+@FeignClient , 使用接口进行解耦
 * 接口方法上： value是不能乱写, 远程调用的url 为
 `http://MEMBER-SERVICE-PROVIDER/member/get/{id}`
+
+Maven查看版本快捷键
+对准`<artifactId>`然后ctrl+b
+
+**日志配置以及超时设置**
+1.基本介绍
+Feign提供了日志打印功能, 可以通过配置来调整日志级别, 从而对Feign接口的调用情况进行监控和输出
+2.日志级别
+* NONE∶默认的，不显示任何日志
+* BASIC∶仅记录请求方法、URL、响应状态码及执行时间;
