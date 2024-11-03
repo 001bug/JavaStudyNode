@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java高级"
+              "title": "SpringCloud"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -175,6 +175,7 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
@@ -219,7 +220,6 @@
     "linux/linux.md",
     "JavaNote/JavaStudyNode/Redies/插槽.md",
     "算法/二叉树.md",
-    "前端/javascript/JavaScript.md",
     "未命名 1.canvas",
     "前端/javascript/assest",
     "前端/javascript"

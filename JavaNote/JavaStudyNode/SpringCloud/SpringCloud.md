@@ -262,7 +262,7 @@ restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务�
 5.完成测试
 # Eureka服务注册与发现
 ## 基本介绍
-Eureka是一个服务注册与发现工具 , 主要功能是帮助各个微服务之间自动找到彼此.
+Eureka是一个==服务注册与发现工具== , 主要功能是帮助各个微服务之间自动找到彼此.
 
 **核心概念(组件)**
 1.Eureka Server: 服务注册中心,微服务启动会注册到这里. Eureka Server保存自身位置信息(ip,端口,服务名)
@@ -289,7 +289,7 @@ Eureka是一个老的组件 , 后面出的服务注册技术和组件都参考�
 3.EurekaClient 向注册中心进行访问, 是一个Java 客户端，用于简化Eureka Server 的交互，客户端同时也具备一个内置的、使用==轮询(round-robin) 负载算法==的负载均衡器。在应用启动后，将会向Eureka Server 发送心跳(默认周期为30 秒)。如果Eureka Server 在多个心跳周期内没有接收到某个节点的心跳，EurekaServer 将会从服务注册表中把这个服务节点移除(默认90 秒)
 
 **服务治理介绍**
-在传统的rpc远程调用框架中 , 管理每个服务于服务之间依赖关系比较复杂 , 管理困难 , 所以需要治理服务之间依赖关系
+在传统的rpc远程调用框架中 , 管理每个服务与服务之间依赖关系比较复杂 , 管理困难 , 所以需要治理服务之间依赖关系
 服务治理是一个抽象的概念 , 是一个在分布式微服务实现服务注册, 发现和管理. 保证各个服务在微服务框架下的稳定通信.
 详细介绍: https://jingyan.baidu.com/article/46650658def479f549e5f83e.html
 
@@ -328,11 +328,10 @@ eureka:
       #设置与eureka server 交互的模块,查询服务和注册服务都需要依赖这个地址  
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ```
-`register-with-eureka: false`就是说不是本身的微服务不注册到服务注册中心
-避免它或其他的`EurekaServer`被`EurekaServr`注册,true就是要把自己注册到注册列表
+`register-with-eureka: false`就是说该微服务不注册到服务注册中心避免自己或其他的`EurekaServer`被注册到服务中心,true就是要把自己注册到注册列表
 
 3.创建启动类
-该类要被`@EnableEurekaServer`注释 , 表示该程序作为Eureka Server
+该类要被`@EnableEurekaServer`注释 , 表示该程序作为EurekaServer
 
 **将member-service-provider-10001作为EurekaClient注册到e-commerce-eureka-server-9001成为服务提供者**
 ![](assest/Pasted%20image%2020241030153516.png)
@@ -377,7 +376,7 @@ server:
 	eviction-interval-timer-in-ms: 2000 #间隔时间2秒,2秒收不到心跳就认为超时
 ```
 ## 搭建EurekaServer集群
-微服务PRC远程服务调用最核心的是实现高可用, 如果注册中心只有1个 , 它出现故障, 会导致整个服务环境不可用. 解决办法就是搭建Eureka注册中心集群, 实现负载均衡+故障容错
+微服务PRC==远程服务调用==最核心的是实现高可用, 如果注册中心只有1个 , 它出现故障, 会导致整个服务环境不可用. 解决办法就是搭建Eureka注册中心集群, 实现负载均衡+故障容错
 ![](assest/Pasted%20image%2020241031101921.png)
 **搭建EurekaServer集群**
 1.创建子模块`e-commerce-eureka-server-9002`加入对应依赖
@@ -421,7 +420,7 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 4.不要忘记拷贝xxx.xml文件
 5.修改启动类类名和yml文件中的端口
 
-**配置服务消费端,让其使用服务集群**
+**配置服务消费端,让其获取服务中心信息**
 1.修改MemberConsumerController.java. ==修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名==, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
 * 这个时候的`MEMBER_SERVICE_PROVIDER_URL+"/member/save"`等价于`http://localhost:10000/member/save`
 ![](assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png)
@@ -479,10 +478,10 @@ Ribbon 是一个 Netflix 开源的客户端负载均衡器
 简单了解`LoadBalancer`策略
 1.集中式LB
 * 即在服务的消费方和提供方之间使用独立的LB设施(可以是硬件, 如F5(负载均衡设备),也可以是软件,如Nginx), 由该设施负责把访问请求通过某种策略转发至服务的提供方
-* 当客户端发送请求时，先发送到负载均衡器,负载均衡器根据定义好的策略,把请求转发给服务端的某个实例. 特点就是客户端不需要知道有多少个可用服务
+* 当客户端发送请求时，先发送到负载均衡器,负载均衡器根据定义好的策略,把请求转发给服务端的某个实例. 特点就是==客户端不需要知道有多少个可用服务==
 * 这种方式更适合大型企业和跨平台服务
 2.进程内LB
-* 将LB逻辑集成到消费方, 消费方从服务注册中心获知有哪些服务地址可用,然后再从这些地址中选择出一个合适的服务地址。
+* 将LB逻辑集成到消费方, 消费方从==服务注册中心==获知有哪些服务地址可用,然后再从这些地址中选择出一个合适的服务地址。
 * Ribbon就属于进程内LB，它只是一个类库，集成于消费方进程，消费方通过它来获取到服务提供方的地址
 
 **Ribbon的主要功能**
