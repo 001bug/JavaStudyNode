@@ -220,7 +220,7 @@ public class BeanConfig {
 	}
 }
 ```
-解释:@Bean是给容器添加组件, monster01是默认的方法名,也是组件的id,返回类型是组件类型, 默认是单例模式(==如果不想要单例模式,那就在Bean的同一个地方加上`@Scope("prototype")`==)的. 也可以自定义id`@Bean(name="id")`
+解释:@Bean能把该方法的返回值注入容器, monster01是默认的方法名,也是组件的id,返回类型是组件类型, 默认是单例模式(==如果不想要单例模式,那就在Bean的同一个地方加上`@Scope("prototype")`==)的. 也可以自定义id`@Bean(name="id")`
 使用MainApp.java,从配置文件/容器中获取bean
 ```java
 public static void main(String[] args) {  

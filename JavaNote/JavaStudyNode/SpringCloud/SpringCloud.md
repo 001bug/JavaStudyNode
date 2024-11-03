@@ -627,3 +627,36 @@ Feign提供了日志打印功能, 可以通过配置来调整日志级别, 从�
 2.日志级别
 * NONE∶默认的，不显示任何日志
 * BASIC∶仅记录请求方法、URL、响应状态码及执行时间;
+* HEADERS∶除了BASIC中定义的信息之外，还有请求和响应的头信息;
+* FULL: 除了HEADERS中定义的信息外, 还有请求和响应的正文及元数据.
+3.在config目录下编写配置类
+```java
+@Configuration  
+public class OpenFeignConfig {  
+    @Bean  
+    Logger.Level loggerLevel(){  
+        return Logger.Level.FULL;  
+    }  
+}
+```
+4.配置日志
+application.yml
+```yml
+logging:  
+  level:  
+    ohmygod.project.service.MemberFeignService: debug
+```
+
+设置超时
+当服务提供模块的controller层处理时间过长, 会出现意外错误
+原因: OpenFeign默认超时时间1秒, 即等待返回结果1秒
+在某些情况下，一个服务调用时间可能要超过1 秒，就需要重新设置超时时间
+操作:
+修改`member-service-consumer-openfeign-801`的application.yml
+```xml
+ribbon:
+	ReadTimeout: 8000
+	ConnectTimeout: 8000
+```
+**ReadTimeout**：这是读取超时时间，以毫秒为单位。指的是客户端从服务端**开始读取数据**到完成数据读取的最大等待时间。在上面的配置中，`ReadTimeout` 设置为 `8000` 毫秒，即 8 秒。如果在 8 秒内没有完成数据读取，则请求会超时并抛出异常。
+**ConnectTimeout**：这是连接超时时间，也以毫秒为单位。指的是客户端**与服务端建立连接**的最大等待时间。在上面的配置中，`ConnectTimeout` 也设置为 `8000` 毫秒。如果在 8 秒内无法建立连接，则会超时并抛出异常。
