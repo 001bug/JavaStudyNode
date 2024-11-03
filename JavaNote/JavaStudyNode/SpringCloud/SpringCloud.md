@@ -666,3 +666,24 @@ ribbon:
 ![](assest/Pasted%20image%2020241103164736.png)
 使用网关服务就能解决上面的四个问题
 ![](assest/Pasted%20image%2020241103164856.png)**Gateway是什么**
+Gateway是在spring生态系统之上构建的API网关服务. 提供一种简单而有效的方式来对API进行路由, 以及提供一些些强大的过滤器功能, 如∶熔断、限流、重试等.
+官网: https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/
+
+**Gateway核心功能**
+* 鉴权(安全性)
+* 流量控制(限流)
+* 熔断(故障处理)
+* 日志监控
+* 反向代理
+
+**Gateway VS Zuul**
+1.SpringCloud Gateway 作为Spring Cloud 生态系统中的网关，目标是替代Zuul
+2.SpringCloud Gateway 是基于Spring WebFlux 框架实现的
+3.Spring WebFlux 框架底层则使用了高性能的Reactor 模式**通信框架Netty** ， 提升了网关性能
+4.Gateway基于Spring Framework(支持SpringWebFlux) , Project Reactor和Spring Boot进行构建. 有如下特点
+* 动态路由
+* 可以对路由指定Predicate(断言)和Filter(过滤器)
+* 集成Hystrix的断路器功能
+* 集成Spring Cloud 服务发现功能(Eureka)
+* 请求限流功能
+* 支持路径重写
