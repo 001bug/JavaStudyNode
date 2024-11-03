@@ -421,7 +421,7 @@ defaultZone: http://eureka9001.com:9001/eureka,http://eureka9002.com:9002/eureka
 5.修改启动类类名和yml文件中的端口
 
 **配置服务消费端,让其获取服务中心信息**
-1.修改MemberConsumerController.java. ==修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名==, 服务别名会收到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
+1.修改MemberConsumerController.java. ==修改`MEMBER_SERVICE_PROVIDER_URL`让其指向在eureka中的服务别名==, 服务别名会受到`application.yml`文件中`spring.application.name`的影响, ==application的名字是要一样的 , 因为这是微服务的唯一标识. 如果不同的服务模块有不相同名字, 消费模块中获取服务就不知道怎么写==
 * 这个时候的`MEMBER_SERVICE_PROVIDER_URL+"/member/save"`等价于`http://localhost:10000/member/save`
 ![](assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png)
 2.在消费者微服务模块(member-service-consumer-80)修改配置模块,在RestTemplate加上`@LoaBalanced`
@@ -660,3 +660,9 @@ ribbon:
 **ReadTimeout**：这是读取超时时间，以毫秒为单位。指的是客户端从服务端**开始读取数据**到完成数据读取的最大等待时间。在上面的配置中，`ReadTimeout` 设置为 `8000` 毫秒，即 8 秒。如果在 8 秒内没有完成数据读取，则请求会超时并抛出异常。
 **ConnectTimeout**：这是连接超时时间，也以毫秒为单位。指的是客户端**与服务端建立连接**的最大等待时间。在上面的配置中，`ConnectTimeout` 也设置为 `8000` 毫秒。如果在 8 秒内无法建立连接，则会超时并抛出异常。
 # SpringCloud Gateway
+## Gateway的介绍
+**技术背景**
+没有网关服务引发的问题
+![](assest/Pasted%20image%2020241103164736.png)
+使用网关服务就能解决上面的四个问题
+![](assest/Pasted%20image%2020241103164856.png)**Gateway是什么**
