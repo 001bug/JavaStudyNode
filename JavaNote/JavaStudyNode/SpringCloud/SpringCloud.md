@@ -687,3 +687,9 @@ Gateway是在spring生态系统之上构建的API网关服务. 提供一种简�
 * 集成Spring Cloud 服务发现功能(Eureka)
 * 请求限流功能
 * 支持路径重写
+## Gateway基本原理
+**Gateway核心组件**
+![](assest/Pasted%20image%2020241103185727.png)
+1.web 请求，通过一些匹配条件，定位到真正的服务节点/微服务模块，在这个转发过程的前后，进行一些精细化控制。
+2.predicate:就是匹配条件
+3.filter: 网关的过滤机制 , predicate+filter, 再加上目标URL, 就可以实现具体的[路由]([杂记])
