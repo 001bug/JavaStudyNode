@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "杂记"
             }
           }
         ]
@@ -139,10 +139,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "杂记 的大纲"
             }
           },
           {
@@ -175,10 +175,10 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241104090101.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241104081923.png",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241103185727.png",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
@@ -199,7 +199,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241102092229.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/{426C0058-D19B-4773-8D0B-92A40BC09F0C}.png",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241101091537.png",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "技术栈.md",
     "JavaNote/JavaStudyNode/Maven/Maven.md",

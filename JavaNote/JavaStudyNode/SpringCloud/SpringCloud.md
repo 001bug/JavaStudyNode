@@ -402,8 +402,8 @@ eureka:
 4.修改另一个`e-commerce-eureka-server-9001`中的`application.yml`中的`defaultZone`
 5.将`127.0.0.1 eureka9001.com`和`127.0.0.1 eureka9002.com`加入`C:\Windows\System32\drivers\etc\host`中
 设置文件权限: 属性->安全->高级->所有者->把文件加入`Administrator`, 然后点击属性->权限编辑 . 然后刷新dns`ipconfig /flushdns`
-6.启动`e-commerce-eureka-server-9001`和`9002`模块, 这块知识在web有详细讲解
-
+6.启动`e-commerce-eureka-server-9001`和`9002`模块.
+7.`eureka.instance.hostname`指定服务实例注册到EurekaServer的主机名, 其它服务通过主机名来访问此实例,不设置,默认主机名
 **将client-eurekaclient加入EurekaServer加入集群中**
 比如:将member-service-provider-10001和member-service-consumer-801加入EurekaServer集群中
 只要修改`application.yml`
@@ -727,4 +727,42 @@ filters:
 通过网关暴露的接口,实现调用真正的服务, 网关是一个微服务模块
 
 **具体实现**
-创建`e-commerce-gateway-20000`子模块
+1.创建`e-commerce-gateway-20000`子模块
+
+2.复制`member-service-consumer-80`的`pom.xml`文件.因为两模块的功能都非常相似,调用远程服务.
+```xml
+<!-- 引入cloud gateway -->
+<dependency>  
+    <groupId>org.springframework.cloud</groupId>  
+    <artifactId>spring-cloud-starter-gateway</artifactId>  
+</dependency>
+```
+引入`gateway`网关服务需要删除`starter-web`和`starter-actuator`依赖, 因为`Spring Cloud Gateway`是基于`WebFlux`的, 不是传统的SpringMVC.Gateway 则是基于 **Spring WebFlux** 的异步、响应式框架。如果同时引入 `spring-boot-starter-web` 和 `spring-boot-starter-webflux`，会导致两者的运行机制冲突。
+
+3.创建`application.yml(核心)`
+```yml
+server:  
+  port: 20000  
+spring:  
+  application:  
+    name: e-commerce-gateway  
+  cloud:  
+    gateway:  
+      routes:  
+        - id: member_routh01  
+          uri: http://localhost:10001  
+          predicates:  
+            - Path=/member/get/**  
+        - id: member_routh02  
+          uri: http://localhost:10001  
+          predicates:  
+            - Path=/member/save  
+eureka:  
+  instance:  
+    hostname: e-commerce-service  
+  client:  
+    service-url:  
+      register-with-eureka: true  
+      fetch-register: true  
+      defaultZone: http://eureka9001.com:9001/eureka
+```
