@@ -724,7 +724,7 @@ filters:
 ## 搭建Gateway微服务
 **框架示意图**
 ![](assest/Pasted%20image%2020241104090101.png)
-通过网关暴露的接口,实现调用真正的服务, 网关是一个微服务模块
+通过网关暴露的接口,实现调用真正的服务, 网关是一个微服务模块. 再近一点说,网关其实就是微服务消费模块的升级
 
 **具体实现**
 1.创建`e-commerce-gateway-20000`子模块
@@ -766,3 +766,12 @@ eureka:
       fetch-register: true  
       defaultZone: http://eureka9001.com:9001/eureka
 ```
+* `predicates`(断言),,对请求进行匹配
+* `uri`匹配后转发到服务的路由地址.
+
+4.创建主启动类
+加上`@EnableEurekaClient`
+
+**第二种路由方式**
+通过配置类实现
+## 动态路由
