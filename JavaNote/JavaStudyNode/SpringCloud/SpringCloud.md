@@ -698,4 +698,32 @@ Gateway是在spring生态系统之上构建的API网关服务. 提供一种简�
 
 2.断言(Predicate):对HTTP请求中的属性进行匹配 , 如果请求与断言匹配则进行路由
 
-3.过滤器可以在请求被路由前或之后对请求进行处理
+3.过滤器可以在请求被路由前或之后对请求进行处理, Http请求断言匹配后, 可以通过网关的过滤机制, 对Http请求处理
+比如`
+```yml
+filters:
+	AddRequestParameter=color,blue #在请求头上加一对，名称为color 值为blue
+```
+比如原来的http 请求是http://localhost:10000/member/get/1 过滤器处理后变为
+`http://localhost:10000/member/get/1?color=blue`
+
+**工作机制**
+示意图
+![](assest/Pasted%20image%2020241104081923.png)
+组件介绍
+* GatewayClient: 客户端
+* Gateway Handler Mapping: 是网关的路由匹配器, 根据配置的路由规则来判断当前请求应该路由到那个服务. 它的依据是请求头,路径,参数
+* Gateway Web Handler: Web处理器, 负责执行与请求相关的所有过滤器, 并最终讲请求转发给目标服务
+* Filters(过滤器): 在Gateway Web Handler中, 请求会经过一系列过滤器处理.过滤器可分为前置过滤器和后置过滤器.分别在请求被转发到目标服务之前和响应返回给客户端之前执行
+     pre类型过滤器 做参数校验、权限校验、流量监控、日志输出、协议转换等
+     post类型过滤器做响应内容、响应头的修改，日志的输出，流量监控
+执行流程
+* 客户端向网关发起请求然后在Gateway Handler Mapping 中找到与请求相匹配的路由，将其发送到Gateway Web Handler。
+* Handler执行过滤器链将请求发送到我们实际的服务执行业务逻辑，然后返回。
+## 搭建Gateway微服务
+**框架示意图**
+![](assest/Pasted%20image%2020241104090101.png)
+通过网关暴露的接口,实现调用真正的服务, 网关是一个微服务模块
+
+**具体实现**
+创建`e-commerce-gateway-20000`子模块
