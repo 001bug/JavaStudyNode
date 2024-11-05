@@ -801,4 +801,20 @@ spring:
             - Path=/member/save
 ```
 `enabled: true`表示的是开启DiscoveryClient服务发现, 将服务实例动态地映射为网关的路由
-`uri: lb`: 这个lb是协议名 , member-service-provider是服务名.
+`uri: lb`: 这个lb是协议名 , member-service-provider是服务名. 这里不要用大写,否则会失败 , lb默认支持轮询算法
+
+**细节**
+1.配置好动态路由后Gateway会根据注册中心上微服务名, 为请求创建动态路由. 实现动态路由功能
+2.使用的lb协议支持负载均衡-轮询算法, 也可以配置自己的负载算法.在该模块下创建一个config包 , 然后编写配置类
+```java
+@Configuration  
+public class RibbonRule {  
+    @Bean  
+    public IRule myRibbonRule(){  
+        return new RandomRule();  
+    }  
+}
+```
+## Predicate/断言
+**Predicate的介绍**
+Predicate是用于定义请求路由条件的组件. 谓词是一种函数式接口, 对请求的特定属性进行条件判断. 
