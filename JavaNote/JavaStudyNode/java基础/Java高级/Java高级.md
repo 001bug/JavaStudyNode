@@ -94,6 +94,7 @@ char c2=m;//错误
 2.如果条件表达式为false，运算后的结果是表达式2；
 
 **关键字**
+是在java程序中提前被保留下来的
 ![](assest/Pasted%20image%2020241105124905.png)
 ![](assest/Pasted%20image%2020241105124909.png)
 
@@ -101,6 +102,56 @@ char c2=m;//错误
 1.Scanner类表示简单文本扫描器, 在new一个Scanner实例的时候要引入参数System.in
 2.Scanner的常用方法
 * next() 读取下一个单词(一空格或换行分隔符的字符串)
+* `nextLine()`: 读取一整行, 直到行结束(包括空格)
+* nextInt(): 读取下一个int类型整数值
+* `nextDouble()`读取下一个双精度浮点数
+* `close()`: 关闭`Scanner`对象,释放资源
+# 数组,排序,查找
+## 数组
+**数组赋值机制**
+1.基本数据类型赋值, 这个值就是具体的数据 , 相互不影响(值拷贝)
+```java
+int n1=2;
+int n2=n1;
+n2=80;//n1还是2, n2变为80
+```
+2.数组在默认情况下是引用传递, 赋的值是地址
+![](assest/Pasted%20image%2020241105161817.png)
+解释
+上面是数组的浅拷贝, 是指在拷贝数组时，只拷贝了数组的引用，而不是数组中的实际数据。他们共享一个对象的引用
+浅拷贝的方法
+* 使用`System.arraycopy()` , `Arrays.copyOf()`, array2 = array1(直接赋值)
+
+深拷贝
+深拷贝（Deep Copy）是指在拷贝数组时，不仅拷贝了数组本身的内容，还递归地拷贝了数组中的每个对象，从而创建完全独立的副本
+深拷贝的方法
+* 手动遍历并创建每个元素的副本
+* 使用序列化和反序列化
+```java
+public static <T> T deepCopy(T object) {  
+    T copiedObject = null;  
+    try {  
+        // 将对象写入字节流  
+        ByteArrayOutputStream byteOut = new ByteArrayOutputStream();  
+        ObjectOutputStream out = new ObjectOutputStream(byteOut);  
+        out.writeObject(object);  
+        out.flush();  
+  
+        // 从字节流中读出对象  
+        ByteArrayInputStream byteIn = new ByteArrayInputStream(byteOut.toByteArray());  
+        ObjectInputStream in = new ObjectInputStream(byteIn);  
+        copiedObject = (T) in.readObject();  
+    } catch (IOException | ClassNotFoundException e) {  
+        e.printStackTrace();  
+    }  
+    return copiedObject;  
+}
+```
+
+**数组的扩容**
+1.定义新数组`int[] ar=new int[arr.length+1]`, 然后深拷贝
+# 面向对象基础
+
 # 并发
 
 # 流与文件

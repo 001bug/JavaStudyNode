@@ -52,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "setnx",
+                "query": "ctrl",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -73,7 +73,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -175,24 +176,24 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/日常代码问题.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105161817.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105124909.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105124905.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105123720.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105092911.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105091252.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241104212030.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241104211648.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241104211554.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241104211157.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241104210948.png",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241104090101.png",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
