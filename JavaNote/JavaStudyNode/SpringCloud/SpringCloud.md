@@ -206,7 +206,7 @@ public class MemberConsumerController {
 ```
 跟之前的controller大体不差 , 但是这里要注意RestTemplate的使用
 重要细节
-restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务微服务模块在controller层接收参数需要以json格式,使用`@RequestBody`. 而且整个过程member都是以序列化的形式进行传播的, 所以member要实现`Serializable` 
+restTemplate打过去的HTTP请求是以对象的形式的 , 所以提供服务微服务模块在controller层接收参数需要以**json格式**,使用`@RequestBody`. 而且整个过程member都是以序列化的形式进行传播的, 所以member要实现`Serializable` 
 
 **整个开发过程的细节**
 启动报错: springBoot 启动If you want an embedded database (H2, HSQL or Derby), please put it on the classpath. 这个原因是在pom.xml引入了Mybatis但是没有配置数据库相关的
@@ -725,7 +725,7 @@ filters:
 **框架示意图**
 ![](assest/Pasted%20image%2020241104090101.png)
 通过网关暴露的接口,实现调用真正的服务, 网关是一个微服务模块. 再近一点说,网关其实就是微服务消费模块的升级
-
+官方文档:https://cloud.spring.io/spring-cloud-static/spring-cloud-gateway/2.2.1.RELEASE/reference/html/#spring-cloud-circuitbreaker-filter-factory
 **具体实现**
 1.创建`e-commerce-gateway-20000`子模块
 
@@ -766,7 +766,7 @@ eureka:
       fetch-register: true  
       defaultZone: http://eureka9001.com:9001/eureka
 ```
-* `predicates`(断言),,对请求进行匹配
+* `predicates`(断言),,对请求进行匹配,如果失败,直接返回, 是gateway返回的,而不是服务层返回的
 * `uri`匹配后转发到服务的路由地址.
 
 4.创建主启动类
@@ -775,3 +775,5 @@ eureka:
 **第二种路由方式**
 通过配置类实现
 ## 动态路由
+**动态路由的概念**
+动态路由是指可以在运行时根据配置或某种逻辑规则来动态地调整或添加网关的路由, 无需重新启动服务. 这种功能在微服务架构中非常有用，可以灵活地管理路由规则，支持服务的动态扩展、灰度发布等场景。
