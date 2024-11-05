@@ -777,3 +777,28 @@ eureka:
 ## 动态路由
 **动态路由的概念**
 动态路由是指可以在运行时根据配置或某种逻辑规则来动态地调整或添加网关的路由, 无需重新启动服务. 这种功能在微服务架构中非常有用，可以灵活地管理路由规则，支持服务的动态扩展、灰度发布等场景。
+
+示意图
+![](assest/Pasted%20image%2020241105182635.png)
+只需要在`application.yml`中配置即可
+```yml
+spring:  
+  application:  
+    name: e-commerce-gateway  
+  cloud:  
+    gateway:  
+      discovery:  
+        locator:  
+          enabled: true  
+      routes:  
+        - id: member_routh01  
+          uri: lb://member-service-provider  
+          predicates:  
+            - Path=/member/get/**  
+        - id: member_routh02  
+          uri: lb://member-service-provider  
+          predicates:  
+            - Path=/member/save
+```
+`enabled: true`表示的是开启DiscoveryClient服务发现, 将服务实例动态地映射为网关的路由
+`uri: lb`: 这个lb是协议名 , member-service-provider是服务名.
