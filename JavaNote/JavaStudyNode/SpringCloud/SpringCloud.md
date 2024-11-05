@@ -817,4 +817,31 @@ public class RibbonRule {
 ```
 ## Predicate/断言
 **Predicate的介绍**
-Predicate是用于定义请求路由条件的组件. 谓词是一种函数式接口, 对请求的特定属性进行条件判断. 
+1.定义
+Predicate是用于定义请求路由条件的组件. 谓词是一种函数式接口, 对请求的特定属性进行条件判断. 匹配成功就执行对应的Route, 匹配失败, 放弃处理/转发
+
+2.Route Predicate Factories
+官方文档:https://springdoc.cn/spring-cloud-gateway/#gateway-request-predicates-factories
+* Spring Cloud Gateway包括许多内置的Route Predicate工厂, 所有这些Predicate都与HTTP请求的不同属性匹配, 可以==组合使用==.
+* Spring Cloud Gateway 创建Route 对象时，使用RoutePredicateFactory 创建Predicate对象，Predicate 对象可以赋值给Route。
+* 所有这些谓词都匹配HTTP请求的不同属性 , 多种谓词工厂可以组合
+
+**Predicate的使用**
+1.After
+需求: 只有2024-11-05 20:40:50 之后的请求才进行匹配/转发, 不满足该条件的，不处理.
+只要配置`application.xml`文件即可
+* 在predicates数组下, 加上`- After=时间格式`
+* 获取时间格式
+```java
+public class nowTime {  
+    public static void main(String[] args){  
+        ZonedDateTime now = ZonedDateTime.now();  
+        System.out.println(now);  
+    }  
+}
+```
+2.Before
+3.Between
+4.Cookie
+需求: 请求带有cookie键: user 值:ok 才predicate成功
+## 
