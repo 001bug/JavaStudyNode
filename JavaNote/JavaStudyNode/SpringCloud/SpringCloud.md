@@ -843,5 +843,13 @@ public class nowTime {
 2.Before
 3.Between
 4.Cookie
-需求: 请求带有cookie键: user 值:ok 才predicate成功
+需求: 请求带有cookie键: user  值:ok 才predicate成功
+* 在predicates数组下, 加上`- Cookie=user, ok`. 这个ok也可以是正则表达式
+* 用postman测试
+![](assest/Pasted%20image%2020241106121310.png)
+5.Header Route Predicate
+6.Host Route Predicate 请求host是ohmygod才匹配成功
+7.Method Route Predicate 请求是Get方式才成功
+8.Path Route Predicate 一开始就用过的
+9.Query Route Predicate 请求有参数email,并且满足电子邮件的基本格式, 才能匹配成功
 ## 
