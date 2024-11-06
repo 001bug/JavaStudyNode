@@ -856,4 +856,13 @@ public class nowTime {
 **简介**
 路由过滤器可用于修改进入的HTTP请求和返回的HTTP响应, 常用于请求验证, 修改请求和响应 , 流量控制 , 日志记录等操作
 
-**GatewayFilter
+**GatewayFilter**
+开发直接使用GatewayFilter比较少, 一般使用自定义过滤器
+```xml
+routes:
+	filters:
+		- AddRequestParameter=color,blue
+		- AddRequestParameter=age,18
+```
+1.过滤器工厂会在匹配的请求头加上一堆请求头,名称为color值为blue
+2.过滤器工厂会在匹配的请求头上加上一对请求头,名称为age值为18
