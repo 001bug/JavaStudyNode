@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "SpringCloud"
             }
+          },
+          {
+            "id": "dbee34d0ac0fa8b9",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.5"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.5"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -174,7 +187,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "d2a940a05d9a18e0",
+  "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
