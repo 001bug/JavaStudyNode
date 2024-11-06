@@ -852,4 +852,8 @@ public class nowTime {
 7.Method Route Predicate 请求是Get方式才成功
 8.Path Route Predicate 一开始就用过的
 9.Query Route Predicate 请求有参数email,并且满足电子邮件的基本格式, 才能匹配成功
-## 
+## 过滤器 
+**简介**
+路由过滤器可用于修改进入的HTTP请求和返回的HTTP响应, 常用于请求验证, 修改请求和响应 , 流量控制 , 日志记录等操作
+
+**GatewayFilter
