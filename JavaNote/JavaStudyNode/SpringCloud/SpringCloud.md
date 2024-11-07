@@ -871,3 +871,55 @@ routes:
 
 **自定义GlobalFilter**
 需求: 如果请求参数user=ok , pwd=123456则方行, 否则不能通过验证
+这种是通过编写配置类
+```java
+@Component  
+public class CustomGateWayFilter implements GlobalFilter, Order {  
+    @Override  
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {  
+        System.out.println("====CustomGateWayFilter");  
+        String uname=exchange.getRequest().getQueryParams().getFirst("user");  
+        String pwd=exchange.getRequest().getQueryParams().getFirst("pwd");  
+        if(!("ok").equals(uname)&&"123456".equals(pwd)){  
+            System.out.println("===非法用户====");  
+            exchange.getResponse().setStatusCode(HttpStatus.NOT_ACCEPTABLE);  
+            return exchange.getResponse().setComplete();  
+        }  
+        return chain.filter(exchange);  
+    }  
+    @Override  
+    public int value() {  
+        return 0;  
+    }  
+    @Override  
+    public Class<? extends Annotation> annotationType() {  
+        return null;  
+    }  
+}
+```
+1.`ServerWebExchange` 是 Spring WebFlux 中用于处理 HTTP 请求和响应的核心对象。它封装了当前请求的所有信息 , 非常类似于HttpServerRequest
+2.`Order`表示过滤器的执行优先级, 数字越小优先级高.
+3.filter是核心方法 , 核心过滤业务
+# Sleuth+Zipkin
+## 简单介绍
+**Sleuth/Zipkin是什么**
+**Sleuth** 和 **Zipkin** 是分布式系统中用于**分布式追踪**的工具
+
+**技术背景**
+1.在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的的服务节点调用, 来协同产生最后的请求结果，每一个请求都会形成一条复杂的分布式服务调用链路.
+2.链路中的任何一环出现高延时(一般不能超过1s)或错误都会引起整个请求最后的失败, 因此对整个服务的调用进行链路追踪和分析就非常的重要
+![](assest/Pasted%20image%2020241107164400.png)
+
+**Sleuth和Zipkin的简单关系图**
+![](assest/Pasted%20image%2020241107164442.png)
+Sleuth提供了一套完整的服务跟踪的解决方案, 并兼容Zipkin. Sleuth做链路追踪,Zipkin做数据搜集/存储/可视化
+
+**工作原理**
+1.Span和Trace在一个系统中使用Zipkin的过程-图形化
+![](assest/Pasted%20image%2020241107165028.png)
+* Trace ID: 标识一次完整的请求链路,在所有服务中保持不变 , span标识发起的请求信息，各span通过parent id关联起来
+* Span ID: 标识请求链路的单个操作, 每个服务会生成新的Span ID. span是一次请求信息
+
+2.spans的parent/child关系图形化
+![](assest/Pasted%20image%2020241107170111.png)
+后一个span节点的parentId 指向/记录了上一个Span , 多个Span集合就构成了一条调用链

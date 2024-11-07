@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "host",
+                "query": "Http",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +87,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -189,8 +190,13 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107170111.png",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107165028.png",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107164442.png",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107164400.png",
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241106121310.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/{C1551EDF-59F6-4E7B-9F5E-EAF553CB86B9}.png",
@@ -205,10 +211,7 @@
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105171218.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105170212.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105170006.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105165953.png",
     "JavaNote/JavaStudyNode/日常代码问题.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241105161817.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "前端/Vue/Vue.md",
@@ -217,7 +220,6 @@
     "JavaNote/JavaStudyNode/Spring/Spring.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "技术栈.md",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
