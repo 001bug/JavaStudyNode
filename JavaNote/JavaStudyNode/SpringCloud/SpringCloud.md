@@ -931,3 +931,41 @@ Sleuth提供了一套完整的服务跟踪的解决方案, 并兼容Zipkin. Sleu
 ![](assest/Pasted%20image%2020241107190216.png)
 **下载Zipkin-server**
 然后再cmd执行`java -jar zipkin-server-2.12.9-exec.jar`
+
+1.服务提供方集成Sleuth/Zipkin
+* 修改`member-service-provider-10000`的pom.xml,增加引入`sleuth+zipkin`
+```xml
+<dependency>  
+    <groupId>org.springframework.cloud</groupId>  
+    <artifactId>spring-cloud-starter-zipkin</artifactId>  
+</dependency>
+```
+这里的starter-zipkin包含了Sleuth
+修改application.yml.指定Zipkin
+```xml
+spring:  
+  application:  
+    name: member-service-conumer-801  
+  zipkin:  
+    base-url: http://localhost:9411  
+  sleuth:  
+    sampler:  
+    # 采样率在0-1 之间，1 表示全部采集  
+    probability: 1  
+    #eureka 客户端配置
+```
+`base-url`: Sleuth/Zipkin的访问地址
+
+2.服务消费方集成Sleuth/Zipkin
+配置和修改过程和上面一样
+
+**查看监控和分析结果**
+登录zipkin平台
+选择查看服务
+![](assest/Pasted%20image%2020241107195220.png)
+查看一次调用链路的深度, 以及该链路包含请求 , 各个请求耗时, 找到请求瓶颈, 为优化提供依据
+![](assest/Pasted%20image%2020241107195341.png)
+查看服务调用的依赖关系
+![](assest/Pasted%20image%2020241107195401.png)
+# Nacos
+
