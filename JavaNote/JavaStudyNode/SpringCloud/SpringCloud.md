@@ -319,7 +319,7 @@ Eureka是一个老的组件 , 后面出的服务注册技术和组件都参考�
 ```yml
 eureka:  
   instance:  
-    hostname: localhost #eureka服务端实例的名字,status项中  
+    hostname: localhost #eureka服务端实例主机名,status项中  
   client:  
     register-with-eureka: false #不向注册中心注册自己  
     #表示自己就是注册中心，职责是维护服务实例，并不需要去检索服务  
@@ -328,8 +328,9 @@ eureka:
       #设置与eureka server 交互的模块,查询服务和注册服务都需要依赖这个地址  
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 ```
+`hostname`:服务实例主机名
 `register-with-eureka: false`就是说该微服务不注册到服务注册中心避免自己或其他的`EurekaServer`被注册到服务中心,true就是要把自己注册到注册列表
-`fetch-register`:决定Eureka客户端是否能从`Eureka`服务器获取注册列表
+`fetch-register`:决定Eureka客户端是否能从`Eureka`服务端获取注册列表
 
 3.创建启动类
 该类要被`@EnableEurekaServer`注释 , 表示该程序作为EurekaServer
