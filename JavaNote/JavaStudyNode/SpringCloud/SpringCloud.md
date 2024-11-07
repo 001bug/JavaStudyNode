@@ -907,7 +907,7 @@ public class CustomGateWayFilter implements GlobalFilter, Order {
 **Sleuth** 和 **Zipkin** 是分布式系统中用于**分布式追踪**的工具
 
 **技术背景**
-1.在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的的服务节点调用, 来协同产生最后的请求结果，每一个请求都会形成一条复杂的分布式服务调用链路.
+1.在微服务框架中，一个由客户端发起的请求在后端系统中会经过多个不同的的服务节点调用, 来协同产生最后的请求结果，==每一个请求都会形成一条复杂的分布式服务调用链路.==
 2.链路中的任何一环出现高延时(一般不能超过1s)或错误都会引起整个请求最后的失败, 因此对整个服务的调用进行链路追踪和分析就非常的重要
 ![](assest/Pasted%20image%2020241107164400.png)
 
@@ -918,9 +918,16 @@ Sleuth提供了一套完整的服务跟踪的解决方案, 并兼容Zipkin. Sleu
 **工作原理**
 1.Span和Trace在一个系统中使用Zipkin的过程-图形化
 ![](assest/Pasted%20image%2020241107165028.png)
-* Trace ID: 标识一次完整的请求链路,在所有服务中保持不变 , span标识发起的请求信息，各span通过parent id关联起来
+* Trace ID: 标识一次完整的请求链路,在所有服务中保持不变 , span标识发起的请求信息，各span通过parent id(前一个span的id)关联起来
 * Span ID: 标识请求链路的单个操作, 每个服务会生成新的Span ID. span是一次请求信息
 
 2.spans的parent/child关系图形化
 ![](assest/Pasted%20image%2020241107170111.png)
 后一个span节点的parentId 指向/记录了上一个Span , 多个Span集合就构成了一条调用链
+## Sleuth/ZipKin-搭建链路监控
+**需求**
+对`http://localhost/member/consumer/get/1`这个请求进行监控
+通过Sleuth和ZipKin可以对服务调用链路进行监控, 并在Zipkin进行显示
+![](assest/Pasted%20image%2020241107190216.png)
+**下载Zipkin-server**
+然后再cmd执行`java -jar zipkin-server-2.12.9-exec.jar`
