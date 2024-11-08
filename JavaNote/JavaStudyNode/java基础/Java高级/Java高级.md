@@ -243,14 +243,130 @@ java虚拟机会给每个对象分配this, 代表当前对象 .
 **访问修饰符**
 ![](assest/Pasted%20image%2020241107203628.png)
 细节
-* 只有默认和public才能修饰类
+* 只有默认和**public**才能修饰类
 
 **面向对象编程三大特征**
-1.基本介绍
 封装,继承和多态
+1.封装
+* 把抽象出的数据和对数据的操作放在一起, 数据被保护在内部 , 程序的其它部分只有通过被授权的操作方法, 才能对数据进行操作
+* 隐藏实现细节, 方法(连接数据库)< --调用(传入参数)
+* 封装实现, 1.提供一个public set方法,用于属性修改, 提供public get用于属性访问
 
+# 多线程
 
-# 并发
+## 线程的相关概念
+**程序**
+是为完成特定任务 , 用某种语言编写的一组指令的集合, 简单点说就是我们的代码,程序是静态的, 存储在磁盘上,程序本身不执行,只是一份文件或资源
+**进程**
+进程是指运行中的程序, 比如我们使用QQ, 就启动了一个进程, 操作系统就会为其分配内存空间. 当我们再启动一个游戏 , 就代表着又启动了一个进程 , 操作系统将为迅雷分配新的**内存空间**,进程是动态的,每个进程都有**独立地址空间**, 代码段, 数据段, 堆栈等
+**线程**
+线程由进程创建的, 是进程的一个实体, 一个进程可以拥有多个线程. 是**进程的一个执行流**. **线程之间共享进程的内存空间和资源**（如堆、全局变量等），但每个线程都有自己的栈和寄存器。
+![](assest/{42694F5C-77A1-4275-8054-BC1D12A4204F}.png)
+![](assest/Pasted%20image%2020240926204318.png)
+## 线程的基本使用
+1.**继承Thread**
+1.继承`Thread`类,重写`run()`方法, 然后调用`start()`方法启动线程
+```java
+public class main {  
+    public static void main(String[] args) {  
+        CatThread catThread = new CatThread();  
+        catThread.start();    
+    }  
+}  
+class CatThread extends Thread{  
+    public void run(){  
+        for(int i=0;i<15;i++){  
+            try {  
+                Thread.sleep(2000);  
+                System.out.println("猫猫数数"+i);  
+            } catch (InterruptedException e) {  
+                throw new RuntimeException(e);  
+            }  
+        }  
+    }  
+}  
+
+```
+
+![](assest/{2452B167-2D8D-43CA-9F12-4C0D213B3F95}.png)
+细节 , `start()`才是开启真正的线程, 而不是调用普通的`run()`方法
+![](assest/Pasted%20image%2020240927194805.png)
+
+Runable接口的引出
+java是单继承的, 在某些情况下一个类可能已经继承了某个父类, 这时在用继承Thread类方法来创建线程显然不适用. java设计者们提供了另一个方式创建线程, 就是通过实现Runnable接口创建线程
+**2.实现`Runable`接口**
+```java  
+public class application {  
+    public static void main(String[] args){  
+        CatThread catThread = new CatThread();    
+        Thread cat_thread = new Thread(catThread);   
+        cat_thread.start();  
+    }  
+}
+public class CatThread implements Runnable{  
+    @Override  
+    public void run() {  
+        try {  
+            for(int i=0;i<15;i++){  
+                System.out.println("猫猫数数="+i);  
+                Thread.sleep(1000);  
+            }  
+        } catch (InterruptedException e) {  
+            throw new RuntimeException(e);  
+        }  
+    }  
+}
+```
+jconsole的使用
+**细节**
+为什么不是调用`run()`方法, 而是调用`start()`方法
+如果你在主线程中直接调用 `run()` 方法，就像调用普通方法一样，`run()` 方法会在当前线程（即主线程）中执行，不会创建一个新的线程去并发地执行它。**`start()` 方法的作用** 是 **启动一个新的线程，并让它在新的线程中执行 `run()` 方法**。当你调用 `start()` 方法时，Java 虚拟机（JVM）会为该线程分配资源，执行操作系统的**底层线程管理**，创建一个新的线程，然后在这个新的线程中自动调用 `run()` 方法。
+![](assest/{AD2D654C-EA51-4F51-AFB1-1417D181FE6A}.png)
+这个start方法是由jvm 调用的
+
+**3.Thread和Runnable的区别**
+1.从java的设计来看, 通过继承Thread或者实现Runnable接口来创建线程本质上是没有区别. 他们底层都是实现了Runnable接口
+2.实现Runnable接口方式更加适合多个线程共享一个资源的情况, 并且避免了单继承的限制, 建议使用Runnable
+## 线程的常用方法
+1.setName //设置线程的名称
+2.getName //返回该线程的名称
+3.start //使该线程变为可运行态, java虚拟机底层调用该线程的start()方法
+4.run //调用线程对象run方法
+5.setPriority 更改线程的优先级
+6.getPriority 获取线程的优先级
+7.sleep 在指定的毫秒数内让当前正在执行的线程休眠
+8.interrupt 中断线程
+9.getState 获取线程当前状态
+**注意细节**
+1.start 底层会创建新的线程,调用run, run就是一个简单的方法调用, 不会启动新线程
+2.线程优先级的范围
+3 interrupt, 中断线程, 当并没有结束线程. 所以一般用于中断正在休眠线程
+如果线程正处于某些 **阻塞状态**（例如 `sleep()`、`wait()` 或 `join()`），则 `interrupt()` 会让这些方法抛出 **`InterruptedException`**，使线程能够尽早从阻塞状态中退出。
+4 sleep:线程的静态方法, 使当前线程休眠
+![](assest/Pasted%20image%2020240929093725.png)
+![](assest/Pasted%20image%2020240929093734.png)
+## 线程的生命周期
+**线程的状态**
+JDK中用Thread.State枚举表示线程的几种状态
+```java
+public static enum Thread.State
+extends Enum<Thread.State>
+```
+1.NEW:尚未启动的线程处于该状态,此线程还没有开始执行
+* 调用start()方法后,线程进入Ready状态
+2.Ready(就绪): 线程已经准备好等待cpu调度器分配CPU时间片进行运行,但没被调度
+3.RUNNABLE(Running): 在java虚拟机中执行的线程处于该状态,线程获取了CPU时间片
+* 线程可以调用 `Thread.yield()` 方法让出 CPU,进入Ready状态,或者线程执行完毕,进入Terminated状态
+4.BLOCKED: 线程因为无法获取到同步锁（监视器锁）而处于阻塞状态，等待进入临界区。
+* 获得同步锁,线程进入Ready状态,等待CPU调用
+5.WAITING: 等待状态，等待其他线程显式地唤醒它。
+* 可以通过`Object.wait()`,`Thread.join()`,`LockSupport.park()`进入等待状态. 等待期间需要**其它线程**用`notify()`,`notifyAll()`或`LockSupport.unpark()`来唤醒线程,进入Ready状态
+6.TIMED_WAITING: 线程等待一定时间后自动苏醒，而不是无限期等待。
+* 通过``
+7.TERMINSTED:已退出的线程处于此状态
+
+**线程状态转换图**
+![](assest/Pasted%20image%2020241108084840.png)
 
 # 流与文件
 ![](Java高级/assest/Pasted%20image%2020240913190845.png)
