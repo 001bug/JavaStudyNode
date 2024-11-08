@@ -980,7 +980,7 @@ spring:
 解压，使用运行bin/startup.cmd
 服务网址: http://localhost:8848/nacos
 用户名和密码默认: nacos
-## 将服务到Nacos
+## 将服务注册到Nacos
 **需求分析**
 示意图
 ![](assest/Pasted%20image%2020241108153913.png)
@@ -1024,5 +1024,8 @@ spring:
 4.修改对应的application.yml
 * 增加`spring.cloud.nacos.discovery:server-addr: localhost: 8848`
 * 增加`management.endpoints.web.exposure.include`
-
-
+5.修改业务层`controller`中的地址指向
+```java
+public static final String=MEMBER_SERVICE_PROVIDER_URL = "http://member-service-nacos-provider";//
+```
+把他指向服务别名. nacos不会像eureka一样自动转换为大写.nacos还是使用的是Ribbon(负载均衡器)+RestTemplate(服务调用)
