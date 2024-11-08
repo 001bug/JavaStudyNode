@@ -968,4 +968,48 @@ spring:
 查看服务调用的依赖关系
 ![](assest/Pasted%20image%2020241107195401.png)
 # Nacos
+## Nacos的基本介绍
+介绍
+他是一款集中了服务发现, 配置管理和服务管理为一体的服务平台.Nacos 就是注册中心`[替代Eureka]`+配置中心`[替代Config]`
+* 英文名Dynamic Naming and Configuration Service
+* 架构理论基础: CAP 理论(支持AP 和CP, 可以切换)
 
+**下载以及使用**
+下载:https://github.com/alibaba/nacos/releases/tag/1.2.1
+环境要求: Java8/Maven 3.2.x+
+解压，使用运行bin/startup.cmd
+服务网址: http://localhost:8848/nacos
+用户名和密码默认: nacos
+## 创建Nacos服务提供者
+**需求分析**
+示意图
+![](assest/Pasted%20image%2020241108153913.png)
+创建服务到注册中心
+
+1.创建member-service-nacos-provider-10004并注册到NacosServer8848
+将代码置换过来即可. 不要忘了mapper文件
+2.修改父项目的pom.xml文件 , 引入`cloudalibaba`
+```xml
+<dependency>  
+    <groupId>com.alibaba.cloud</groupId>  
+    <artifactId>spring-cloud-alibaba-dependencies</artifactId>  
+    <version>2.1.0.RELEASE</version>  
+    <type>pom</type>  
+    <scope>import</scope>  
+</dependency>
+```
+3.修改本模块`member-service-nacos-provider-10004`的pom.xml
+```xml
+<dependency>  
+    <groupId>com.alibaba.cloud</groupId>  
+    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>  
+</dependency>
+```
+引入nacos的功能
+4.在application.yml文件中, 删除eureka的配置. 
+增加`spring.cloud.nacos.discovery:server-addr: localhost: 8848`
+* 服务发现的服务器地址. 指定Nacos服务的地址
+增加`management.endpoints.web.exposure.include`
+* 定义了 Actuator 端点的暴露范围，通过该配置可以指定允许哪些 Actuator 端点在 Web 上公开。`*`表示暴露所有端点
+5.修改启动类名,application.yml的端口名, 修改返回信息
+6.启动Nacos Server 8848
