@@ -87,7 +87,7 @@ Nacos借用了很多Eureka的设计理念
 * 使用`pom.xml`中的`dependencyManagement`元素能让所有的子项目中引用一个依赖 , Maven会沿着父子层次向上走 , 直到找到拥有`dependencyManagement`元素的项目, 然后会使用该配置文件指定的版本号
 * 好处: 如果有多个子项目都引用同一样依赖 , 则避免了子项目还要声明版本号 , 当升级或者切换到另一个版本时 , 只需要在带有`<packaging>pom</packaging>`的容器里更新.
 * 这个和`<dependency>`不一样 , 它不会直接引入依赖. 只负责管理依赖版本
-* 只有子项目声明了对应的依赖并且没有指定具体版本 , 才会从父项目中继承下来.![](assest/Pasted%20image%2020241026205808.png) 这个体现在pom.xml文件中`<scope>`标签中
+* 只有子项目声明了对应的依赖并且没有指定具体版本 , 才会从父项目中继承下来.![](assest/Pasted%20image%2020241026205808.png) 这个体现在pom.xml文件中`<scope>`标签中,这是**定义依赖作用域**的.
 ## 会员中心微服务模块
 模块名: `member-server-provider-10000`
 名字的含义: member-server表示人员服务 . `provider`表示生产者 , `10000`表示端口
@@ -1029,3 +1029,18 @@ spring:
 public static final String=MEMBER_SERVICE_PROVIDER_URL = "http://member-service-nacos-provider";//
 ```
 把他指向服务别名. nacos不会像eureka一样自动转换为大写.nacos还是使用的是Ribbon(负载均衡器)+RestTemplate(服务调用)
+## NacosAP和CP切换
+**各种注册中心对比**
+![](assest/Pasted%20image%2020241108200149.png)
+cp:服务可以不能用,但必须要保证数据的一致性。
+ap:数据可以短暂不一致，但最终是需要一致的，无论如何都要保证服务的可用。
+
+**Nacos的AP和CP切换**
+Nacos集群默认支持的是CAP原则中的AP原则, 但是也可以切换成cp
+1.CURL切换命令: curl -X PUT
+$NACOS_SERVER:8848/nacos/v1/ns/operator/switchesentry=serverMode&value=CP
+2.URL指令：
+$NACOS_SERVER:8848/nacos/v1/ns/operator/switchesentry=serverMode&value=CP
+
+**配置中心**
+![](assest/Pasted%20image%2020241108203030.png)
