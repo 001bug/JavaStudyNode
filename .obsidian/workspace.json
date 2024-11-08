@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java高级"
+              "title": "SpringCloud"
             }
           },
           {
@@ -153,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -189,11 +189,11 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241108084840.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241108083836.png",
     "JavaNote/JavaStudyNode/java基础/Pasted image 20240324182621.png",
     "JavaNote/JavaStudyNode/java基础/Pasted image 20240323165723.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
@@ -204,7 +204,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107195220.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107190216.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107170111.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241107165028.png",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
