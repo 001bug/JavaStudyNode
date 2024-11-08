@@ -980,7 +980,7 @@ spring:
 解压，使用运行bin/startup.cmd
 服务网址: http://localhost:8848/nacos
 用户名和密码默认: nacos
-## 创建Nacos服务提供者
+## 将服务到Nacos
 **需求分析**
 示意图
 ![](assest/Pasted%20image%2020241108153913.png)
@@ -1006,10 +1006,23 @@ spring:
 </dependency>
 ```
 引入nacos的功能
-4.在application.yml文件中, 删除eureka的配置. 
+4.在application.yml文件中, 删除eureka的配置(yml依赖). 
 增加`spring.cloud.nacos.discovery:server-addr: localhost: 8848`
 * 服务发现的服务器地址. 指定Nacos服务的地址
 增加`management.endpoints.web.exposure.include`
 * 定义了 Actuator 端点的暴露范围，通过该配置可以指定允许哪些 Actuator 端点在 Web 上公开。`*`表示暴露所有端点
-5.修改启动类名,application.yml的端口名, 修改返回信息
+5.修改启动类名,application.yml的端口名, 修改返回信息. 添加`@EnableDiscoveryClient`注解
 6.启动Nacos Server 8848
+
+**在创建一个provider-server形成集群**
+端口10006
+
+**将服务消费者注册到Nacos**
+1.将`provider-service`的代码拉到`member-service-nacos-consumer-80`
+2.修改pom.xml,去除eureka,添加nacos
+3.修改启动类(类名),添加nacos客户端的注解
+4.修改对应的application.yml
+* 增加`spring.cloud.nacos.discovery:server-addr: localhost: 8848`
+* 增加`management.endpoints.web.exposure.include`
+
+
