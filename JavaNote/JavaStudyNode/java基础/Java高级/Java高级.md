@@ -357,13 +357,13 @@ extends Enum<Thread.State>
 2.Ready(就绪): 线程已经准备好等待cpu调度器分配CPU时间片进行运行,但没被调度
 3.RUNNABLE(Running): 在java虚拟机中执行的线程处于该状态,线程获取了CPU时间片
 * 线程可以调用 `Thread.yield()` 方法让出 CPU,进入Ready状态,或者线程执行完毕,进入Terminated状态
-4.BLOCKED: 线程因为无法获取到同步锁（监视器锁）而处于阻塞状态，等待进入临界区。
+4.BLOCKED: 线程因为无法获取到同步锁（监视器锁）而处于阻塞状态，等待进入临界区。(进入同步块的情况下)
 * 获得同步锁,线程进入Ready状态,等待CPU调用
 5.WAITING: 等待状态，等待其他线程显式地唤醒它。
 * 可以通过`Object.wait()`,`Thread.join()`,`LockSupport.park()`进入等待状态. 等待期间需要**其它线程**用`notify()`,`notifyAll()`或`LockSupport.unpark()`来唤醒线程,进入Ready状态
 6.TIMED_WAITING: 线程等待一定时间后自动苏醒，而不是无限期等待。
-* 通过``
-7.TERMINSTED:已退出的线程处于此状态
+* 通过`Thread.sleep(time)`,`Object.wait(time)`,`Thread.join(time)`进入该状态
+7.TERMINSTED:线程完成执行或因异常退出，进入终止状态。
 
 **线程状态转换图**
 ![](assest/Pasted%20image%2020241108084840.png)
