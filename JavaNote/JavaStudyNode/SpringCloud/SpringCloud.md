@@ -1041,6 +1041,17 @@ Nacos集群默认支持的是CAP原则中的AP原则, 但是也可以切换成cp
 $NACOS_SERVER:8848/nacos/v1/ns/operator/switchesentry=serverMode&value=CP
 2.URL指令：
 $NACOS_SERVER:8848/nacos/v1/ns/operator/switchesentry=serverMode&value=CP
+了解即可, 一般不切换
 
-**配置中心**
+## 配置中心
 ![](assest/Pasted%20image%2020241108203030.png)
+配置中心是一种用于集中管理和分发应用配置的系统. 可以动态更新配置, 而且还是热更新
+1.进入到Nacos Server
+2.加入配置, 注意文件后缀名
+![](assest/Pasted%20image%2020241108205243.png)
+实例: Data ID: e-commerce-nacos-config-client-dev.yaml
+* 表示每一个配置项的唯一标识符(和Group一起组成),类似maven坐标
+![](assest/Pasted%20image%2020241108205327.png)
+![](assest/Pasted%20image%2020241108205336.png)
+
+**创建实例从配置中心拉取配置**
