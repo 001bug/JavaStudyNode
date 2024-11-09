@@ -1094,3 +1094,39 @@ spring:
 application.yml
 4.@RefreshScope 是springcloud 原生注解，实现配置信息自动刷新
 5.配置中心和服务注册中心是分开的一个组件 , 所以需要填两次地址
+## Nacos分类配置
+**介绍**
+技术背景:如何使用 Nacos 实现复杂分布式系统中的配置管理，以及如何通过其内置功能为不同的服务和环境提供灵活的配置分类。
+定义:**分类配置** 是通过 **命名空间**（Namespace）、**分组**（Group）、和 **Data ID** 来组织和管理不同类型的配置数据。
+
+**Data ID方案**
+1.在配置中心修改Data ID
+2.然后修改源码的信息从`name`,`file-extension`,`active`下手
+
+**Group方案**
+1.示意图
+![](assest/Pasted%20image%2020241109105525.png)
+技术背景: 在分布式中 , 不同的模块对应不同的组, 为了更好的管理 , 不同的组应该需要再NacosServer获取对应的开发配置的数据
+
+2.创建新的配置:order/e-commerce-nacos-config-client-dev.yaml
+order是组名
+![](assest/Pasted%20image%2020241109105956.png)
+3.再创建一个不同组名的配置: seckill/e-commerce-nacos-config-client-dev.yaml
+
+4.在源码中修改`application.yml`的信息 , 增加`group参数`
+`cloud.nacos.config.group: order` order是对应的组名. 如果不写默认DEFAULT_GROUP
+
+**Namespace方案**
+大体跟Data ID一样
+1.在nacos server 创建新的namespace , baidu
+* 点击命名空间
+2.新建命名空间
+3.![](assest/Pasted%20image%2020241109111206.png)
+
+![](assest/Pasted%20image%2020241109111811.png)
+4.切换命名空间
+![](assest/Pasted%20image%2020241109111240.png)
+
+5.创建新的Data ID和组
+
+6.修改`application.yml`增加参数namespace, 跟group同级
