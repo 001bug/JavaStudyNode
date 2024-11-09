@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "feign",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,12 +87,12 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -190,8 +190,9 @@
   },
   "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109171336.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109112445.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109112255.png",
@@ -219,7 +220,6 @@
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/Spring/Spring.md",
     "JavaNote/JavaStudyNode/ssm/ssm.md",
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "技术栈.md",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
