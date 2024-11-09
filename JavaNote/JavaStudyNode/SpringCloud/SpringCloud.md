@@ -1089,6 +1089,8 @@ spring:
 
 **注意细节**
 1.参考文档: https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+![](assest/Pasted%20image%2020241109112255.png)
+Data ID格式
 2.在项目初始化时，要保证先从配置中心进行配置拉取，拉取配置之后，才能保证项目的正常启动, 也就是说如果项目不能正确的获取到Nacos Server 的配置数据，项目是启动不了的.
 3.springboot中配置文件的加载是存在优先级顺序的.bootstrap.yml 优先级高于
 application.yml
@@ -1130,3 +1132,9 @@ order是组名
 5.创建新的Data ID和组
 
 6.修改`application.yml`增加参数namespace, 跟group同级
+## Namespace/Group/Data ID关系
+示意图
+![](assest/Pasted%20image%2020241109112445.png)
+* Nacos默认的命名空间是public，Namespace主要用来实现配置隔离, 隔离范围大
+* Group默认是DEFAULT GROUP，Group可以把不同的微服务划分到同一个分组里面去
+* Service就是微服务, 相同的Service可以是一个Cluster(簇/集群), Instance 就是微服务的实例
