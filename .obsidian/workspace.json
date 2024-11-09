@@ -92,7 +92,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -188,8 +189,9 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "6587fde0629aea82",
+  "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109171336.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109112445.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109112255.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109111811.png",
@@ -204,7 +206,6 @@
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241108205336.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241108205327.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241108205243.png",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",

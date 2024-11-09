@@ -1098,7 +1098,7 @@ application.yml
 5.配置中心和服务注册中心是分开的一个组件 , 所以需要填两次地址
 ## Nacos分类配置
 **介绍**
-技术背景:如何使用 Nacos 实现复杂分布式系统中的配置管理，以及如何通过其内置功能为不同的服务和环境提供灵活的配置分类。
+技术背景:如何使用 Nacos 实现复杂分布式系统中的配置管理，以及如何通过其内置功能为**不同的服务**和**环境**(配置环境和生产环境是不一样的)提供灵活的配置分类。
 定义:**分类配置** 是通过 **命名空间**（Namespace）、**分组**（Group）、和 **Data ID** 来组织和管理不同类型的配置数据。
 
 **Data ID方案**
@@ -1108,7 +1108,7 @@ application.yml
 **Group方案**
 1.示意图
 ![](assest/Pasted%20image%2020241109105525.png)
-技术背景: 在分布式中 , 不同的模块对应不同的组, 为了更好的管理 , 不同的组应该需要再NacosServer获取对应的开发配置的数据
+技术背景: 在分布式中 , 不同的模块对应不同的组, 为了更好的管理(避免不同小组修改同一个文件) , 不同的组应该需要再NacosServer获取对应的开发配置的数据
 
 2.创建新的配置:order/e-commerce-nacos-config-client-dev.yaml
 order是组名
@@ -1119,6 +1119,8 @@ order是组名
 `cloud.nacos.config.group: order` order是对应的组名. 如果不写默认DEFAULT_GROUP
 
 **Namespace方案**
+需求: 解决多个公司共同合作,动态配置管理的问题
+![](assest/Pasted%20image%2020241109171336.png)
 大体跟Data ID一样
 1.在nacos server 创建新的namespace , baidu
 * 点击命名空间
@@ -1135,6 +1137,7 @@ order是组名
 ## Namespace/Group/Data ID关系
 示意图
 ![](assest/Pasted%20image%2020241109112445.png)
+一个Cluster1下面有多个instance1表示服务集群
 * Nacos默认的命名空间是public，Namespace主要用来实现配置隔离, 隔离范围大
 * Group默认是DEFAULT GROUP，Group可以把不同的微服务划分到同一个分组里面去
 * Service就是微服务, 相同的Service可以是一个Cluster(簇/集群), Instance 就是微服务的实例
