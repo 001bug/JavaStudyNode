@@ -1055,3 +1055,42 @@ $NACOS_SERVER:8848/nacos/v1/ns/operator/switchesentry=serverMode&value=CP
 ![](assest/Pasted%20image%2020241108205336.png)
 
 **创建实例从配置中心拉取配置**
+1.重点是配置文件, 这边的实例是两个文件
+application.yml
+```yml
+spring:  
+  profiles:  
+    active: dev
+```
+bookstrap
+```yml
+server:  
+  port: 5000  
+spring:  
+  application:  
+    name: e-commerce-nacos-config-client  
+  cloud:  
+    nacos:  
+      discovery:  
+        server-addr: localhost:8848  
+      config:  
+        server-addr: localhost:8848  
+        file-extension: yaml
+```
+详细介绍
+* `name`: 需要参考nacos配置中心的Data Id.
+* `spring.profiles.active`: 也需要参考Data Id. 这两结合对应Data ID
+* `file-extension` 对应的是配置中心的文件类型
+* 以上三个条件配合,找到了nacos配置中心的`e-commerce-nacos-config-client-dev.yaml`
+2.编写启动类
+加入相应注解即可(服务发现,boot自动配置)
+3.测试
+通过`@Value`(springboot-start)获取对应的配置信息
+
+**注意细节**
+1.参考文档: https://nacos.io/zh-cn/docs/quick-start-spring-cloud.html
+2.在项目初始化时，要保证先从配置中心进行配置拉取，拉取配置之后，才能保证项目的正常启动, 也就是说如果项目不能正确的获取到Nacos Server 的配置数据，项目是启动不了的.
+3.springboot中配置文件的加载是存在优先级顺序的.bootstrap.yml 优先级高于
+application.yml
+4.@RefreshScope 是springcloud 原生注解，实现配置信息自动刷新
+5.配置中心和服务注册中心是分开的一个组件 , 所以需要填两次地址
