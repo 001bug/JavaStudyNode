@@ -395,7 +395,7 @@ public synchronized void m(String name){
 	//需要被同步的代码
 }
 ```
-厕所一人一厕所的问题
+厕所一人一厕所的问题, 一般是定义一个静态锁对象.然后所有线程使用这个锁对象
 
 **3.同步的原理**
 ![](assest/Pasted%20image%2020241110090713.png)
@@ -405,7 +405,54 @@ public synchronized void m(String name){
 * 每个对象都被一个可称为'互斥锁'的标记. 用来确保在任一时刻,只有一个线程可以访问对象. 持有锁的线程可以进入同步代码区. 其它线程等锁释放
 * 锁的持有和释放. 第一个进入同步区的线程持锁. 等该线程退出同步区释放锁
 * 同步的局限性. 导致程序的执行效率慢
-* 同步方法(非静态)的锁可以是this(当前实例).也可以是其它对象(要求是同一对象)
+* [同步方法(非静态)的锁可以是this(当前实例).也可以是其它对象(要求所有线程使用的相同的锁对象)](细节解释)
+2.锁的实现
+* synchronized关键字
+* 实现Lock接口
+* 要求多个线程的锁对象同一个即可
+
+3.线程的死锁
+定义: 线程死锁指的是两个或多个线程互相等待对方释放资源，导致程序永久阻塞的情况。
+死锁的经典场景
+```java
+public class DeadlockExample {
+    private static final Object lock1 = new Object();
+    private static final Object lock2 = new Object();
+
+    public static void main(String[] args) {
+        Thread thread1 = new Thread(() -> {
+            synchronized (lock1) {
+                System.out.println("Thread 1: Holding lock1...");
+                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                System.out.println("Thread 1: Waiting for lock2...");
+                synchronized (lock2) {
+                    System.out.println("Thread 1: Acquired lock2!");
+                }
+            }
+        });
+        Thread thread2 = new Thread(() -> {
+            synchronized (lock2) {
+                System.out.println("Thread 2: Holding lock2...");
+                try { Thread.sleep(100); } catch (InterruptedException e) {}
+                System.out.println("Thread 2: Waiting for lock1...");
+                synchronized (lock1) {
+                    System.out.println("Thread 2: Acquired lock1!");
+                }
+            }
+        });
+        thread1.start();
+        thread2.start();
+    }
+}
+```
+
+4.锁的释放
+* 当前线程的同步方法,同步代码块执行结束
+* 当前线程在同步代码块和同步方法中遇到break,return
+* 当前线程在同步代码块和同步方法遇到未处理的Error或Exception.
+* 当前线程在同步代码块和方法中执行了线程对象的wait()方法,当前线程暂停,并释放锁
+* 线程执行同步代码块或同步方法时, 程序调用Thread.sleep(), Thread.yield()方法暂停当前线程的执行, 不会释放锁
+* 线程执行同步代码块时, 其它线程调用了该线程的suspend()方法将该线程挂起. 该线程不会释放锁
 # 流与文件
 ![](Java高级/assest/Pasted%20image%2020240913190845.png)
 ## 流
