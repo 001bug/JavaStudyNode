@@ -403,7 +403,7 @@ extends Enum<Thread.State>
 4.BLOCKED: 线程因为无法获取到同步锁（监视器锁）而处于阻塞状态，等待进入临界区。(进入同步块的情况下)
 * 获得同步锁,线程进入Ready状态,等待CPU调用
 5.WAITING: 等待状态，等待其他线程显式地唤醒它。
-* 可以通过`Object.wait()`,`Thread.join()`,`LockSupport.park()`进入等待状态. 等待期间需要**其它线程**用`notify()`,`notifyAll()`或`LockSupport.unpark()`来唤醒线程,进入Ready状态.注意这个要在同步块中使用
+* 可以通过`Object.wait()`,`Thread.join()`,`LockSupport.park()`进入等待状态. 等待期间需要**其它线程**用`notify()`,`notifyAll()`或`LockSupport.unpark()`来唤醒线程,进入Ready状态.有些需要在[同步代码块中使用](细节解释)
 6.TIMED_WAITING: 线程等待一定时间后自动苏醒，而不是无限期等待。
 * 通过`Thread.sleep(time)`,`Object.wait(time)`,`Thread.join(time)`进入该状态
 7.TERMINSTED:线程完成执行或因异常退出，进入终止状态。
