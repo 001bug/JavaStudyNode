@@ -1142,3 +1142,29 @@ order是组名
 * Group默认是DEFAULT GROUP，Group可以把不同的微服务划分到同一个分组里面去
 * Service就是微服务, 相同的Service可以是一个Cluster(簇/集群), Instance 就是微服务的实例
 # Sentinel
+## 基本介绍以及使用
+**Sentinel资料**
+官网:Github: https://github.com/alibaba/Sentinel
+快速开始: https://sentinelguard.io/zh-cn/docs/quick-start.html
+中文文档: https://github.com/alibaba/Sentinel/wiki/%E4%BB%8B%E7%BB%8D
+使用手册: https://spring-cloud-alibaba-group.github.io/github-pages/greenwich/spring-cloud-alibaba.html#_spring_cloud_alibaba_sentinel
+
+**Sentinel技术背景**
+随着微服务的流行，服务和服务之间的稳定性变得越来越重要。Sentinel 以流量为切入点，从流量控制、熔断降级、系统负载保护等多个维度保护服务的稳定性。
+**Sentinel** 是一个分布式系统的**流量控制和服务保护组件**，用于确保微服务在高并发场景下的稳定性和高可用性。
+
+**Sentinel的主要特性(绿色部分)**
+![](assest/Pasted%20image%2020241110104733.png)
+
+**Sentinel的开源生态**
+![](assest/Pasted%20image%2020241110104832.png)
+
+**Sentinel核心功能**
+1.流量控制
+* ：Sentinel 可以基于多种条件限制服务的访问流量，比如 QPS（每秒请求数量）、线程数、调用关系等。以保证系统不会因流量过高而崩溃
+2.熔断降级
+* 在调用系统的时候，如果调用链路中的某个资源出现了不稳定，最终会导致请求发生堆积![](assest/Pasted%20image%2020241110105311.png)
+* 熔断降级, 当检测到调用链路中某个资源出现不稳定的表现. 例如请求响应时间长或异常比例升高的时候, 则对这个资源的调用进行限制. 让请求快速失败，避免影响到其它的资源而导致级联故障
+3.系统保护
+* 监控系统级指标（如CPU使用率、入口流量等），当系统负载过高时，可以采取限制措施，防止整个系统崩溃。
+4.消息削峰填谷

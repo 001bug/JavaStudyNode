@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "Docker/Docker.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "Docker"
             }
           },
           {
@@ -35,8 +35,7 @@
               "title": "Java高级"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -154,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "Docker/Docker.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "Docker 的大纲"
             }
           },
           {
@@ -188,11 +187,21 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "dbee34d0ac0fa8b9",
+  "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
+    "Docker/assest/Pasted image 20241110111823.png",
+    "Docker/assest",
+    "分布式微服项目/分布式微服务项目.md",
+    "Docker/Docker.md",
+    "Docker",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "分布式微服项目/assest",
+    "分布式微服项目",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110105311.png",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110104832.png",
+    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110104733.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110090713.png",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109171336.png",
@@ -201,9 +210,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109111811.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109111240.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109111206.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109111124.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109105956.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109105525.png",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
@@ -223,8 +229,6 @@
     "技术栈.md",
     "JavaNote/JavaStudyNode/Maven/Maven.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/SpringCloud/MyBaits.md",
-    "JavaNote/JavaStudyNode/SpringCloud/[杂记](杂记.md).md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding",
@@ -232,10 +236,6 @@
     "未命名.canvas",
     "前端/Nginx/assest",
     "前端/Nginx",
-    "JavaNote/JavaStudyNode/SpringCloud/assest",
-    "JavaNote/JavaStudyNode/SpringCloud",
-    "未命名 1.canvas",
-    "前端/javascript/assest",
-    "前端/javascript"
+    "未命名 1.canvas"
   ]
 }
