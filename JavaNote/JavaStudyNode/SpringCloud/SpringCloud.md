@@ -1141,3 +1141,4 @@ order是组名
 * Nacos默认的命名空间是public，Namespace主要用来实现配置隔离, 隔离范围大
 * Group默认是DEFAULT GROUP，Group可以把不同的微服务划分到同一个分组里面去
 * Service就是微服务, 相同的Service可以是一个Cluster(簇/集群), Instance 就是微服务的实例
+# Sentinel

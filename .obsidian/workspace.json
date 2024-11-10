@@ -35,7 +35,8 @@
               "title": "Java高级"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -154,10 +155,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "Java高级 的大纲"
             }
           },
           {
@@ -188,10 +189,11 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "d2a940a05d9a18e0",
+  "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringBoot/application.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110090713.png",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109171336.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241109112445.png",
