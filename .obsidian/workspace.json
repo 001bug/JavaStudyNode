@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "feign",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -87,7 +87,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -187,7 +188,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "d2a940a05d9a18e0",
+  "active": "6587fde0629aea82",
   "lastOpenFiles": [
     "english.md",
     "杂记/数据交换和异步请求.md",
