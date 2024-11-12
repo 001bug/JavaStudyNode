@@ -820,6 +820,7 @@ set a c1;
 3.`MaxWaitMillis`: 超时时间, 获取一个连接最久能等多久
 4.`testOnBorrow`: 获得一个jedis实例的时候是否检查连接可用性(底层用ping()); 如果为true , 则得到的jedis实例均可用
 ## 使用Redis连接池优化超时
+现在windos上ping一下linux的地址, 在`linux`上使用`ifconfig`
 模版类 , 类似于数据库连接池
 JedisPoolUtil.java
 ```java
