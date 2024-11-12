@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java高级"
+              "title": "Redis"
             }
           },
           {
@@ -153,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "JavaNote/JavaStudyNode/Redies/Redis.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "Redis 的大纲"
             }
           },
           {
@@ -189,11 +189,11 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "前端/Vue/Vue.md",
     "杂记/数据交换和异步请求.md",
     "english.md",
     "技术栈.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110175016.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110173154.png",
