@@ -372,6 +372,20 @@ public boolean equals(Object anobject) {
 # 泛型
 **泛型的技术背景**
 去取出集合中的数据, 在对这些数据进行操作的时候, 操作不小心转型错误. 而且频繁的转型也会降低程序效率
+```java
+public class demo {  
+    public static void main(String[] args){  
+        ArrayList arrayList=new ArrayList();   
+        arrayList.add(new A());  
+        arrayList.add(new A());  
+        arrayList.add(new B());  
+        for(Object item : arrayList){  
+            A a=(A)item;  
+            System.out.println(a.a);  
+        }  
+    }  
+}
+```
 # 多线程
 
 ## 线程的相关概念
