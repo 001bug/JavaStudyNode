@@ -386,6 +386,38 @@ public class demo {
     }  
 }
 ```
+泛型:
+* 编译时, 检查添加元素的类型 , 提高了安全性
+* 不使用泛型`arrayList.add(Dog)`, Dog->加入->Object->取出->Dog
+* 使用泛型 Dog->Dog->Dog放入时和取出时, 不需要类型转换,提高效率
+1.泛型又称为**参数化类型** 类似`E=Integer`, 是JDK5.0出现的新特性 , 解决数据类型安全性问题
+2.在类声明或实例化时只要指定好需要的具体的类型即可
+3.Java泛型可以保证如果程序在编译时没有发出警告, 运行时就不会产生ClassCastException异常
+4.泛型的作用是:可以在类声明时通过一个标识表示类中某个属性的类型, 或者是某个方法的返回值的类型, 或者是参数类型. 类型的确定是在**编译期间**
+```java
+class Person<E>{
+	E s;//该数据类型是在定义Person对象的时候指定的,即在编译期间
+	public Person(E s){
+		this.s=s;
+	}
+	public E f(){
+		return s;
+	}
+}
+```
+
+**泛型的语法**
+1.泛型声明
+`interface 接口<T>{}`和`class 类<K,V,M>{}`//表示多个类型,泛型就是将数据类型参数化
+T,K,V不代表值, 而是表示类型
+2.泛型实例化
+`List<String> strList=new ArrayList<String>{}`
+`Iterator<Customer> iterator=customers.iterator();`
+
+**泛型的细节**
+1.参数化类型只能是引用类型
+2.在给定泛型指定具体类型后, 可以传入该类型或者子类类型
+3.在`List list3=new ArrayList()`默认给它的泛型是`<E> E就是Object`
 # 多线程
 
 ## 线程的相关概念
