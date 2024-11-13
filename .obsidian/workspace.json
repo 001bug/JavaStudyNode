@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "ed5190077a3b57ce",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.6"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.6"
+            }
+          },
+          {
             "id": "d2a940a05d9a18e0",
             "type": "leaf",
             "state": {
@@ -35,7 +47,8 @@
               "title": "数据交换和异步请求"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -187,7 +200,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "dbee34d0ac0fa8b9",
+  "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
