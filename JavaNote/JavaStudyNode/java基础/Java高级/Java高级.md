@@ -337,6 +337,27 @@ animal编译类型仍是Animal , 运行类型是Cat. 这种情况就解释了编
 * `==` 如果判断基本类型 , 判断的是值是否相等.
 * `==`如果判断引用类型 , 判断的是地址是否相等 , 即判断是否同一个对象.
 2.equals: 是Object类中的方法 , 只能判断引用类型. 默认判断的是地址是否相等, 子类中往往重写该方法 , 用于判断内容是否相等. 比如Integer ,String
+
+**重写equals方法**
+```java
+@Override  
+public boolean equals(Object anobject) {  
+    if(this==anobject){  
+        return true;  
+    }  
+    if(anobject instanceof B){  
+        B b = (B)anobject;  
+        if(this.b==b.b&&this.c==b.c){  
+            return true;  
+        }  
+    }  
+    return false;  
+}
+```
+
+**hashCode方法**
+1.介绍: 定义在 `Object` 类中的方法，返回对象的哈希值。主要用途是在哈希表等数据结构中高效地存储和查找对象，比如在 `HashMap`、`HashSet`、`Hashtable` 等集合中。
+
 # 多线程
 
 ## 线程的相关概念
