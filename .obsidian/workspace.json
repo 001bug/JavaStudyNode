@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MyBatis"
+              "title": "杂记"
             }
           },
           {
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "node.js",
+                "query": "@RequestBo",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,7 +102,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -168,10 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md"
               },
               "icon": "lucide-list",
-              "title": "MyBatis 的大纲"
+              "title": "杂记 的大纲"
             }
           },
           {
@@ -202,8 +203,10 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "4eed74c84ef71a4d",
+  "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
@@ -235,7 +238,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
-    "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/Java/设计模式.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
@@ -243,7 +245,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/Spring/Spring.md",
-    "JavaNote/JavaStudyNode/ssm/ssm.md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding",
