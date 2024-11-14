@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "JavaNote/JavaStudyNode/javaweb/javaweb.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "javaweb"
             }
           },
           {
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Path",
+                "query": "@Rest",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -169,10 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "JavaNote/JavaStudyNode/javaweb/javaweb.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "javaweb 的大纲"
             }
           },
           {
@@ -205,8 +205,8 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
