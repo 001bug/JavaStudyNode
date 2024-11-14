@@ -108,7 +108,7 @@ Nacos借用了很多Eureka的设计理念
 * `spring cloud zipkin`:分布式链路追踪系统 , 用于收集,存储,==可视化==来自Sleuth的追踪信息
 
 4.启动springboot程序
-注意端口是否被占用 , 可以通过cmd指令只看端口情况`netstat -ano | findstr :8080` net是network , stat是statistics
+注意端口是否被占用 , 可以通过cmd指令只看端口情况`netstat -ano | findstr :8080` ,net是network , stat是statistics
 `-a`: 显示所有活动的连接和监听端口
 `-n`: 以数字的形式显示地址和端口号
 `-o`:显示每个连接的进程号ID(PID)

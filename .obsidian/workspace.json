@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "杂记"
+              "title": "SpringCloud"
             }
           },
           {
@@ -102,8 +102,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -169,10 +168,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/杂记.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "杂记 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -203,8 +202,9 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "ed5190077a3b57ce",
+  "active": "4eed74c84ef71a4d",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "前端/Vue/Vue.md",
@@ -235,7 +235,6 @@
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
