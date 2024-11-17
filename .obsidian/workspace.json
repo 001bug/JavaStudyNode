@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/Vue/Vue.md",
+                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vue"
+              "title": "Java高级"
             }
           },
           {
@@ -169,10 +169,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/Vue/Vue.md"
+                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
               },
               "icon": "lucide-list",
-              "title": "Vue 的大纲"
+              "title": "Java高级 的大纲"
             }
           },
           {
@@ -206,6 +206,7 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
@@ -215,7 +216,6 @@
     "杂记/数据交换和异步请求.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
-    "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "english.md",
     "技术栈.md",
