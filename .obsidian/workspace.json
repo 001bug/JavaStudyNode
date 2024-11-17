@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java高级"
+              "title": "SpringBoot常用注解使用方式"
             }
           },
           {
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "@Rest",
+                "query": "@Request",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,12 +102,12 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -206,13 +206,13 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "杂记/数据交换和异步请求.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
