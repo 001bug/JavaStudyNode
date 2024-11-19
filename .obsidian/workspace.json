@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md",
+                "file": "前端/ES6新特性/ES6新特性.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "分布式微服务项目"
+              "title": "ES6新特性"
             }
           },
           {
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "表字段",
+                "query": "解构",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -102,11 +102,13 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -168,10 +170,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "前端/ES6新特性/ES6新特性.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "ES6新特性 的大纲"
             }
           },
           {
@@ -189,8 +191,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -205,14 +206,16 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "前端/前端技术栈和后端技术栈.md",
+    "前端/Vue/Vue.md",
+    "前端/ES6新特性/ES6新特性.md",
+    "分布式微服项目/分布式微服务项目.md",
     "分布式微服项目/assest/Pasted image 20241118235632.png",
     "杂记/数据交换和异步请求.md",
-    "分布式微服项目/分布式微服务项目.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
-    "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
@@ -236,7 +239,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110105311.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110104832.png",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110104733.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110090713.png",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
@@ -244,7 +246,6 @@
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
-    "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding",

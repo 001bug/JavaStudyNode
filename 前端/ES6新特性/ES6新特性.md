@@ -78,7 +78,7 @@ const arr = [1,2,3];
 const [a,b,c] = arr;
 console.log(a); //1
 console.log(b); //2
-console.log(3); //3
+console.log(c); //3
 ```
 2.对象解构赋值
 * 从对象按属性名(顺序无所谓)提取并赋值给变量
