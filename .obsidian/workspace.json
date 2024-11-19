@@ -102,8 +102,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -206,8 +205,10 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+    "分布式微服项目/assest/Pasted image 20241118235632.png",
+    "杂记/数据交换和异步请求.md",
     "分布式微服项目/分布式微服务项目.md",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
@@ -215,7 +216,6 @@
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "杂记/数据交换和异步请求.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/Redies/Redis.md",
     "english.md",
@@ -245,7 +245,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/Redies/悲观锁与乐观锁.md",
-    "JavaNote/JavaStudyNode/Spring/Spring.md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding",
