@@ -36,6 +36,18 @@
             }
           },
           {
+            "id": "eda84ce0e9c1f9d7",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.7.7"
+              },
+              "icon": "lucide-file",
+              "title": "Release Notes 1.7.7"
+            }
+          },
+          {
             "id": "d2a940a05d9a18e0",
             "type": "leaf",
             "state": {
@@ -50,7 +62,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -202,7 +214,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "ed5190077a3b57ce",
+  "active": "eda84ce0e9c1f9d7",
   "lastOpenFiles": [
     "前端/ES6新特性/ES6新特性.md",
     "前端/Vue/Vue.md",
