@@ -53,16 +53,16 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "杂记/数据交换和异步请求.md",
+                "file": "分布式微服项目/分布式微服务项目.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "数据交换和异步请求"
+              "title": "分布式微服务项目"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -180,10 +180,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/Vue/Vue.md"
+                "file": "分布式微服项目/分布式微服务项目.md"
               },
               "icon": "lucide-list",
-              "title": "Vue 的大纲"
+              "title": "分布式微服务项目 的大纲"
             }
           },
           {
@@ -201,7 +201,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -214,14 +215,14 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "eda84ce0e9c1f9d7",
+  "active": "d2a940a05d9a18e0",
   "lastOpenFiles": [
-    "前端/ES6新特性/ES6新特性.md",
+    "杂记/数据交换和异步请求.md",
     "前端/Vue/Vue.md",
+    "前端/ES6新特性/ES6新特性.md",
     "分布式微服项目/分布式微服务项目.md",
     "分布式微服项目/assest/Pasted image 20241118235632.png",
     "前端/前端技术栈和后端技术栈.md",
-    "杂记/数据交换和异步请求.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
