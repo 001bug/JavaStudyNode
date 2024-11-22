@@ -62,7 +62,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,10 +181,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md"
+                "file": "前端/Vue/Vue.md"
               },
               "icon": "lucide-list",
-              "title": "分布式微服务项目 的大纲"
+              "title": "Vue 的大纲"
             }
           },
           {
@@ -215,14 +215,14 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "d2a940a05d9a18e0",
+  "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "分布式微服项目/分布式微服务项目.md",
     "分布式微服项目/assest/Pasted image 20241121164258.png",
     "分布式微服项目/assest/Pasted image 20241121101330.png",
     "杂记/数据交换和异步请求.md",
     "前端/Vue/Vue.md",
     "前端/ES6新特性/ES6新特性.md",
-    "分布式微服项目/分布式微服务项目.md",
     "分布式微服项目/assest/Pasted image 20241118235632.png",
     "前端/前端技术栈和后端技术栈.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
@@ -250,7 +250,6 @@
     "分布式微服项目/assest",
     "分布式微服项目",
     "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110105311.png",
-    "JavaNote/JavaStudyNode/SpringCloud/assest/Pasted image 20241110104832.png",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
     "JavaNote/JavaStudyNode/Java/并发.md",
     "JavaNote/JavaStudyNode/日常代码问题.md",
