@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "分布式微服务项目"
+              "title": "SpringCloud"
             }
           },
           {
@@ -180,10 +180,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "分布式微服务项目 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -216,8 +216,8 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "分布式微服项目/分布式微服务项目.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "分布式微服项目/assest/{E4704B59-282D-4316-8337-F1CBA0F98239}.png",
     "前端/Vue/Vue.md",
     "前端/ES6新特性/ES6新特性.md",
