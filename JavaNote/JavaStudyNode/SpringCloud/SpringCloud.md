@@ -769,6 +769,7 @@ eureka:
 ```
 * `predicates`(断言),,对请求进行匹配,如果失败,直接返回, 是gateway返回的,而不是服务层返回的
 * `uri`匹配后转发到服务的路由地址.
+* 上面所示,`localhost:10001/member/get/的服务`,向外暴露是`localhost:20000/member/get/**`
 
 4.创建主启动类
 加上`@EnableEurekaClient`
@@ -802,7 +803,7 @@ spring:
             - Path=/member/save
 ```
 `enabled: true`表示的是开启DiscoveryClient服务发现, 将服务实例动态地映射为网关的路由
-`uri: lb`: 这个lb是协议名 , member-service-provider是服务名. 这里不要用大写,否则会失败 , lb默认支持轮询算法
+`uri: lb`: 这个lb是协议名 , member-service-provider是服务名. 这里不要用大写,否则会失败 , lb默认支持轮询算法. `lb://`表示使用负载均衡, 用于从服务注册中心获取服务实例列表, 并通过负载均衡算法选择其中一个实例进行请求转发
 
 **细节**
 1.配置好动态路由后Gateway会根据注册中心上微服务名, 为请求创建动态路由. 实现动态路由功能
