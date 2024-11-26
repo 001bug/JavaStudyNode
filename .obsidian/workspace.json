@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+                "file": "分布式微服项目/分布式微服务项目.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "SpringCloud"
+              "title": "分布式微服务项目"
             }
           }
         ],
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "简写",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -154,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
+                "file": "分布式微服项目/分布式微服务项目.md"
               },
               "icon": "lucide-list",
-              "title": "SpringCloud 的大纲"
+              "title": "分布式微服务项目 的大纲"
             }
           },
           {
@@ -190,10 +190,13 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
+    "分布式微服项目/assest/Pasted image 20241126193045.png",
+    "分布式微服项目/assest/Pasted image 20241126192750.png",
+    "分布式微服项目/assest/Pasted image 20241126192443.png",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "分布式微服项目/分布式微服务项目.md",
@@ -216,8 +219,6 @@
     "技术栈.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110175016.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110173154.png",
-    "JavaNote/JavaStudyNode/java基础/Java高级/assest/Pasted image 20241110172244.png",
     "JavaNote/JavaStudyNode/java基础/Java高级/未命名.md",
     "Docker/Docker.md",
     "Docker/assest",
