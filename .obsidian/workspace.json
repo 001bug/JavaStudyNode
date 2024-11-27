@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md",
+                "file": "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "分布式微服务项目"
+              "title": "mysql事务,acid的特性"
             }
           }
         ],
@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "install",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -127,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/Redies/Redis.md",
+                "file": "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Redis 的出链列表"
+              "title": "mysql事务,acid的特性 的出链列表"
             }
           },
           {
@@ -154,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "分布式微服项目/分布式微服务项目.md"
+                "file": "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md"
               },
               "icon": "lucide-list",
-              "title": "分布式微服务项目 的大纲"
+              "title": "mysql事务,acid的特性 的大纲"
             }
           },
           {
@@ -171,7 +171,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -190,10 +190,15 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
     "JavaNote/JavaStudyNode/SpringCloud/动静态分离.md",
-    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/MySQL索引优化.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/造成id相同的情景.md",
+    "JavaNote/JavaStudyNode/MySQL/MySQL高级/为什么在某些场景下in子查询转变为exists子查询能够优化.md",
     "分布式微服项目/分布式微服务项目.md",
+    "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "分布式微服项目/assest/Pasted image 20241127152936.png",
     "分布式微服项目/assest/Pasted image 20241127151824.png",
     "分布式微服项目/assest/Pasted image 20241127150055.png",
@@ -204,7 +209,6 @@
     "JavaNote/JavaStudyNode/SpringMVC/SpringMVC.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
-    "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "分布式微服项目/assest/Pasted image 20241125092409.png",
     "分布式微服项目/assest/Pasted image 20241125092133.png",
     "分布式微服项目/assest/Pasted image 20241125091455.png",
@@ -226,10 +230,6 @@
     "分布式微服项目/assest",
     "分布式微服项目",
     "JavaNote/JavaStudyNode/SpringBoot/application.md",
-    "JavaNote/JavaStudyNode/Java/并发.md",
-    "JavaNote/JavaStudyNode/日常代码问题.md",
-    "JavaNote/JavaStudyNode/Java/设计模式.md",
-    "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "JavaNote/JavaStudyNode/SpringCloud/coding/MemberDao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding/dao.java",
     "JavaNote/JavaStudyNode/SpringCloud/coding",
