@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Java高级"
+              "title": "SpringCloud"
             }
           }
         ],
@@ -128,12 +128,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Java高级 的出链列表"
+              "title": "SpringCloud 的出链列表"
             }
           },
           {
@@ -155,10 +155,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
+                "file": "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md"
               },
               "icon": "lucide-list",
-              "title": "Java高级 的大纲"
+              "title": "SpringCloud 的大纲"
             }
           },
           {
@@ -191,13 +191,13 @@
   },
   "active": "ed5190077a3b57ce",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/Java/JavaSE.md",
-    "thinking.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
+    "thinking.md",
+    "JavaNote/JavaStudyNode/Java/JavaSE.md",
+    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "分布式微服项目/分布式微服务项目.md",
     "JavaNote/JavaStudyNode/Redis/Redis.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
