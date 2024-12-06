@@ -88,8 +88,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -189,7 +188,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "ed5190077a3b57ce",
+  "active": "4eed74c84ef71a4d",
   "lastOpenFiles": [
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
