@@ -35,8 +35,7 @@
               "title": "SpringBoot常用注解使用方式"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,8 +87,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -155,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md"
+                "file": "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md"
               },
               "icon": "lucide-list",
-              "title": "SpringBoot常用注解使用方式 的大纲"
+              "title": "Java高级 的大纲"
             }
           },
           {
@@ -189,10 +187,10 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "6587fde0629aea82",
+  "active": "4eed74c84ef71a4d",
   "lastOpenFiles": [
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "thinking.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
