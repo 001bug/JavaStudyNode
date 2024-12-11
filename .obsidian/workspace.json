@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/Vue/Vue.md",
+                "file": "thinking.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Vue"
+              "title": "thinking"
             }
           },
           {
@@ -87,8 +87,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -154,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/Vue/Vue.md"
+                "file": "thinking.md"
               },
               "icon": "lucide-list",
-              "title": "Vue 的大纲"
+              "title": "thinking 的大纲"
             }
           },
           {
@@ -190,9 +189,10 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
+    "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
-    "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "thinking.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "分布式微服项目/分布式微服务项目.md",
@@ -208,7 +208,6 @@
     "分布式微服项目/assest/Pasted image 20241127152936.png",
     "分布式微服项目/assest/Pasted image 20241127151824.png",
     "分布式微服项目/assest/Pasted image 20241127150055.png",
-    "前端/Vue/Vue.md",
     "分布式微服项目/assest/Pasted image 20241126193045.png",
     "分布式微服项目/assest/Pasted image 20241126192750.png",
     "分布式微服项目/assest/Pasted image 20241126192443.png",

@@ -4,3 +4,14 @@
 `<黑客与画家>`中说道的hacker精神, 就是分享 , 开放 , 民主 , 计算机自由的使用和进步
 
 1.mybatis-plus分页插件的运行原理
+
+1.个人情况
+* 算法力扣hot50,codeforce+洛谷200,目前有点忘了
+  但类似接雨水的问题还是能写
+* java体系:javase,javaee,原生servlet过渡到spring然后springmvc,mybatis,springboot.
+  微服务方面:nacos,eureka,gateway,Open Feign,Ribbon,Sleuth/ZipKin(链路监控),redis,mysql,linux.个人感觉不是特别深入.
+  目前在写商城类微服务项目,还有一个借到别人的微服务项目, 还没完全搞懂,因为mq还没开始学
+* 前端:懂点三大件和vue2.不熟悉.浅浅学了一下.
+2.疑问就是
+* 通过看网上的情况, 后端没学历好像走不了一点
+* 如果转的话,测开和前端,运维这三个方面好一点.(.jpg,有点不想转,但好像硬走会失业)
