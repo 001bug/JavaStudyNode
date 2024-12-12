@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thinking.md",
+                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "thinking"
+              "title": "SpringBoot"
             }
           },
           {
@@ -153,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "thinking.md"
+                "file": "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md"
               },
               "icon": "lucide-list",
-              "title": "thinking 的大纲"
+              "title": "SpringBoot 的大纲"
             }
           },
           {
@@ -189,11 +189,11 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "thinking.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
     "前端/Vue/Vue.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/Java高级.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
-    "thinking.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "分布式微服项目/分布式微服务项目.md",
     "JavaNote/JavaStudyNode/Redis/Redis.md",
