@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "english.md",
+                "file": "linux/linux.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "english"
+              "title": "linux"
             }
           },
           {
@@ -66,7 +66,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "v-if",
+                "query": "linux",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -91,7 +91,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -153,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "english.md"
+                "file": "linux/linux.md"
               },
               "icon": "lucide-list",
-              "title": "english 的大纲"
+              "title": "linux 的大纲"
             }
           },
           {
@@ -189,6 +190,7 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "english.md",
     "thinking.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
     "JavaNote/JavaStudyNode/SpringCloud/SpringCloud.md",
@@ -222,7 +224,6 @@
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "english.md",
     "技术栈.md",
     "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "Docker/assest",
