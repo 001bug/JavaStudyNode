@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "linux/linux.md",
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "linux"
+              "title": "MyBatis"
             }
           },
           {
@@ -91,8 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -154,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "linux/linux.md"
+                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
               },
               "icon": "lucide-list",
-              "title": "linux 的大纲"
+              "title": "MyBatis 的大纲"
             }
           },
           {
@@ -190,6 +189,7 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "linux/linux.md",
     "english.md",
     "thinking.md",
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot.md",
@@ -225,7 +225,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
     "JavaNote/JavaStudyNode/javaweb/javaweb.md",
     "技术栈.md",
-    "JavaNote/JavaStudyNode/java基础/Java高级/细节解释.md",
     "Docker/assest",
     "Docker",
     "分布式微服项目/assest",
