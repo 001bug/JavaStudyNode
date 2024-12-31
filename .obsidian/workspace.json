@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
+                "file": "前端/HTML5/HTML5标签.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MyBatis"
+              "title": "HTML5标签"
             }
           },
           {
@@ -153,10 +153,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "JavaNote/JavaStudyNode/MyBatis/MyBatis.md"
+                "file": "前端/HTML5/HTML5标签.md"
               },
               "icon": "lucide-list",
-              "title": "MyBatis 的大纲"
+              "title": "HTML5标签 的大纲"
             }
           },
           {
@@ -189,6 +189,10 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "前端/CSS/CSS.md",
+    "前端/javascript/JavaScript.md",
+    "前端/HTML5/HTML5标签.md",
+    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "linux/linux.md",
     "english.md",
     "thinking.md",
@@ -221,10 +225,6 @@
     "前端/ES6新特性/ES6新特性.md",
     "前端/前端技术栈和后端技术栈.md",
     "杂记/数据交换和异步请求.md",
-    "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
-    "JavaNote/JavaStudyNode/SpringCloud/杂记.md",
-    "JavaNote/JavaStudyNode/javaweb/javaweb.md",
-    "技术栈.md",
     "Docker/assest",
     "Docker",
     "分布式微服项目/assest",
