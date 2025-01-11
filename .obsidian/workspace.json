@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md",
+                "file": "border/在springframe下对redis的操作.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HTML5标签"
+              "title": "在springframe下对redis的操作"
             }
           },
           {
@@ -91,7 +91,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "5f60fa07aec0b59e",
@@ -153,10 +154,10 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/HTML5/HTML5标签.md"
+                "file": "border/在springframe下对redis的操作.md"
               },
               "icon": "lucide-list",
-              "title": "HTML5标签 的大纲"
+              "title": "在springframe下对redis的操作 的大纲"
             }
           },
           {
@@ -189,9 +190,13 @@
   },
   "active": "dbee34d0ac0fa8b9",
   "lastOpenFiles": [
+    "JavaNote/JavaStudyNode/Redis/Redis.md",
+    "border/在springframe下对redis的操作.md",
+    "border/assest",
+    "border",
+    "前端/HTML5/HTML5标签.md",
     "前端/CSS/CSS.md",
     "前端/javascript/JavaScript.md",
-    "前端/HTML5/HTML5标签.md",
     "JavaNote/JavaStudyNode/MyBatis/MyBatis.md",
     "linux/linux.md",
     "english.md",
@@ -203,7 +208,6 @@
     "JavaNote/JavaStudyNode/SpringBoot/SpringBoot常用注解使用方式.md",
     "JavaNote/JavaStudyNode/Java/JavaSE.md",
     "分布式微服项目/分布式微服务项目.md",
-    "JavaNote/JavaStudyNode/Redis/Redis.md",
     "JavaNote/JavaStudyNode/MySQL/mysql事务ACID/mysql事务,acid的特性.md",
     "JavaNote/JavaStudyNode/SpringCloud/服务发现.md",
     "JavaNote/JavaStudyNode/SpringCloud/`spring-boot-starter-actuator`.md",
@@ -224,7 +228,6 @@
     "分布式微服项目/assest/{E4704B59-282D-4316-8337-F1CBA0F98239}.png",
     "前端/ES6新特性/ES6新特性.md",
     "前端/前端技术栈和后端技术栈.md",
-    "杂记/数据交换和异步请求.md",
     "Docker/assest",
     "Docker",
     "分布式微服项目/assest",
@@ -234,8 +237,6 @@
     "JavaNote/JavaStudyNode/SpringCloud/coding",
     "JavaNote/JavaStudyNode/SpringBoot/coding",
     "未命名.canvas",
-    "前端/Nginx/assest",
-    "前端/Nginx",
     "未命名 1.canvas"
   ]
 }
