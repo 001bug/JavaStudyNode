@@ -25,12 +25,14 @@
             "id": "bfe9261fadd9889c",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.8.9"
+                "file": "前端/Vue/Vue.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.8.9"
+              "icon": "lucide-file",
+              "title": "Vue"
             }
           },
           {
@@ -167,12 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "前端/Vue/Vue.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "大纲"
+              "title": "Vue 的大纲"
             }
           },
           {
@@ -190,7 +193,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 291.5
   },
   "left-ribbon": {
     "hiddenItems": {
