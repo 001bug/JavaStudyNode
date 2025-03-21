@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "bfe9261fadd9889c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.8.9"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.8.9"
+            }
+          },
+          {
             "id": "ed5190077a3b57ce",
             "type": "leaf",
             "state": {
@@ -35,7 +47,8 @@
               "title": "SpringBoot常用注解使用方式"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -54,7 +67,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -153,10 +167,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/Vue/Vue.md"
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Vue 的大纲"
+              "title": "大纲"
             }
           },
           {
@@ -187,7 +203,7 @@
       "vscode-editor:新建代码文件": false
     }
   },
-  "active": "dbee34d0ac0fa8b9",
+  "active": "bfe9261fadd9889c",
   "lastOpenFiles": [
     "前端/Vue/事件.md",
     "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
