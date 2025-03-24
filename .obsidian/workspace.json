@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md",
+                "file": "前端/Vue/Vue.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ES6新特性"
+              "title": "Vue"
             }
           },
           {
@@ -154,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "前端/ES6新特性/ES6新特性.md",
+                "file": "前端/Vue/Vue.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ES6新特性 的大纲"
+              "title": "Vue 的大纲"
             }
           },
           {
@@ -193,8 +193,8 @@
   },
   "active": "bfe9261fadd9889c",
   "lastOpenFiles": [
-    "前端/Vue/Vue.md",
     "前端/ES6新特性/ES6新特性.md",
+    "前端/Vue/Vue.md",
     "前端/javascript/JavaScript.md",
     "前端/Vue/事件.md",
     "JavaNote/JavaStudyNode/SpringBoot+Vue/SpringBoot+vue.md",
